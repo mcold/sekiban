@@ -1,0 +1,33 @@
+# Binaries
+/sr-dash
+*.exe
+
+# Release artifacts
+/dist/
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test binary, built with `go test -c`
+*.test
+
+# Code coverage profiles and other test artifacts
+*.out
+coverage.*
+*.coverprofile
+profile.cov
+
+# Go workspace file
+go.work
+go.work.sum
+
+# Local configuration: it holds connection strings with passwords.
+sr_dash_init.filo
+
+# Editor/IDE
+# .idea/
+# .vscode/
+
+.DS_Store
+.env
