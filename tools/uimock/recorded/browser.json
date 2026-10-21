@@ -1,0 +1,79 @@
+{
+  "database": "sr_dash_dev",
+  "groups": [
+    {
+      "key": "tables",
+      "label": "Tables",
+      "objects": [
+        {
+          "name": "uk_orders",
+          "type": "BASE TABLE",
+          "model": "UNIQUE_KEYS",
+          "rows": 0,
+          "size": 0
+        },
+        {
+          "name": "dup_events",
+          "type": "BASE TABLE",
+          "model": "DUP_KEYS",
+          "rows": 5,
+          "size": 5199
+        },
+        {
+          "name": "part_events",
+          "type": "BASE TABLE",
+          "model": "DUP_KEYS",
+          "rows": 0,
+          "size": 0
+        },
+        {
+          "name": "agg_daily",
+          "type": "BASE TABLE",
+          "model": "AGG_KEYS",
+          "rows": 2,
+          "size": 650
+        },
+        {
+          "name": "pk_users",
+          "type": "BASE TABLE",
+          "model": "PRIMARY_KEYS",
+          "rows": 3,
+          "size": 3671
+        },
+        {
+          "name": "load_events",
+          "type": "BASE TABLE",
+          "model": "DUP_KEYS",
+          "rows": 4194304,
+          "size": 4415830
+        }
+      ]
+    },
+    {
+      "key": "views",
+      "label": "Views",
+      "objects": [
+        {
+          "name": "v_dup",
+          "type": "VIEW",
+          "model": "",
+          "rows": 0,
+          "size": 0
+        }
+      ]
+    },
+    {
+      "key": "materialized_views",
+      "label": "Materialized Views",
+      "objects": [
+        {
+          "name": "mv2",
+          "type": "MATERIALIZED VIEW",
+          "model": "",
+          "rows": 2,
+          "size": 0
+        }
+      ]
+    }
+  ]
+}

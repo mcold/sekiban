@@ -1,0 +1,20 @@
+{
+  "resources": [],
+  "groups": [],
+  "warehouses": [
+    {
+      "id": "0",
+      "name": "default_warehouse",
+      "state": "AVAILABLE",
+      "nodeCount": 0,
+      "currentClusterCount": 1,
+      "maxClusterCount": 1,
+      "startedClusters": 1,
+      "runningSql": 0,
+      "queuedSql": 0,
+      "property": "",
+      "comment": "An internal warehouse init after FE is ready"
+    }
+  ],
+  "queues": []
+}

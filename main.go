@@ -119,6 +119,53 @@ func runJSON(cfg Config, configErr string, args []string) {
 			os.Exit(1)
 		}
 		_ = enc.Encode(out)
+	case "cluster", "compactions", "loads", "resources", "metrics":
+		if len(cfg.Connections) == 0 {
+			fail("no connections configured")
+		}
+		db, err := openSR(cfg.Connections[0].DSN)
+		if err != nil {
+			_ = enc.Encode(map[string]string{"error": err.Error()})
+			os.Exit(1)
+		}
+		defer func() { _ = db.Close() }()
+		switch command {
+		case "cluster":
+			out, err := collectCluster(db)
+			if err != nil {
+				_ = enc.Encode(map[string]string{"error": err.Error()})
+				os.Exit(1)
+			}
+			_ = enc.Encode(out)
+		case "compactions":
+			out := collectCompactions(db, browserDatabase(db))
+			if out.Error != "" {
+				_ = enc.Encode(map[string]string{"error": out.Error})
+				os.Exit(1)
+			}
+			_ = enc.Encode(out)
+		case "loads":
+			out := collectLoads(db, browserDatabase(db))
+			if out.Error != "" {
+				_ = enc.Encode(map[string]string{"error": out.Error})
+				os.Exit(1)
+			}
+			_ = enc.Encode(out)
+		case "resources":
+			out := collectResources(db)
+			if out.Error != "" {
+				_ = enc.Encode(map[string]string{"error": out.Error})
+				os.Exit(1)
+			}
+			_ = enc.Encode(out)
+		case "metrics":
+			out := collectMetrics(db, "")
+			if out.Error != "" {
+				_ = enc.Encode(map[string]string{"error": out.Error})
+				os.Exit(1)
+			}
+			_ = enc.Encode(out)
+		}
 	case "browser":
 		if len(cfg.Connections) == 0 {
 			fail("no connections configured")
@@ -146,7 +193,8 @@ func runJSON(cfg Config, configErr string, args []string) {
 		_ = enc.Encode(map[string]any{
 			"error": fmt.Sprintf("unknown command %q", command),
 			"commands": []string{
-				"browser", "connections", "dashboard", "describe", "sessions",
+				"browser", "cluster", "compactions", "connections", "dashboard",
+				"describe", "loads", "metrics", "resources", "sessions",
 			},
 		})
 		os.Exit(1)

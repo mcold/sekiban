@@ -1,0 +1,4157 @@
+{
+  "names": [
+    "active_scan_context_count",
+    "alter_tablet_active_threads",
+    "alter_tablet_execute_time_ns_total",
+    "alter_tablet_executed_tasks_total",
+    "alter_tablet_pending_time_ns_total",
+    "alter_tablet_queue_count",
+    "alter_tablet_running_threads",
+    "alter_tablet_threadpool_size",
+    "async_delta_writer_active_threads",
+    "async_delta_writer_execute_time_ns_total",
+    "async_delta_writer_execute_total",
+    "async_delta_writer_executed_tasks_total",
+    "async_delta_writer_pending_time_ns_total",
+    "async_delta_writer_queue_count",
+    "async_delta_writer_running_threads",
+    "async_delta_writer_task_execute_duration_us",
+    "async_delta_writer_task_pending_duration_us",
+    "async_delta_writer_task_total",
+    "async_delta_writer_threadpool_size",
+    "base_compaction_task_byte_per_second",
+    "base_compaction_task_cost_time_ms",
+    "bitmap_index_mem_bytes",
+    "blocks_created_total",
+    "blocks_deleted_total",
+    "blocks_open_reading",
+    "blocks_open_writing",
+    "bloom_filter_index_mem_bytes",
+    "broker_count",
+    "brpc_backend_service",
+    "brpc_endpoint_stub_count",
+    "brpc_exec_plan_fragment",
+    "brpc_exec_plan_fragment_error",
+    "brpc_lake_service",
+    "brpc_pool_borrowedcount",
+    "brpc_pool_createdcount",
+    "brpc_pool_destroyedcount",
+    "brpc_pool_meanactivetimemillis",
+    "brpc_pool_meanborrowwaittimemillis",
+    "brpc_pool_meanidletimemillis",
+    "brpc_pool_numactive",
+    "brpc_pool_numidle",
+    "brpc_pool_numwaiters",
+    "brpc_pool_returnedcount",
+    "brpc_total",
+    "bytes_read_total",
+    "bytes_written_total",
+    "check_consistency_active_threads",
+    "check_consistency_execute_time_ns_total",
+    "check_consistency_executed_tasks_total",
+    "check_consistency_pending_time_ns_total",
+    "check_consistency_queue_count",
+    "check_consistency_running_threads",
+    "check_consistency_threadpool_size",
+    "chunk_pool_system_alloc_cost_ns",
+    "chunk_pool_system_alloc_count",
+    "chunk_pool_system_free_cost_ns",
+    "chunk_pool_system_free_count",
+    "clear_transaction_active_threads",
+    "clear_transaction_execute_time_ns_total",
+    "clear_transaction_executed_tasks_total",
+    "clear_transaction_pending_time_ns_total",
+    "clear_transaction_queue_count",
+    "clear_transaction_running_threads",
+    "clear_transaction_threadpool_size",
+    "clone_active_threads",
+    "clone_execute_time_ns_total",
+    "clone_executed_tasks_total",
+    "clone_mem_bytes",
+    "clone_pending_time_ns_total",
+    "clone_queue_count",
+    "clone_running_threads",
+    "clone_task_copy_bytes",
+    "clone_task_copy_duration_ms",
+    "clone_task_success",
+    "clone_task_total",
+    "clone_threadpool_size",
+    "column_metadata_mem_bytes",
+    "column_partial_update_apply_duration_us",
+    "column_partial_update_apply_total",
+    "column_zonemap_index_mem_bytes",
+    "compact_pool_active_threads",
+    "compact_pool_execute_time_ns_total",
+    "compact_pool_executed_tasks_total",
+    "compact_pool_pending_time_ns_total",
+    "compact_pool_queue_count",
+    "compact_pool_running_threads",
+    "compact_pool_threadpool_size",
+    "compaction_bytes_total",
+    "compaction_control_active_threads",
+    "compaction_control_execute_time_ns_total",
+    "compaction_control_executed_tasks_total",
+    "compaction_control_pending_time_ns_total",
+    "compaction_control_queue_count",
+    "compaction_control_running_threads",
+    "compaction_control_threadpool_size",
+    "compaction_deltas_total",
+    "compaction_mem_bytes",
+    "connection_total",
+    "connector_scan_pool_mem_bytes",
+    "consistency_mem_bytes",
+    "cpu",
+    "create_tablet_active_threads",
+    "create_tablet_execute_time_ns_total",
+    "create_tablet_executed_tasks_total",
+    "create_tablet_pending_time_ns_total",
+    "create_tablet_queue_count",
+    "create_tablet_running_threads",
+    "create_tablet_threadpool_size",
+    "cumulative_compaction_task_byte_per_second",
+    "cumulative_compaction_task_cost_time_ms",
+    "data_stream_receiver_count",
+    "database_num",
+    "datacache_mem_bytes",
+    "db_size_bytes",
+    "delta_column_group_get_hit_cache",
+    "delta_column_group_get_non_pk_hit_cache",
+    "delta_column_group_get_non_pk_total",
+    "delta_column_group_get_total",
+    "delta_writer_commit_task_total",
+    "delta_writer_pk_preload_duration_us",
+    "delta_writer_txn_commit_duration_us",
+    "delta_writer_wait_flush_duration_us",
+    "delta_writer_wait_flush_task_total",
+    "delta_writer_wait_replica_duration_us",
+    "disk_sync_total",
+    "disks_avail_capacity",
+    "disks_data_used_capacity",
+    "disks_state",
+    "disks_total_capacity",
+    "download_active_threads",
+    "download_execute_time_ns_total",
+    "download_executed_tasks_total",
+    "download_pending_time_ns_total",
+    "download_queue_count",
+    "download_running_threads",
+    "download_threadpool_size",
+    "drop_active_threads",
+    "drop_auto_increment_map_dir_active_threads",
+    "drop_auto_increment_map_dir_execute_time_ns_total",
+    "drop_auto_increment_map_dir_executed_tasks_total",
+    "drop_auto_increment_map_dir_pending_time_ns_total",
+    "drop_auto_increment_map_dir_queue_count",
+    "drop_auto_increment_map_dir_running_threads",
+    "drop_auto_increment_map_dir_threadpool_size",
+    "drop_execute_time_ns_total",
+    "drop_executed_tasks_total",
+    "drop_pending_time_ns_total",
+    "drop_queue_count",
+    "drop_running_threads",
+    "drop_threadpool_size",
+    "edit_log_read",
+    "edit_log_size_bytes",
+    "edit_log_write",
+    "editlog_stacked_num",
+    "encryption_key_num",
+    "engine_requests_total",
+    "exec_state_report_active_threads",
+    "exec_state_report_execute_time_ns_total",
+    "exec_state_report_executed_tasks_total",
+    "exec_state_report_pending_time_ns_total",
+    "exec_state_report_queue_count",
+    "exec_state_report_running_threads",
+    "exec_state_report_threadpool_size",
+    "fd_num_limit",
+    "fd_num_used",
+    "fragment_endpoint_count",
+    "fragment_request_duration_us",
+    "fragment_requests_total",
+    "http_connections_num",
+    "http_handling_requests_num",
+    "http_request_send_bytes",
+    "http_requests_total",
+    "http_worker_pending_tasks_num",
+    "http_workers_num",
+    "image_push",
+    "image_write",
+    "io_read_bytes",
+    "io_read_ops",
+    "io_write_bytes",
+    "io_write_ops",
+    "jemalloc_active_bytes",
+    "jemalloc_allocated_bytes",
+    "jemalloc_mapped_bytes",
+    "jemalloc_metadata_bytes",
+    "jemalloc_metadata_thp",
+    "jemalloc_resident_bytes",
+    "jemalloc_retained_bytes",
+    "jit_cache_mem_bytes",
+    "job",
+    "jvm_direct_buffer_pool_size_bytes",
+    "jvm_heap_size_bytes",
+    "jvm_old_gc",
+    "jvm_old_size_bytes",
+    "jvm_size_percent",
+    "jvm_young_gc",
+    "jvm_young_size_bytes",
+    "lake_memtable_flush_active_threads",
+    "lake_memtable_flush_execute_time_ns_total",
+    "lake_memtable_flush_executed_tasks_total",
+    "lake_memtable_flush_pending_time_ns_total",
+    "lake_memtable_flush_queue_count",
+    "lake_memtable_flush_running_threads",
+    "lake_memtable_flush_threadpool_size",
+    "load_add",
+    "load_bytes",
+    "load_channel_active_threads",
+    "load_channel_add_chunks_duration_us",
+    "load_channel_add_chunks_eos_total",
+    "load_channel_add_chunks_total",
+    "load_channel_add_chunks_wait_memtable_duration_us",
+    "load_channel_add_chunks_wait_replica_duration_us",
+    "load_channel_add_chunks_wait_writer_duration_us",
+    "load_channel_count",
+    "load_channel_execute_time_ns_total",
+    "load_channel_executed_tasks_total",
+    "load_channel_pending_time_ns_total",
+    "load_channel_queue_count",
+    "load_channel_running_threads",
+    "load_channel_threadpool_size",
+    "load_finished",
+    "load_mem_bytes",
+    "load_rows",
+    "load_rpc_threadpool_size",
+    "load_spill_block_merge_active_threads",
+    "load_spill_block_merge_execute_time_ns_total",
+    "load_spill_block_merge_executed_tasks_total",
+    "load_spill_block_merge_pending_time_ns_total",
+    "load_spill_block_merge_queue_count",
+    "load_spill_block_merge_running_threads",
+    "load_spill_block_merge_threadpool_size",
+    "lz4_compress_context_pool_create_count",
+    "lz4f_compress_context_pool_create_count",
+    "lz4f_decompress_context_pool_create_count",
+    "make_snapshot_active_threads",
+    "make_snapshot_execute_time_ns_total",
+    "make_snapshot_executed_tasks_total",
+    "make_snapshot_pending_time_ns_total",
+    "make_snapshot_queue_count",
+    "make_snapshot_running_threads",
+    "make_snapshot_threadpool_size",
+    "manual_compaction_active_threads",
+    "manual_compaction_execute_time_ns_total",
+    "manual_compaction_executed_tasks_total",
+    "manual_compaction_pending_time_ns_total",
+    "manual_compaction_queue_count",
+    "manual_compaction_running_threads",
+    "manual_compaction_threadpool_size",
+    "max_disk_io_util_percent",
+    "max_journal_id",
+    "max_network_receive_bytes_rate",
+    "max_network_send_bytes_rate",
+    "max_tablet_compaction_score",
+    "max_tablet_rowset_num",
+    "memory_pool_bytes_total",
+    "memory_usage",
+    "memtable_finalize_duration_us",
+    "memtable_flush_active_threads",
+    "memtable_flush_disk_bytes_total",
+    "memtable_flush_duration_us",
+    "memtable_flush_execute_time_ns_total",
+    "memtable_flush_executed_tasks_total",
+    "memtable_flush_io_time_us",
+    "memtable_flush_memory_bytes_total",
+    "memtable_flush_pending_time_ns_total",
+    "memtable_flush_queue_count",
+    "memtable_flush_running_threads",
+    "memtable_flush_threadpool_size",
+    "memtable_flush_total",
+    "merge_commit_active_threads",
+    "merge_commit_cn_num",
+    "merge_commit_execute_time_ns_total",
+    "merge_commit_executed_tasks_total",
+    "merge_commit_job_num",
+    "merge_commit_load_bytes",
+    "merge_commit_load_rows",
+    "merge_commit_pending_time_ns_total",
+    "merge_commit_queue_count",
+    "merge_commit_running_threads",
+    "merge_commit_task_fail_num",
+    "merge_commit_task_running_num",
+    "merge_commit_task_success_num",
+    "merge_commit_threadpool_size",
+    "merge_commit_total_actual_parallel",
+    "merge_commit_total_expect_parallel",
+    "merge_commit_txn_dispatch_fail_num",
+    "merge_commit_txn_dispatch_pending_num",
+    "merge_commit_txn_dispatch_retry_num",
+    "merge_commit_txn_dispatch_success_num",
+    "merge_commit_warehouse_num",
+    "meta_log_count",
+    "meta_request_duration",
+    "meta_request_total",
+    "metadata_cache_bytes_total",
+    "metadata_mem_bytes",
+    "move_dir_active_threads",
+    "move_dir_execute_time_ns_total",
+    "move_dir_executed_tasks_total",
+    "move_dir_pending_time_ns_total",
+    "move_dir_queue_count",
+    "move_dir_running_threads",
+    "move_dir_threadpool_size",
+    "network_receive_bytes",
+    "network_receive_packets",
+    "network_send_bytes",
+    "network_send_packets",
+    "node_info",
+    "object_count",
+    "ordinal_index_mem_bytes",
+    "page_cache_capacity",
+    "page_cache_hit_count",
+    "page_cache_lookup_count",
+    "pindex_load_active_threads",
+    "pindex_load_execute_time_ns_total",
+    "pindex_load_executed_tasks_total",
+    "pindex_load_pending_time_ns_total",
+    "pindex_load_queue_count",
+    "pindex_load_running_threads",
+    "pindex_load_threadpool_size",
+    "pip_query_ctx_cnt",
+    "pipe_connector_scan_execution_time",
+    "pipe_connector_scan_finished_tasks",
+    "pipe_connector_scan_pending_tasks",
+    "pipe_connector_scan_running_tasks",
+    "pipe_driver_execution_time",
+    "pipe_driver_queue_len",
+    "pipe_driver_schedule_count",
+    "pipe_drivers",
+    "pipe_exec_finished_tasks",
+    "pipe_exec_running_tasks",
+    "pipe_poller_block_queue_len",
+    "pipe_prepare_pool_queue_len",
+    "pipe_scan_execution_time",
+    "pipe_scan_executor_queuing",
+    "pipe_scan_finished_tasks",
+    "pipe_scan_pending_tasks",
+    "pipe_scan_running_tasks",
+    "pk_index_compaction_active_threads",
+    "pk_index_compaction_execute_time_ns_total",
+    "pk_index_compaction_executed_tasks_total",
+    "pk_index_compaction_pending_time_ns_total",
+    "pk_index_compaction_queue_count",
+    "pk_index_compaction_running_threads",
+    "pk_index_compaction_threadpool_size",
+    "plan_fragment_count",
+    "primary_key_table_error_state_total",
+    "primary_key_wait_apply_done_duration_ms",
+    "primary_key_wait_apply_done_total",
+    "priority_exec_state_report_active_threads",
+    "priority_exec_state_report_execute_time_ns_total",
+    "priority_exec_state_report_executed_tasks_total",
+    "priority_exec_state_report_pending_time_ns_total",
+    "priority_exec_state_report_queue_count",
+    "priority_exec_state_report_running_threads",
+    "priority_exec_state_report_threadpool_size",
+    "process_fd_num_limit_hard",
+    "process_fd_num_limit_soft",
+    "process_fd_num_used",
+    "process_mem_bytes",
+    "process_thread_num",
+    "publish_version_active_threads",
+    "publish_version_execute_time_ns_total",
+    "publish_version_executed_tasks_total",
+    "publish_version_pending_time_ns_total",
+    "publish_version_queue_count",
+    "publish_version_running_threads",
+    "publish_version_threadpool_size",
+    "push_request_duration_us",
+    "push_request_write_bytes",
+    "push_request_write_bytes_per_second",
+    "push_request_write_rows",
+    "push_requests_total",
+    "put_aggregate_metadata_active_threads",
+    "put_aggregate_metadata_execute_time_ns_total",
+    "put_aggregate_metadata_executed_tasks_total",
+    "put_aggregate_metadata_pending_time_ns_total",
+    "put_aggregate_metadata_queue_count",
+    "put_aggregate_metadata_running_threads",
+    "put_aggregate_metadata_threadpool_size",
+    "qps",
+    "query_analysis_err",
+    "query_analysis_err_rate",
+    "query_cache_capacity",
+    "query_cache_hit_count",
+    "query_cache_hit_ratio",
+    "query_cache_lookup_count",
+    "query_cache_usage",
+    "query_cache_usage_ratio",
+    "query_err",
+    "query_err_rate",
+    "query_internal_err",
+    "query_internal_err_rate",
+    "query_latency",
+    "query_mem_bytes",
+    "query_queue_pending",
+    "query_queue_slot_pending",
+    "query_queue_slot_running",
+    "query_queue_timeout",
+    "query_queue_total",
+    "query_resource_group",
+    "query_resource_group_err",
+    "query_resource_group_latency",
+    "query_scan_bytes",
+    "query_scan_bytes_per_second",
+    "query_scan_rows",
+    "query_success",
+    "query_timeout",
+    "query_timeout_rate",
+    "query_total",
+    "readable_blocks_total",
+    "release_snapshot_active_threads",
+    "release_snapshot_execute_time_ns_total",
+    "release_snapshot_executed_tasks_total",
+    "release_snapshot_pending_time_ns_total",
+    "release_snapshot_queue_count",
+    "release_snapshot_running_threads",
+    "release_snapshot_threadpool_size",
+    "remote_snapshot_active_threads",
+    "remote_snapshot_execute_time_ns_total",
+    "remote_snapshot_executed_tasks_total",
+    "remote_snapshot_pending_time_ns_total",
+    "remote_snapshot_queue_count",
+    "remote_snapshot_running_threads",
+    "remote_snapshot_threadpool_size",
+    "replicate_snapshot_active_threads",
+    "replicate_snapshot_execute_time_ns_total",
+    "replicate_snapshot_executed_tasks_total",
+    "replicate_snapshot_pending_time_ns_total",
+    "replicate_snapshot_queue_count",
+    "replicate_snapshot_running_threads",
+    "replicate_snapshot_threadpool_size",
+    "report_queue_size",
+    "request_total",
+    "resource_group_bigquery_count",
+    "resource_group_concurrency_overflow_count",
+    "resource_group_connector_scan_bytes",
+    "resource_group_connector_scan_use_ratio",
+    "resource_group_cpu_limit_ratio",
+    "resource_group_cpu_use_ratio",
+    "resource_group_inuse_cpu_cores",
+    "resource_group_mem_inuse_bytes",
+    "resource_group_mem_limit_bytes",
+    "resource_group_running_queries",
+    "resource_group_scan_use_ratio",
+    "resource_group_total_queries",
+    "result_block_queue_count",
+    "result_buffer_block_count",
+    "routine_load_error_rows",
+    "routine_load_jobs",
+    "routine_load_paused",
+    "routine_load_receive_bytes",
+    "routine_load_rows",
+    "routine_load_task_count",
+    "rowset_count_generated_and_in_use",
+    "rowset_metadata_mem_bytes",
+    "rps",
+    "running_base_compaction_task_num",
+    "running_cumulative_compaction_task_num",
+    "running_update_compaction_task_num",
+    "runtime_filter_bytes_in_queue",
+    "runtime_filter_event_queue_len",
+    "runtime_filter_events_in_queue",
+    "safe_mode",
+    "scheduled_pending_tablet_num",
+    "scheduled_running_tablet_num",
+    "scheduled_tablet_num",
+    "schema_change_mem_bytes",
+    "segment_flush_active_threads",
+    "segment_flush_bytes_total",
+    "segment_flush_duration_us",
+    "segment_flush_execute_time_ns_total",
+    "segment_flush_executed_tasks_total",
+    "segment_flush_io_time_us",
+    "segment_flush_pending_time_ns_total",
+    "segment_flush_queue_count",
+    "segment_flush_running_threads",
+    "segment_flush_threadpool_size",
+    "segment_flush_total",
+    "segment_metadata_mem_bytes",
+    "segment_read",
+    "segment_replicate_active_threads",
+    "segment_replicate_execute_time_ns_total",
+    "segment_replicate_executed_tasks_total",
+    "segment_replicate_pending_time_ns_total",
+    "segment_replicate_queue_count",
+    "segment_replicate_running_threads",
+    "segment_replicate_threadpool_size",
+    "segment_zonemap_mem_bytes",
+    "short_circuit_request_duration_us",
+    "short_circuit_request_total",
+    "short_key_index_mem_bytes",
+    "shortcircuit_query",
+    "shortcircuit_rpc",
+    "slow_query",
+    "small_file_cache_count",
+    "snmp",
+    "sql_block_hit_count",
+    "starrocks_fe_deploy_plan_fragments.latency.ms",
+    "starrocks_fe_deploy_plan_fragments.latency.ms_count",
+    "starrocks_fe_deploy_plan_fragments.latency.ms_sum",
+    "starrocks_fe_editlog.write.latency.ms",
+    "starrocks_fe_editlog.write.latency.ms_count",
+    "starrocks_fe_editlog.write.latency.ms_sum",
+    "starrocks_fe_http_request_handle_latency_ms",
+    "starrocks_fe_http_request_handle_latency_ms_count",
+    "starrocks_fe_http_request_handle_latency_ms_sum",
+    "starrocks_fe_journal.write.batch",
+    "starrocks_fe_journal.write.batch_count",
+    "starrocks_fe_journal.write.batch_sum",
+    "starrocks_fe_journal.write.bytes",
+    "starrocks_fe_journal.write.bytes_count",
+    "starrocks_fe_journal.write.bytes_sum",
+    "starrocks_fe_journal.write.latency.ms",
+    "starrocks_fe_journal.write.latency.ms_count",
+    "starrocks_fe_journal.write.latency.ms_sum",
+    "starrocks_fe_merge_commit_load_latency_ms",
+    "starrocks_fe_merge_commit_load_latency_ms_count",
+    "starrocks_fe_merge_commit_load_latency_ms_sum",
+    "starrocks_fe_merge_commit_txn_dispatch_latency_us",
+    "starrocks_fe_merge_commit_txn_dispatch_latency_us_count",
+    "starrocks_fe_merge_commit_txn_dispatch_latency_us_sum",
+    "starrocks_fe_query.latency.ms",
+    "starrocks_fe_query.latency.ms_count",
+    "starrocks_fe_query.latency.ms_sum",
+    "starrocks_fe_shortcircuit.latency.ms",
+    "starrocks_fe_shortcircuit.latency.ms_count",
+    "starrocks_fe_shortcircuit.latency.ms_sum",
+    "starrocks_fe_txn_stream_load_begin_latency_ms",
+    "starrocks_fe_txn_stream_load_begin_latency_ms_count",
+    "starrocks_fe_txn_stream_load_begin_latency_ms_sum",
+    "starrocks_fe_txn_stream_load_commit_latency_ms",
+    "starrocks_fe_txn_stream_load_commit_latency_ms_count",
+    "starrocks_fe_txn_stream_load_commit_latency_ms_sum",
+    "starrocks_fe_txn_stream_load_load_latency_ms",
+    "starrocks_fe_txn_stream_load_load_latency_ms_count",
+    "starrocks_fe_txn_stream_load_load_latency_ms_sum",
+    "starrocks_fe_txn_stream_load_prepare_latency_ms",
+    "starrocks_fe_txn_stream_load_prepare_latency_ms_count",
+    "starrocks_fe_txn_stream_load_prepare_latency_ms_sum",
+    "starrocks_fe_txn_stream_load_rollback_latency_ms",
+    "starrocks_fe_txn_stream_load_rollback_latency_ms_count",
+    "starrocks_fe_txn_stream_load_rollback_latency_ms_sum",
+    "storage_medium_migrate_active_threads",
+    "storage_medium_migrate_execute_time_ns_total",
+    "storage_medium_migrate_executed_tasks_total",
+    "storage_medium_migrate_pending_time_ns_total",
+    "storage_medium_migrate_queue_count",
+    "storage_medium_migrate_running_threads",
+    "storage_medium_migrate_threadpool_size",
+    "storage_page_cache_mem_bytes",
+    "stream_load",
+    "stream_load_pipe_count",
+    "streaming_load_bytes",
+    "streaming_load_current_processing",
+    "streaming_load_duration_ms",
+    "streaming_load_requests_total",
+    "table_num",
+    "tablet_base_max_compaction_score",
+    "tablet_count",
+    "tablet_cumulative_max_compaction_score",
+    "tablet_max_compaction_score",
+    "tablet_metadata_mem_bytes",
+    "tablet_num",
+    "tablet_schema_mem_bytes",
+    "tablet_update_max_compaction_score",
+    "tablet_writer_count",
+    "thread_pool",
+    "thrift_connections_total",
+    "thrift_current_connections",
+    "thrift_opened_clients",
+    "thrift_used_clients",
+    "transaction_streaming_load_bytes",
+    "transaction_streaming_load_current_processing",
+    "transaction_streaming_load_duration_ms",
+    "transaction_streaming_load_requests_total",
+    "txn_begin",
+    "txn_failed",
+    "txn_reject",
+    "txn_request",
+    "txn_running",
+    "txn_stream_load_begin_num",
+    "txn_stream_load_cache_eviction_num",
+    "txn_stream_load_cache_hit_num",
+    "txn_stream_load_cache_miss_num",
+    "txn_stream_load_commit_num",
+    "txn_stream_load_load_num",
+    "txn_stream_load_prepare_num",
+    "txn_stream_load_rollback_num",
+    "txn_success",
+    "unfinished_backup_job",
+    "unfinished_restore_job",
+    "unused_rowsets_count",
+    "update_apply_active_threads",
+    "update_apply_execute_time_ns_total",
+    "update_apply_executed_tasks_total",
+    "update_apply_pending_time_ns_total",
+    "update_apply_queue_count",
+    "update_apply_running_threads",
+    "update_apply_threadpool_size",
+    "update_compaction_duration_us",
+    "update_compaction_outputs_bytes_total",
+    "update_compaction_outputs_total",
+    "update_compaction_task_byte_per_second",
+    "update_compaction_task_cost_time_ns",
+    "update_del_vector_bytes_total",
+    "update_del_vector_deletes_new",
+    "update_del_vector_deletes_total",
+    "update_del_vector_dels_num",
+    "update_del_vector_num",
+    "update_mem_bytes",
+    "update_primary_index_bytes_total",
+    "update_primary_index_num",
+    "update_rowset_commit_apply_duration_us",
+    "update_rowset_commit_apply_total",
+    "update_rowset_commit_request_failed",
+    "update_rowset_commit_request_total",
+    "update_schema_active_threads",
+    "update_schema_execute_time_ns_total",
+    "update_schema_executed_tasks_total",
+    "update_schema_pending_time_ns_total",
+    "update_schema_queue_count",
+    "update_schema_running_threads",
+    "update_schema_threadpool_size",
+    "update_tablet_meta_info_active_threads",
+    "update_tablet_meta_info_execute_time_ns_total",
+    "update_tablet_meta_info_executed_tasks_total",
+    "update_tablet_meta_info_pending_time_ns_total",
+    "update_tablet_meta_info_queue_count",
+    "update_tablet_meta_info_running_threads",
+    "update_tablet_meta_info_threadpool_size",
+    "upload_active_threads",
+    "upload_execute_time_ns_total",
+    "upload_executed_tasks_total",
+    "upload_pending_time_ns_total",
+    "upload_queue_count",
+    "upload_running_threads",
+    "upload_threadpool_size",
+    "vacuum_files_bytes",
+    "vacuum_files_count",
+    "vector_index_cache_capacity",
+    "vector_index_cache_dynamic_hit_count",
+    "vector_index_cache_dynamic_hit_ratio",
+    "vector_index_cache_dynamic_lookup_count",
+    "vector_index_cache_hit_count",
+    "vector_index_cache_hit_ratio",
+    "vector_index_cache_lookup_count",
+    "vector_index_cache_usage",
+    "vector_index_cache_usage_ratio",
+    "wait_base_compaction_task_num",
+    "wait_cumulative_compaction_task_num",
+    "writable_blocks_total"
+  ],
+  "rows": [
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "jvm_young_gc",
+      "labels": "{\"metric\":\"jvm_young_gc\",\"type\":\"count\"}",
+      "value": "32"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "jvm_young_gc",
+      "labels": "{\"metric\":\"jvm_young_gc\",\"type\":\"time\"}",
+      "value": "245"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "jvm_old_gc",
+      "labels": "{\"metric\":\"jvm_old_gc\",\"type\":\"count\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "jvm_old_gc",
+      "labels": "{\"metric\":\"jvm_old_gc\",\"type\":\"time\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "jvm_heap_size_bytes",
+      "labels": "{\"metric\":\"jvm_heap_size_bytes\",\"type\":\"max\"}",
+      "value": "8589934592"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "jvm_heap_size_bytes",
+      "labels": "{\"metric\":\"jvm_heap_size_bytes\",\"type\":\"committed\"}",
+      "value": "394264576"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "jvm_heap_size_bytes",
+      "labels": "{\"metric\":\"jvm_heap_size_bytes\",\"type\":\"used\"}",
+      "value": "211729336"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "jvm_size_percent",
+      "labels": "{\"metric\":\"jvm_size_percent\",\"type\":\"perm\"}",
+      "value": "99"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "jvm_young_size_bytes",
+      "labels": "{\"metric\":\"jvm_young_size_bytes\",\"type\":\"committed\"}",
+      "value": "146800640"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "jvm_young_size_bytes",
+      "labels": "{\"metric\":\"jvm_young_size_bytes\",\"type\":\"used\"}",
+      "value": "16777216"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "jvm_size_percent",
+      "labels": "{\"metric\":\"jvm_size_percent\",\"type\":\"old\"}",
+      "value": "79"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "jvm_old_size_bytes",
+      "labels": "{\"metric\":\"jvm_old_size_bytes\",\"type\":\"committed\"}",
+      "value": "243269632"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "jvm_old_size_bytes",
+      "labels": "{\"metric\":\"jvm_old_size_bytes\",\"type\":\"used\"}",
+      "value": "193491456"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "jvm_direct_buffer_pool_size_bytes",
+      "labels": "{\"metric\":\"jvm_direct_buffer_pool_size_bytes\",\"type\":\"capacity\"}",
+      "value": "67810020"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "jvm_direct_buffer_pool_size_bytes",
+      "labels": "{\"metric\":\"jvm_direct_buffer_pool_size_bytes\",\"type\":\"used\"}",
+      "value": "67810021"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "unfinished_backup_job",
+      "labels": "{\"metric\":\"unfinished_backup_job\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "routine_load_error_rows",
+      "labels": "{\"metric\":\"routine_load_error_rows\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "image_push",
+      "labels": "{\"metric\":\"image_push\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "clone_task_total",
+      "labels": "{\"metric\":\"clone_task_total\",\"is_leader\":\"true\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "query_internal_err",
+      "labels": "{\"metric\":\"query_internal_err\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "safe_mode",
+      "labels": "{\"metric\":\"safe_mode\",\"type\":\"safe_mode\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "editlog_stacked_num",
+      "labels": "{\"metric\":\"editlog_stacked_num\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "clone_task_copy_duration_ms",
+      "labels": "{\"metric\":\"clone_task_copy_duration_ms\",\"is_leader\":\"true\",\"type\":\"INTER_NODE\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "clone_task_copy_duration_ms",
+      "labels": "{\"metric\":\"clone_task_copy_duration_ms\",\"is_leader\":\"true\",\"type\":\"INTRA_NODE\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "snmp",
+      "labels": "{\"metric\":\"snmp\",\"name\":\"tcp_retrans_segs\"}",
+      "value": "426"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "snmp",
+      "labels": "{\"metric\":\"snmp\",\"name\":\"tcp_in_errs\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "snmp",
+      "labels": "{\"metric\":\"snmp\",\"name\":\"tcp_in_segs\"}",
+      "value": "35539"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "snmp",
+      "labels": "{\"metric\":\"snmp\",\"name\":\"tcp_out_segs\"}",
+      "value": "139495"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "request_total",
+      "labels": "{\"metric\":\"request_total\"}",
+      "value": "1382"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "clone_task_copy_bytes",
+      "labels": "{\"metric\":\"clone_task_copy_bytes\",\"is_leader\":\"true\",\"type\":\"INTER_NODE\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "clone_task_copy_bytes",
+      "labels": "{\"metric\":\"clone_task_copy_bytes\",\"is_leader\":\"true\",\"type\":\"INTRA_NODE\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "txn_failed",
+      "labels": "{\"metric\":\"txn_failed\",\"is_leader\":\"true\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "query_latency",
+      "labels": "{\"metric\":\"query_latency\",\"type\":\"mean\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "query_latency",
+      "labels": "{\"metric\":\"query_latency\",\"type\":\"50_quantile\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "query_latency",
+      "labels": "{\"metric\":\"query_latency\",\"type\":\"75_quantile\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "query_latency",
+      "labels": "{\"metric\":\"query_latency\",\"type\":\"90_quantile\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "query_latency",
+      "labels": "{\"metric\":\"query_latency\",\"type\":\"95_quantile\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "query_latency",
+      "labels": "{\"metric\":\"query_latency\",\"type\":\"99_quantile\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "query_latency",
+      "labels": "{\"metric\":\"query_latency\",\"type\":\"999_quantile\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "query_queue_timeout",
+      "labels": "{\"metric\":\"query_queue_timeout\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "txn_success",
+      "labels": "{\"metric\":\"txn_success\",\"is_leader\":\"true\"}",
+      "value": "28"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "query_analysis_err",
+      "labels": "{\"metric\":\"query_analysis_err\"}",
+      "value": "1"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "query_resource_group_err",
+      "labels": "{\"metric\":\"query_resource_group_err\",\"name\":\"default_wg\"}",
+      "value": "1"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "slow_query",
+      "labels": "{\"metric\":\"slow_query\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "routine_load_receive_bytes",
+      "labels": "{\"metric\":\"routine_load_receive_bytes\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "brpc_total",
+      "labels": "{\"metric\":\"brpc_total\"}",
+      "value": "1636"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "query_success",
+      "labels": "{\"metric\":\"query_success\"}",
+      "value": "425"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "query_timeout_rate",
+      "labels": "{\"metric\":\"query_timeout_rate\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "sql_block_hit_count",
+      "labels": "{\"metric\":\"sql_block_hit_count\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "max_journal_id",
+      "labels": "{\"metric\":\"max_journal_id\"}",
+      "value": "10249"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"Metric-Timer-Pool\",\"type\":\"pool_size\"}",
+      "value": "1"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"Metric-Timer-Pool\",\"type\":\"active_thread_num\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"Metric-Timer-Pool\",\"type\":\"task_in_queue\"}",
+      "value": "1"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"Metric-Timer-Pool\",\"type\":\"completed_task_count\"}",
+      "value": "39"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"export_exporting_job_pool\",\"type\":\"pool_size\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"export_exporting_job_pool\",\"type\":\"active_thread_num\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"export_exporting_job_pool\",\"type\":\"task_in_queue\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"export_exporting_job_pool\",\"type\":\"completed_task_count\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"lake-remove-partition-pool\",\"type\":\"pool_size\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"lake-remove-partition-pool\",\"type\":\"active_thread_num\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"lake-remove-partition-pool\",\"type\":\"task_in_queue\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"lake-remove-partition-pool\",\"type\":\"completed_task_count\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"analyze-task-concurrency-pool\",\"type\":\"pool_size\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"analyze-task-concurrency-pool\",\"type\":\"active_thread_num\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"analyze-task-concurrency-pool\",\"type\":\"task_in_queue\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"analyze-task-concurrency-pool\",\"type\":\"completed_task_count\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"lake-remove-table-pool\",\"type\":\"pool_size\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"lake-remove-table-pool\",\"type\":\"active_thread_num\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"lake-remove-table-pool\",\"type\":\"task_in_queue\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"lake-remove-table-pool\",\"type\":\"completed_task_count\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"refresh-dictionary-cache-pool\",\"type\":\"pool_size\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"refresh-dictionary-cache-pool\",\"type\":\"active_thread_num\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"refresh-dictionary-cache-pool\",\"type\":\"task_in_queue\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"refresh-dictionary-cache-pool\",\"type\":\"completed_task_count\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"query-history-executor\",\"type\":\"pool_size\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"query-history-executor\",\"type\":\"active_thread_num\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"query-history-executor\",\"type\":\"task_in_queue\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"query-history-executor\",\"type\":\"completed_task_count\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"pending_load_task_scheduler_scheduler_thread_pool\",\"type\":\"pool_size\"}",
+      "value": "1"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"pending_load_task_scheduler_scheduler_thread_pool\",\"type\":\"active_thread_num\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"pending_load_task_scheduler_scheduler_thread_pool\",\"type\":\"task_in_queue\"}",
+      "value": "1"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"pending_load_task_scheduler_scheduler_thread_pool\",\"type\":\"completed_task_count\"}",
+      "value": "578"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"hms-event-processor-executor\",\"type\":\"pool_size\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"hms-event-processor-executor\",\"type\":\"active_thread_num\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"hms-event-processor-executor\",\"type\":\"task_in_queue\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"hms-event-processor-executor\",\"type\":\"completed_task_count\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"heartbeat-mgr-pool\",\"type\":\"pool_size\"}",
+      "value": "8"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"heartbeat-mgr-pool\",\"type\":\"active_thread_num\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"heartbeat-mgr-pool\",\"type\":\"task_in_queue\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"heartbeat-mgr-pool\",\"type\":\"completed_task_count\"}",
+      "value": "580"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"batch-write-load\",\"type\":\"pool_size\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"batch-write-load\",\"type\":\"active_thread_num\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"batch-write-load\",\"type\":\"task_in_queue\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"batch-write-load\",\"type\":\"completed_task_count\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"cluster_pool\",\"type\":\"pool_size\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"cluster_pool\",\"type\":\"active_thread_num\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"cluster_pool\",\"type\":\"task_in_queue\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"cluster_pool\",\"type\":\"completed_task_count\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"Connect-Scheduler-Check-Timer\",\"type\":\"pool_size\"}",
+      "value": "1"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"Connect-Scheduler-Check-Timer\",\"type\":\"active_thread_num\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"Connect-Scheduler-Check-Timer\",\"type\":\"task_in_queue\"}",
+      "value": "1"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"Connect-Scheduler-Check-Timer\",\"type\":\"completed_task_count\"}",
+      "value": "585"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"coordinator-be-assigner\",\"type\":\"pool_size\"}",
+      "value": "1"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"coordinator-be-assigner\",\"type\":\"active_thread_num\"}",
+      "value": "1"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"coordinator-be-assigner\",\"type\":\"task_in_queue\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"coordinator-be-assigner\",\"type\":\"completed_task_count\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"export_exporting_job_scheduler_thread_pool\",\"type\":\"pool_size\"}",
+      "value": "1"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"export_exporting_job_scheduler_thread_pool\",\"type\":\"active_thread_num\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"export_exporting_job_scheduler_thread_pool\",\"type\":\"task_in_queue\"}",
+      "value": "1"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"export_exporting_job_scheduler_thread_pool\",\"type\":\"completed_task_count\"}",
+      "value": "578"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"export_pending_job_scheduler_thread_pool\",\"type\":\"pool_size\"}",
+      "value": "1"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"export_pending_job_scheduler_thread_pool\",\"type\":\"active_thread_num\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"export_pending_job_scheduler_thread_pool\",\"type\":\"task_in_queue\"}",
+      "value": "1"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"export_pending_job_scheduler_thread_pool\",\"type\":\"completed_task_count\"}",
+      "value": "578"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"loading_load_task_scheduler_priority_pool\",\"type\":\"pool_size\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"loading_load_task_scheduler_priority_pool\",\"type\":\"active_thread_num\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"loading_load_task_scheduler_priority_pool\",\"type\":\"task_in_queue\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"loading_load_task_scheduler_priority_pool\",\"type\":\"completed_task_count\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"port-connectivity-checker\",\"type\":\"pool_size\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"port-connectivity-checker\",\"type\":\"active_thread_num\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"port-connectivity-checker\",\"type\":\"task_in_queue\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"port-connectivity-checker\",\"type\":\"completed_task_count\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"pending_load_task_scheduler_pool\",\"type\":\"pool_size\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"pending_load_task_scheduler_pool\",\"type\":\"active_thread_num\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"pending_load_task_scheduler_pool\",\"type\":\"task_in_queue\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"pending_load_task_scheduler_pool\",\"type\":\"completed_task_count\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"materialized view_pool\",\"type\":\"pool_size\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"materialized view_pool\",\"type\":\"active_thread_num\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"materialized view_pool\",\"type\":\"task_in_queue\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"materialized view_pool\",\"type\":\"completed_task_count\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"starrocks-taskrun-pool\",\"type\":\"pool_size\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"starrocks-taskrun-pool\",\"type\":\"active_thread_num\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"starrocks-taskrun-pool\",\"type\":\"task_in_queue\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"starrocks-taskrun-pool\",\"type\":\"completed_task_count\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"loading_load_task_scheduler_scheduler_priority_thread_pool\",\"type\":\"pool_size\"}",
+      "value": "1"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"loading_load_task_scheduler_scheduler_priority_thread_pool\",\"type\":\"active_thread_num\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"loading_load_task_scheduler_scheduler_priority_thread_pool\",\"type\":\"task_in_queue\"}",
+      "value": "1"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"loading_load_task_scheduler_scheduler_priority_thread_pool\",\"type\":\"completed_task_count\"}",
+      "value": "578"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"export_exporting_sub_task_scheduler_thread_pool\",\"type\":\"pool_size\"}",
+      "value": "1"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"export_exporting_sub_task_scheduler_thread_pool\",\"type\":\"active_thread_num\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"export_exporting_sub_task_scheduler_thread_pool\",\"type\":\"task_in_queue\"}",
+      "value": "1"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"export_exporting_sub_task_scheduler_thread_pool\",\"type\":\"completed_task_count\"}",
+      "value": "578"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"export_pending_job_pool\",\"type\":\"pool_size\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"export_pending_job_pool\",\"type\":\"active_thread_num\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"export_pending_job_pool\",\"type\":\"task_in_queue\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"export_pending_job_pool\",\"type\":\"completed_task_count\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"export_exporting_sub_task_pool\",\"type\":\"pool_size\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"export_exporting_sub_task_pool\",\"type\":\"active_thread_num\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"export_exporting_sub_task_pool\",\"type\":\"task_in_queue\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"export_exporting_sub_task_pool\",\"type\":\"completed_task_count\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"connector-trigger-analyze-pool\",\"type\":\"pool_size\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"connector-trigger-analyze-pool\",\"type\":\"active_thread_num\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"connector-trigger-analyze-pool\",\"type\":\"task_in_queue\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"connector-trigger-analyze-pool\",\"type\":\"completed_task_count\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"schema change_pool\",\"type\":\"pool_size\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"schema change_pool\",\"type\":\"active_thread_num\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"schema change_pool\",\"type\":\"task_in_queue\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"schema change_pool\",\"type\":\"completed_task_count\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"query-deploy\",\"type\":\"pool_size\"}",
+      "value": "80"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"query-deploy\",\"type\":\"active_thread_num\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"query-deploy\",\"type\":\"task_in_queue\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"query-deploy\",\"type\":\"completed_task_count\"}",
+      "value": "774"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"starrocks-mysql-nio-pool\",\"type\":\"pool_size\"}",
+      "value": "3"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"starrocks-mysql-nio-pool\",\"type\":\"active_thread_num\"}",
+      "value": "1"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"starrocks-mysql-nio-pool\",\"type\":\"task_in_queue\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"starrocks-mysql-nio-pool\",\"type\":\"completed_task_count\"}",
+      "value": "2132"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"starrocks-http-pool\",\"type\":\"pool_size\"}",
+      "value": "1"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"starrocks-http-pool\",\"type\":\"active_thread_num\"}",
+      "value": "1"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"starrocks-http-pool\",\"type\":\"task_in_queue\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"starrocks-http-pool\",\"type\":\"completed_task_count\"}",
+      "value": "24"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"thrift-server-pool\",\"type\":\"pool_size\"}",
+      "value": "21"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"thrift-server-pool\",\"type\":\"active_thread_num\"}",
+      "value": "19"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"thrift-server-pool\",\"type\":\"task_in_queue\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"thrift-server-pool\",\"type\":\"completed_task_count\"}",
+      "value": "24"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"profile-worker\",\"type\":\"pool_size\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"profile-worker\",\"type\":\"active_thread_num\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"profile-worker\",\"type\":\"task_in_queue\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"profile-worker\",\"type\":\"completed_task_count\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"deployer\",\"type\":\"pool_size\"}",
+      "value": "1"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"deployer\",\"type\":\"active_thread_num\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"deployer\",\"type\":\"task_in_queue\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "thread_pool",
+      "labels": "{\"metric\":\"thread_pool\",\"name\":\"deployer\",\"type\":\"completed_task_count\"}",
+      "value": "580"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "query_resource_group_latency",
+      "labels": "{\"metric\":\"query_resource_group_latency\",\"type\":\"mean\",\"name\":\"default_wg\"}",
+      "value": "5"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "query_resource_group_latency",
+      "labels": "{\"metric\":\"query_resource_group_latency\",\"type\":\"75_quantile\",\"name\":\"default_wg\"}",
+      "value": "6"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "query_resource_group_latency",
+      "labels": "{\"metric\":\"query_resource_group_latency\",\"type\":\"95_quantile\",\"name\":\"default_wg\"}",
+      "value": "17"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "query_resource_group_latency",
+      "labels": "{\"metric\":\"query_resource_group_latency\",\"type\":\"98_quantile\",\"name\":\"default_wg\"}",
+      "value": "17"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "query_resource_group_latency",
+      "labels": "{\"metric\":\"query_resource_group_latency\",\"type\":\"99_quantile\",\"name\":\"default_wg\"}",
+      "value": "33"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "query_resource_group_latency",
+      "labels": "{\"metric\":\"query_resource_group_latency\",\"type\":\"999_quantile\",\"name\":\"default_wg\"}",
+      "value": "33"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "shortcircuit_rpc",
+      "labels": "{\"metric\":\"shortcircuit_rpc\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "tablet_max_compaction_score",
+      "labels": "{\"metric\":\"tablet_max_compaction_score\",\"is_leader\":\"true\",\"backend\":\"starrocks-be-1:9050\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "tablet_max_compaction_score",
+      "labels": "{\"metric\":\"tablet_max_compaction_score\",\"is_leader\":\"true\",\"backend\":\"starrocks-be-2:9050\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "tablet_max_compaction_score",
+      "labels": "{\"metric\":\"tablet_max_compaction_score\",\"is_leader\":\"true\",\"backend\":\"starrocks-be-3:9050\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "tablet_max_compaction_score",
+      "labels": "{\"metric\":\"tablet_max_compaction_score\",\"is_leader\":\"true\",\"backend\":\"starrocks-be-4:9050\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "shortcircuit_query",
+      "labels": "{\"metric\":\"shortcircuit_query\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "routine_load_paused",
+      "labels": "{\"metric\":\"routine_load_paused\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "qps",
+      "labels": "{\"metric\":\"qps\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "image_write",
+      "labels": "{\"metric\":\"image_write\"}",
+      "value": "1"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "query_err_rate",
+      "labels": "{\"metric\":\"query_err_rate\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "max_tablet_compaction_score",
+      "labels": "{\"metric\":\"max_tablet_compaction_score\",\"is_leader\":\"true\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "txn_begin",
+      "labels": "{\"metric\":\"txn_begin\",\"is_leader\":\"true\"}",
+      "value": "28"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "brpc_exec_plan_fragment_error",
+      "labels": "{\"metric\":\"brpc_exec_plan_fragment_error\"}",
+      "value": "9"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "query_err",
+      "labels": "{\"metric\":\"query_err\"}",
+      "value": "1"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "encryption_key_num",
+      "labels": "{\"metric\":\"encryption_key_num\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "job",
+      "labels": "{\"metric\":\"job\",\"is_leader\":\"true\",\"job\":\"load\",\"type\":\"INSERT\",\"state\":\"UNKNOWN\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "job",
+      "labels": "{\"metric\":\"job\",\"is_leader\":\"true\",\"job\":\"load\",\"type\":\"INSERT\",\"state\":\"PENDING\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "job",
+      "labels": "{\"metric\":\"job\",\"is_leader\":\"true\",\"job\":\"load\",\"type\":\"INSERT\",\"state\":\"ETL\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "job",
+      "labels": "{\"metric\":\"job\",\"is_leader\":\"true\",\"job\":\"load\",\"type\":\"INSERT\",\"state\":\"LOADING\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "job",
+      "labels": "{\"metric\":\"job\",\"is_leader\":\"true\",\"job\":\"load\",\"type\":\"INSERT\",\"state\":\"COMMITTED\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "job",
+      "labels": "{\"metric\":\"job\",\"is_leader\":\"true\",\"job\":\"load\",\"type\":\"INSERT\",\"state\":\"FINISHED\"}",
+      "value": "1004"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "job",
+      "labels": "{\"metric\":\"job\",\"is_leader\":\"true\",\"job\":\"load\",\"type\":\"INSERT\",\"state\":\"CANCELLED\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "job",
+      "labels": "{\"metric\":\"job\",\"is_leader\":\"true\",\"job\":\"load\",\"type\":\"INSERT\",\"state\":\"QUEUEING\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "job",
+      "labels": "{\"metric\":\"job\",\"is_leader\":\"true\",\"job\":\"load\",\"type\":\"BROKER\",\"state\":\"UNKNOWN\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "job",
+      "labels": "{\"metric\":\"job\",\"is_leader\":\"true\",\"job\":\"load\",\"type\":\"BROKER\",\"state\":\"PENDING\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "job",
+      "labels": "{\"metric\":\"job\",\"is_leader\":\"true\",\"job\":\"load\",\"type\":\"BROKER\",\"state\":\"ETL\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "job",
+      "labels": "{\"metric\":\"job\",\"is_leader\":\"true\",\"job\":\"load\",\"type\":\"BROKER\",\"state\":\"LOADING\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "job",
+      "labels": "{\"metric\":\"job\",\"is_leader\":\"true\",\"job\":\"load\",\"type\":\"BROKER\",\"state\":\"COMMITTED\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "job",
+      "labels": "{\"metric\":\"job\",\"is_leader\":\"true\",\"job\":\"load\",\"type\":\"BROKER\",\"state\":\"FINISHED\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "job",
+      "labels": "{\"metric\":\"job\",\"is_leader\":\"true\",\"job\":\"load\",\"type\":\"BROKER\",\"state\":\"CANCELLED\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "job",
+      "labels": "{\"metric\":\"job\",\"is_leader\":\"true\",\"job\":\"load\",\"type\":\"BROKER\",\"state\":\"QUEUEING\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "job",
+      "labels": "{\"metric\":\"job\",\"is_leader\":\"true\",\"job\":\"load\",\"type\":\"SPARK\",\"state\":\"UNKNOWN\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "job",
+      "labels": "{\"metric\":\"job\",\"is_leader\":\"true\",\"job\":\"load\",\"type\":\"SPARK\",\"state\":\"PENDING\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "job",
+      "labels": "{\"metric\":\"job\",\"is_leader\":\"true\",\"job\":\"load\",\"type\":\"SPARK\",\"state\":\"ETL\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "job",
+      "labels": "{\"metric\":\"job\",\"is_leader\":\"true\",\"job\":\"load\",\"type\":\"SPARK\",\"state\":\"LOADING\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "job",
+      "labels": "{\"metric\":\"job\",\"is_leader\":\"true\",\"job\":\"load\",\"type\":\"SPARK\",\"state\":\"COMMITTED\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "job",
+      "labels": "{\"metric\":\"job\",\"is_leader\":\"true\",\"job\":\"load\",\"type\":\"SPARK\",\"state\":\"FINISHED\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "job",
+      "labels": "{\"metric\":\"job\",\"is_leader\":\"true\",\"job\":\"load\",\"type\":\"SPARK\",\"state\":\"CANCELLED\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "job",
+      "labels": "{\"metric\":\"job\",\"is_leader\":\"true\",\"job\":\"load\",\"type\":\"SPARK\",\"state\":\"QUEUEING\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "job",
+      "labels": "{\"metric\":\"job\",\"is_leader\":\"true\",\"job\":\"alter\",\"type\":\"ROLLUP\",\"state\":\"running\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "job",
+      "labels": "{\"metric\":\"job\",\"is_leader\":\"true\",\"job\":\"alter\",\"type\":\"SCHEMA_CHANGE\",\"state\":\"running\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "query_queue_pending",
+      "labels": "{\"metric\":\"query_queue_pending\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "vacuum_files_count",
+      "labels": "{\"metric\":\"vacuum_files_count\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "edit_log_write",
+      "labels": "{\"metric\":\"edit_log_write\"}",
+      "value": "492"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "report_queue_size",
+      "labels": "{\"metric\":\"report_queue_size\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "txn_reject",
+      "labels": "{\"metric\":\"txn_reject\",\"is_leader\":\"true\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "query_total",
+      "labels": "{\"metric\":\"query_total\"}",
+      "value": "426"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "load_finished",
+      "labels": "{\"metric\":\"load_finished\"}",
+      "value": "28"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "brpc_backend_service",
+      "labels": "{\"metric\":\"brpc_backend_service\"}",
+      "value": "1636"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "scheduled_running_tablet_num",
+      "labels": "{\"metric\":\"scheduled_running_tablet_num\",\"is_leader\":\"true\",\"type\":\"BALANCE\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "scheduled_running_tablet_num",
+      "labels": "{\"metric\":\"scheduled_running_tablet_num\",\"is_leader\":\"true\",\"type\":\"REPAIR\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "load_add",
+      "labels": "{\"metric\":\"load_add\"}",
+      "value": "28"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "edit_log_size_bytes",
+      "labels": "{\"metric\":\"edit_log_size_bytes\"}",
+      "value": "236458"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "edit_log_read",
+      "labels": "{\"metric\":\"edit_log_read\"}",
+      "value": "9061"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "query_queue_slot_running",
+      "labels": "{\"metric\":\"query_queue_slot_running\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "clone_task_success",
+      "labels": "{\"metric\":\"clone_task_success\",\"is_leader\":\"true\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "query_queue_total",
+      "labels": "{\"metric\":\"query_queue_total\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "query_resource_group",
+      "labels": "{\"metric\":\"query_resource_group\",\"name\":\"default_wg\"}",
+      "value": "426"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "routine_load_rows",
+      "labels": "{\"metric\":\"routine_load_rows\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "routine_load_jobs",
+      "labels": "{\"metric\":\"routine_load_jobs\",\"is_leader\":\"true\",\"state\":\"NEED_SCHEDULE\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "routine_load_jobs",
+      "labels": "{\"metric\":\"routine_load_jobs\",\"is_leader\":\"true\",\"state\":\"RUNNING\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "routine_load_jobs",
+      "labels": "{\"metric\":\"routine_load_jobs\",\"is_leader\":\"true\",\"state\":\"PAUSED\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "routine_load_jobs",
+      "labels": "{\"metric\":\"routine_load_jobs\",\"is_leader\":\"true\",\"state\":\"STOPPED\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "routine_load_jobs",
+      "labels": "{\"metric\":\"routine_load_jobs\",\"is_leader\":\"true\",\"state\":\"CANCELLED\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "routine_load_jobs",
+      "labels": "{\"metric\":\"routine_load_jobs\",\"is_leader\":\"true\",\"state\":\"UNSTABLE\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "unfinished_restore_job",
+      "labels": "{\"metric\":\"unfinished_restore_job\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "query_analysis_err_rate",
+      "labels": "{\"metric\":\"query_analysis_err_rate\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "brpc_exec_plan_fragment",
+      "labels": "{\"metric\":\"brpc_exec_plan_fragment\"}",
+      "value": "771"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "tablet_num",
+      "labels": "{\"metric\":\"tablet_num\",\"is_leader\":\"true\",\"backend\":\"starrocks-be-1:9050\"}",
+      "value": "108"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "tablet_num",
+      "labels": "{\"metric\":\"tablet_num\",\"is_leader\":\"true\",\"backend\":\"starrocks-be-2:9050\"}",
+      "value": "107"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "tablet_num",
+      "labels": "{\"metric\":\"tablet_num\",\"is_leader\":\"true\",\"backend\":\"starrocks-be-3:9050\"}",
+      "value": "115"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "tablet_num",
+      "labels": "{\"metric\":\"tablet_num\",\"is_leader\":\"true\",\"backend\":\"starrocks-be-4:9050\"}",
+      "value": "117"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "vacuum_files_bytes",
+      "labels": "{\"metric\":\"vacuum_files_bytes\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "scheduled_tablet_num",
+      "labels": "{\"metric\":\"scheduled_tablet_num\",\"is_leader\":\"true\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "query_timeout",
+      "labels": "{\"metric\":\"query_timeout\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "tablet_count",
+      "labels": "{\"metric\":\"tablet_count\"}",
+      "value": "189"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "query_queue_slot_pending",
+      "labels": "{\"metric\":\"query_queue_slot_pending\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "query_internal_err_rate",
+      "labels": "{\"metric\":\"query_internal_err_rate\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "rps",
+      "labels": "{\"metric\":\"rps\"}",
+      "value": "1"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "meta_log_count",
+      "labels": "{\"metric\":\"meta_log_count\"}",
+      "value": "493"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "scheduled_pending_tablet_num",
+      "labels": "{\"metric\":\"scheduled_pending_tablet_num\",\"is_leader\":\"true\",\"type\":\"BALANCE\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "scheduled_pending_tablet_num",
+      "labels": "{\"metric\":\"scheduled_pending_tablet_num\",\"is_leader\":\"true\",\"type\":\"REPAIR\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "brpc_lake_service",
+      "labels": "{\"metric\":\"brpc_lake_service\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "table_num",
+      "labels": "{\"metric\":\"table_num\",\"db_name\":\"sr_dash_dev\"}",
+      "value": "7"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "db_size_bytes",
+      "labels": "{\"metric\":\"db_size_bytes\",\"db_name\":\"sr_dash_dev\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "table_num",
+      "labels": "{\"metric\":\"table_num\",\"db_name\":\"information_schema\"}",
+      "value": "56"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "db_size_bytes",
+      "labels": "{\"metric\":\"db_size_bytes\",\"db_name\":\"information_schema\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "table_num",
+      "labels": "{\"metric\":\"table_num\",\"db_name\":\"_statistics_\"}",
+      "value": "13"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "db_size_bytes",
+      "labels": "{\"metric\":\"db_size_bytes\",\"db_name\":\"_statistics_\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "table_num",
+      "labels": "{\"metric\":\"table_num\",\"db_name\":\"sys\"}",
+      "value": "6"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "db_size_bytes",
+      "labels": "{\"metric\":\"db_size_bytes\",\"db_name\":\"sys\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "database_num",
+      "labels": "{\"metric\":\"database_num\"}",
+      "value": "4"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_deploy_plan_fragments.latency.ms",
+      "labels": "{\"metric\":\"starrocks_fe_deploy_plan_fragments.latency.ms\",\"quantile\":\"0.75\"}",
+      "value": "4"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_deploy_plan_fragments.latency.ms",
+      "labels": "{\"metric\":\"starrocks_fe_deploy_plan_fragments.latency.ms\",\"quantile\":\"0.95\"}",
+      "value": "9"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_deploy_plan_fragments.latency.ms",
+      "labels": "{\"metric\":\"starrocks_fe_deploy_plan_fragments.latency.ms\",\"quantile\":\"0.98\"}",
+      "value": "10"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_deploy_plan_fragments.latency.ms",
+      "labels": "{\"metric\":\"starrocks_fe_deploy_plan_fragments.latency.ms\",\"quantile\":\"0.99\"}",
+      "value": "18"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_deploy_plan_fragments.latency.ms",
+      "labels": "{\"metric\":\"starrocks_fe_deploy_plan_fragments.latency.ms\",\"quantile\":\"0.999\"}",
+      "value": "52"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_deploy_plan_fragments.latency.ms_sum",
+      "labels": "{\"metric\":\"starrocks_fe_deploy_plan_fragments.latency.ms_sum\"}",
+      "value": "1208"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_deploy_plan_fragments.latency.ms_count",
+      "labels": "{\"metric\":\"starrocks_fe_deploy_plan_fragments.latency.ms_count\"}",
+      "value": "422"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_editlog.write.latency.ms",
+      "labels": "{\"metric\":\"starrocks_fe_editlog.write.latency.ms\",\"quantile\":\"0.75\"}",
+      "value": "12"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_editlog.write.latency.ms",
+      "labels": "{\"metric\":\"starrocks_fe_editlog.write.latency.ms\",\"quantile\":\"0.95\"}",
+      "value": "36"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_editlog.write.latency.ms",
+      "labels": "{\"metric\":\"starrocks_fe_editlog.write.latency.ms\",\"quantile\":\"0.98\"}",
+      "value": "37"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_editlog.write.latency.ms",
+      "labels": "{\"metric\":\"starrocks_fe_editlog.write.latency.ms\",\"quantile\":\"0.99\"}",
+      "value": "37"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_editlog.write.latency.ms",
+      "labels": "{\"metric\":\"starrocks_fe_editlog.write.latency.ms\",\"quantile\":\"0.999\"}",
+      "value": "38"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_editlog.write.latency.ms_sum",
+      "labels": "{\"metric\":\"starrocks_fe_editlog.write.latency.ms_sum\"}",
+      "value": "5926"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_editlog.write.latency.ms_count",
+      "labels": "{\"metric\":\"starrocks_fe_editlog.write.latency.ms_count\"}",
+      "value": "492"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_journal.write.batch",
+      "labels": "{\"metric\":\"starrocks_fe_journal.write.batch\",\"quantile\":\"0.75\"}",
+      "value": "1"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_journal.write.batch",
+      "labels": "{\"metric\":\"starrocks_fe_journal.write.batch\",\"quantile\":\"0.95\"}",
+      "value": "1"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_journal.write.batch",
+      "labels": "{\"metric\":\"starrocks_fe_journal.write.batch\",\"quantile\":\"0.98\"}",
+      "value": "1"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_journal.write.batch",
+      "labels": "{\"metric\":\"starrocks_fe_journal.write.batch\",\"quantile\":\"0.99\"}",
+      "value": "1"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_journal.write.batch",
+      "labels": "{\"metric\":\"starrocks_fe_journal.write.batch\",\"quantile\":\"0.999\"}",
+      "value": "1"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_journal.write.batch_sum",
+      "labels": "{\"metric\":\"starrocks_fe_journal.write.batch_sum\"}",
+      "value": "492"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_journal.write.batch_count",
+      "labels": "{\"metric\":\"starrocks_fe_journal.write.batch_count\"}",
+      "value": "492"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_journal.write.bytes",
+      "labels": "{\"metric\":\"starrocks_fe_journal.write.bytes\",\"quantile\":\"0.75\"}",
+      "value": "1172"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_journal.write.bytes",
+      "labels": "{\"metric\":\"starrocks_fe_journal.write.bytes\",\"quantile\":\"0.95\"}",
+      "value": "2552"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_journal.write.bytes",
+      "labels": "{\"metric\":\"starrocks_fe_journal.write.bytes\",\"quantile\":\"0.98\"}",
+      "value": "3286"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_journal.write.bytes",
+      "labels": "{\"metric\":\"starrocks_fe_journal.write.bytes\",\"quantile\":\"0.99\"}",
+      "value": "3286"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_journal.write.bytes",
+      "labels": "{\"metric\":\"starrocks_fe_journal.write.bytes\",\"quantile\":\"0.999\"}",
+      "value": "3286"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_journal.write.bytes_sum",
+      "labels": "{\"metric\":\"starrocks_fe_journal.write.bytes_sum\"}",
+      "value": "343070"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_journal.write.bytes_count",
+      "labels": "{\"metric\":\"starrocks_fe_journal.write.bytes_count\"}",
+      "value": "492"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_journal.write.latency.ms",
+      "labels": "{\"metric\":\"starrocks_fe_journal.write.latency.ms\",\"quantile\":\"0.75\"}",
+      "value": "11"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_journal.write.latency.ms",
+      "labels": "{\"metric\":\"starrocks_fe_journal.write.latency.ms\",\"quantile\":\"0.95\"}",
+      "value": "36"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_journal.write.latency.ms",
+      "labels": "{\"metric\":\"starrocks_fe_journal.write.latency.ms\",\"quantile\":\"0.98\"}",
+      "value": "37"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_journal.write.latency.ms",
+      "labels": "{\"metric\":\"starrocks_fe_journal.write.latency.ms\",\"quantile\":\"0.99\"}",
+      "value": "37"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_journal.write.latency.ms",
+      "labels": "{\"metric\":\"starrocks_fe_journal.write.latency.ms\",\"quantile\":\"0.999\"}",
+      "value": "38"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_journal.write.latency.ms_sum",
+      "labels": "{\"metric\":\"starrocks_fe_journal.write.latency.ms_sum\"}",
+      "value": "5764"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_journal.write.latency.ms_count",
+      "labels": "{\"metric\":\"starrocks_fe_journal.write.latency.ms_count\"}",
+      "value": "492"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_query.latency.ms",
+      "labels": "{\"metric\":\"starrocks_fe_query.latency.ms\",\"quantile\":\"0.75\"}",
+      "value": "11"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_query.latency.ms",
+      "labels": "{\"metric\":\"starrocks_fe_query.latency.ms\",\"quantile\":\"0.95\"}",
+      "value": "24"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_query.latency.ms",
+      "labels": "{\"metric\":\"starrocks_fe_query.latency.ms\",\"quantile\":\"0.98\"}",
+      "value": "38"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_query.latency.ms",
+      "labels": "{\"metric\":\"starrocks_fe_query.latency.ms\",\"quantile\":\"0.99\"}",
+      "value": "60"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_query.latency.ms",
+      "labels": "{\"metric\":\"starrocks_fe_query.latency.ms\",\"quantile\":\"0.999\"}",
+      "value": "84"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_query.latency.ms_sum",
+      "labels": "{\"metric\":\"starrocks_fe_query.latency.ms_sum\"}",
+      "value": "3919"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_query.latency.ms_count",
+      "labels": "{\"metric\":\"starrocks_fe_query.latency.ms_count\"}",
+      "value": "425"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_shortcircuit.latency.ms",
+      "labels": "{\"metric\":\"starrocks_fe_shortcircuit.latency.ms\",\"quantile\":\"0.75\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_shortcircuit.latency.ms",
+      "labels": "{\"metric\":\"starrocks_fe_shortcircuit.latency.ms\",\"quantile\":\"0.95\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_shortcircuit.latency.ms",
+      "labels": "{\"metric\":\"starrocks_fe_shortcircuit.latency.ms\",\"quantile\":\"0.98\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_shortcircuit.latency.ms",
+      "labels": "{\"metric\":\"starrocks_fe_shortcircuit.latency.ms\",\"quantile\":\"0.99\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_shortcircuit.latency.ms",
+      "labels": "{\"metric\":\"starrocks_fe_shortcircuit.latency.ms\",\"quantile\":\"0.999\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_shortcircuit.latency.ms_sum",
+      "labels": "{\"metric\":\"starrocks_fe_shortcircuit.latency.ms_sum\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_shortcircuit.latency.ms_count",
+      "labels": "{\"metric\":\"starrocks_fe_shortcircuit.latency.ms_count\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "memory_usage",
+      "labels": "{\"metric\":\"memory_usage\",\"module\":\"Delete\",\"className\":\"DeleteMgr\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "memory_usage",
+      "labels": "{\"metric\":\"memory_usage\",\"module\":\"Agent\",\"className\":\"AgentTaskTracker\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "memory_usage",
+      "labels": "{\"metric\":\"memory_usage\",\"module\":\"Load\",\"className\":\"InsertOverwriteJobMgr\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "memory_usage",
+      "labels": "{\"metric\":\"memory_usage\",\"module\":\"Load\",\"className\":\"LoadMgr\"}",
+      "value": "210816"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "memory_usage",
+      "labels": "{\"metric\":\"memory_usage\",\"module\":\"Load\",\"className\":\"RoutineLoadMgr\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "memory_usage",
+      "labels": "{\"metric\":\"memory_usage\",\"module\":\"Load\",\"className\":\"StreamLoadMgr\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "memory_usage",
+      "labels": "{\"metric\":\"memory_usage\",\"module\":\"Task\",\"className\":\"TaskManager\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "memory_usage",
+      "labels": "{\"metric\":\"memory_usage\",\"module\":\"Task\",\"className\":\"TaskRunManager\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "memory_usage",
+      "labels": "{\"metric\":\"memory_usage\",\"module\":\"Query\",\"className\":\"QueryTracker\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "memory_usage",
+      "labels": "{\"metric\":\"memory_usage\",\"module\":\"Report\",\"className\":\"ReportHandler\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "memory_usage",
+      "labels": "{\"metric\":\"memory_usage\",\"module\":\"Backup\",\"className\":\"BackupHandler\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "memory_usage",
+      "labels": "{\"metric\":\"memory_usage\",\"module\":\"MV\",\"className\":\"MVTimelinessMgr\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "memory_usage",
+      "labels": "{\"metric\":\"memory_usage\",\"module\":\"Compaction\",\"className\":\"CompactionMgr\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "memory_usage",
+      "labels": "{\"metric\":\"memory_usage\",\"module\":\"Coordinator\",\"className\":\"QeProcessorImpl\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "memory_usage",
+      "labels": "{\"metric\":\"memory_usage\",\"module\":\"Statistics\",\"className\":\"CachedStatisticStorage\"}",
+      "value": "200"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "memory_usage",
+      "labels": "{\"metric\":\"memory_usage\",\"module\":\"Profile\",\"className\":\"ProfileManager\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "memory_usage",
+      "labels": "{\"metric\":\"memory_usage\",\"module\":\"TabletInvertedIndex\",\"className\":\"TabletInvertedIndex\"}",
+      "value": "10584"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "memory_usage",
+      "labels": "{\"metric\":\"memory_usage\",\"module\":\"Transaction\",\"className\":\"GlobalTransactionMgr\"}",
+      "value": "258456"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "memory_usage",
+      "labels": "{\"metric\":\"memory_usage\",\"module\":\"Dict\",\"className\":\"CacheDictManager\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "memory_usage",
+      "labels": "{\"metric\":\"memory_usage\",\"module\":\"Export\",\"className\":\"ExportMgr\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "memory_usage",
+      "labels": "{\"metric\":\"memory_usage\",\"module\":\"LocalMetastore\",\"className\":\"LocalMetastore\"}",
+      "value": "4048"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "object_count",
+      "labels": "{\"metric\":\"object_count\",\"module\":\"Delete\",\"className\":\"DeleteMgr\",\"objectName\":\"DeleteInfo\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "object_count",
+      "labels": "{\"metric\":\"object_count\",\"module\":\"Delete\",\"className\":\"DeleteMgr\",\"objectName\":\"DeleteJob\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "object_count",
+      "labels": "{\"metric\":\"object_count\",\"module\":\"Agent\",\"className\":\"AgentTaskTracker\",\"objectName\":\"AgentTask\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "object_count",
+      "labels": "{\"metric\":\"object_count\",\"module\":\"Load\",\"className\":\"InsertOverwriteJobMgr\",\"objectName\":\"insertOverwriteJobs\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "object_count",
+      "labels": "{\"metric\":\"object_count\",\"module\":\"Load\",\"className\":\"LoadMgr\",\"objectName\":\"LoadJob\"}",
+      "value": "976"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "object_count",
+      "labels": "{\"metric\":\"object_count\",\"module\":\"Load\",\"className\":\"RoutineLoadMgr\",\"objectName\":\"RoutineLoad\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "object_count",
+      "labels": "{\"metric\":\"object_count\",\"module\":\"Load\",\"className\":\"StreamLoadMgr\",\"objectName\":\"StreamLoad\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "object_count",
+      "labels": "{\"metric\":\"object_count\",\"module\":\"Task\",\"className\":\"TaskManager\",\"objectName\":\"Task\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "object_count",
+      "labels": "{\"metric\":\"object_count\",\"module\":\"Task\",\"className\":\"TaskRunManager\",\"objectName\":\"PendingTaskRun\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "object_count",
+      "labels": "{\"metric\":\"object_count\",\"module\":\"Task\",\"className\":\"TaskRunManager\",\"objectName\":\"RunningTaskRun\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "object_count",
+      "labels": "{\"metric\":\"object_count\",\"module\":\"Task\",\"className\":\"TaskRunManager\",\"objectName\":\"HistoryTaskRun\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "object_count",
+      "labels": "{\"metric\":\"object_count\",\"module\":\"Query\",\"className\":\"QueryTracker\",\"objectName\":\"QueryDetail\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "object_count",
+      "labels": "{\"metric\":\"object_count\",\"module\":\"Report\",\"className\":\"ReportHandler\",\"objectName\":\"PendingTask\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "object_count",
+      "labels": "{\"metric\":\"object_count\",\"module\":\"Report\",\"className\":\"ReportHandler\",\"objectName\":\"ReportQueue\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "object_count",
+      "labels": "{\"metric\":\"object_count\",\"module\":\"Backup\",\"className\":\"BackupHandler\",\"objectName\":\"BackupOrRestoreJob\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "object_count",
+      "labels": "{\"metric\":\"object_count\",\"module\":\"MV\",\"className\":\"MVTimelinessMgr\",\"objectName\":\"mvTimelinessMap\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "object_count",
+      "labels": "{\"metric\":\"object_count\",\"module\":\"Compaction\",\"className\":\"CompactionMgr\",\"objectName\":\"PartitionStats\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "object_count",
+      "labels": "{\"metric\":\"object_count\",\"module\":\"Coordinator\",\"className\":\"QeProcessorImpl\",\"objectName\":\"QueryCoordinator\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "object_count",
+      "labels": "{\"metric\":\"object_count\",\"module\":\"Statistics\",\"className\":\"CachedStatisticStorage\",\"objectName\":\"TableStats\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "object_count",
+      "labels": "{\"metric\":\"object_count\",\"module\":\"Statistics\",\"className\":\"CachedStatisticStorage\",\"objectName\":\"ColumnStats\"}",
+      "value": "10"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "object_count",
+      "labels": "{\"metric\":\"object_count\",\"module\":\"Statistics\",\"className\":\"CachedStatisticStorage\",\"objectName\":\"PartitionStats\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "object_count",
+      "labels": "{\"metric\":\"object_count\",\"module\":\"Statistics\",\"className\":\"CachedStatisticStorage\",\"objectName\":\"HistogramStats\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "object_count",
+      "labels": "{\"metric\":\"object_count\",\"module\":\"Statistics\",\"className\":\"CachedStatisticStorage\",\"objectName\":\"ConnectorTableStats\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "object_count",
+      "labels": "{\"metric\":\"object_count\",\"module\":\"Statistics\",\"className\":\"CachedStatisticStorage\",\"objectName\":\"ConnectorHistogramStats\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "object_count",
+      "labels": "{\"metric\":\"object_count\",\"module\":\"Statistics\",\"className\":\"CachedStatisticStorage\",\"objectName\":\"MultiColumnCombinedStats\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "object_count",
+      "labels": "{\"metric\":\"object_count\",\"module\":\"Profile\",\"className\":\"ProfileManager\",\"objectName\":\"QueryProfile\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "object_count",
+      "labels": "{\"metric\":\"object_count\",\"module\":\"TabletInvertedIndex\",\"className\":\"TabletInvertedIndex\",\"objectName\":\"TabletMeta\"}",
+      "value": "189"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "object_count",
+      "labels": "{\"metric\":\"object_count\",\"module\":\"TabletInvertedIndex\",\"className\":\"TabletInvertedIndex\",\"objectName\":\"TabletCount\"}",
+      "value": "189"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "object_count",
+      "labels": "{\"metric\":\"object_count\",\"module\":\"TabletInvertedIndex\",\"className\":\"TabletInvertedIndex\",\"objectName\":\"ReplicateCount\"}",
+      "value": "447"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "object_count",
+      "labels": "{\"metric\":\"object_count\",\"module\":\"Transaction\",\"className\":\"GlobalTransactionMgr\",\"objectName\":\"Txn\"}",
+      "value": "979"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "object_count",
+      "labels": "{\"metric\":\"object_count\",\"module\":\"Transaction\",\"className\":\"GlobalTransactionMgr\",\"objectName\":\"TxnCallbackCount\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "object_count",
+      "labels": "{\"metric\":\"object_count\",\"module\":\"Dict\",\"className\":\"CacheDictManager\",\"objectName\":\"ColumnDict\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "object_count",
+      "labels": "{\"metric\":\"object_count\",\"module\":\"Export\",\"className\":\"ExportMgr\",\"objectName\":\"ExportJob\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "object_count",
+      "labels": "{\"metric\":\"object_count\",\"module\":\"LocalMetastore\",\"className\":\"LocalMetastore\",\"objectName\":\"Partition\"}",
+      "value": "22"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "http_handling_requests_num",
+      "labels": "{\"metric\":\"http_handling_requests_num\"}",
+      "value": "1"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "txn_stream_load_begin_num",
+      "labels": "{\"metric\":\"txn_stream_load_begin_num\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "http_connections_num",
+      "labels": "{\"metric\":\"http_connections_num\"}",
+      "value": "1"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "txn_stream_load_prepare_num",
+      "labels": "{\"metric\":\"txn_stream_load_prepare_num\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "txn_stream_load_rollback_num",
+      "labels": "{\"metric\":\"txn_stream_load_rollback_num\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "txn_stream_load_load_num",
+      "labels": "{\"metric\":\"txn_stream_load_load_num\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "txn_stream_load_commit_num",
+      "labels": "{\"metric\":\"txn_stream_load_commit_num\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "http_worker_pending_tasks_num",
+      "labels": "{\"metric\":\"http_worker_pending_tasks_num\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "txn_stream_load_cache_eviction_num",
+      "labels": "{\"metric\":\"txn_stream_load_cache_eviction_num\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "txn_stream_load_cache_hit_num",
+      "labels": "{\"metric\":\"txn_stream_load_cache_hit_num\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "txn_stream_load_cache_miss_num",
+      "labels": "{\"metric\":\"txn_stream_load_cache_miss_num\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "http_workers_num",
+      "labels": "{\"metric\":\"http_workers_num\"}",
+      "value": "16"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_http_request_handle_latency_ms",
+      "labels": "{\"metric\":\"starrocks_fe_http_request_handle_latency_ms\",\"quantile\":\"0.75\"}",
+      "value": "7"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_http_request_handle_latency_ms",
+      "labels": "{\"metric\":\"starrocks_fe_http_request_handle_latency_ms\",\"quantile\":\"0.95\"}",
+      "value": "18"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_http_request_handle_latency_ms",
+      "labels": "{\"metric\":\"starrocks_fe_http_request_handle_latency_ms\",\"quantile\":\"0.98\"}",
+      "value": "23"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_http_request_handle_latency_ms",
+      "labels": "{\"metric\":\"starrocks_fe_http_request_handle_latency_ms\",\"quantile\":\"0.99\"}",
+      "value": "23"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_http_request_handle_latency_ms",
+      "labels": "{\"metric\":\"starrocks_fe_http_request_handle_latency_ms\",\"quantile\":\"0.999\"}",
+      "value": "25"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_http_request_handle_latency_ms_sum",
+      "labels": "{\"metric\":\"starrocks_fe_http_request_handle_latency_ms_sum\"}",
+      "value": "140"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_http_request_handle_latency_ms_count",
+      "labels": "{\"metric\":\"starrocks_fe_http_request_handle_latency_ms_count\"}",
+      "value": "24"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_txn_stream_load_begin_latency_ms",
+      "labels": "{\"metric\":\"starrocks_fe_txn_stream_load_begin_latency_ms\",\"quantile\":\"0.75\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_txn_stream_load_begin_latency_ms",
+      "labels": "{\"metric\":\"starrocks_fe_txn_stream_load_begin_latency_ms\",\"quantile\":\"0.95\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_txn_stream_load_begin_latency_ms",
+      "labels": "{\"metric\":\"starrocks_fe_txn_stream_load_begin_latency_ms\",\"quantile\":\"0.98\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_txn_stream_load_begin_latency_ms",
+      "labels": "{\"metric\":\"starrocks_fe_txn_stream_load_begin_latency_ms\",\"quantile\":\"0.99\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_txn_stream_load_begin_latency_ms",
+      "labels": "{\"metric\":\"starrocks_fe_txn_stream_load_begin_latency_ms\",\"quantile\":\"0.999\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_txn_stream_load_begin_latency_ms_sum",
+      "labels": "{\"metric\":\"starrocks_fe_txn_stream_load_begin_latency_ms_sum\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_txn_stream_load_begin_latency_ms_count",
+      "labels": "{\"metric\":\"starrocks_fe_txn_stream_load_begin_latency_ms_count\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_txn_stream_load_commit_latency_ms",
+      "labels": "{\"metric\":\"starrocks_fe_txn_stream_load_commit_latency_ms\",\"quantile\":\"0.75\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_txn_stream_load_commit_latency_ms",
+      "labels": "{\"metric\":\"starrocks_fe_txn_stream_load_commit_latency_ms\",\"quantile\":\"0.95\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_txn_stream_load_commit_latency_ms",
+      "labels": "{\"metric\":\"starrocks_fe_txn_stream_load_commit_latency_ms\",\"quantile\":\"0.98\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_txn_stream_load_commit_latency_ms",
+      "labels": "{\"metric\":\"starrocks_fe_txn_stream_load_commit_latency_ms\",\"quantile\":\"0.99\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_txn_stream_load_commit_latency_ms",
+      "labels": "{\"metric\":\"starrocks_fe_txn_stream_load_commit_latency_ms\",\"quantile\":\"0.999\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_txn_stream_load_commit_latency_ms_sum",
+      "labels": "{\"metric\":\"starrocks_fe_txn_stream_load_commit_latency_ms_sum\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_txn_stream_load_commit_latency_ms_count",
+      "labels": "{\"metric\":\"starrocks_fe_txn_stream_load_commit_latency_ms_count\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_txn_stream_load_load_latency_ms",
+      "labels": "{\"metric\":\"starrocks_fe_txn_stream_load_load_latency_ms\",\"quantile\":\"0.75\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_txn_stream_load_load_latency_ms",
+      "labels": "{\"metric\":\"starrocks_fe_txn_stream_load_load_latency_ms\",\"quantile\":\"0.95\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_txn_stream_load_load_latency_ms",
+      "labels": "{\"metric\":\"starrocks_fe_txn_stream_load_load_latency_ms\",\"quantile\":\"0.98\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_txn_stream_load_load_latency_ms",
+      "labels": "{\"metric\":\"starrocks_fe_txn_stream_load_load_latency_ms\",\"quantile\":\"0.99\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_txn_stream_load_load_latency_ms",
+      "labels": "{\"metric\":\"starrocks_fe_txn_stream_load_load_latency_ms\",\"quantile\":\"0.999\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_txn_stream_load_load_latency_ms_sum",
+      "labels": "{\"metric\":\"starrocks_fe_txn_stream_load_load_latency_ms_sum\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_txn_stream_load_load_latency_ms_count",
+      "labels": "{\"metric\":\"starrocks_fe_txn_stream_load_load_latency_ms_count\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_txn_stream_load_prepare_latency_ms",
+      "labels": "{\"metric\":\"starrocks_fe_txn_stream_load_prepare_latency_ms\",\"quantile\":\"0.75\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_txn_stream_load_prepare_latency_ms",
+      "labels": "{\"metric\":\"starrocks_fe_txn_stream_load_prepare_latency_ms\",\"quantile\":\"0.95\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_txn_stream_load_prepare_latency_ms",
+      "labels": "{\"metric\":\"starrocks_fe_txn_stream_load_prepare_latency_ms\",\"quantile\":\"0.98\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_txn_stream_load_prepare_latency_ms",
+      "labels": "{\"metric\":\"starrocks_fe_txn_stream_load_prepare_latency_ms\",\"quantile\":\"0.99\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_txn_stream_load_prepare_latency_ms",
+      "labels": "{\"metric\":\"starrocks_fe_txn_stream_load_prepare_latency_ms\",\"quantile\":\"0.999\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_txn_stream_load_prepare_latency_ms_sum",
+      "labels": "{\"metric\":\"starrocks_fe_txn_stream_load_prepare_latency_ms_sum\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_txn_stream_load_prepare_latency_ms_count",
+      "labels": "{\"metric\":\"starrocks_fe_txn_stream_load_prepare_latency_ms_count\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_txn_stream_load_rollback_latency_ms",
+      "labels": "{\"metric\":\"starrocks_fe_txn_stream_load_rollback_latency_ms\",\"quantile\":\"0.75\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_txn_stream_load_rollback_latency_ms",
+      "labels": "{\"metric\":\"starrocks_fe_txn_stream_load_rollback_latency_ms\",\"quantile\":\"0.95\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_txn_stream_load_rollback_latency_ms",
+      "labels": "{\"metric\":\"starrocks_fe_txn_stream_load_rollback_latency_ms\",\"quantile\":\"0.98\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_txn_stream_load_rollback_latency_ms",
+      "labels": "{\"metric\":\"starrocks_fe_txn_stream_load_rollback_latency_ms\",\"quantile\":\"0.99\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_txn_stream_load_rollback_latency_ms",
+      "labels": "{\"metric\":\"starrocks_fe_txn_stream_load_rollback_latency_ms\",\"quantile\":\"0.999\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_txn_stream_load_rollback_latency_ms_sum",
+      "labels": "{\"metric\":\"starrocks_fe_txn_stream_load_rollback_latency_ms_sum\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_txn_stream_load_rollback_latency_ms_count",
+      "labels": "{\"metric\":\"starrocks_fe_txn_stream_load_rollback_latency_ms_count\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "connection_total",
+      "labels": "{\"metric\":\"connection_total\",\"user\":\"root\"}",
+      "value": "1"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "txn_running",
+      "labels": "{\"metric\":\"txn_running\",\"is_leader\":\"true\",\"db\":\"_statistics_\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "txn_running",
+      "labels": "{\"metric\":\"txn_running\",\"is_leader\":\"true\",\"db\":\"sr_dash_dev\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "brpc_pool_numactive",
+      "labels": "{\"metric\":\"brpc_pool_numactive\",\"name\":\"pool3\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "brpc_pool_numidle",
+      "labels": "{\"metric\":\"brpc_pool_numidle\",\"name\":\"pool3\"}",
+      "value": "1"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "brpc_pool_numwaiters",
+      "labels": "{\"metric\":\"brpc_pool_numwaiters\",\"name\":\"pool3\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "brpc_pool_borrowedcount",
+      "labels": "{\"metric\":\"brpc_pool_borrowedcount\",\"name\":\"pool3\"}",
+      "value": "402"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "brpc_pool_returnedcount",
+      "labels": "{\"metric\":\"brpc_pool_returnedcount\",\"name\":\"pool3\"}",
+      "value": "402"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "brpc_pool_createdcount",
+      "labels": "{\"metric\":\"brpc_pool_createdcount\",\"name\":\"pool3\"}",
+      "value": "3"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "brpc_pool_destroyedcount",
+      "labels": "{\"metric\":\"brpc_pool_destroyedcount\",\"name\":\"pool3\"}",
+      "value": "2"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "brpc_pool_meanactivetimemillis",
+      "labels": "{\"metric\":\"brpc_pool_meanactivetimemillis\",\"name\":\"pool3\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "brpc_pool_meanidletimemillis",
+      "labels": "{\"metric\":\"brpc_pool_meanidletimemillis\",\"name\":\"pool3\"}",
+      "value": "1063"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "brpc_pool_meanborrowwaittimemillis",
+      "labels": "{\"metric\":\"brpc_pool_meanborrowwaittimemillis\",\"name\":\"pool3\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "brpc_pool_numactive",
+      "labels": "{\"metric\":\"brpc_pool_numactive\",\"name\":\"pool4\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "brpc_pool_numidle",
+      "labels": "{\"metric\":\"brpc_pool_numidle\",\"name\":\"pool4\"}",
+      "value": "2"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "brpc_pool_numwaiters",
+      "labels": "{\"metric\":\"brpc_pool_numwaiters\",\"name\":\"pool4\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "brpc_pool_borrowedcount",
+      "labels": "{\"metric\":\"brpc_pool_borrowedcount\",\"name\":\"pool4\"}",
+      "value": "432"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "brpc_pool_returnedcount",
+      "labels": "{\"metric\":\"brpc_pool_returnedcount\",\"name\":\"pool4\"}",
+      "value": "432"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "brpc_pool_createdcount",
+      "labels": "{\"metric\":\"brpc_pool_createdcount\",\"name\":\"pool4\"}",
+      "value": "5"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "brpc_pool_destroyedcount",
+      "labels": "{\"metric\":\"brpc_pool_destroyedcount\",\"name\":\"pool4\"}",
+      "value": "3"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "brpc_pool_meanactivetimemillis",
+      "labels": "{\"metric\":\"brpc_pool_meanactivetimemillis\",\"name\":\"pool4\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "brpc_pool_meanidletimemillis",
+      "labels": "{\"metric\":\"brpc_pool_meanidletimemillis\",\"name\":\"pool4\"}",
+      "value": "2126"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "brpc_pool_meanborrowwaittimemillis",
+      "labels": "{\"metric\":\"brpc_pool_meanborrowwaittimemillis\",\"name\":\"pool4\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "brpc_pool_numactive",
+      "labels": "{\"metric\":\"brpc_pool_numactive\",\"name\":\"pool2\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "brpc_pool_numidle",
+      "labels": "{\"metric\":\"brpc_pool_numidle\",\"name\":\"pool2\"}",
+      "value": "1"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "brpc_pool_numwaiters",
+      "labels": "{\"metric\":\"brpc_pool_numwaiters\",\"name\":\"pool2\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "brpc_pool_borrowedcount",
+      "labels": "{\"metric\":\"brpc_pool_borrowedcount\",\"name\":\"pool2\"}",
+      "value": "399"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "brpc_pool_returnedcount",
+      "labels": "{\"metric\":\"brpc_pool_returnedcount\",\"name\":\"pool2\"}",
+      "value": "399"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "brpc_pool_createdcount",
+      "labels": "{\"metric\":\"brpc_pool_createdcount\",\"name\":\"pool2\"}",
+      "value": "3"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "brpc_pool_destroyedcount",
+      "labels": "{\"metric\":\"brpc_pool_destroyedcount\",\"name\":\"pool2\"}",
+      "value": "2"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "brpc_pool_meanactivetimemillis",
+      "labels": "{\"metric\":\"brpc_pool_meanactivetimemillis\",\"name\":\"pool2\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "brpc_pool_meanidletimemillis",
+      "labels": "{\"metric\":\"brpc_pool_meanidletimemillis\",\"name\":\"pool2\"}",
+      "value": "1063"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "brpc_pool_meanborrowwaittimemillis",
+      "labels": "{\"metric\":\"brpc_pool_meanborrowwaittimemillis\",\"name\":\"pool2\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "brpc_pool_numactive",
+      "labels": "{\"metric\":\"brpc_pool_numactive\",\"name\":\"pool\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "brpc_pool_numidle",
+      "labels": "{\"metric\":\"brpc_pool_numidle\",\"name\":\"pool\"}",
+      "value": "1"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "brpc_pool_numwaiters",
+      "labels": "{\"metric\":\"brpc_pool_numwaiters\",\"name\":\"pool\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "brpc_pool_borrowedcount",
+      "labels": "{\"metric\":\"brpc_pool_borrowedcount\",\"name\":\"pool\"}",
+      "value": "394"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "brpc_pool_returnedcount",
+      "labels": "{\"metric\":\"brpc_pool_returnedcount\",\"name\":\"pool\"}",
+      "value": "394"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "brpc_pool_createdcount",
+      "labels": "{\"metric\":\"brpc_pool_createdcount\",\"name\":\"pool\"}",
+      "value": "3"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "brpc_pool_destroyedcount",
+      "labels": "{\"metric\":\"brpc_pool_destroyedcount\",\"name\":\"pool\"}",
+      "value": "2"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "brpc_pool_meanactivetimemillis",
+      "labels": "{\"metric\":\"brpc_pool_meanactivetimemillis\",\"name\":\"pool\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "brpc_pool_meanidletimemillis",
+      "labels": "{\"metric\":\"brpc_pool_meanidletimemillis\",\"name\":\"pool\"}",
+      "value": "1062"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "brpc_pool_meanborrowwaittimemillis",
+      "labels": "{\"metric\":\"brpc_pool_meanborrowwaittimemillis\",\"name\":\"pool\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "merge_commit_job_num",
+      "labels": "{\"metric\":\"merge_commit_job_num\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "merge_commit_total_expect_parallel",
+      "labels": "{\"metric\":\"merge_commit_total_expect_parallel\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "merge_commit_total_actual_parallel",
+      "labels": "{\"metric\":\"merge_commit_total_actual_parallel\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "merge_commit_cn_num",
+      "labels": "{\"metric\":\"merge_commit_cn_num\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "merge_commit_warehouse_num",
+      "labels": "{\"metric\":\"merge_commit_warehouse_num\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "merge_commit_load_bytes",
+      "labels": "{\"metric\":\"merge_commit_load_bytes\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "merge_commit_task_fail_num",
+      "labels": "{\"metric\":\"merge_commit_task_fail_num\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "merge_commit_load_rows",
+      "labels": "{\"metric\":\"merge_commit_load_rows\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "merge_commit_task_running_num",
+      "labels": "{\"metric\":\"merge_commit_task_running_num\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "merge_commit_txn_dispatch_fail_num",
+      "labels": "{\"metric\":\"merge_commit_txn_dispatch_fail_num\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "merge_commit_txn_dispatch_pending_num",
+      "labels": "{\"metric\":\"merge_commit_txn_dispatch_pending_num\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "merge_commit_task_success_num",
+      "labels": "{\"metric\":\"merge_commit_task_success_num\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "merge_commit_txn_dispatch_success_num",
+      "labels": "{\"metric\":\"merge_commit_txn_dispatch_success_num\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "merge_commit_txn_dispatch_retry_num",
+      "labels": "{\"metric\":\"merge_commit_txn_dispatch_retry_num\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_merge_commit_load_latency_ms",
+      "labels": "{\"metric\":\"starrocks_fe_merge_commit_load_latency_ms\",\"quantile\":\"0.75\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_merge_commit_load_latency_ms",
+      "labels": "{\"metric\":\"starrocks_fe_merge_commit_load_latency_ms\",\"quantile\":\"0.95\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_merge_commit_load_latency_ms",
+      "labels": "{\"metric\":\"starrocks_fe_merge_commit_load_latency_ms\",\"quantile\":\"0.98\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_merge_commit_load_latency_ms",
+      "labels": "{\"metric\":\"starrocks_fe_merge_commit_load_latency_ms\",\"quantile\":\"0.99\"}",
+      "value": "0"
+    },
+    {
+      "scope": "fe",
+      "owner": "starrocks-fe_9010_1792517063438",
+      "name": "starrocks_fe_merge_commit_load_latency_ms",
+      "labels": "{\"metric\":\"starrocks_fe_merge_commit_load_latency_ms\",\"quantile\":\"0.999\"}",
+      "value": "0"
+    }
+  ],
+  "total": 2978
+}

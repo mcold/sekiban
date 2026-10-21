@@ -61,6 +61,24 @@ window.dashboardState = async (_win, sliceBy, topBy) => {
 };
 
 window.sessionList = async () => recorded("sessions");
+window.clusterState = async () => recorded("cluster");
+window.compactionsState = async () => recorded("compactions");
+window.loadsState = async () => recorded("loads");
+window.resourcesState = async () => recorded("resources");
+window.metricsState = async (filter) => {
+  const m = await recorded("metrics");
+  if (!filter) return m;
+  const needle = filter.toLowerCase();
+  m.rows = m.rows.filter((r) => r.name.toLowerCase().includes(needle));
+  return m;
+};
+window.browserTree = async () => recorded("browser");
+window.profileState = async () => ({
+  profiles: [],
+  summary: [],
+  historyCount: 0,
+});
+window.explainAnalyze = async () => "not available in the mock";
 window.killSession = async (id) => {
   MOCK.killed = id;
   return {};
