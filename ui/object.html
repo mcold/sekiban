@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>sr-dash</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="object">
+  <main id="content">
+    <div class="dash-header">
+      <h2 id="obj-title"></h2>
+      <div class="buttons dash-actions">
+        <button type="button" id="obj-refresh">Refresh</button>
+      </div>
+    </div>
+    <p id="obj-status" class="hint" aria-live="polite"></p>
+
+    <div class="tabs" role="group" aria-label="Object view">
+      <button type="button" class="tab" data-tab="properties">Properties</button>
+      <button type="button" class="tab" data-tab="data">Data</button>
+    </div>
+
+    <section id="obj-properties"></section>
+
+    <section id="obj-data" hidden>
+      <textarea id="sql-text" spellcheck="false" rows="6"></textarea>
+      <div class="buttons">
+        <button type="button" id="sql-run">Run</button>
+        <button type="button" id="sql-cancel">Cancel</button>
+        <button type="button" id="grid-save" hidden>Save changes...</button>
+      </div>
+      <p id="sql-status" class="hint" aria-live="polite"></p>
+      <div id="grid"></div>
+    </section>
+  </main>
+
+  <script src="icons.js"></script>
+  <script src="object.js"></script>
+</body>
+</html>
