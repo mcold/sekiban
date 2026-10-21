@@ -405,6 +405,134 @@ func runGUI(cfg Config, configErr string) {
 		return nil
 	})
 
+	mustBind(w, "compactionsState", func() (compactionsOut, error) {
+		mu.Lock()
+		dsn, err := activeDSN()
+		mu.Unlock()
+		if err != nil {
+			return compactionsOut{Error: err.Error()}, nil
+		}
+		db, err := openSR(dsn)
+		if err != nil {
+			return compactionsOut{Error: err.Error()}, nil
+		}
+		defer func() { _ = db.Close() }()
+		return collectCompactions(db, browserDatabase(db)), nil
+	})
+
+	mustBind(w, "resourcesState", func() (resourcesOut, error) {
+		mu.Lock()
+		dsn, err := activeDSN()
+		mu.Unlock()
+		if err != nil {
+			return resourcesOut{Error: err.Error()}, nil
+		}
+		db, err := openSR(dsn)
+		if err != nil {
+			return resourcesOut{Error: err.Error()}, nil
+		}
+		defer func() { _ = db.Close() }()
+		return collectResources(db), nil
+	})
+
+	mustBind(w, "loadsState", func() (loadsOut, error) {
+		mu.Lock()
+		dsn, err := activeDSN()
+		mu.Unlock()
+		if err != nil {
+			return loadsOut{Error: err.Error()}, nil
+		}
+		db, err := openSR(dsn)
+		if err != nil {
+			return loadsOut{Error: err.Error()}, nil
+		}
+		defer func() { _ = db.Close() }()
+		return collectLoads(db, browserDatabase(db)), nil
+	})
+
+	mustBind(w, "metricsState", func(filter string) (metricsOut, error) {
+		mu.Lock()
+		dsn, err := activeDSN()
+		mu.Unlock()
+		if err != nil {
+			return metricsOut{Error: err.Error()}, nil
+		}
+		db, err := openSR(dsn)
+		if err != nil {
+			return metricsOut{Error: err.Error()}, nil
+		}
+		defer func() { _ = db.Close() }()
+		return collectMetrics(db, filter), nil
+	})
+
+	// The audit log is read on demand, when the screen is opened, and
+	// accumulated from then on.
+	var audit auditCache
+	mustBind(w, "profileState", func(withHistory bool) (profileOut, error) {
+		mu.Lock()
+		dsn, err := activeDSN()
+		mu.Unlock()
+		if err != nil {
+			return profileOut{Error: err.Error()}, nil
+		}
+		db, err := openSR(dsn)
+		if err != nil {
+			return profileOut{Error: err.Error()}, nil
+		}
+		defer func() { _ = db.Close() }()
+
+		mu.Lock()
+		conn, ok := activeConn()
+		mu.Unlock()
+		if !ok {
+			return profileOut{Error: "not connected"}, nil
+		}
+		fe := newFEClient(conn.FEHTTP, conn.DSN)
+
+		ctx := context.Background()
+		out := collectProfiles(ctx, db, fe, false)
+		if !withHistory {
+			return out, nil
+		}
+		fetched, err := fe.auditLog(ctx)
+		if err != nil {
+			out.HistoryError = err.Error()
+			return out, nil
+		}
+		audit.update(fetched)
+		out.Summary, out.HistoryCount = audit.summary()
+		return out, nil
+	})
+
+	// The full profile of one query, as the frontend wrote it.
+	mustBind(w, "queryProfile", func(queryID string) (string, error) {
+		mu.Lock()
+		conn, ok := activeConn()
+		mu.Unlock()
+		if !ok {
+			return "", errors.New("not connected")
+		}
+		fe := newFEClient(conn.FEHTTP, conn.DSN)
+		return fe.queryProfile(context.Background(), queryID)
+	})
+
+	mustBind(w, "explainAnalyze", func(statement string) (string, error) {
+		mu.Lock()
+		dsn, err := activeDSN()
+		mu.Unlock()
+		if err != nil {
+			return "", err
+		}
+		db, err := openSR(dsn)
+		if err != nil {
+			return "", err
+		}
+		defer func() { _ = db.Close() }()
+		ctx, cancel := context.WithTimeout(context.Background(), queryTimeout)
+		defer cancel()
+		return explainAnalyze(ctx, db, statement)
+	})
+
 	mustBind(w, "clusterState", func() (clusterOut, error) {
 		mu.Lock()
 		dsn, err := activeDSN()

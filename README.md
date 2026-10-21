@@ -42,6 +42,26 @@ the table model, the primary key, the partition column, the distribution,
 the sort key and the properties. Double-click an object to open it in its
 own window, where its definition and a console to read and edit it live.
 
+**Compactions & tablet health** — the merges in flight, the tablet work
+waiting on each backend, the transactions in flight, and the tablets that
+are unhealthy, inconsistent, cloning or in error.
+
+**Query profile** — the frontend's own profile list, an `EXPLAIN ANALYZE`
+box, and the **top queries by the CPU they cost**, taken from the frontend's
+audit log. The audit log is the only complete record of the queries that
+have finished: it is a file on the frontend's own disk, so it is read over
+the frontend's HTTP API when you ask for it, and only then.
+
+**Loads** — the import history, the routine loads and the stream loads.
+
+**Resources & limits** — the warehouses and the compute they hold, the
+resource groups and the limits that apply to a workload, and the cluster's
+own configuration.
+
+**Metrics explorer** — every metric the frontend and the backends publish
+about themselves: the SQL projection of their Prometheus endpoints, 2978
+rows on a four-backend cluster.
+
 **Query editor**, in that object window. Only a primary key table accepts
 an update, so only a primary key table's grid can be edited; on every other
 kind the grid is read-only and says why. The exact UPDATE is shown before

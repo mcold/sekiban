@@ -199,3 +199,62 @@ func TestObjectDetail(t *testing.T) {
 		t.Error("a duplicate key table is editable")
 	}
 }
+
+// The audit log is the only complete record of the queries that have
+// finished. It is read over the frontend's HTTP API.
+func TestAuditLog(t *testing.T) {
+	dsn := os.Getenv("SR_DASH_DSN")
+	if dsn == "" {
+		t.Skip("SR_DASH_DSN is not set")
+	}
+	endpoint := os.Getenv("SR_DASH_FE_HTTP")
+	if endpoint == "" {
+		endpoint = "http://127.0.0.1:8030"
+	}
+	fe := newFEClient(endpoint, dsn)
+	ctx, cancel := context.WithTimeout(context.Background(), time.Minute)
+	defer cancel()
+
+	body, err := fe.auditLog(ctx)
+	if err != nil {
+		t.Fatalf("audit log: %v", err)
+	}
+	if len(body) == 0 {
+		t.Fatal("the audit log is empty")
+	}
+	records := parseAuditLog(body)
+	if len(records) == 0 {
+		t.Fatal("no record parsed")
+	}
+	queries := 0
+	for _, rec := range records {
+		if rec.field("IsQuery") == "true" {
+			queries++
+		}
+		if rec.field("QueryId") == "" {
+			t.Errorf("a record has no query id: %v", rec.Fields)
+			break
+		}
+	}
+	if queries == 0 {
+		t.Errorf("no queries among %d records", len(records))
+	}
+	t.Logf("%d records, %d of them queries", len(records), queries)
+
+	// The summary ranks the queries by the CPU they cost.
+	summary := summariseAuditLog(records)
+	if len(summary) == 0 {
+		t.Fatal("the summary is empty")
+	}
+	for i, s := range summary {
+		if s.Statement == "" {
+			t.Errorf("entry %d has no statement", i)
+			break
+		}
+		if s.Calls == 0 {
+			t.Errorf("entry %d has no calls", i)
+			break
+		}
+	}
+	t.Logf("top: %s — %d calls, %.2f CPU sec", summary[0].Statement, summary[0].Calls, summary[0].CPUSec)
+}

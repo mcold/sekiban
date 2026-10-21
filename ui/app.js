@@ -53,7 +53,8 @@ let editingIndex = null;
 // screen is the app's home, and a predictable start beats a sticky one. The
 // ?screen= override exists for the screenshot harness, which needs to open a
 // given screen headlessly; the app itself navigates with no query string.
-const SCREENS = ["dashboard", "sessions", "cluster", "browser", "connections"];
+const SCREENS = ["dashboard", "sessions", "cluster", "browser", "compactions",
+  "profile", "loads", "resources", "metrics", "connections"];
 let screen = new URLSearchParams(location.search).get("screen") || "dashboard";
 if (!SCREENS.includes(screen)) screen = "dashboard";
 
@@ -62,6 +63,11 @@ const NAV_ICONS = {
   sessions: "activity",
   cluster: "diagram",
   browser: "table",
+  compactions: "stack",
+  profile: "clipboard-data",
+  loads: "cloud-arrow-down",
+  resources: "sliders2-vertical",
+  metrics: "wrench",
   connections: "gear",
 };
 
@@ -74,6 +80,11 @@ function goTo(name) {
   if (name === "sessions") loadSessions();
   if (name === "cluster") loadCluster();
   if (name === "browser") loadBrowser();
+  if (name === "compactions") loadCompactions();
+  if (name === "profile") loadProfile();
+  if (name === "loads") loadLoads();
+  if (name === "resources") loadResources();
+  if (name === "metrics") loadMetrics();
 }
 
 const WINDOW_KEY = "sr-dash.window";
@@ -209,7 +220,8 @@ async function connectToIndex(index) {
 }
 
 function render() {
-  const sections = ["setup", "list", "dashboard", "sessions", "cluster", "browser"];
+  const sections = ["setup", "list", "dashboard", "sessions", "cluster",
+    "browser", "compactions", "profile", "loads", "resources", "metrics"];
   const hideAll = () => sections.forEach((id) => { el(id).hidden = true; });
 
   el("config-error-box").hidden = !state.error;
@@ -1039,6 +1051,250 @@ function browserNode(group, obj) {
 }
 
 el("br-refresh").addEventListener("click", loadBrowser);
+el("comp-refresh").addEventListener("click", loadCompactions);
+el("prof-refresh").addEventListener("click", () => loadProfile(false));
+el("prof-audit").addEventListener("click", () => loadProfile(true));
+el("load-refresh").addEventListener("click", loadLoads);
+el("res-refresh").addEventListener("click", loadResources);
+el("met-refresh").addEventListener("click", loadMetrics);
+
+el("met-filter").addEventListener("input", () => {
+  metricFilter = el("met-filter").value;
+  loadMetrics();
+});
+
+el("prof-explain").addEventListener("click", async () => {
+  const sql = el("prof-sql").value.trim();
+  if (!sql) {
+    el("prof-explain-status").textContent = "There is no statement to explain.";
+    return;
+  }
+  el("prof-explain-status").textContent = "Running...";
+  el("prof-explain-out").hidden = true;
+  try {
+    const out = await window.explainAnalyze(sql);
+    el("prof-explain-out").textContent = out;
+    el("prof-explain-out").hidden = false;
+    el("prof-explain-status").textContent = "Done.";
+  } catch (err) {
+    el("prof-explain-status").textContent = String(err);
+  }
+});
+
+// --- Compactions and tablet health ---
+
+let compactions = null;
+
+async function loadCompactions() {
+  el("comp-status").textContent = "Reading the compaction state...";
+  try {
+    compactions = await window.compactionsState();
+  } catch (err) {
+    el("comp-status").textContent = String(err);
+    return;
+  }
+  renderCompactions();
+}
+
+function renderCompactions() {
+  if (!compactions) return;
+  el("comp-status").textContent = compactions.error || "";
+
+  const h = compactions.health || {};
+  const bad = (h.unhealthy || 0) + (h.inconsistent || 0) + (h.errorState || 0);
+  const p = el("comp-health");
+  p.replaceChildren();
+  const text = (h.unhealthy || 0) + " unhealthy, " + (h.inconsistent || 0) +
+    " inconsistent, " + (h.cloning || 0) + " cloning, " + (h.errorState || 0) +
+    " in error";
+  if (bad > 0) {
+    p.className = "warn";
+    p.textContent = text;
+  } else {
+    p.className = "hint";
+    p.textContent = "No tablet is in trouble: " + text + ".";
+  }
+
+  el("comp-running").replaceChildren(dataTable(
+    ["Partition", "Txn", "Started", "Committed", "Finished", "Error", "Profile"],
+    (compactions.compactions || []).map((c) => [
+      c.partition, c.txnId, c.startTime, c.commitTime, c.finishTime,
+      c.error, c.profile,
+    ])));
+
+  el("comp-backends").replaceChildren(dataTable(
+    ["Backend", "Candidates", "Base", "Cumulative", "Latest score",
+      "Max candidate score", "Manual", "Manual candidates"],
+    (compactions.backends || []).map((b) => [
+      b.beId, b.candidates, b.baseConcurrency, b.cumulativeConcurrency,
+      b.latestScore, b.candidateMaxScore, b.manualConcurrency,
+      b.manualCandidates,
+    ])));
+
+  el("comp-txns").replaceChildren(dataTable(
+    ["Backend", "Load", "Txn", "Partition", "Tablet", "Created", "Committed",
+      "Rows", "Size"],
+    (compactions.txns || []).map((t) => [
+      t.beId, t.loadId, t.txnId, t.partitionId, t.tabletId, t.createTime,
+      t.commitTime, t.numRow, bytes(t.dataSize),
+    ])));
+}
+
+// --- Query profile ---
+
+let profile = null;
+let auditLoaded = false;
+
+async function loadProfile(withAudit) {
+  el("prof-status").textContent = "Reading the profiles...";
+  try {
+    profile = await window.profileState(withAudit);
+  } catch (err) {
+    el("prof-status").textContent = String(err);
+    return;
+  }
+  if (withAudit) {
+    auditLoaded = true;
+  }
+  renderProfile();
+}
+
+function renderProfile() {
+  if (!profile) return;
+  const bits = [];
+  if (profile.error) {
+    bits.push(profile.error);
+  }
+  if (profile.historyError) {
+    bits.push("the audit log could not be read: " + profile.historyError);
+  } else if (profile.historyCount) {
+    bits.push(profile.historyCount + " queries in the audit log");
+  } else if (!auditLoaded) {
+    bits.push("the audit log has not been read yet");
+  }
+  el("prof-status").textContent = bits.join(" · ");
+
+  el("prof-summary").replaceChildren(dataTable(
+    ["Statement", "Calls", "CPU sec", "Total ms", "Max ms", "Errors", "User",
+      "Database", "Last run"],
+    (profile.summary || []).map((s) => [
+      s.statement, s.calls, s.cpuSec.toFixed(2), s.totalMs, s.maxMs,
+      s.errors, s.user, s.db, s.last,
+    ])));
+
+  el("prof-list").replaceChildren(dataTable(
+    ["Query id", "Started", "Time", "State", "Statement"],
+    (profile.profiles || []).map((p) => [
+      p.queryId, p.startTime, p.time, p.state, p.statement,
+    ])));
+}
+
+// --- Loads ---
+
+let loads = null;
+
+async function loadLoads() {
+  el("load-status").textContent = "Reading the import history...";
+  try {
+    loads = await window.loadsState();
+  } catch (err) {
+    el("load-status").textContent = String(err);
+    return;
+  }
+  renderLoads();
+}
+
+function renderLoads() {
+  if (!loads) return;
+  el("load-status").textContent = loads.error || "";
+
+  el("load-list").replaceChildren(dataTable(
+    ["Id", "Label", "Database", "Table", "User", "State", "Type", "Scanned",
+      "Loaded", "Finished", "Error"],
+    (loads.loads || []).map((l) => [
+      l.id, l.label, l.dbName, l.tableName, l.user, l.state, l.type,
+      l.scanRows, l.sinkRows, l.finished, l.failed ? "yes" : "", l.errorMsg,
+    ].slice(0, 11))));
+
+  el("load-routine").replaceChildren(dataTable(
+    ["Name", "Id", "Database", "Statistic"],
+    (loads.routineLoads || []).map((r) => [
+      r.name, r.id, r.dbName, r.statistic,
+    ])));
+
+  el("load-stream").replaceChildren(dataTable(
+    ["Label", "Id", "Database", "Table", "State"],
+    (loads.streamLoads || []).map((l) => [
+      l.label, l.id, l.dbName, l.tableName, l.state,
+    ])));
+}
+
+// --- Resources ---
+
+let resources = null;
+
+async function loadResources() {
+  el("res-status").textContent = "Reading the limits...";
+  try {
+    resources = await window.resourcesState();
+  } catch (err) {
+    el("res-status").textContent = String(err);
+    return;
+  }
+  renderResources();
+}
+
+function renderResources() {
+  if (!resources) return;
+  el("res-status").textContent = resources.error || "";
+
+  el("res-warehouses").replaceChildren(dataTable(
+    ["Name", "State", "Nodes", "Clusters", "Max clusters", "Running SQL",
+      "Queued SQL", "Comment"],
+    (resources.warehouses || []).map((w) => [
+      w.name, w.state, w.nodeCount, w.currentClusterCount, w.maxClusterCount,
+      w.runningSql, w.queuedSql, w.comment,
+    ])));
+
+  el("res-groups").replaceChildren(dataTable(
+    ["Name", "Id", "CPU weight", "Exclusive cores", "Memory", "Big query CPU",
+      "Big query rows", "Big query memory", "Concurrency", "Spill", "Classifiers"],
+    (resources.groups || []).map((g) => [
+      g.name, g.id, g.cpuWeight, g.exclusiveCpuCores, g.memLimit,
+      g.bigQueryCpuSecondLimit, g.bigQueryScanRowsLimit, g.bigQueryMemLimit,
+      g.concurrencyLimit, g.spillMemLimitThreshold, g.classifiers,
+    ])));
+
+  el("res-config").replaceChildren(dataTable(
+    ["Name", "Type", "Key", "Value"],
+    (resources.resources || []).map((r) => [r.name, r.type, r.key, r.value])));
+}
+
+// --- Metrics explorer ---
+
+let metrics = null;
+let metricFilter = "";
+
+async function loadMetrics() {
+  el("met-status").textContent = "Reading the metrics...";
+  try {
+    metrics = await window.metricsState(metricFilter);
+  } catch (err) {
+    el("met-status").textContent = String(err);
+    return;
+  }
+  renderMetrics();
+}
+
+function renderMetrics() {
+  if (!metrics) return;
+  el("met-status").textContent = metrics.error ||
+    (metrics.rows.length + " of " + metrics.total + " metrics");
+
+  el("met-list").replaceChildren(dataTable(
+    ["Scope", "Node", "Name", "Labels", "Value"],
+    (metrics.rows || []).map((m) => [m.scope, m.owner, m.name, m.labels, m.value])));
+}
 
 // --- Sidebar ---
 

@@ -22,6 +22,11 @@
     <button type="button" class="nav-item" data-screen="sessions">Sessions</button>
     <button type="button" class="nav-item" data-screen="cluster">Cluster</button>
     <button type="button" class="nav-item" data-screen="browser">Browser</button>
+    <button type="button" class="nav-item" data-screen="compactions">Compactions</button>
+    <button type="button" class="nav-item" data-screen="profile">Query profile</button>
+    <button type="button" class="nav-item" data-screen="loads">Loads</button>
+    <button type="button" class="nav-item" data-screen="resources">Resources</button>
+    <button type="button" class="nav-item" data-screen="metrics">Metrics</button>
     <button type="button" class="nav-item" data-screen="connections">Connections</button>
   </nav>
 
@@ -163,6 +168,111 @@
     <p class="hint">Double-click an object to open it in its own window, so
       several can stay open side by side.</p>
     <div id="br-tree" aria-label="Database objects"></div>
+  </section>
+
+  <section id="compactions" hidden>
+    <div class="dash-header">
+      <h2>Compactions &amp; tablet health</h2>
+      <div class="buttons dash-actions">
+        <button type="button" id="comp-refresh">Refresh</button>
+      </div>
+    </div>
+    <p id="comp-status" class="hint" aria-live="polite"></p>
+    <p id="comp-health"></p>
+
+    <h3>Running now <span class="hint">the merges in flight</span></h3>
+    <div id="comp-running"></div>
+
+    <h3>Per backend <span class="hint">how much compaction work is waiting</span></h3>
+    <div id="comp-backends"></div>
+
+    <h3>Transactions in flight</h3>
+    <div id="comp-txns"></div>
+  </section>
+
+  <section id="profile" hidden>
+    <div class="dash-header">
+      <h2>Query profile</h2>
+      <div class="buttons dash-actions">
+        <button type="button" id="prof-refresh">Refresh</button>
+        <button type="button" id="prof-audit">Read the audit log</button>
+      </div>
+    </div>
+    <p id="prof-status" class="hint" aria-live="polite"></p>
+    <p class="hint">The audit log is the only complete record of the queries
+      that have finished: the frontend writes the CPU of every one of them.
+      It lives on the frontend's own disk, so it is read over its HTTP API
+      when you ask for it, and only then.</p>
+
+    <h3>Top queries <span class="hint">by the CPU they cost, from the audit log</span></h3>
+    <div id="prof-summary"></div>
+
+    <h3>Profiles the frontend holds</h3>
+    <p class="hint">Only the queries whose client asked to be profiled, or
+      that ran longer than big_query_profile_threshold (30s).</p>
+    <div id="prof-list"></div>
+
+    <h3>Explain analyze</h3>
+    <textarea id="prof-sql" spellcheck="false" rows="3"
+      placeholder="SELECT ..."></textarea>
+    <div class="buttons">
+      <button type="button" id="prof-explain">Explain analyze</button>
+    </div>
+    <p id="prof-explain-status" class="hint" aria-live="polite"></p>
+    <pre id="prof-explain-out" class="ddl" hidden></pre>
+  </section>
+
+  <section id="loads" hidden>
+    <div class="dash-header">
+      <h2>Loads</h2>
+      <div class="buttons dash-actions">
+        <button type="button" id="load-refresh">Refresh</button>
+      </div>
+    </div>
+    <p id="load-status" class="hint" aria-live="polite"></p>
+
+    <h3>Imports <span class="hint">the most recent, newest first</span></h3>
+    <div id="load-list"></div>
+
+    <h3>Routine loads</h3>
+    <div id="load-routine"></div>
+
+    <h3>Stream loads</h3>
+    <div id="load-stream"></div>
+  </section>
+
+  <section id="resources" hidden>
+    <div class="dash-header">
+      <h2>Resources &amp; limits</h2>
+      <div class="buttons dash-actions">
+        <button type="button" id="res-refresh">Refresh</button>
+      </div>
+    </div>
+    <p id="res-status" class="hint" aria-live="polite"></p>
+
+    <h3>Warehouses <span class="hint">the compute the queries run on</span></h3>
+    <div id="res-warehouses"></div>
+
+    <h3>Resource groups <span class="hint">the limits that apply to a workload</span></h3>
+    <div id="res-groups"></div>
+
+    <h3>Cluster configuration</h3>
+    <div id="res-config"></div>
+  </section>
+
+  <section id="metrics" hidden>
+    <div class="dash-header">
+      <h2>Metrics explorer</h2>
+      <div class="buttons dash-actions">
+        <button type="button" id="met-refresh">Refresh</button>
+      </div>
+    </div>
+    <p id="met-status" class="hint" aria-live="polite"></p>
+    <input type="search" id="met-filter" autocomplete="off" spellcheck="false"
+      placeholder="Filter by name..." aria-label="Filter metrics by name">
+    <p class="hint">Every metric the frontend and the backends publish about
+      themselves, as the SQL projection of their Prometheus endpoints.</p>
+    <div id="met-list"></div>
   </section>
 
   <section id="list" hidden>

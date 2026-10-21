@@ -104,6 +104,47 @@ func TestInterface(t *testing.T) {
 		})
 		return nil
 	})
+	mustBind(w, "compactionsState", func() (compactionsOut, error) {
+		db, err := openSR(dsn)
+		if err != nil {
+			return compactionsOut{Error: err.Error()}, nil
+		}
+		defer func() { _ = db.Close() }()
+		return collectCompactions(db, browserDatabase(db)), nil
+	})
+	mustBind(w, "loadsState", func() (loadsOut, error) {
+		db, err := openSR(dsn)
+		if err != nil {
+			return loadsOut{Error: err.Error()}, nil
+		}
+		defer func() { _ = db.Close() }()
+		return collectLoads(db, browserDatabase(db)), nil
+	})
+	mustBind(w, "resourcesState", func() (resourcesOut, error) {
+		db, err := openSR(dsn)
+		if err != nil {
+			return resourcesOut{Error: err.Error()}, nil
+		}
+		defer func() { _ = db.Close() }()
+		return collectResources(db), nil
+	})
+	mustBind(w, "metricsState", func(filter string) (metricsOut, error) {
+		db, err := openSR(dsn)
+		if err != nil {
+			return metricsOut{Error: err.Error()}, nil
+		}
+		defer func() { _ = db.Close() }()
+		return collectMetrics(db, filter), nil
+	})
+	mustBind(w, "profileState", func(withHistory bool) (profileOut, error) {
+		db, err := openSR(dsn)
+		if err != nil {
+			return profileOut{Error: err.Error()}, nil
+		}
+		defer func() { _ = db.Close() }()
+		out := collectProfiles(context.Background(), db, newFEClient("http://127.0.0.1:8030", dsn), withHistory)
+		return out, nil
+	})
 	mustBind(w, "clusterState", func() (clusterOut, error) {
 		db, err := openSR(dsn)
 		if err != nil {
@@ -192,6 +233,39 @@ func TestInterface(t *testing.T) {
 			})
 		}
 		time.Sleep(2 * time.Second)
+		// The five new screens, read back the same way.
+		for _, screen := range []string{"compactions", "profile", "loads", "resources", "metrics"} {
+			w.Dispatch(func() {
+				w.Eval(`goTo("` + screen + `");`)
+			})
+			time.Sleep(2 * time.Second)
+			w.Dispatch(func() {
+				w.Eval(`window.logError("UICHECKNEW " + JSON.stringify({
+					screen: "` + screen + `",
+					rows: document.querySelectorAll("#` + screen + ` .data-table tbody tr").length,
+					tables: document.querySelectorAll("#` + screen + ` .data-table").length,
+					status: (document.querySelector("#` + screen + ` [id$='-status']") || {}).textContent,
+				}));`)
+			})
+			time.Sleep(1 * time.Second)
+		}
+		// The audit log, read on demand: the button, not a poll.
+		w.Dispatch(func() {
+			w.Eval(`goTo("profile");`)
+		})
+		time.Sleep(2 * time.Second)
+		w.Dispatch(func() {
+			w.Eval(`document.getElementById("prof-audit").click();`)
+		})
+		time.Sleep(8 * time.Second)
+		w.Dispatch(func() {
+			w.Eval(`window.logError("UICHECKAUDIT " + JSON.stringify({
+				status: document.getElementById("prof-status").textContent,
+				rows: document.querySelectorAll("#prof-summary tbody tr").length,
+				first: (document.querySelector("#prof-summary tbody tr") || {}).textContent,
+			}));`)
+		})
+		time.Sleep(2 * time.Second)
 		w.Dispatch(func() {
 			w.Eval(`window.logError("UICHECKCLU " + JSON.stringify({
 				totals: (document.querySelector("#cluster-totals p") || {}).textContent,
@@ -209,7 +283,8 @@ func TestInterface(t *testing.T) {
 
 	mu.Lock()
 	defer mu.Unlock()
-	var diag, sessDiag, cluDiag, brDiag string
+	var diag, sessDiag, cluDiag, brDiag, auditDiag string
+	newDiags := []string{}
 	for _, m := range messages {
 		switch {
 		case strings.HasPrefix(m, "UICHECK "):
@@ -220,8 +295,22 @@ func TestInterface(t *testing.T) {
 			cluDiag = m
 		case strings.HasPrefix(m, "UICHECKBR "):
 			brDiag = m
+		case strings.HasPrefix(m, "UICHECKNEW "):
+			newDiags = append(newDiags, m)
+		case strings.HasPrefix(m, "UICHECKAUDIT "):
+			auditDiag = m
 		}
 	}
+	if len(newDiags) != 5 {
+		t.Errorf("got %d diagnostics for the new screens, want 5: %v", len(newDiags), newDiags)
+	}
+	for _, d := range newDiags {
+		fmt.Println(d)
+	}
+	if auditDiag == "" {
+		t.Errorf("the audit log was never read; messages: %v", messages)
+	}
+	fmt.Println(auditDiag)
 	if diag == "" {
 		t.Fatalf("the page sent no diagnostic; messages: %v", messages)
 	}
