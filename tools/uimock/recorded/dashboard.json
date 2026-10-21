@@ -1,0 +1,1067 @@
+{
+  "connected": true,
+  "status": "sampling",
+  "title": "Local StarRocks",
+  "dsn": "root@tcp(127.0.0.1:9030)/sr_dash_dev",
+  "windowSeconds": 100,
+  "bucketSeconds": 1,
+  "samples": 39,
+  "sliceBy": "sql",
+  "topBy": "sql",
+  "classes": [
+    "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b",
+    "(unset)",
+    "select @@version_comment limit 1"
+  ],
+  "buckets": [
+    {
+      "t": 1792586933000,
+      "v": {}
+    },
+    {
+      "t": 1792586934000,
+      "v": {}
+    },
+    {
+      "t": 1792586935000,
+      "v": {}
+    },
+    {
+      "t": 1792586936000,
+      "v": {}
+    },
+    {
+      "t": 1792586937000,
+      "v": {}
+    },
+    {
+      "t": 1792586938000,
+      "v": {}
+    },
+    {
+      "t": 1792586939000,
+      "v": {}
+    },
+    {
+      "t": 1792586940000,
+      "v": {}
+    },
+    {
+      "t": 1792586941000,
+      "v": {}
+    },
+    {
+      "t": 1792586942000,
+      "v": {}
+    },
+    {
+      "t": 1792586943000,
+      "v": {}
+    },
+    {
+      "t": 1792586944000,
+      "v": {}
+    },
+    {
+      "t": 1792586945000,
+      "v": {}
+    },
+    {
+      "t": 1792586946000,
+      "v": {}
+    },
+    {
+      "t": 1792586947000,
+      "v": {}
+    },
+    {
+      "t": 1792586948000,
+      "v": {}
+    },
+    {
+      "t": 1792586949000,
+      "v": {}
+    },
+    {
+      "t": 1792586950000,
+      "v": {}
+    },
+    {
+      "t": 1792586951000,
+      "v": {}
+    },
+    {
+      "t": 1792586952000,
+      "v": {}
+    },
+    {
+      "t": 1792586953000,
+      "v": {}
+    },
+    {
+      "t": 1792586954000,
+      "v": {}
+    },
+    {
+      "t": 1792586955000,
+      "v": {}
+    },
+    {
+      "t": 1792586956000,
+      "v": {}
+    },
+    {
+      "t": 1792586957000,
+      "v": {}
+    },
+    {
+      "t": 1792586958000,
+      "v": {}
+    },
+    {
+      "t": 1792586959000,
+      "v": {}
+    },
+    {
+      "t": 1792586960000,
+      "v": {}
+    },
+    {
+      "t": 1792586961000,
+      "v": {}
+    },
+    {
+      "t": 1792586962000,
+      "v": {}
+    },
+    {
+      "t": 1792586963000,
+      "v": {}
+    },
+    {
+      "t": 1792586964000,
+      "v": {}
+    },
+    {
+      "t": 1792586965000,
+      "v": {}
+    },
+    {
+      "t": 1792586966000,
+      "v": {}
+    },
+    {
+      "t": 1792586967000,
+      "v": {}
+    },
+    {
+      "t": 1792586968000,
+      "v": {}
+    },
+    {
+      "t": 1792586969000,
+      "v": {}
+    },
+    {
+      "t": 1792586970000,
+      "v": {}
+    },
+    {
+      "t": 1792586971000,
+      "v": {}
+    },
+    {
+      "t": 1792586972000,
+      "v": {}
+    },
+    {
+      "t": 1792586973000,
+      "v": {}
+    },
+    {
+      "t": 1792586974000,
+      "v": {}
+    },
+    {
+      "t": 1792586975000,
+      "v": {}
+    },
+    {
+      "t": 1792586976000,
+      "v": {}
+    },
+    {
+      "t": 1792586977000,
+      "v": {}
+    },
+    {
+      "t": 1792586978000,
+      "v": {}
+    },
+    {
+      "t": 1792586979000,
+      "v": {}
+    },
+    {
+      "t": 1792586980000,
+      "v": {}
+    },
+    {
+      "t": 1792586981000,
+      "v": {}
+    },
+    {
+      "t": 1792586982000,
+      "v": {}
+    },
+    {
+      "t": 1792586983000,
+      "v": {}
+    },
+    {
+      "t": 1792586984000,
+      "v": {}
+    },
+    {
+      "t": 1792586985000,
+      "v": {}
+    },
+    {
+      "t": 1792586986000,
+      "v": {}
+    },
+    {
+      "t": 1792586987000,
+      "v": {}
+    },
+    {
+      "t": 1792586988000,
+      "v": {}
+    },
+    {
+      "t": 1792586989000,
+      "v": {}
+    },
+    {
+      "t": 1792586990000,
+      "v": {}
+    },
+    {
+      "t": 1792586991000,
+      "v": {}
+    },
+    {
+      "t": 1792586992000,
+      "v": {}
+    },
+    {
+      "t": 1792586993000,
+      "v": {}
+    },
+    {
+      "t": 1792586994000,
+      "v": {
+        "(unset)": 0,
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 26.82,
+        "select @@version_comment limit 1": 0
+      }
+    },
+    {
+      "t": 1792586995000,
+      "v": {
+        "(unset)": 0,
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 33.4,
+        "select @@version_comment limit 1": 0
+      }
+    },
+    {
+      "t": 1792586996000,
+      "v": {
+        "(unset)": 0,
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 28.63,
+        "select @@version_comment limit 1": 0
+      }
+    },
+    {
+      "t": 1792586997000,
+      "v": {
+        "(unset)": 0,
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 28.89,
+        "select @@version_comment limit 1": 0
+      }
+    },
+    {
+      "t": 1792586998000,
+      "v": {
+        "(unset)": 0,
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 31.65,
+        "select @@version_comment limit 1": 0
+      }
+    },
+    {
+      "t": 1792586999000,
+      "v": {
+        "(unset)": 0,
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 30.55,
+        "select @@version_comment limit 1": 0
+      }
+    },
+    {
+      "t": 1792587000000,
+      "v": {
+        "(unset)": 0,
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 30.42,
+        "select @@version_comment limit 1": 0
+      }
+    },
+    {
+      "t": 1792587001000,
+      "v": {
+        "(unset)": 0,
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 18.49
+      }
+    },
+    {
+      "t": 1792587002000,
+      "v": {
+        "(unset)": 0,
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 16.7
+      }
+    },
+    {
+      "t": 1792587003000,
+      "v": {
+        "(unset)": 0,
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 24.72
+      }
+    },
+    {
+      "t": 1792587004000,
+      "v": {
+        "(unset)": 0,
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 15.21
+      }
+    },
+    {
+      "t": 1792587005000,
+      "v": {
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 10.77
+      }
+    },
+    {
+      "t": 1792587006000,
+      "v": {
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 9.57
+      }
+    },
+    {
+      "t": 1792587007000,
+      "v": {
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 23.54
+      }
+    },
+    {
+      "t": 1792587008000,
+      "v": {
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 19.71
+      }
+    },
+    {
+      "t": 1792587009000,
+      "v": {
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 31.62
+      }
+    },
+    {
+      "t": 1792587010000,
+      "v": {
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 32.26,
+        "select @@version_comment limit 1": 0
+      }
+    },
+    {
+      "t": 1792587011000,
+      "v": {
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 27.47
+      }
+    },
+    {
+      "t": 1792587012000,
+      "v": {
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 31.06,
+        "select @@version_comment limit 1": 0
+      }
+    },
+    {
+      "t": 1792587013000,
+      "v": {
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 29.22,
+        "select @@version_comment limit 1": 0
+      }
+    },
+    {
+      "t": 1792587014000,
+      "v": {
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 34.89
+      }
+    },
+    {
+      "t": 1792587015000,
+      "v": {
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 32.91
+      }
+    },
+    {
+      "t": 1792587016000,
+      "v": {
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 27.55
+      }
+    },
+    {
+      "t": 1792587017000,
+      "v": {
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 29.67
+      }
+    },
+    {
+      "t": 1792587018000,
+      "v": {
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 30.48
+      }
+    },
+    {
+      "t": 1792587019000,
+      "v": {
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 27.04
+      }
+    },
+    {
+      "t": 1792587020000,
+      "v": {
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 25.77
+      }
+    },
+    {
+      "t": 1792587021000,
+      "v": {
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 22.78
+      }
+    },
+    {
+      "t": 1792587022000,
+      "v": {
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 24.42
+      }
+    },
+    {
+      "t": 1792587023000,
+      "v": {
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 21.54
+      }
+    },
+    {
+      "t": 1792587024000,
+      "v": {
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 28.96
+      }
+    },
+    {
+      "t": 1792587025000,
+      "v": {
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 19.79
+      }
+    },
+    {
+      "t": 1792587026000,
+      "v": {
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 32.85
+      }
+    },
+    {
+      "t": 1792587027000,
+      "v": {
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 24.66
+      }
+    },
+    {
+      "t": 1792587028000,
+      "v": {
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 13.63
+      }
+    },
+    {
+      "t": 1792587029000,
+      "v": {
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 28.66
+      }
+    },
+    {
+      "t": 1792587030000,
+      "v": {
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 17.79
+      }
+    },
+    {
+      "t": 1792587031000,
+      "v": {
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 6.72
+      }
+    },
+    {
+      "t": 1792587032000,
+      "v": {
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 20.72
+      }
+    }
+  ],
+  "topSQL": [
+    {
+      "query": "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b",
+      "cpuSec": 971.54,
+      "pct": 100,
+      "byClass": {
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 971.54
+      }
+    },
+    {
+      "query": "(unset)",
+      "cpuSec": 0.01,
+      "pct": 0,
+      "byClass": {
+        "(unset)": 0.01
+      }
+    },
+    {
+      "query": "select @@version_comment limit 1",
+      "cpuSec": 0,
+      "pct": 0,
+      "byClass": {
+        "select @@version_comment limit 1": 0
+      }
+    }
+  ],
+  "connClasses": [
+    "query",
+    "idle",
+    "other"
+  ],
+  "conns": [
+    {
+      "t": 1792586933000,
+      "v": {}
+    },
+    {
+      "t": 1792586934000,
+      "v": {}
+    },
+    {
+      "t": 1792586935000,
+      "v": {}
+    },
+    {
+      "t": 1792586936000,
+      "v": {}
+    },
+    {
+      "t": 1792586937000,
+      "v": {}
+    },
+    {
+      "t": 1792586938000,
+      "v": {}
+    },
+    {
+      "t": 1792586939000,
+      "v": {}
+    },
+    {
+      "t": 1792586940000,
+      "v": {}
+    },
+    {
+      "t": 1792586941000,
+      "v": {}
+    },
+    {
+      "t": 1792586942000,
+      "v": {}
+    },
+    {
+      "t": 1792586943000,
+      "v": {}
+    },
+    {
+      "t": 1792586944000,
+      "v": {}
+    },
+    {
+      "t": 1792586945000,
+      "v": {}
+    },
+    {
+      "t": 1792586946000,
+      "v": {}
+    },
+    {
+      "t": 1792586947000,
+      "v": {}
+    },
+    {
+      "t": 1792586948000,
+      "v": {}
+    },
+    {
+      "t": 1792586949000,
+      "v": {}
+    },
+    {
+      "t": 1792586950000,
+      "v": {}
+    },
+    {
+      "t": 1792586951000,
+      "v": {}
+    },
+    {
+      "t": 1792586952000,
+      "v": {}
+    },
+    {
+      "t": 1792586953000,
+      "v": {}
+    },
+    {
+      "t": 1792586954000,
+      "v": {}
+    },
+    {
+      "t": 1792586955000,
+      "v": {}
+    },
+    {
+      "t": 1792586956000,
+      "v": {}
+    },
+    {
+      "t": 1792586957000,
+      "v": {}
+    },
+    {
+      "t": 1792586958000,
+      "v": {}
+    },
+    {
+      "t": 1792586959000,
+      "v": {}
+    },
+    {
+      "t": 1792586960000,
+      "v": {}
+    },
+    {
+      "t": 1792586961000,
+      "v": {}
+    },
+    {
+      "t": 1792586962000,
+      "v": {}
+    },
+    {
+      "t": 1792586963000,
+      "v": {}
+    },
+    {
+      "t": 1792586964000,
+      "v": {}
+    },
+    {
+      "t": 1792586965000,
+      "v": {}
+    },
+    {
+      "t": 1792586966000,
+      "v": {}
+    },
+    {
+      "t": 1792586967000,
+      "v": {}
+    },
+    {
+      "t": 1792586968000,
+      "v": {}
+    },
+    {
+      "t": 1792586969000,
+      "v": {}
+    },
+    {
+      "t": 1792586970000,
+      "v": {}
+    },
+    {
+      "t": 1792586971000,
+      "v": {}
+    },
+    {
+      "t": 1792586972000,
+      "v": {}
+    },
+    {
+      "t": 1792586973000,
+      "v": {}
+    },
+    {
+      "t": 1792586974000,
+      "v": {}
+    },
+    {
+      "t": 1792586975000,
+      "v": {}
+    },
+    {
+      "t": 1792586976000,
+      "v": {}
+    },
+    {
+      "t": 1792586977000,
+      "v": {}
+    },
+    {
+      "t": 1792586978000,
+      "v": {}
+    },
+    {
+      "t": 1792586979000,
+      "v": {}
+    },
+    {
+      "t": 1792586980000,
+      "v": {}
+    },
+    {
+      "t": 1792586981000,
+      "v": {}
+    },
+    {
+      "t": 1792586982000,
+      "v": {}
+    },
+    {
+      "t": 1792586983000,
+      "v": {}
+    },
+    {
+      "t": 1792586984000,
+      "v": {}
+    },
+    {
+      "t": 1792586985000,
+      "v": {}
+    },
+    {
+      "t": 1792586986000,
+      "v": {}
+    },
+    {
+      "t": 1792586987000,
+      "v": {}
+    },
+    {
+      "t": 1792586988000,
+      "v": {}
+    },
+    {
+      "t": 1792586989000,
+      "v": {}
+    },
+    {
+      "t": 1792586990000,
+      "v": {}
+    },
+    {
+      "t": 1792586991000,
+      "v": {}
+    },
+    {
+      "t": 1792586992000,
+      "v": {}
+    },
+    {
+      "t": 1792586993000,
+      "v": {}
+    },
+    {
+      "t": 1792586994000,
+      "v": {
+        "idle": 8,
+        "query": 17
+      }
+    },
+    {
+      "t": 1792586995000,
+      "v": {
+        "idle": 8,
+        "query": 18
+      }
+    },
+    {
+      "t": 1792586996000,
+      "v": {
+        "idle": 8,
+        "query": 19
+      }
+    },
+    {
+      "t": 1792586997000,
+      "v": {
+        "idle": 8,
+        "query": 18
+      }
+    },
+    {
+      "t": 1792586998000,
+      "v": {
+        "idle": 8,
+        "query": 18
+      }
+    },
+    {
+      "t": 1792586999000,
+      "v": {
+        "idle": 8,
+        "query": 18
+      }
+    },
+    {
+      "t": 1792587000000,
+      "v": {
+        "idle": 9,
+        "query": 15
+      }
+    },
+    {
+      "t": 1792587001000,
+      "v": {
+        "idle": 8,
+        "query": 15
+      }
+    },
+    {
+      "t": 1792587002000,
+      "v": {
+        "idle": 9,
+        "query": 14
+      }
+    },
+    {
+      "t": 1792587003000,
+      "v": {
+        "idle": 11,
+        "query": 12
+      }
+    },
+    {
+      "t": 1792587004000,
+      "v": {
+        "idle": 8,
+        "query": 15
+      }
+    },
+    {
+      "t": 1792587005000,
+      "v": {
+        "idle": 8,
+        "query": 15
+      }
+    },
+    {
+      "t": 1792587006000,
+      "v": {
+        "idle": 10,
+        "query": 13
+      }
+    },
+    {
+      "t": 1792587007000,
+      "v": {
+        "idle": 8,
+        "query": 15
+      }
+    },
+    {
+      "t": 1792587008000,
+      "v": {
+        "idle": 8,
+        "query": 15
+      }
+    },
+    {
+      "t": 1792587009000,
+      "v": {
+        "idle": 8,
+        "query": 15
+      }
+    },
+    {
+      "t": 1792587010000,
+      "v": {
+        "idle": 8,
+        "query": 16
+      }
+    },
+    {
+      "t": 1792587011000,
+      "v": {
+        "idle": 8,
+        "query": 15
+      }
+    },
+    {
+      "t": 1792587012000,
+      "v": {
+        "idle": 8,
+        "query": 16
+      }
+    },
+    {
+      "t": 1792587013000,
+      "v": {
+        "idle": 8,
+        "query": 16
+      }
+    },
+    {
+      "t": 1792587014000,
+      "v": {
+        "idle": 8,
+        "query": 15
+      }
+    },
+    {
+      "t": 1792587015000,
+      "v": {
+        "idle": 8,
+        "query": 15
+      }
+    },
+    {
+      "t": 1792587016000,
+      "v": {
+        "idle": 8,
+        "query": 15
+      }
+    },
+    {
+      "t": 1792587017000,
+      "v": {
+        "idle": 12,
+        "query": 11
+      }
+    },
+    {
+      "t": 1792587018000,
+      "v": {
+        "idle": 9,
+        "query": 14
+      }
+    },
+    {
+      "t": 1792587019000,
+      "v": {
+        "idle": 8,
+        "query": 15
+      }
+    },
+    {
+      "t": 1792587020000,
+      "v": {
+        "idle": 8,
+        "query": 15
+      }
+    },
+    {
+      "t": 1792587021000,
+      "v": {
+        "idle": 9,
+        "query": 14
+      }
+    },
+    {
+      "t": 1792587022000,
+      "v": {
+        "idle": 8,
+        "query": 15
+      }
+    },
+    {
+      "t": 1792587023000,
+      "v": {
+        "idle": 9,
+        "query": 14
+      }
+    },
+    {
+      "t": 1792587024000,
+      "v": {
+        "idle": 8,
+        "query": 15
+      }
+    },
+    {
+      "t": 1792587025000,
+      "v": {
+        "idle": 8,
+        "query": 14
+      }
+    },
+    {
+      "t": 1792587026000,
+      "v": {
+        "idle": 8,
+        "query": 15
+      }
+    },
+    {
+      "t": 1792587027000,
+      "v": {
+        "idle": 8,
+        "query": 15
+      }
+    },
+    {
+      "t": 1792587028000,
+      "v": {
+        "idle": 8,
+        "query": 14
+      }
+    },
+    {
+      "t": 1792587029000,
+      "v": {
+        "idle": 9,
+        "query": 14
+      }
+    },
+    {
+      "t": 1792587030000,
+      "v": {
+        "idle": 8,
+        "query": 15
+      }
+    },
+    {
+      "t": 1792587031000,
+      "v": {
+        "idle": 10,
+        "query": 12
+      }
+    },
+    {
+      "t": 1792587032000,
+      "v": {
+        "idle": 8,
+        "query": 15
+      }
+    }
+  ]
+}
