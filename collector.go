@@ -198,42 +198,6 @@ func parseSRVersion(raw string) (srVersion, error) {
 	return v, nil
 }
 
-// session is one connection, as seen in SHOW PROCESSLIST.
-type session struct {
-	ID      string `json:"id"`
-	User    string `json:"user"`
-	Host    string `json:"host"`
-	Db      string `json:"db"`
-	Command string `json:"command"`
-	State   string `json:"state"`
-	Info    string `json:"info"`
-	Pending bool   `json:"pending"`
-	Catalog string `json:"catalog"`
-}
-
-// collectSessions reads the current connections.
-func collectSessions(db *sql.DB) ([]session, error) {
-	res, err := queryRows(db, sqlProcesslist)
-	if err != nil {
-		return nil, err
-	}
-	out := make([]session, 0, len(res.rows))
-	for i := range res.rows {
-		out = append(out, session{
-			ID:      strings.TrimSpace(res.value(i, "Id")),
-			User:    res.value(i, "User"),
-			Host:    res.value(i, "Host"),
-			Db:      res.value(i, "Db"),
-			Command: res.value(i, "Command"),
-			State:   res.value(i, "State"),
-			Info:    collapseStatement(res.value(i, "Info")),
-			Pending: strings.EqualFold(res.value(i, "IsPending"), "true"),
-			Catalog: res.value(i, "Catalog"),
-		})
-	}
-	return out, nil
-}
-
 // queryRow is one running query, as seen in SHOW PROC '/current_queries'.
 type queryRow struct {
 	queryID       string

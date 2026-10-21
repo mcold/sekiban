@@ -53,12 +53,13 @@ let editingIndex = null;
 // screen is the app's home, and a predictable start beats a sticky one. The
 // ?screen= override exists for the screenshot harness, which needs to open a
 // given screen headlessly; the app itself navigates with no query string.
-const SCREENS = ["dashboard", "connections"];
+const SCREENS = ["dashboard", "sessions", "connections"];
 let screen = new URLSearchParams(location.search).get("screen") || "dashboard";
 if (!SCREENS.includes(screen)) screen = "dashboard";
 
 const NAV_ICONS = {
   dashboard: "speedometer",
+  sessions: "activity",
   connections: "gear",
 };
 
@@ -68,6 +69,7 @@ let navCollapsed = localStorage.getItem(NAV_COLLAPSED_KEY) === "1";
 function goTo(name) {
   screen = name;
   render();
+  if (name === "sessions") loadSessions();
 }
 
 const WINDOW_KEY = "sr-dash.window";
@@ -203,7 +205,7 @@ async function connectToIndex(index) {
 }
 
 function render() {
-  const sections = ["setup", "list", "dashboard"];
+  const sections = ["setup", "list", "dashboard", "sessions"];
   const hideAll = () => sections.forEach((id) => { el(id).hidden = true; });
 
   el("config-error-box").hidden = !state.error;
@@ -733,6 +735,109 @@ el("slice-by").addEventListener("change", () => {
   refreshDashboard();
 });
 
+// --- Sessions screen ---
+
+let sessions = null;
+// sessConfirming is the connection id whose kill is waiting for a
+// confirmation.
+let sessConfirming = null;
+
+async function loadSessions() {
+  el("sess-status").textContent = "Loading sessions...";
+  try {
+    sessions = await window.sessionList();
+  } catch (err) {
+    el("sess-status").textContent = String(err);
+    return;
+  }
+  renderSessions();
+}
+
+function renderSessions() {
+  if (!sessions) return;
+  el("sess-status").textContent = sessions.error || "";
+
+  const box = el("sess-list");
+  box.replaceChildren();
+
+  let rows = (sessions.rows || []).slice();
+  if (el("sess-active-only").checked) {
+    rows = rows.filter((s) => s.command === "Query");
+  }
+  // The busiest first: a session that has been running the longest is the
+  // one worth looking at.
+  rows.sort((a, b) => (b.seconds || 0) - (a.seconds || 0));
+
+  for (const s of rows) {
+    box.append(renderSession(s));
+  }
+  if (rows.length === 0) {
+    const note = document.createElement("p");
+    note.className = "hint";
+    note.textContent = "No sessions on this frontend.";
+    box.append(note);
+  }
+}
+
+function renderSession(s) {
+  const cell = document.createElement("div");
+  cell.className = "cell";
+
+  const head = document.createElement("div");
+  head.className = "conn-title";
+  head.textContent = s.user + " · " + s.id;
+
+  const meta = document.createElement("div");
+  meta.className = "hint";
+  meta.textContent = [s.host, s.db ? "db " + s.db : "", s.command,
+    s.seconds + "s", s.state].filter(Boolean).join(" · ");
+
+  const info = document.createElement("div");
+  info.className = "sql-text";
+  info.textContent = s.info || "(no statement)";
+
+  cell.append(head, meta, info);
+
+  if (sessConfirming === s.id) {
+    // The exact statement, before it runs.
+    const stmt = document.createElement("div");
+    stmt.className = "sql-text";
+    stmt.textContent = "KILL " + s.id;
+    const act = button("Confirm kill", () => runKill(s));
+    act.classList.add("destructive");
+    cell.append(stmt, buttonRow(
+      button("Back", () => {
+        sessConfirming = null;
+        renderSessions();
+      }),
+      act,
+    ));
+    return cell;
+  }
+
+  const kill = button("Kill connection...", () => {
+    sessConfirming = s.id;
+    renderSessions();
+  });
+  kill.classList.add("destructive");
+  cell.append(buttonRow(kill));
+  return cell;
+}
+
+async function runKill(s) {
+  sessConfirming = null;
+  try {
+    await window.killSession(Number(s.id));
+  } catch (err) {
+    el("sess-status").textContent = String(err);
+    return;
+  }
+  loadSessions();
+}
+
+el("sess-refresh").addEventListener("click", loadSessions);
+el("sess-active-only").addEventListener("change", renderSessions);
+
 // --- Sidebar ---
 
 for (const b of document.querySelectorAll(".nav-item[data-screen]")) {
@@ -766,6 +871,7 @@ function applyNarrow() {
 
 NARROW.addEventListener("change", applyNarrow);
 
+el("sess-refresh").prepend(icon("arrow-clockwise"));
 el("test").prepend(icon("plug"));
 el("add").prepend(icon("plus-lg"));
 el("delete").prepend(icon("trash"));

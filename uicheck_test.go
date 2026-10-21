@@ -15,6 +15,7 @@ package main
 // the only path the WebView has back into Go on Linux.
 
 import (
+	"context"
 	"fmt"
 	"os"
 	"strings"
@@ -75,6 +76,12 @@ func TestInterface(t *testing.T) {
 		mu.Unlock()
 		return nil
 	})
+	mustBind(w, "sessionList", func() (sessionsOut, error) {
+		return collectSessionsList(context.Background(), dsn)
+	})
+	// The kill is a no-op here: a smoke test has no business ending
+	// somebody's connection.
+	mustBind(w, "killSession", func(int) error { return nil })
 	for _, name := range []string{"connectTo", "disconnect", "makeDefault",
 		"addConnection", "updateConnection", "deleteConnection"} {
 		mustBind(w, name, func() (uiState, error) { return uiState{}, nil })
@@ -88,6 +95,11 @@ func TestInterface(t *testing.T) {
 
 	go func() {
 		time.Sleep(9 * time.Second)
+		// The Sessions screen, read back the same way.
+		w.Dispatch(func() {
+			w.Eval(`goTo("sessions"); loadSessions();`)
+		})
+		time.Sleep(2 * time.Second)
 		// Ask the live page what it drew. The diagnostic is JSON, so the
 		// assertions below can read it without parsing prose.
 		w.Dispatch(func() {
@@ -97,8 +109,17 @@ func TestInterface(t *testing.T) {
 				chartWidth: document.getElementById("chart").width,
 				chartHeight: document.getElementById("chart").height,
 				status: document.getElementById("dash-status").textContent,
-				connLegend: Array.from(document.querySelectorAll("#conns-legend .legend-item")).map(e => e.textContent),
+				panels: Array.from(document.querySelectorAll("#counters .counter-panel")).map(e => e.querySelector("h3").textContent),
+				counterLegends: Array.from(document.querySelectorAll("#counters .mini-legend")).map(e => e.textContent),
 				title: document.getElementById("dash-title").textContent,
+			}));`)
+		})
+		time.Sleep(2 * time.Second)
+		w.Dispatch(func() {
+			w.Eval(`window.logError("UICHECKSESS " + JSON.stringify({
+				sessions: document.querySelectorAll("#sess-list .cell").length,
+				first: (document.querySelector("#sess-list .cell") || {}).textContent,
+				status: document.getElementById("sess-status").textContent,
 			}));`)
 		})
 		time.Sleep(2 * time.Second)
@@ -109,14 +130,21 @@ func TestInterface(t *testing.T) {
 
 	mu.Lock()
 	defer mu.Unlock()
-	var diag string
+	var diag, sessDiag string
 	for _, m := range messages {
-		if strings.HasPrefix(m, "UICHECK ") {
+		switch {
+		case strings.HasPrefix(m, "UICHECK "):
 			diag = m
+		case strings.HasPrefix(m, "UICHECKSESS "):
+			sessDiag = m
 		}
 	}
 	if diag == "" {
 		t.Fatalf("the page sent no diagnostic; messages: %v", messages)
 	}
 	fmt.Println(diag)
+	if sessDiag == "" {
+		t.Fatalf("the Sessions screen sent no diagnostic; messages: %v", messages)
+	}
+	fmt.Println(sessDiag)
 }

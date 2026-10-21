@@ -36,6 +36,7 @@ function shiftToNow(buckets) {
 // no captured screenshot shows this screen, so nothing published depends on it.
 const MOCK = {
   active: 0,
+  killed: 0,
   connections: [
     { title: "analytics", dsn: "root:...@tcp(fe.internal:9030)/analytics", feHttp: "http://fe.internal:8030" },
     { title: "staging", dsn: "root:...@tcp(stage.internal:9030)/app", feHttp: "http://stage.internal:8030" },
@@ -57,6 +58,12 @@ window.dashboardState = async (_win, sliceBy, topBy) => {
   d.sliceBy = sliceBy || d.sliceBy;
   d.topBy = topBy || d.topBy;
   return d;
+};
+
+window.sessionList = async () => recorded("sessions");
+window.killSession = async (id) => {
+  MOCK.killed = id;
+  return {};
 };
 
 window.connectTo = async (index) => {

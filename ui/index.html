@@ -19,6 +19,7 @@
       <span class="dot"></span><span id="attached-name"></span>
     </div>
     <button type="button" class="nav-item" data-screen="dashboard">Dashboard</button>
+    <button type="button" class="nav-item" data-screen="sessions">Sessions</button>
     <button type="button" class="nav-item" data-screen="connections">Connections</button>
   </nav>
 
@@ -112,6 +113,24 @@
       <button type="button" class="tab" data-top="warehouses">Warehouse</button>
     </div>
     <div id="topsql"></div>
+  </section>
+
+  <section id="sessions" hidden>
+    <div class="dash-header">
+      <h2>Sessions</h2>
+      <div class="buttons dash-actions">
+        <label class="slice-label">
+          <input type="checkbox" id="sess-active-only"> Running only
+        </label>
+        <button type="button" id="sess-refresh">Refresh</button>
+      </div>
+    </div>
+    <p id="sess-status" class="hint" aria-live="polite"></p>
+    <p class="hint">Every client session on the frontend, the busiest first.
+      StarRocks has one way to stop a session and not another: KILL ends the
+      connection, and the query running on it goes with it. The exact
+      statement is shown before it runs.</p>
+    <div id="sess-list"></div>
   </section>
 
   <section id="list" hidden>

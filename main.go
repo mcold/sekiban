@@ -113,7 +113,7 @@ func runJSON(cfg Config, configErr string, args []string) {
 		if len(cfg.Connections) == 0 {
 			fail("no connections configured")
 		}
-		out, err := collectSessionsJSON(context.Background(), cfg.Connections[0].DSN)
+		out, err := collectSessionsList(context.Background(), cfg.Connections[0].DSN)
 		if err != nil {
 			_ = enc.Encode(map[string]string{"error": err.Error()})
 			os.Exit(1)
@@ -128,28 +128,6 @@ func runJSON(cfg Config, configErr string, args []string) {
 		})
 		os.Exit(1)
 	}
-}
-
-// sessionsOut is the session list, for the CLI and, later, the Sessions
-// screen.
-type sessionsOut struct {
-	Error string    `json:"error,omitempty"`
-	Rows  []session `json:"rows"`
-}
-
-// collectSessionsJSON opens a connection, reads the sessions, and closes it.
-func collectSessionsJSON(ctx context.Context, dsn string) (sessionsOut, error) {
-	db, err := openSR(dsn)
-	if err != nil {
-		return sessionsOut{Error: err.Error()}, err
-	}
-	defer func() { _ = db.Close() }()
-
-	rows, err := collectSessions(db)
-	if err != nil {
-		return sessionsOut{Error: err.Error()}, err
-	}
-	return sessionsOut{Rows: rows}, nil
 }
 
 // uiState is what the page needs to render: where the config lives, what it
@@ -213,6 +191,20 @@ func runGUI(cfg Config, configErr string) {
 			return Connection{}, false
 		}
 		return cfg.Connections[activeIndex], true
+	}
+
+	// activeDSN is the connection string of the attached database. Every
+	// collector reaches the server through it, so no screen can read a
+	// database other than the one named in the sidebar.
+	activeDSN := func() (string, error) {
+		conn, ok := activeConn()
+		if !ok {
+			if len(cfg.Connections) == 0 {
+				return "", errors.New("no connections configured")
+			}
+			return "", errors.New("not connected")
+		}
+		return conn.DSN, nil
 	}
 
 	// ensureSampler keeps one sampler alive for the active connection and
@@ -325,6 +317,34 @@ func runGUI(cfg Config, configErr string) {
 		out.Title = conn.Title
 		out.DSN = conn.MaskedDSN
 		return out, nil
+	})
+
+	mustBind(w, "sessionList", func() (sessionsOut, error) {
+		mu.Lock()
+		dsn, err := activeDSN()
+		mu.Unlock()
+		if err != nil {
+			return sessionsOut{Error: err.Error()}, nil
+		}
+		out, err := collectSessionsList(context.Background(), dsn)
+		if err != nil {
+			return sessionsOut{Error: err.Error()}, nil
+		}
+		return out, nil
+	})
+
+	// killSession ends a connection on the attached database. It is the one
+	// destructive action of the Sessions screen, and the page shows the
+	// exact statement before it runs.
+	mustBind(w, "killSession", func(id int) error {
+		mu.Lock()
+		dsn, err := activeDSN()
+		mu.Unlock()
+		if err != nil {
+			return err
+		}
+		debugf("event=session_killed id=%d", id)
+		return killSession(dsn, int64(id))
 	})
 
 	mustBind(w, "testConnection", func(dsn string) (testResult, error) {
