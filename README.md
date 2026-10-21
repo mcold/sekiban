@@ -37,6 +37,16 @@ it.
 The metric views cost about 26ms each, so they are read every ten seconds
 and the values are carried in between.
 
+**Browser**, the objects of the connected database, and their catalog:
+the table model, the primary key, the partition column, the distribution,
+the sort key and the properties. Double-click an object to open it in its
+own window, where its definition and a console to read and edit it live.
+
+**Query editor**, in that object window. Only a primary key table accepts
+an update, so only a primary key table's grid can be edited; on every other
+kind the grid is read-only and says why. The exact UPDATE is shown before
+it runs.
+
 ## What it does not show, and why
 
 keikiban's Indexes, Locks, Migrations and Maintenance screens have no

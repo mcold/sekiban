@@ -21,6 +21,7 @@
     <button type="button" class="nav-item" data-screen="dashboard">Dashboard</button>
     <button type="button" class="nav-item" data-screen="sessions">Sessions</button>
     <button type="button" class="nav-item" data-screen="cluster">Cluster</button>
+    <button type="button" class="nav-item" data-screen="browser">Browser</button>
     <button type="button" class="nav-item" data-screen="connections">Connections</button>
   </nav>
 
@@ -149,6 +150,19 @@
 
     <h3>Backends <span class="hint">the ones that do the work</span></h3>
     <div id="cluster-backends"></div>
+  </section>
+
+  <section id="browser" hidden>
+    <div class="dash-header">
+      <h2>Browser</h2>
+      <div class="buttons dash-actions">
+        <button type="button" id="br-refresh">Refresh</button>
+      </div>
+    </div>
+    <p id="br-status" class="hint" aria-live="polite"></p>
+    <p class="hint">Double-click an object to open it in its own window, so
+      several can stay open side by side.</p>
+    <div id="br-tree" aria-label="Database objects"></div>
   </section>
 
   <section id="list" hidden>

@@ -54,30 +54,18 @@ func (r *result) value(row int, name string) string {
 
 // queryRows runs a query and reads the whole result set.
 func queryRows(db *sql.DB, query string) (*result, error) {
-	rows, err := db.Query(query) // #nosec G202 -- the queries are constants, never user input
+	return queryRowsArgs(db, query)
+}
+
+// queryRowsArgs runs a query with parameters and reads the whole result
+// set. The parameters are bound, never interpolated: they come from the
+// connection and from the page.
+func queryRowsArgs(db *sql.DB, query string, args ...any) (*result, error) {
+	rows, err := db.Query(query, args...) // #nosec G202 -- the queries are constants, the arguments are bound
 	if err != nil {
 		return nil, err
 	}
-	defer func() { _ = rows.Close() }()
-
-	cols, err := rows.Columns()
-	if err != nil {
-		return nil, err
-	}
-
-	out := &result{cols: cols}
-	for rows.Next() {
-		vals := make([]sql.NullString, len(cols))
-		ptrs := make([]any, len(cols))
-		for i := range vals {
-			ptrs[i] = &vals[i]
-		}
-		if err := rows.Scan(ptrs...); err != nil {
-			return nil, err
-		}
-		out.rows = append(out.rows, vals)
-	}
-	return out, rows.Err()
+	return scanResult(rows)
 }
 
 // openSR opens a connection to a StarRocks frontend and checks that the
@@ -93,6 +81,15 @@ func openSR(dsn string) (*sql.DB, error) {
 	}
 	cfg.Timeout = connectTimeout
 	cfg.ReadTimeout = sampleTimeout
+	// StarRocks does not support the prepared statement protocol for
+	// writes: an UPDATE sent that way is refused with "This command is not
+	// supported in the prepared statement protocol yet". The driver
+	// interpolates the parameters into the statement instead, and it
+	// refuses to do so for the multi-byte collations where that would be
+	// unsafe, so the DSN is rejected rather than silently mangled.
+	if _, stated := cfg.Params["interpolateParams"]; !stated {
+		cfg.InterpolateParams = true
+	}
 
 	db, err := sql.Open("mysql", cfg.FormatDSN())
 	if err != nil {

@@ -53,7 +53,7 @@ let editingIndex = null;
 // screen is the app's home, and a predictable start beats a sticky one. The
 // ?screen= override exists for the screenshot harness, which needs to open a
 // given screen headlessly; the app itself navigates with no query string.
-const SCREENS = ["dashboard", "sessions", "cluster", "connections"];
+const SCREENS = ["dashboard", "sessions", "cluster", "browser", "connections"];
 let screen = new URLSearchParams(location.search).get("screen") || "dashboard";
 if (!SCREENS.includes(screen)) screen = "dashboard";
 
@@ -61,6 +61,7 @@ const NAV_ICONS = {
   dashboard: "speedometer",
   sessions: "activity",
   cluster: "diagram",
+  browser: "table",
   connections: "gear",
 };
 
@@ -72,6 +73,7 @@ function goTo(name) {
   render();
   if (name === "sessions") loadSessions();
   if (name === "cluster") loadCluster();
+  if (name === "browser") loadBrowser();
 }
 
 const WINDOW_KEY = "sr-dash.window";
@@ -207,7 +209,7 @@ async function connectToIndex(index) {
 }
 
 function render() {
-  const sections = ["setup", "list", "dashboard", "sessions", "cluster"];
+  const sections = ["setup", "list", "dashboard", "sessions", "cluster", "browser"];
   const hideAll = () => sections.forEach((id) => { el(id).hidden = true; });
 
   el("config-error-box").hidden = !state.error;
@@ -952,6 +954,91 @@ function bytes(n) {
 }
 
 el("cluster-refresh").addEventListener("click", loadCluster);
+
+// --- Browser screen ---
+
+let browser = null;
+
+async function loadBrowser() {
+  el("br-status").textContent = "Reading the catalog...";
+  try {
+    browser = await window.browserTree();
+  } catch (err) {
+    el("br-status").textContent = String(err);
+    return;
+  }
+  renderBrowser();
+}
+
+function renderBrowser() {
+  if (!browser) return;
+  el("br-status").textContent = browser.error || "";
+
+  const box = el("br-tree");
+  box.replaceChildren();
+  if (browser.error) return;
+
+  const db = document.createElement("div");
+  db.className = "br-db";
+  db.textContent = browser.database;
+  box.append(db);
+
+  for (const group of browser.groups || []) {
+    const head = document.createElement("div");
+    head.className = "br-group";
+    head.textContent = group.label + " (" + group.objects.length + ")";
+    box.append(head);
+
+    if (group.objects.length === 0) {
+      const none = document.createElement("div");
+      none.className = "hint br-empty";
+      none.textContent = "none";
+      box.append(none);
+      continue;
+    }
+    for (const obj of group.objects) {
+      box.append(browserNode(group, obj));
+    }
+  }
+}
+
+function browserNode(group, obj) {
+  const row = document.createElement("div");
+  row.className = "br-node";
+
+  const name = document.createElement("button");
+  name.type = "button";
+  name.className = "br-name";
+  name.textContent = obj.name;
+  name.title = "Open " + obj.name + " in its own window";
+  const open = async () => {
+    try {
+      await window.openObject(obj.name);
+    } catch (err) {
+      el("br-status").textContent = String(err);
+    }
+  };
+  name.addEventListener("click", open);
+  name.addEventListener("dblclick", open);
+
+  const badge = document.createElement("span");
+  badge.className = "br-badge";
+  badge.textContent = obj.model || group.label.replace(/s$/, "");
+
+  const size = document.createElement("span");
+  size.className = "br-size";
+  if (obj.rows > 0) {
+    size.textContent = obj.rows.toLocaleString() + " rows";
+  }
+  if (obj.size > 0) {
+    size.textContent += (size.textContent ? " · " : "") + bytes(obj.size);
+  }
+
+  row.append(name, badge, size);
+  return row;
+}
+
+el("br-refresh").addEventListener("click", loadBrowser);
 
 // --- Sidebar ---
 

@@ -17,6 +17,7 @@ package main
 import (
 	"context"
 	"fmt"
+	"io"
 	"os"
 	"strings"
 	"sync"
@@ -35,6 +36,16 @@ func TestInterface(t *testing.T) {
 	debugMode = true
 	var mu sync.Mutex
 	var messages []string
+
+	// The object window reports through the same stderr the app's debug
+	// lines go to, so the diagnostic is captured there.
+	stderrR, stderrW, err := os.Pipe()
+	if err != nil {
+		t.Fatalf("pipe: %v", err)
+	}
+	oldStderr := os.Stderr
+	os.Stderr = stderrW
+	defer func() { os.Stderr = oldStderr }()
 
 	// One sampler for the whole test: the window polls it every couple of
 	// seconds, and a fresh one per call would never hold any history.
@@ -74,6 +85,23 @@ func TestInterface(t *testing.T) {
 		mu.Lock()
 		messages = append(messages, msg)
 		mu.Unlock()
+		return nil
+	})
+	mustBind(w, "browserTree", func() (browserTreeOut, error) {
+		db, err := openSR(dsn)
+		if err != nil {
+			return browserTreeOut{Error: err.Error()}, nil
+		}
+		defer func() { _ = db.Close() }()
+		return collectBrowserTree(db), nil
+	})
+	var objectWindow glaze.WebView
+	mustBind(w, "openObject", func(name string) error {
+		// On the UI thread: GTK is not thread-safe, and a bind callback
+		// runs on a goroutine of its own.
+		w.Dispatch(func() {
+			objectWindow = openObjectWindow(name, func() (string, error) { return dsn, nil })
+		})
 		return nil
 	})
 	mustBind(w, "clusterState", func() (clusterOut, error) {
@@ -136,6 +164,35 @@ func TestInterface(t *testing.T) {
 		})
 		time.Sleep(2 * time.Second)
 		w.Dispatch(func() {
+			w.Eval(`goTo("browser"); loadBrowser();`)
+		})
+		time.Sleep(2 * time.Second)
+		w.Dispatch(func() {
+			w.Eval(`window.logError("UICHECKBR " + JSON.stringify({
+				groups: Array.from(document.querySelectorAll("#br-tree .br-group")).map(e => e.textContent),
+				nodes: document.querySelectorAll("#br-tree .br-node").length,
+				first: (document.querySelector("#br-tree .br-node") || {}).textContent,
+				db: (document.querySelector("#br-tree .br-db") || {}).textContent,
+			}));`)
+		})
+		time.Sleep(2 * time.Second)
+		w.Dispatch(func() {
+			w.Eval(`window.openObject("pk_users");`)
+		})
+		time.Sleep(4 * time.Second)
+		// The object window's own DOM, read back through its own channel.
+		if objectWindow != nil {
+			objectWindow.Dispatch(func() {
+				objectWindow.Eval(`window.logError("OBJCHK " + [
+					"title=" + document.getElementById("obj-title").textContent,
+					"cols=" + document.querySelectorAll("#obj-properties tbody tr").length,
+					"ddl=" + (document.querySelector("pre.ddl") || {}).textContent.length,
+					"sql=" + document.getElementById("sql-text").value.length,
+				].join(" "));`)
+			})
+		}
+		time.Sleep(2 * time.Second)
+		w.Dispatch(func() {
 			w.Eval(`window.logError("UICHECKCLU " + JSON.stringify({
 				totals: (document.querySelector("#cluster-totals p") || {}).textContent,
 				feRows: document.querySelectorAll("#cluster-frontends tbody tr").length,
@@ -152,7 +209,7 @@ func TestInterface(t *testing.T) {
 
 	mu.Lock()
 	defer mu.Unlock()
-	var diag, sessDiag, cluDiag string
+	var diag, sessDiag, cluDiag, brDiag string
 	for _, m := range messages {
 		switch {
 		case strings.HasPrefix(m, "UICHECK "):
@@ -161,6 +218,8 @@ func TestInterface(t *testing.T) {
 			sessDiag = m
 		case strings.HasPrefix(m, "UICHECKCLU "):
 			cluDiag = m
+		case strings.HasPrefix(m, "UICHECKBR "):
+			brDiag = m
 		}
 	}
 	if diag == "" {
@@ -175,4 +234,30 @@ func TestInterface(t *testing.T) {
 		t.Fatalf("the Cluster screen sent no diagnostic; messages: %v", messages)
 	}
 	fmt.Println(cluDiag)
+	if brDiag == "" {
+		t.Fatalf("the Browser sent no diagnostic; messages: %v", messages)
+	}
+	fmt.Println(brDiag)
+
+	_ = stderrW.Close()
+	captured, _ := io.ReadAll(stderrR)
+	obj := ""
+	for _, line := range strings.Split(string(captured), "\n") {
+		if i := strings.Index(line, "OBJCHK "); i >= 0 {
+			obj = line[i+len("OBJCHK "):]
+		}
+	}
+	if obj == "" {
+		t.Fatalf("the object window sent no diagnostic; stderr tail: %s",
+			tail(string(captured), 800))
+	}
+	fmt.Println("OBJCHK " + obj)
+}
+
+// tail returns the last n characters of a string, for a failure message.
+func tail(s string, n int) string {
+	if len(s) <= n {
+		return s
+	}
+	return s[len(s)-n:]
 }

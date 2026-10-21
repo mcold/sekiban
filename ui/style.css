@@ -545,3 +545,84 @@
     .warn {
       color: light-dark(#b58900, #ffd54f);
     }
+
+    /* The browser tree. The database is the root: StarRocks has no schema
+       level below it. */
+    .br-db {
+      font-weight: 600;
+      margin: 0.8rem 0 0.4rem;
+    }
+    .br-group {
+      font-size: 0.85rem;
+      opacity: 0.75;
+      margin: 0.7rem 0 0.2rem;
+    }
+    .br-node {
+      display: flex;
+      align-items: baseline;
+      gap: 0.6rem;
+      padding: 0.1rem 0;
+    }
+    .br-name {
+      background: none;
+      border: none;
+      color: inherit;
+      font: inherit;
+      padding: 0;
+      cursor: pointer;
+      text-align: left;
+    }
+    .br-name:hover { text-decoration: underline; }
+    .br-badge {
+      font-size: 0.7rem;
+      opacity: 0.7;
+      border: 1px solid rgba(127, 127, 127, 0.4);
+      border-radius: 0.25rem;
+      padding: 0 0.3rem;
+    }
+    .br-size {
+      font-size: 0.8rem;
+      opacity: 0.7;
+      margin-left: auto;
+    }
+    .br-empty { margin-left: 1rem; }
+
+    /* The object window: the statement, and the grid it produced. */
+    body.object { display: block; }
+    body.object #content { padding: 1rem; }
+    #sql-text {
+      width: 100%;
+      font-family: ui-monospace, monospace;
+      font-size: 0.85rem;
+      padding: 0.5rem;
+      border: 1px solid rgba(127, 127, 127, 0.4);
+      border-radius: 0.3rem;
+      background: Field;
+      color: FieldText;
+      resize: vertical;
+    }
+    pre.ddl {
+      font-family: ui-monospace, monospace;
+      font-size: 0.8rem;
+      background: rgba(127, 127, 127, 0.12);
+      padding: 0.6rem;
+      border-radius: 0.3rem;
+      overflow-x: auto;
+      white-space: pre;
+    }
+    table.grid { width: 100%; }
+    table.grid td { white-space: nowrap; max-width: 22rem; overflow: hidden;
+      text-overflow: ellipsis; }
+    .cell-null { opacity: 0.55; font-style: italic; }
+    .cell-editable { cursor: text; }
+    .cell-editable:hover { background: rgba(127, 127, 127, 0.12); }
+    .cell-changed { background: rgba(255, 193, 7, 0.28); }
+    .cell-edit { display: inline-flex; gap: 0.3rem; }
+    .cell-input { font: inherit; padding: 0.1rem 0.2rem; }
+    .cell-null-btn { font-size: 0.7rem; padding: 0 0.3rem; }
+    .confirm {
+      border: 1px solid rgba(127, 127, 127, 0.5);
+      border-radius: 0.3rem;
+      padding: 0.6rem;
+      margin-bottom: 0.6rem;
+    }

@@ -119,11 +119,34 @@ func runJSON(cfg Config, configErr string, args []string) {
 			os.Exit(1)
 		}
 		_ = enc.Encode(out)
+	case "browser":
+		if len(cfg.Connections) == 0 {
+			fail("no connections configured")
+		}
+		out, err := collectBrowserTreeJSON(context.Background(), cfg.Connections[0].DSN)
+		if err != nil {
+			_ = enc.Encode(map[string]string{"error": err.Error()})
+			os.Exit(1)
+		}
+		_ = enc.Encode(out)
+	case "describe":
+		if len(cfg.Connections) == 0 {
+			fail("no connections configured")
+		}
+		if len(args) < 2 {
+			fail("usage: sr-dash -json describe <name>")
+		}
+		out, err := collectObjectDetailJSON(context.Background(), cfg.Connections[0].DSN, args[1])
+		if err != nil {
+			_ = enc.Encode(map[string]string{"error": err.Error()})
+			os.Exit(1)
+		}
+		_ = enc.Encode(out)
 	default:
 		_ = enc.Encode(map[string]any{
 			"error": fmt.Sprintf("unknown command %q", command),
 			"commands": []string{
-				"connections", "dashboard", "sessions",
+				"browser", "connections", "dashboard", "describe", "sessions",
 			},
 		})
 		os.Exit(1)
@@ -345,6 +368,41 @@ func runGUI(cfg Config, configErr string) {
 		}
 		debugf("event=session_killed id=%d", id)
 		return killSession(dsn, int64(id))
+	})
+
+	mustBind(w, "browserTree", func() (browserTreeOut, error) {
+		mu.Lock()
+		dsn, err := activeDSN()
+		mu.Unlock()
+		if err != nil {
+			return browserTreeOut{Error: err.Error()}, nil
+		}
+		out, err := collectBrowserTreeJSON(context.Background(), dsn)
+		if err != nil {
+			return browserTreeOut{Error: err.Error()}, nil
+		}
+		return out, nil
+	})
+
+	mustBind(w, "openObject", func(name string) error {
+		mu.Lock()
+		dsn, err := activeDSN()
+		mu.Unlock()
+		if err != nil {
+			return err
+		}
+		// The window is created on the UI thread. GTK is not thread-safe,
+		// and a bind callback runs on a goroutine of its own, so building
+		// a window here would crash the process on Linux.
+		w.Dispatch(func() {
+			openObjectWindow(name, func() (string, error) {
+				mu.Lock()
+				defer mu.Unlock()
+				return activeDSN()
+			})
+		})
+		debugf("event=object_window_open name=%s dsn=%s", name, dsn)
+		return nil
 	})
 
 	mustBind(w, "clusterState", func() (clusterOut, error) {

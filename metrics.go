@@ -284,53 +284,6 @@ func collectBEMetrics(db *sql.DB) (beSnapshot, error) {
 	return snap, nil
 }
 
-// backend is one backend, as seen in SHOW PROC '/backends'.
-type backend struct {
-	ID             string
-	IP             string
-	Alive          bool
-	TabletNum      float64
-	CPUCores       float64
-	MemLimit       float64
-	MemUsedPct     float64
-	CPUUsedPct     float64
-	RunningQueries float64
-	UsedPct        float64
-}
-
-// collectBackends reads the backends' resource use.
-func collectBackends(db *sql.DB) ([]backend, error) {
-	res, err := queryRows(db, "SHOW PROC '/backends'")
-	if err != nil {
-		return nil, err
-	}
-	out := make([]backend, 0, len(res.rows))
-	for i := range res.rows {
-		b := backend{
-			ID:             res.value(i, "BackendId"),
-			IP:             res.value(i, "IP"),
-			Alive:          strings.EqualFold(res.value(i, "Alive"), "true"),
-			TabletNum:      numOrZero(res.value(i, "TabletNum")),
-			CPUCores:       numOrZero(res.value(i, "CpuCores")),
-			RunningQueries: numOrZero(res.value(i, "NumRunningQueries")),
-		}
-		if v, ok := humanBytes(res.value(i, "MemLimit")); ok {
-			b.MemLimit = v
-		}
-		if v, ok := parseHuman(res.value(i, "MemUsedPct")); ok {
-			b.MemUsedPct = v.Value
-		}
-		if v, ok := parseHuman(res.value(i, "CpuUsedPct")); ok {
-			b.CPUUsedPct = v.Value
-		}
-		if v, ok := parseHuman(res.value(i, "UsedPct")); ok {
-			b.UsedPct = v.Value
-		}
-		out = append(out, b)
-	}
-	return out, nil
-}
-
 // numOrZero reads a bare number, the kind the server writes for a count.
 func numOrZero(s string) float64 {
 	v, err := strconv.ParseFloat(strings.TrimSpace(s), 64)
