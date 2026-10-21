@@ -20,6 +20,7 @@
     </div>
     <button type="button" class="nav-item" data-screen="dashboard">Dashboard</button>
     <button type="button" class="nav-item" data-screen="sessions">Sessions</button>
+    <button type="button" class="nav-item" data-screen="cluster">Cluster</button>
     <button type="button" class="nav-item" data-screen="connections">Connections</button>
   </nav>
 
@@ -131,6 +132,23 @@
       connection, and the query running on it goes with it. The exact
       statement is shown before it runs.</p>
     <div id="sess-list"></div>
+  </section>
+
+  <section id="cluster" hidden>
+    <div class="dash-header">
+      <h2>Cluster</h2>
+      <div class="buttons dash-actions">
+        <button type="button" id="cluster-refresh">Refresh</button>
+      </div>
+    </div>
+    <p id="cluster-status" class="hint" aria-live="polite"></p>
+    <div id="cluster-totals"></div>
+
+    <h3>Frontends <span class="hint">the one that answers the queries</span></h3>
+    <div id="cluster-frontends"></div>
+
+    <h3>Backends <span class="hint">the ones that do the work</span></h3>
+    <div id="cluster-backends"></div>
   </section>
 
   <section id="list" hidden>

@@ -519,3 +519,29 @@
       margin-left: 0.5rem;
     }
     [hidden] { display: none !important; }
+
+    /* The cluster screen's tables: a header that stays put and rows that
+       read as numbers, right-aligned. */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      margin-top: 0.4rem;
+    }
+    .data-table th, .data-table td {
+      text-align: left;
+      padding: 0.25rem 0.6rem 0.25rem 0;
+      border-bottom: 1px solid rgba(127, 127, 127, 0.25);
+      white-space: nowrap;
+    }
+    .data-table th {
+      font-weight: 600;
+      opacity: 0.8;
+    }
+    .data-table td:nth-child(n+4):nth-child(-n+9) {
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+    .warn {
+      color: light-dark(#b58900, #ffd54f);
+    }

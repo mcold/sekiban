@@ -76,6 +76,14 @@ func TestInterface(t *testing.T) {
 		mu.Unlock()
 		return nil
 	})
+	mustBind(w, "clusterState", func() (clusterOut, error) {
+		db, err := openSR(dsn)
+		if err != nil {
+			return clusterOut{Error: err.Error()}, nil
+		}
+		defer func() { _ = db.Close() }()
+		return collectCluster(db)
+	})
 	mustBind(w, "sessionList", func() (sessionsOut, error) {
 		return collectSessionsList(context.Background(), dsn)
 	})
@@ -123,6 +131,20 @@ func TestInterface(t *testing.T) {
 			}));`)
 		})
 		time.Sleep(2 * time.Second)
+		w.Dispatch(func() {
+			w.Eval(`goTo("cluster"); loadCluster();`)
+		})
+		time.Sleep(2 * time.Second)
+		w.Dispatch(func() {
+			w.Eval(`window.logError("UICHECKCLU " + JSON.stringify({
+				totals: (document.querySelector("#cluster-totals p") || {}).textContent,
+				feRows: document.querySelectorAll("#cluster-frontends tbody tr").length,
+				beRows: document.querySelectorAll("#cluster-backends tbody tr").length,
+				beHead: Array.from(document.querySelectorAll("#cluster-backends th")).map(e => e.textContent),
+				firstBE: (document.querySelector("#cluster-backends tbody tr") || {}).textContent,
+			}));`)
+		})
+		time.Sleep(2 * time.Second)
 		w.Terminate()
 	}()
 
@@ -130,13 +152,15 @@ func TestInterface(t *testing.T) {
 
 	mu.Lock()
 	defer mu.Unlock()
-	var diag, sessDiag string
+	var diag, sessDiag, cluDiag string
 	for _, m := range messages {
 		switch {
 		case strings.HasPrefix(m, "UICHECK "):
 			diag = m
 		case strings.HasPrefix(m, "UICHECKSESS "):
 			sessDiag = m
+		case strings.HasPrefix(m, "UICHECKCLU "):
+			cluDiag = m
 		}
 	}
 	if diag == "" {
@@ -147,4 +171,8 @@ func TestInterface(t *testing.T) {
 		t.Fatalf("the Sessions screen sent no diagnostic; messages: %v", messages)
 	}
 	fmt.Println(sessDiag)
+	if cluDiag == "" {
+		t.Fatalf("the Cluster screen sent no diagnostic; messages: %v", messages)
+	}
+	fmt.Println(cluDiag)
 }

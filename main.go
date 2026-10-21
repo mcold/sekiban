@@ -347,6 +347,25 @@ func runGUI(cfg Config, configErr string) {
 		return killSession(dsn, int64(id))
 	})
 
+	mustBind(w, "clusterState", func() (clusterOut, error) {
+		mu.Lock()
+		dsn, err := activeDSN()
+		mu.Unlock()
+		if err != nil {
+			return clusterOut{Error: err.Error()}, nil
+		}
+		db, err := openSR(dsn)
+		if err != nil {
+			return clusterOut{Error: err.Error()}, nil
+		}
+		defer func() { _ = db.Close() }()
+		out, err := collectCluster(db)
+		if err != nil {
+			return clusterOut{Error: err.Error()}, nil
+		}
+		return out, nil
+	})
+
 	mustBind(w, "testConnection", func(dsn string) (testResult, error) {
 		return testConnection(dsn), nil
 	})

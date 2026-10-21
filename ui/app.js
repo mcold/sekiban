@@ -53,13 +53,14 @@ let editingIndex = null;
 // screen is the app's home, and a predictable start beats a sticky one. The
 // ?screen= override exists for the screenshot harness, which needs to open a
 // given screen headlessly; the app itself navigates with no query string.
-const SCREENS = ["dashboard", "sessions", "connections"];
+const SCREENS = ["dashboard", "sessions", "cluster", "connections"];
 let screen = new URLSearchParams(location.search).get("screen") || "dashboard";
 if (!SCREENS.includes(screen)) screen = "dashboard";
 
 const NAV_ICONS = {
   dashboard: "speedometer",
   sessions: "activity",
+  cluster: "diagram",
   connections: "gear",
 };
 
@@ -70,6 +71,7 @@ function goTo(name) {
   screen = name;
   render();
   if (name === "sessions") loadSessions();
+  if (name === "cluster") loadCluster();
 }
 
 const WINDOW_KEY = "sr-dash.window";
@@ -205,7 +207,7 @@ async function connectToIndex(index) {
 }
 
 function render() {
-  const sections = ["setup", "list", "dashboard", "sessions"];
+  const sections = ["setup", "list", "dashboard", "sessions", "cluster"];
   const hideAll = () => sections.forEach((id) => { el(id).hidden = true; });
 
   el("config-error-box").hidden = !state.error;
@@ -837,6 +839,119 @@ async function runKill(s) {
 
 el("sess-refresh").addEventListener("click", loadSessions);
 el("sess-active-only").addEventListener("change", renderSessions);
+
+// --- Cluster screen ---
+
+let cluster = null;
+
+async function loadCluster() {
+  el("cluster-status").textContent = "Reading the cluster...";
+  try {
+    cluster = await window.clusterState();
+  } catch (err) {
+    el("cluster-status").textContent = String(err);
+    return;
+  }
+  renderCluster();
+}
+
+function renderCluster() {
+  if (!cluster) return;
+  el("cluster-status").textContent = cluster.error || "";
+
+  const totals = el("cluster-totals");
+  totals.replaceChildren();
+  if (!cluster.error) {
+    const s = cluster.stat;
+    const facts = [
+      s.databases + " databases",
+      s.tables + " tables",
+      s.tablets + " tablets",
+      s.replicas + " replicas",
+    ];
+    const unhealthy = s.unhealthy + s.inconsistent + s.cloning + s.errorState;
+    if (unhealthy > 0) {
+      facts.push(s.unhealthy + " unhealthy, " + s.inconsistent + " inconsistent, " +
+        s.cloning + " cloning, " + s.errorState + " in error");
+    }
+    const p = document.createElement("p");
+    p.className = unhealthy > 0 ? "warn" : "hint";
+    p.textContent = facts.join(" · ");
+    totals.append(p);
+  }
+
+  const fes = el("cluster-frontends");
+  fes.replaceChildren();
+  const feHead = ["Id", "Name", "IP", "Role", "Alive", "Journal", "Heartbeat", "Version"];
+  fes.append(dataTable(feHead, (cluster.frontends || []).map((f) => [
+    f.id, f.name, f.ip, f.role, f.alive ? "yes" : "no", f.journalId,
+    f.heartbeat, f.version,
+  ])));
+
+  const bes = el("cluster-backends");
+  bes.replaceChildren();
+  const beHead = ["Id", "IP", "Alive", "Cores", "CPU %", "Memory", "Disk", "Tablets",
+    "Queries", "Heartbeat", "Status"];
+  bes.append(dataTable(beHead, (cluster.backends || []).map((b) => [
+    b.id, b.ip, b.alive ? "yes" : "no", b.cpuCores, b.cpuUsedPct,
+    bytes(b.memLimit) + " · " + b.memUsedPct.toFixed(1) + "%",
+    bytes(b.diskUsed) + " / " + bytes(b.diskTotal) + " · " + b.diskUsedPct.toFixed(1) + "%",
+    b.tabletNum, b.runningQueries, b.heartbeat,
+    b.errMsg ? b.errMsg : (b.statusCode || ""),
+  ])));
+}
+
+// dataTable builds a table from a header and the rows.
+function dataTable(head, rows) {
+  const table = document.createElement("table");
+  table.className = "data-table";
+  const thead = document.createElement("thead");
+  const htr = document.createElement("tr");
+  for (const h of head) {
+    const th = document.createElement("th");
+    th.textContent = h;
+    htr.append(th);
+  }
+  thead.append(htr);
+  table.append(thead);
+
+  const tbody = document.createElement("tbody");
+  for (const row of rows) {
+    const tr = document.createElement("tr");
+    for (const cell of row) {
+      const td = document.createElement("td");
+      td.textContent = cell === null || cell === undefined ? "" : String(cell);
+      tr.append(td);
+    }
+    tbody.append(tr);
+  }
+  table.append(tbody);
+  if (rows.length === 0) {
+    const tr = document.createElement("tr");
+    const td = document.createElement("td");
+    td.colSpan = head.length;
+    td.className = "hint";
+    td.textContent = "Nothing to show.";
+    tr.append(td);
+    tbody.append(tr);
+  }
+  return table;
+}
+
+// bytes formats a byte count the way the server does.
+function bytes(n) {
+  if (!n) return "0 B";
+  const units = ["B", "KB", "MB", "GB", "TB", "PB"];
+  let i = 0;
+  let v = n;
+  while (v >= 1024 && i < units.length - 1) {
+    v /= 1024;
+    i++;
+  }
+  return (i === 0 ? v.toFixed(0) : v.toFixed(2)) + " " + units[i];
+}
+
+el("cluster-refresh").addEventListener("click", loadCluster);
 
 // --- Sidebar ---
 
