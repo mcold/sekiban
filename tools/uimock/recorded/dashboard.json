@@ -1,1067 +1,4285 @@
 {
   "connected": true,
   "status": "sampling",
-  "title": "Local StarRocks",
+  "title": "TEST",
   "dsn": "root@tcp(127.0.0.1:9030)/sr_dash_dev",
   "windowSeconds": 100,
   "bucketSeconds": 1,
-  "samples": 39,
+  "samples": 44,
   "sliceBy": "sql",
   "topBy": "sql",
   "classes": [
     "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b",
-    "(unset)",
-    "select @@version_comment limit 1"
+    "(unset)"
   ],
   "buckets": [
     {
-      "t": 1792586933000,
+      "t": 1792589288000,
       "v": {}
     },
     {
-      "t": 1792586934000,
+      "t": 1792589289000,
       "v": {}
     },
     {
-      "t": 1792586935000,
+      "t": 1792589290000,
       "v": {}
     },
     {
-      "t": 1792586936000,
+      "t": 1792589291000,
       "v": {}
     },
     {
-      "t": 1792586937000,
+      "t": 1792589292000,
       "v": {}
     },
     {
-      "t": 1792586938000,
+      "t": 1792589293000,
       "v": {}
     },
     {
-      "t": 1792586939000,
+      "t": 1792589294000,
       "v": {}
     },
     {
-      "t": 1792586940000,
+      "t": 1792589295000,
       "v": {}
     },
     {
-      "t": 1792586941000,
+      "t": 1792589296000,
       "v": {}
     },
     {
-      "t": 1792586942000,
+      "t": 1792589297000,
       "v": {}
     },
     {
-      "t": 1792586943000,
+      "t": 1792589298000,
       "v": {}
     },
     {
-      "t": 1792586944000,
+      "t": 1792589299000,
       "v": {}
     },
     {
-      "t": 1792586945000,
+      "t": 1792589300000,
       "v": {}
     },
     {
-      "t": 1792586946000,
+      "t": 1792589301000,
       "v": {}
     },
     {
-      "t": 1792586947000,
+      "t": 1792589302000,
       "v": {}
     },
     {
-      "t": 1792586948000,
+      "t": 1792589303000,
       "v": {}
     },
     {
-      "t": 1792586949000,
+      "t": 1792589304000,
       "v": {}
     },
     {
-      "t": 1792586950000,
+      "t": 1792589305000,
       "v": {}
     },
     {
-      "t": 1792586951000,
+      "t": 1792589306000,
       "v": {}
     },
     {
-      "t": 1792586952000,
+      "t": 1792589307000,
       "v": {}
     },
     {
-      "t": 1792586953000,
+      "t": 1792589308000,
       "v": {}
     },
     {
-      "t": 1792586954000,
+      "t": 1792589309000,
       "v": {}
     },
     {
-      "t": 1792586955000,
+      "t": 1792589310000,
       "v": {}
     },
     {
-      "t": 1792586956000,
+      "t": 1792589311000,
       "v": {}
     },
     {
-      "t": 1792586957000,
+      "t": 1792589312000,
       "v": {}
     },
     {
-      "t": 1792586958000,
+      "t": 1792589313000,
       "v": {}
     },
     {
-      "t": 1792586959000,
+      "t": 1792589314000,
       "v": {}
     },
     {
-      "t": 1792586960000,
+      "t": 1792589315000,
       "v": {}
     },
     {
-      "t": 1792586961000,
+      "t": 1792589316000,
       "v": {}
     },
     {
-      "t": 1792586962000,
+      "t": 1792589317000,
       "v": {}
     },
     {
-      "t": 1792586963000,
+      "t": 1792589318000,
       "v": {}
     },
     {
-      "t": 1792586964000,
+      "t": 1792589319000,
       "v": {}
     },
     {
-      "t": 1792586965000,
+      "t": 1792589320000,
       "v": {}
     },
     {
-      "t": 1792586966000,
+      "t": 1792589321000,
       "v": {}
     },
     {
-      "t": 1792586967000,
+      "t": 1792589322000,
       "v": {}
     },
     {
-      "t": 1792586968000,
+      "t": 1792589323000,
       "v": {}
     },
     {
-      "t": 1792586969000,
+      "t": 1792589324000,
       "v": {}
     },
     {
-      "t": 1792586970000,
+      "t": 1792589325000,
       "v": {}
     },
     {
-      "t": 1792586971000,
+      "t": 1792589326000,
       "v": {}
     },
     {
-      "t": 1792586972000,
+      "t": 1792589327000,
       "v": {}
     },
     {
-      "t": 1792586973000,
+      "t": 1792589328000,
       "v": {}
     },
     {
-      "t": 1792586974000,
+      "t": 1792589329000,
       "v": {}
     },
     {
-      "t": 1792586975000,
+      "t": 1792589330000,
       "v": {}
     },
     {
-      "t": 1792586976000,
+      "t": 1792589331000,
       "v": {}
     },
     {
-      "t": 1792586977000,
+      "t": 1792589332000,
       "v": {}
     },
     {
-      "t": 1792586978000,
+      "t": 1792589333000,
       "v": {}
     },
     {
-      "t": 1792586979000,
+      "t": 1792589334000,
       "v": {}
     },
     {
-      "t": 1792586980000,
+      "t": 1792589335000,
       "v": {}
     },
     {
-      "t": 1792586981000,
+      "t": 1792589336000,
       "v": {}
     },
     {
-      "t": 1792586982000,
+      "t": 1792589337000,
       "v": {}
     },
     {
-      "t": 1792586983000,
+      "t": 1792589338000,
       "v": {}
     },
     {
-      "t": 1792586984000,
+      "t": 1792589339000,
       "v": {}
     },
     {
-      "t": 1792586985000,
+      "t": 1792589340000,
       "v": {}
     },
     {
-      "t": 1792586986000,
+      "t": 1792589341000,
       "v": {}
     },
     {
-      "t": 1792586987000,
+      "t": 1792589342000,
       "v": {}
     },
     {
-      "t": 1792586988000,
+      "t": 1792589343000,
       "v": {}
     },
     {
-      "t": 1792586989000,
-      "v": {}
+      "t": 1792589344000,
+      "v": {
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 51.43
+      }
     },
     {
-      "t": 1792586990000,
-      "v": {}
+      "t": 1792589345000,
+      "v": {
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 29.24
+      }
     },
     {
-      "t": 1792586991000,
-      "v": {}
+      "t": 1792589346000,
+      "v": {
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 30.95
+      }
     },
     {
-      "t": 1792586992000,
-      "v": {}
+      "t": 1792589347000,
+      "v": {
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 30.84
+      }
     },
     {
-      "t": 1792586993000,
-      "v": {}
+      "t": 1792589348000,
+      "v": {
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 34.82
+      }
     },
     {
-      "t": 1792586994000,
+      "t": 1792589349000,
+      "v": {
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 25.55
+      }
+    },
+    {
+      "t": 1792589350000,
+      "v": {
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 30.38
+      }
+    },
+    {
+      "t": 1792589351000,
+      "v": {
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 30.22
+      }
+    },
+    {
+      "t": 1792589352000,
+      "v": {
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 33.52
+      }
+    },
+    {
+      "t": 1792589353000,
+      "v": {
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 27.3
+      }
+    },
+    {
+      "t": 1792589354000,
+      "v": {
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 30.76
+      }
+    },
+    {
+      "t": 1792589355000,
+      "v": {
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 29.32
+      }
+    },
+    {
+      "t": 1792589356000,
+      "v": {
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 30.46
+      }
+    },
+    {
+      "t": 1792589357000,
+      "v": {
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 23.05
+      }
+    },
+    {
+      "t": 1792589358000,
+      "v": {
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 34.43
+      }
+    },
+    {
+      "t": 1792589359000,
+      "v": {
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 25.53
+      }
+    },
+    {
+      "t": 1792589360000,
+      "v": {
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 28.79
+      }
+    },
+    {
+      "t": 1792589361000,
+      "v": {
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 29.6
+      }
+    },
+    {
+      "t": 1792589362000,
+      "v": {
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 30.18
+      }
+    },
+    {
+      "t": 1792589363000,
       "v": {
         "(unset)": 0,
-        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 26.82,
-        "select @@version_comment limit 1": 0
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 30.75
       }
     },
     {
-      "t": 1792586995000,
+      "t": 1792589364000,
       "v": {
         "(unset)": 0,
-        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 33.4,
-        "select @@version_comment limit 1": 0
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 10.3
       }
     },
     {
-      "t": 1792586996000,
+      "t": 1792589365000,
+      "v": {
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 23.33
+      }
+    },
+    {
+      "t": 1792589366000,
+      "v": {
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 14.18
+      }
+    },
+    {
+      "t": 1792589367000,
+      "v": {
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 9.78
+      }
+    },
+    {
+      "t": 1792589368000,
+      "v": {
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 1.7
+      }
+    },
+    {
+      "t": 1792589369000,
+      "v": {
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 7.39
+      }
+    },
+    {
+      "t": 1792589370000,
+      "v": {
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 29.54
+      }
+    },
+    {
+      "t": 1792589371000,
+      "v": {
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 31.89
+      }
+    },
+    {
+      "t": 1792589372000,
+      "v": {
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 30.07
+      }
+    },
+    {
+      "t": 1792589373000,
+      "v": {
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 30.28
+      }
+    },
+    {
+      "t": 1792589374000,
+      "v": {
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 30.49
+      }
+    },
+    {
+      "t": 1792589375000,
+      "v": {
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 36.1
+      }
+    },
+    {
+      "t": 1792589376000,
       "v": {
         "(unset)": 0,
-        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 28.63,
-        "select @@version_comment limit 1": 0
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 26.89
       }
     },
     {
-      "t": 1792586997000,
+      "t": 1792589377000,
       "v": {
-        "(unset)": 0,
-        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 28.89,
-        "select @@version_comment limit 1": 0
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 30.45
       }
     },
     {
-      "t": 1792586998000,
+      "t": 1792589378000,
       "v": {
-        "(unset)": 0,
-        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 31.65,
-        "select @@version_comment limit 1": 0
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 28.77
       }
     },
     {
-      "t": 1792586999000,
+      "t": 1792589379000,
       "v": {
-        "(unset)": 0,
-        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 30.55,
-        "select @@version_comment limit 1": 0
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 30.03
       }
     },
     {
-      "t": 1792587000000,
+      "t": 1792589380000,
       "v": {
-        "(unset)": 0,
-        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 30.42,
-        "select @@version_comment limit 1": 0
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 30.9
       }
     },
     {
-      "t": 1792587001000,
+      "t": 1792589381000,
       "v": {
-        "(unset)": 0,
-        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 18.49
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 30.7
       }
     },
     {
-      "t": 1792587002000,
+      "t": 1792589382000,
       "v": {
-        "(unset)": 0,
-        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 16.7
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 31.93
       }
     },
     {
-      "t": 1792587003000,
+      "t": 1792589383000,
       "v": {
-        "(unset)": 0,
-        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 24.72
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 29.24
       }
     },
     {
-      "t": 1792587004000,
+      "t": 1792589384000,
       "v": {
-        "(unset)": 0,
-        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 15.21
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 32.79
       }
     },
     {
-      "t": 1792587005000,
+      "t": 1792589385000,
       "v": {
-        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 10.77
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 29.86
       }
     },
     {
-      "t": 1792587006000,
+      "t": 1792589386000,
       "v": {
-        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 9.57
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 31.81
       }
     },
     {
-      "t": 1792587007000,
+      "t": 1792589387000,
       "v": {
-        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 23.54
-      }
-    },
-    {
-      "t": 1792587008000,
-      "v": {
-        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 19.71
-      }
-    },
-    {
-      "t": 1792587009000,
-      "v": {
-        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 31.62
-      }
-    },
-    {
-      "t": 1792587010000,
-      "v": {
-        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 32.26,
-        "select @@version_comment limit 1": 0
-      }
-    },
-    {
-      "t": 1792587011000,
-      "v": {
-        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 27.47
-      }
-    },
-    {
-      "t": 1792587012000,
-      "v": {
-        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 31.06,
-        "select @@version_comment limit 1": 0
-      }
-    },
-    {
-      "t": 1792587013000,
-      "v": {
-        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 29.22,
-        "select @@version_comment limit 1": 0
-      }
-    },
-    {
-      "t": 1792587014000,
-      "v": {
-        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 34.89
-      }
-    },
-    {
-      "t": 1792587015000,
-      "v": {
-        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 32.91
-      }
-    },
-    {
-      "t": 1792587016000,
-      "v": {
-        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 27.55
-      }
-    },
-    {
-      "t": 1792587017000,
-      "v": {
-        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 29.67
-      }
-    },
-    {
-      "t": 1792587018000,
-      "v": {
-        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 30.48
-      }
-    },
-    {
-      "t": 1792587019000,
-      "v": {
-        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 27.04
-      }
-    },
-    {
-      "t": 1792587020000,
-      "v": {
-        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 25.77
-      }
-    },
-    {
-      "t": 1792587021000,
-      "v": {
-        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 22.78
-      }
-    },
-    {
-      "t": 1792587022000,
-      "v": {
-        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 24.42
-      }
-    },
-    {
-      "t": 1792587023000,
-      "v": {
-        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 21.54
-      }
-    },
-    {
-      "t": 1792587024000,
-      "v": {
-        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 28.96
-      }
-    },
-    {
-      "t": 1792587025000,
-      "v": {
-        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 19.79
-      }
-    },
-    {
-      "t": 1792587026000,
-      "v": {
-        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 32.85
-      }
-    },
-    {
-      "t": 1792587027000,
-      "v": {
-        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 24.66
-      }
-    },
-    {
-      "t": 1792587028000,
-      "v": {
-        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 13.63
-      }
-    },
-    {
-      "t": 1792587029000,
-      "v": {
-        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 28.66
-      }
-    },
-    {
-      "t": 1792587030000,
-      "v": {
-        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 17.79
-      }
-    },
-    {
-      "t": 1792587031000,
-      "v": {
-        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 6.72
-      }
-    },
-    {
-      "t": 1792587032000,
-      "v": {
-        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 20.72
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 30.46
       }
     }
   ],
   "topSQL": [
     {
       "query": "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b",
-      "cpuSec": 971.54,
+      "cpuSec": 1236.01,
       "pct": 100,
       "byClass": {
-        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 971.54
+        "SELECT count(*), sum(a.amount * b.amount) FROM load_events a JOIN load_events b": 1236.01
       }
     },
     {
       "query": "(unset)",
-      "cpuSec": 0.01,
-      "pct": 0,
-      "byClass": {
-        "(unset)": 0.01
-      }
-    },
-    {
-      "query": "select @@version_comment limit 1",
       "cpuSec": 0,
       "pct": 0,
       "byClass": {
-        "select @@version_comment limit 1": 0
+        "(unset)": 0
       }
     }
   ],
-  "connClasses": [
-    "query",
-    "idle",
-    "other"
-  ],
-  "conns": [
-    {
-      "t": 1792586933000,
-      "v": {}
-    },
-    {
-      "t": 1792586934000,
-      "v": {}
-    },
-    {
-      "t": 1792586935000,
-      "v": {}
-    },
-    {
-      "t": 1792586936000,
-      "v": {}
-    },
-    {
-      "t": 1792586937000,
-      "v": {}
-    },
-    {
-      "t": 1792586938000,
-      "v": {}
-    },
-    {
-      "t": 1792586939000,
-      "v": {}
-    },
-    {
-      "t": 1792586940000,
-      "v": {}
-    },
-    {
-      "t": 1792586941000,
-      "v": {}
-    },
-    {
-      "t": 1792586942000,
-      "v": {}
-    },
-    {
-      "t": 1792586943000,
-      "v": {}
-    },
-    {
-      "t": 1792586944000,
-      "v": {}
-    },
-    {
-      "t": 1792586945000,
-      "v": {}
-    },
-    {
-      "t": 1792586946000,
-      "v": {}
-    },
-    {
-      "t": 1792586947000,
-      "v": {}
-    },
-    {
-      "t": 1792586948000,
-      "v": {}
-    },
-    {
-      "t": 1792586949000,
-      "v": {}
-    },
-    {
-      "t": 1792586950000,
-      "v": {}
-    },
-    {
-      "t": 1792586951000,
-      "v": {}
-    },
-    {
-      "t": 1792586952000,
-      "v": {}
-    },
-    {
-      "t": 1792586953000,
-      "v": {}
-    },
-    {
-      "t": 1792586954000,
-      "v": {}
-    },
-    {
-      "t": 1792586955000,
-      "v": {}
-    },
-    {
-      "t": 1792586956000,
-      "v": {}
-    },
-    {
-      "t": 1792586957000,
-      "v": {}
-    },
-    {
-      "t": 1792586958000,
-      "v": {}
-    },
-    {
-      "t": 1792586959000,
-      "v": {}
-    },
-    {
-      "t": 1792586960000,
-      "v": {}
-    },
-    {
-      "t": 1792586961000,
-      "v": {}
-    },
-    {
-      "t": 1792586962000,
-      "v": {}
-    },
-    {
-      "t": 1792586963000,
-      "v": {}
-    },
-    {
-      "t": 1792586964000,
-      "v": {}
-    },
-    {
-      "t": 1792586965000,
-      "v": {}
-    },
-    {
-      "t": 1792586966000,
-      "v": {}
-    },
-    {
-      "t": 1792586967000,
-      "v": {}
-    },
-    {
-      "t": 1792586968000,
-      "v": {}
-    },
-    {
-      "t": 1792586969000,
-      "v": {}
-    },
-    {
-      "t": 1792586970000,
-      "v": {}
-    },
-    {
-      "t": 1792586971000,
-      "v": {}
-    },
-    {
-      "t": 1792586972000,
-      "v": {}
-    },
-    {
-      "t": 1792586973000,
-      "v": {}
-    },
-    {
-      "t": 1792586974000,
-      "v": {}
-    },
-    {
-      "t": 1792586975000,
-      "v": {}
-    },
-    {
-      "t": 1792586976000,
-      "v": {}
-    },
-    {
-      "t": 1792586977000,
-      "v": {}
-    },
-    {
-      "t": 1792586978000,
-      "v": {}
-    },
-    {
-      "t": 1792586979000,
-      "v": {}
-    },
-    {
-      "t": 1792586980000,
-      "v": {}
-    },
-    {
-      "t": 1792586981000,
-      "v": {}
-    },
-    {
-      "t": 1792586982000,
-      "v": {}
-    },
-    {
-      "t": 1792586983000,
-      "v": {}
-    },
-    {
-      "t": 1792586984000,
-      "v": {}
-    },
-    {
-      "t": 1792586985000,
-      "v": {}
-    },
-    {
-      "t": 1792586986000,
-      "v": {}
-    },
-    {
-      "t": 1792586987000,
-      "v": {}
-    },
-    {
-      "t": 1792586988000,
-      "v": {}
-    },
-    {
-      "t": 1792586989000,
-      "v": {}
-    },
-    {
-      "t": 1792586990000,
-      "v": {}
-    },
-    {
-      "t": 1792586991000,
-      "v": {}
-    },
-    {
-      "t": 1792586992000,
-      "v": {}
-    },
-    {
-      "t": 1792586993000,
-      "v": {}
-    },
-    {
-      "t": 1792586994000,
-      "v": {
-        "idle": 8,
-        "query": 17
-      }
-    },
-    {
-      "t": 1792586995000,
-      "v": {
-        "idle": 8,
-        "query": 18
-      }
-    },
-    {
-      "t": 1792586996000,
-      "v": {
-        "idle": 8,
-        "query": 19
-      }
-    },
-    {
-      "t": 1792586997000,
-      "v": {
-        "idle": 8,
-        "query": 18
-      }
-    },
-    {
-      "t": 1792586998000,
-      "v": {
-        "idle": 8,
-        "query": 18
-      }
-    },
-    {
-      "t": 1792586999000,
-      "v": {
-        "idle": 8,
-        "query": 18
-      }
-    },
-    {
-      "t": 1792587000000,
-      "v": {
-        "idle": 9,
-        "query": 15
-      }
-    },
-    {
-      "t": 1792587001000,
-      "v": {
-        "idle": 8,
-        "query": 15
-      }
-    },
-    {
-      "t": 1792587002000,
-      "v": {
-        "idle": 9,
-        "query": 14
-      }
-    },
-    {
-      "t": 1792587003000,
-      "v": {
-        "idle": 11,
-        "query": 12
-      }
-    },
-    {
-      "t": 1792587004000,
-      "v": {
-        "idle": 8,
-        "query": 15
-      }
-    },
-    {
-      "t": 1792587005000,
-      "v": {
-        "idle": 8,
-        "query": 15
-      }
-    },
-    {
-      "t": 1792587006000,
-      "v": {
-        "idle": 10,
-        "query": 13
-      }
-    },
-    {
-      "t": 1792587007000,
-      "v": {
-        "idle": 8,
-        "query": 15
-      }
-    },
-    {
-      "t": 1792587008000,
-      "v": {
-        "idle": 8,
-        "query": 15
-      }
-    },
-    {
-      "t": 1792587009000,
-      "v": {
-        "idle": 8,
-        "query": 15
-      }
-    },
-    {
-      "t": 1792587010000,
-      "v": {
-        "idle": 8,
-        "query": 16
-      }
-    },
-    {
-      "t": 1792587011000,
-      "v": {
-        "idle": 8,
-        "query": 15
-      }
-    },
-    {
-      "t": 1792587012000,
-      "v": {
-        "idle": 8,
-        "query": 16
-      }
-    },
-    {
-      "t": 1792587013000,
-      "v": {
-        "idle": 8,
-        "query": 16
-      }
-    },
-    {
-      "t": 1792587014000,
-      "v": {
-        "idle": 8,
-        "query": 15
-      }
-    },
-    {
-      "t": 1792587015000,
-      "v": {
-        "idle": 8,
-        "query": 15
-      }
-    },
-    {
-      "t": 1792587016000,
-      "v": {
-        "idle": 8,
-        "query": 15
-      }
-    },
-    {
-      "t": 1792587017000,
-      "v": {
-        "idle": 12,
-        "query": 11
-      }
-    },
-    {
-      "t": 1792587018000,
-      "v": {
-        "idle": 9,
-        "query": 14
-      }
-    },
-    {
-      "t": 1792587019000,
-      "v": {
-        "idle": 8,
-        "query": 15
-      }
-    },
-    {
-      "t": 1792587020000,
-      "v": {
-        "idle": 8,
-        "query": 15
-      }
-    },
-    {
-      "t": 1792587021000,
-      "v": {
-        "idle": 9,
-        "query": 14
-      }
-    },
-    {
-      "t": 1792587022000,
-      "v": {
-        "idle": 8,
-        "query": 15
-      }
-    },
-    {
-      "t": 1792587023000,
-      "v": {
-        "idle": 9,
-        "query": 14
-      }
-    },
-    {
-      "t": 1792587024000,
-      "v": {
-        "idle": 8,
-        "query": 15
-      }
-    },
-    {
-      "t": 1792587025000,
-      "v": {
-        "idle": 8,
-        "query": 14
-      }
-    },
-    {
-      "t": 1792587026000,
-      "v": {
-        "idle": 8,
-        "query": 15
-      }
-    },
-    {
-      "t": 1792587027000,
-      "v": {
-        "idle": 8,
-        "query": 15
-      }
-    },
-    {
-      "t": 1792587028000,
-      "v": {
-        "idle": 8,
-        "query": 14
-      }
-    },
-    {
-      "t": 1792587029000,
-      "v": {
-        "idle": 9,
-        "query": 14
-      }
-    },
-    {
-      "t": 1792587030000,
-      "v": {
-        "idle": 8,
-        "query": 15
-      }
-    },
-    {
-      "t": 1792587031000,
-      "v": {
-        "idle": 10,
-        "query": 12
-      }
-    },
-    {
-      "t": 1792587032000,
-      "v": {
-        "idle": 8,
-        "query": 15
-      }
+  "counterCharts": [
+    {
+      "id": "connections",
+      "title": "Connections",
+      "series": [
+        "query",
+        "idle",
+        "other"
+      ],
+      "noteValue": 0,
+      "buckets": [
+        {
+          "t": 1792589288000,
+          "v": {}
+        },
+        {
+          "t": 1792589289000,
+          "v": {}
+        },
+        {
+          "t": 1792589290000,
+          "v": {}
+        },
+        {
+          "t": 1792589291000,
+          "v": {}
+        },
+        {
+          "t": 1792589292000,
+          "v": {}
+        },
+        {
+          "t": 1792589293000,
+          "v": {}
+        },
+        {
+          "t": 1792589294000,
+          "v": {}
+        },
+        {
+          "t": 1792589295000,
+          "v": {}
+        },
+        {
+          "t": 1792589296000,
+          "v": {}
+        },
+        {
+          "t": 1792589297000,
+          "v": {}
+        },
+        {
+          "t": 1792589298000,
+          "v": {}
+        },
+        {
+          "t": 1792589299000,
+          "v": {}
+        },
+        {
+          "t": 1792589300000,
+          "v": {}
+        },
+        {
+          "t": 1792589301000,
+          "v": {}
+        },
+        {
+          "t": 1792589302000,
+          "v": {}
+        },
+        {
+          "t": 1792589303000,
+          "v": {}
+        },
+        {
+          "t": 1792589304000,
+          "v": {}
+        },
+        {
+          "t": 1792589305000,
+          "v": {}
+        },
+        {
+          "t": 1792589306000,
+          "v": {}
+        },
+        {
+          "t": 1792589307000,
+          "v": {}
+        },
+        {
+          "t": 1792589308000,
+          "v": {}
+        },
+        {
+          "t": 1792589309000,
+          "v": {}
+        },
+        {
+          "t": 1792589310000,
+          "v": {}
+        },
+        {
+          "t": 1792589311000,
+          "v": {}
+        },
+        {
+          "t": 1792589312000,
+          "v": {}
+        },
+        {
+          "t": 1792589313000,
+          "v": {}
+        },
+        {
+          "t": 1792589314000,
+          "v": {}
+        },
+        {
+          "t": 1792589315000,
+          "v": {}
+        },
+        {
+          "t": 1792589316000,
+          "v": {}
+        },
+        {
+          "t": 1792589317000,
+          "v": {}
+        },
+        {
+          "t": 1792589318000,
+          "v": {}
+        },
+        {
+          "t": 1792589319000,
+          "v": {}
+        },
+        {
+          "t": 1792589320000,
+          "v": {}
+        },
+        {
+          "t": 1792589321000,
+          "v": {}
+        },
+        {
+          "t": 1792589322000,
+          "v": {}
+        },
+        {
+          "t": 1792589323000,
+          "v": {}
+        },
+        {
+          "t": 1792589324000,
+          "v": {}
+        },
+        {
+          "t": 1792589325000,
+          "v": {}
+        },
+        {
+          "t": 1792589326000,
+          "v": {}
+        },
+        {
+          "t": 1792589327000,
+          "v": {}
+        },
+        {
+          "t": 1792589328000,
+          "v": {}
+        },
+        {
+          "t": 1792589329000,
+          "v": {}
+        },
+        {
+          "t": 1792589330000,
+          "v": {}
+        },
+        {
+          "t": 1792589331000,
+          "v": {}
+        },
+        {
+          "t": 1792589332000,
+          "v": {}
+        },
+        {
+          "t": 1792589333000,
+          "v": {}
+        },
+        {
+          "t": 1792589334000,
+          "v": {}
+        },
+        {
+          "t": 1792589335000,
+          "v": {}
+        },
+        {
+          "t": 1792589336000,
+          "v": {}
+        },
+        {
+          "t": 1792589337000,
+          "v": {}
+        },
+        {
+          "t": 1792589338000,
+          "v": {}
+        },
+        {
+          "t": 1792589339000,
+          "v": {}
+        },
+        {
+          "t": 1792589340000,
+          "v": {}
+        },
+        {
+          "t": 1792589341000,
+          "v": {}
+        },
+        {
+          "t": 1792589342000,
+          "v": {}
+        },
+        {
+          "t": 1792589343000,
+          "v": {}
+        },
+        {
+          "t": 1792589344000,
+          "v": {
+            "idle": 8,
+            "other": 0,
+            "query": 10
+          }
+        },
+        {
+          "t": 1792589345000,
+          "v": {
+            "idle": 8,
+            "other": 0,
+            "query": 10
+          }
+        },
+        {
+          "t": 1792589346000,
+          "v": {
+            "idle": 8,
+            "other": 0,
+            "query": 10
+          }
+        },
+        {
+          "t": 1792589347000,
+          "v": {
+            "idle": 8,
+            "other": 0,
+            "query": 10
+          }
+        },
+        {
+          "t": 1792589348000,
+          "v": {
+            "idle": 8,
+            "other": 0,
+            "query": 10
+          }
+        },
+        {
+          "t": 1792589349000,
+          "v": {
+            "idle": 8,
+            "other": 0,
+            "query": 10
+          }
+        },
+        {
+          "t": 1792589350000,
+          "v": {
+            "idle": 8,
+            "other": 0,
+            "query": 10
+          }
+        },
+        {
+          "t": 1792589351000,
+          "v": {
+            "idle": 8,
+            "other": 0,
+            "query": 10
+          }
+        },
+        {
+          "t": 1792589352000,
+          "v": {
+            "idle": 8,
+            "other": 0,
+            "query": 10
+          }
+        },
+        {
+          "t": 1792589353000,
+          "v": {
+            "idle": 8,
+            "other": 0,
+            "query": 10
+          }
+        },
+        {
+          "t": 1792589354000,
+          "v": {
+            "idle": 8,
+            "other": 0,
+            "query": 10
+          }
+        },
+        {
+          "t": 1792589355000,
+          "v": {
+            "idle": 8,
+            "other": 0,
+            "query": 10
+          }
+        },
+        {
+          "t": 1792589356000,
+          "v": {
+            "idle": 8,
+            "other": 0,
+            "query": 10
+          }
+        },
+        {
+          "t": 1792589357000,
+          "v": {
+            "idle": 8,
+            "other": 0,
+            "query": 10
+          }
+        },
+        {
+          "t": 1792589358000,
+          "v": {
+            "idle": 8,
+            "other": 0,
+            "query": 10
+          }
+        },
+        {
+          "t": 1792589359000,
+          "v": {
+            "idle": 8,
+            "other": 0,
+            "query": 10
+          }
+        },
+        {
+          "t": 1792589360000,
+          "v": {
+            "idle": 8,
+            "other": 0,
+            "query": 10
+          }
+        },
+        {
+          "t": 1792589361000,
+          "v": {
+            "idle": 8,
+            "other": 0,
+            "query": 9
+          }
+        },
+        {
+          "t": 1792589362000,
+          "v": {
+            "idle": 8,
+            "other": 0,
+            "query": 8
+          }
+        },
+        {
+          "t": 1792589363000,
+          "v": {
+            "idle": 8,
+            "other": 0,
+            "query": 7
+          }
+        },
+        {
+          "t": 1792589364000,
+          "v": {
+            "idle": 8,
+            "other": 0,
+            "query": 7
+          }
+        },
+        {
+          "t": 1792589365000,
+          "v": {
+            "idle": 8,
+            "other": 0,
+            "query": 7
+          }
+        },
+        {
+          "t": 1792589366000,
+          "v": {
+            "idle": 8,
+            "other": 0,
+            "query": 6
+          }
+        },
+        {
+          "t": 1792589367000,
+          "v": {
+            "idle": 8,
+            "other": 0,
+            "query": 6
+          }
+        },
+        {
+          "t": 1792589368000,
+          "v": {
+            "idle": 8,
+            "other": 0,
+            "query": 6
+          }
+        },
+        {
+          "t": 1792589369000,
+          "v": {
+            "idle": 8,
+            "other": 0,
+            "query": 6
+          }
+        },
+        {
+          "t": 1792589370000,
+          "v": {
+            "idle": 8,
+            "other": 0,
+            "query": 6
+          }
+        },
+        {
+          "t": 1792589371000,
+          "v": {
+            "idle": 8,
+            "other": 0,
+            "query": 6
+          }
+        },
+        {
+          "t": 1792589372000,
+          "v": {
+            "idle": 8,
+            "other": 0,
+            "query": 6
+          }
+        },
+        {
+          "t": 1792589373000,
+          "v": {
+            "idle": 8,
+            "other": 0,
+            "query": 6
+          }
+        },
+        {
+          "t": 1792589374000,
+          "v": {
+            "idle": 8,
+            "other": 0,
+            "query": 6
+          }
+        },
+        {
+          "t": 1792589375000,
+          "v": {
+            "idle": 8,
+            "other": 0,
+            "query": 6
+          }
+        },
+        {
+          "t": 1792589376000,
+          "v": {
+            "idle": 8,
+            "other": 0,
+            "query": 6
+          }
+        },
+        {
+          "t": 1792589377000,
+          "v": {
+            "idle": 8,
+            "other": 0,
+            "query": 6
+          }
+        },
+        {
+          "t": 1792589378000,
+          "v": {
+            "idle": 8,
+            "other": 0,
+            "query": 6
+          }
+        },
+        {
+          "t": 1792589379000,
+          "v": {
+            "idle": 8,
+            "other": 0,
+            "query": 6
+          }
+        },
+        {
+          "t": 1792589380000,
+          "v": {
+            "idle": 8,
+            "other": 0,
+            "query": 6
+          }
+        },
+        {
+          "t": 1792589381000,
+          "v": {
+            "idle": 8,
+            "other": 0,
+            "query": 6
+          }
+        },
+        {
+          "t": 1792589382000,
+          "v": {
+            "idle": 8,
+            "other": 0,
+            "query": 6
+          }
+        },
+        {
+          "t": 1792589383000,
+          "v": {
+            "idle": 8,
+            "other": 0,
+            "query": 6
+          }
+        },
+        {
+          "t": 1792589384000,
+          "v": {
+            "idle": 8,
+            "other": 0,
+            "query": 6
+          }
+        },
+        {
+          "t": 1792589385000,
+          "v": {
+            "idle": 8,
+            "other": 0,
+            "query": 6
+          }
+        },
+        {
+          "t": 1792589386000,
+          "v": {
+            "idle": 8,
+            "other": 0,
+            "query": 6
+          }
+        },
+        {
+          "t": 1792589387000,
+          "v": {
+            "idle": 8,
+            "other": 0,
+            "query": 6
+          }
+        }
+      ]
+    },
+    {
+      "id": "qps",
+      "title": "Queries per second",
+      "series": [
+        "queries/s",
+        "errors/s"
+      ],
+      "noteValue": 0,
+      "buckets": [
+        {
+          "t": 1792589288000,
+          "v": {}
+        },
+        {
+          "t": 1792589289000,
+          "v": {}
+        },
+        {
+          "t": 1792589290000,
+          "v": {}
+        },
+        {
+          "t": 1792589291000,
+          "v": {}
+        },
+        {
+          "t": 1792589292000,
+          "v": {}
+        },
+        {
+          "t": 1792589293000,
+          "v": {}
+        },
+        {
+          "t": 1792589294000,
+          "v": {}
+        },
+        {
+          "t": 1792589295000,
+          "v": {}
+        },
+        {
+          "t": 1792589296000,
+          "v": {}
+        },
+        {
+          "t": 1792589297000,
+          "v": {}
+        },
+        {
+          "t": 1792589298000,
+          "v": {}
+        },
+        {
+          "t": 1792589299000,
+          "v": {}
+        },
+        {
+          "t": 1792589300000,
+          "v": {}
+        },
+        {
+          "t": 1792589301000,
+          "v": {}
+        },
+        {
+          "t": 1792589302000,
+          "v": {}
+        },
+        {
+          "t": 1792589303000,
+          "v": {}
+        },
+        {
+          "t": 1792589304000,
+          "v": {}
+        },
+        {
+          "t": 1792589305000,
+          "v": {}
+        },
+        {
+          "t": 1792589306000,
+          "v": {}
+        },
+        {
+          "t": 1792589307000,
+          "v": {}
+        },
+        {
+          "t": 1792589308000,
+          "v": {}
+        },
+        {
+          "t": 1792589309000,
+          "v": {}
+        },
+        {
+          "t": 1792589310000,
+          "v": {}
+        },
+        {
+          "t": 1792589311000,
+          "v": {}
+        },
+        {
+          "t": 1792589312000,
+          "v": {}
+        },
+        {
+          "t": 1792589313000,
+          "v": {}
+        },
+        {
+          "t": 1792589314000,
+          "v": {}
+        },
+        {
+          "t": 1792589315000,
+          "v": {}
+        },
+        {
+          "t": 1792589316000,
+          "v": {}
+        },
+        {
+          "t": 1792589317000,
+          "v": {}
+        },
+        {
+          "t": 1792589318000,
+          "v": {}
+        },
+        {
+          "t": 1792589319000,
+          "v": {}
+        },
+        {
+          "t": 1792589320000,
+          "v": {}
+        },
+        {
+          "t": 1792589321000,
+          "v": {}
+        },
+        {
+          "t": 1792589322000,
+          "v": {}
+        },
+        {
+          "t": 1792589323000,
+          "v": {}
+        },
+        {
+          "t": 1792589324000,
+          "v": {}
+        },
+        {
+          "t": 1792589325000,
+          "v": {}
+        },
+        {
+          "t": 1792589326000,
+          "v": {}
+        },
+        {
+          "t": 1792589327000,
+          "v": {}
+        },
+        {
+          "t": 1792589328000,
+          "v": {}
+        },
+        {
+          "t": 1792589329000,
+          "v": {}
+        },
+        {
+          "t": 1792589330000,
+          "v": {}
+        },
+        {
+          "t": 1792589331000,
+          "v": {}
+        },
+        {
+          "t": 1792589332000,
+          "v": {}
+        },
+        {
+          "t": 1792589333000,
+          "v": {}
+        },
+        {
+          "t": 1792589334000,
+          "v": {}
+        },
+        {
+          "t": 1792589335000,
+          "v": {}
+        },
+        {
+          "t": 1792589336000,
+          "v": {}
+        },
+        {
+          "t": 1792589337000,
+          "v": {}
+        },
+        {
+          "t": 1792589338000,
+          "v": {}
+        },
+        {
+          "t": 1792589339000,
+          "v": {}
+        },
+        {
+          "t": 1792589340000,
+          "v": {}
+        },
+        {
+          "t": 1792589341000,
+          "v": {}
+        },
+        {
+          "t": 1792589342000,
+          "v": {}
+        },
+        {
+          "t": 1792589343000,
+          "v": {}
+        },
+        {
+          "t": 1792589344000,
+          "v": {
+            "errors/s": 0,
+            "queries/s": 0
+          }
+        },
+        {
+          "t": 1792589345000,
+          "v": {
+            "errors/s": 0,
+            "queries/s": 0
+          }
+        },
+        {
+          "t": 1792589346000,
+          "v": {
+            "errors/s": 0,
+            "queries/s": 0
+          }
+        },
+        {
+          "t": 1792589347000,
+          "v": {
+            "errors/s": 0,
+            "queries/s": 0
+          }
+        },
+        {
+          "t": 1792589348000,
+          "v": {
+            "errors/s": 0,
+            "queries/s": 0
+          }
+        },
+        {
+          "t": 1792589349000,
+          "v": {
+            "errors/s": 0,
+            "queries/s": 0
+          }
+        },
+        {
+          "t": 1792589350000,
+          "v": {
+            "errors/s": 0,
+            "queries/s": 0
+          }
+        },
+        {
+          "t": 1792589351000,
+          "v": {
+            "errors/s": 0,
+            "queries/s": 0
+          }
+        },
+        {
+          "t": 1792589352000,
+          "v": {
+            "errors/s": 0,
+            "queries/s": 0
+          }
+        },
+        {
+          "t": 1792589353000,
+          "v": {
+            "errors/s": 0,
+            "queries/s": 0
+          }
+        },
+        {
+          "t": 1792589354000,
+          "v": {
+            "errors/s": 0,
+            "queries/s": 0
+          }
+        },
+        {
+          "t": 1792589355000,
+          "v": {
+            "errors/s": 0,
+            "queries/s": 0
+          }
+        },
+        {
+          "t": 1792589356000,
+          "v": {
+            "errors/s": 0,
+            "queries/s": 0
+          }
+        },
+        {
+          "t": 1792589357000,
+          "v": {
+            "errors/s": 0,
+            "queries/s": 0
+          }
+        },
+        {
+          "t": 1792589358000,
+          "v": {
+            "errors/s": 0,
+            "queries/s": 0
+          }
+        },
+        {
+          "t": 1792589359000,
+          "v": {
+            "errors/s": 0,
+            "queries/s": 0
+          }
+        },
+        {
+          "t": 1792589360000,
+          "v": {
+            "errors/s": 0,
+            "queries/s": 0
+          }
+        },
+        {
+          "t": 1792589361000,
+          "v": {
+            "errors/s": 0,
+            "queries/s": 0
+          }
+        },
+        {
+          "t": 1792589362000,
+          "v": {
+            "errors/s": 0,
+            "queries/s": 0
+          }
+        },
+        {
+          "t": 1792589363000,
+          "v": {
+            "errors/s": 0,
+            "queries/s": 0
+          }
+        },
+        {
+          "t": 1792589364000,
+          "v": {
+            "errors/s": 0,
+            "queries/s": 0.89
+          }
+        },
+        {
+          "t": 1792589365000,
+          "v": {
+            "errors/s": 0,
+            "queries/s": 0.89
+          }
+        },
+        {
+          "t": 1792589366000,
+          "v": {
+            "errors/s": 0,
+            "queries/s": 0.89
+          }
+        },
+        {
+          "t": 1792589367000,
+          "v": {
+            "errors/s": 0,
+            "queries/s": 0.89
+          }
+        },
+        {
+          "t": 1792589368000,
+          "v": {
+            "errors/s": 0,
+            "queries/s": 0.89
+          }
+        },
+        {
+          "t": 1792589369000,
+          "v": {
+            "errors/s": 0,
+            "queries/s": 0.89
+          }
+        },
+        {
+          "t": 1792589370000,
+          "v": {
+            "errors/s": 0,
+            "queries/s": 0.89
+          }
+        },
+        {
+          "t": 1792589371000,
+          "v": {
+            "errors/s": 0,
+            "queries/s": 0.89
+          }
+        },
+        {
+          "t": 1792589372000,
+          "v": {
+            "errors/s": 0,
+            "queries/s": 0.89
+          }
+        },
+        {
+          "t": 1792589373000,
+          "v": {
+            "errors/s": 0,
+            "queries/s": 0.89
+          }
+        },
+        {
+          "t": 1792589374000,
+          "v": {
+            "errors/s": 0,
+            "queries/s": 1.31
+          }
+        },
+        {
+          "t": 1792589375000,
+          "v": {
+            "errors/s": 0,
+            "queries/s": 1.31
+          }
+        },
+        {
+          "t": 1792589376000,
+          "v": {
+            "errors/s": 0,
+            "queries/s": 1.31
+          }
+        },
+        {
+          "t": 1792589377000,
+          "v": {
+            "errors/s": 0,
+            "queries/s": 1.31
+          }
+        },
+        {
+          "t": 1792589378000,
+          "v": {
+            "errors/s": 0,
+            "queries/s": 1.31
+          }
+        },
+        {
+          "t": 1792589379000,
+          "v": {
+            "errors/s": 0,
+            "queries/s": 1.31
+          }
+        },
+        {
+          "t": 1792589380000,
+          "v": {
+            "errors/s": 0,
+            "queries/s": 1.31
+          }
+        },
+        {
+          "t": 1792589381000,
+          "v": {
+            "errors/s": 0,
+            "queries/s": 1.31
+          }
+        },
+        {
+          "t": 1792589382000,
+          "v": {
+            "errors/s": 0,
+            "queries/s": 1.31
+          }
+        },
+        {
+          "t": 1792589383000,
+          "v": {
+            "errors/s": 0,
+            "queries/s": 1.31
+          }
+        },
+        {
+          "t": 1792589384000,
+          "v": {
+            "errors/s": 0,
+            "queries/s": 0.6
+          }
+        },
+        {
+          "t": 1792589385000,
+          "v": {
+            "errors/s": 0,
+            "queries/s": 0.6
+          }
+        },
+        {
+          "t": 1792589386000,
+          "v": {
+            "errors/s": 0,
+            "queries/s": 0.6
+          }
+        },
+        {
+          "t": 1792589387000,
+          "v": {
+            "errors/s": 0,
+            "queries/s": 0.6
+          }
+        }
+      ]
+    },
+    {
+      "id": "queue",
+      "title": "Query queue",
+      "series": [
+        "pending",
+        "running slots"
+      ],
+      "noteValue": 0,
+      "buckets": [
+        {
+          "t": 1792589288000,
+          "v": {}
+        },
+        {
+          "t": 1792589289000,
+          "v": {}
+        },
+        {
+          "t": 1792589290000,
+          "v": {}
+        },
+        {
+          "t": 1792589291000,
+          "v": {}
+        },
+        {
+          "t": 1792589292000,
+          "v": {}
+        },
+        {
+          "t": 1792589293000,
+          "v": {}
+        },
+        {
+          "t": 1792589294000,
+          "v": {}
+        },
+        {
+          "t": 1792589295000,
+          "v": {}
+        },
+        {
+          "t": 1792589296000,
+          "v": {}
+        },
+        {
+          "t": 1792589297000,
+          "v": {}
+        },
+        {
+          "t": 1792589298000,
+          "v": {}
+        },
+        {
+          "t": 1792589299000,
+          "v": {}
+        },
+        {
+          "t": 1792589300000,
+          "v": {}
+        },
+        {
+          "t": 1792589301000,
+          "v": {}
+        },
+        {
+          "t": 1792589302000,
+          "v": {}
+        },
+        {
+          "t": 1792589303000,
+          "v": {}
+        },
+        {
+          "t": 1792589304000,
+          "v": {}
+        },
+        {
+          "t": 1792589305000,
+          "v": {}
+        },
+        {
+          "t": 1792589306000,
+          "v": {}
+        },
+        {
+          "t": 1792589307000,
+          "v": {}
+        },
+        {
+          "t": 1792589308000,
+          "v": {}
+        },
+        {
+          "t": 1792589309000,
+          "v": {}
+        },
+        {
+          "t": 1792589310000,
+          "v": {}
+        },
+        {
+          "t": 1792589311000,
+          "v": {}
+        },
+        {
+          "t": 1792589312000,
+          "v": {}
+        },
+        {
+          "t": 1792589313000,
+          "v": {}
+        },
+        {
+          "t": 1792589314000,
+          "v": {}
+        },
+        {
+          "t": 1792589315000,
+          "v": {}
+        },
+        {
+          "t": 1792589316000,
+          "v": {}
+        },
+        {
+          "t": 1792589317000,
+          "v": {}
+        },
+        {
+          "t": 1792589318000,
+          "v": {}
+        },
+        {
+          "t": 1792589319000,
+          "v": {}
+        },
+        {
+          "t": 1792589320000,
+          "v": {}
+        },
+        {
+          "t": 1792589321000,
+          "v": {}
+        },
+        {
+          "t": 1792589322000,
+          "v": {}
+        },
+        {
+          "t": 1792589323000,
+          "v": {}
+        },
+        {
+          "t": 1792589324000,
+          "v": {}
+        },
+        {
+          "t": 1792589325000,
+          "v": {}
+        },
+        {
+          "t": 1792589326000,
+          "v": {}
+        },
+        {
+          "t": 1792589327000,
+          "v": {}
+        },
+        {
+          "t": 1792589328000,
+          "v": {}
+        },
+        {
+          "t": 1792589329000,
+          "v": {}
+        },
+        {
+          "t": 1792589330000,
+          "v": {}
+        },
+        {
+          "t": 1792589331000,
+          "v": {}
+        },
+        {
+          "t": 1792589332000,
+          "v": {}
+        },
+        {
+          "t": 1792589333000,
+          "v": {}
+        },
+        {
+          "t": 1792589334000,
+          "v": {}
+        },
+        {
+          "t": 1792589335000,
+          "v": {}
+        },
+        {
+          "t": 1792589336000,
+          "v": {}
+        },
+        {
+          "t": 1792589337000,
+          "v": {}
+        },
+        {
+          "t": 1792589338000,
+          "v": {}
+        },
+        {
+          "t": 1792589339000,
+          "v": {}
+        },
+        {
+          "t": 1792589340000,
+          "v": {}
+        },
+        {
+          "t": 1792589341000,
+          "v": {}
+        },
+        {
+          "t": 1792589342000,
+          "v": {}
+        },
+        {
+          "t": 1792589343000,
+          "v": {}
+        },
+        {
+          "t": 1792589344000,
+          "v": {
+            "pending": 0,
+            "running slots": 0
+          }
+        },
+        {
+          "t": 1792589345000,
+          "v": {
+            "pending": 0,
+            "running slots": 0
+          }
+        },
+        {
+          "t": 1792589346000,
+          "v": {
+            "pending": 0,
+            "running slots": 0
+          }
+        },
+        {
+          "t": 1792589347000,
+          "v": {
+            "pending": 0,
+            "running slots": 0
+          }
+        },
+        {
+          "t": 1792589348000,
+          "v": {
+            "pending": 0,
+            "running slots": 0
+          }
+        },
+        {
+          "t": 1792589349000,
+          "v": {
+            "pending": 0,
+            "running slots": 0
+          }
+        },
+        {
+          "t": 1792589350000,
+          "v": {
+            "pending": 0,
+            "running slots": 0
+          }
+        },
+        {
+          "t": 1792589351000,
+          "v": {
+            "pending": 0,
+            "running slots": 0
+          }
+        },
+        {
+          "t": 1792589352000,
+          "v": {
+            "pending": 0,
+            "running slots": 0
+          }
+        },
+        {
+          "t": 1792589353000,
+          "v": {
+            "pending": 0,
+            "running slots": 0
+          }
+        },
+        {
+          "t": 1792589354000,
+          "v": {
+            "pending": 0,
+            "running slots": 0
+          }
+        },
+        {
+          "t": 1792589355000,
+          "v": {
+            "pending": 0,
+            "running slots": 0
+          }
+        },
+        {
+          "t": 1792589356000,
+          "v": {
+            "pending": 0,
+            "running slots": 0
+          }
+        },
+        {
+          "t": 1792589357000,
+          "v": {
+            "pending": 0,
+            "running slots": 0
+          }
+        },
+        {
+          "t": 1792589358000,
+          "v": {
+            "pending": 0,
+            "running slots": 0
+          }
+        },
+        {
+          "t": 1792589359000,
+          "v": {
+            "pending": 0,
+            "running slots": 0
+          }
+        },
+        {
+          "t": 1792589360000,
+          "v": {
+            "pending": 0,
+            "running slots": 0
+          }
+        },
+        {
+          "t": 1792589361000,
+          "v": {
+            "pending": 0,
+            "running slots": 0
+          }
+        },
+        {
+          "t": 1792589362000,
+          "v": {
+            "pending": 0,
+            "running slots": 0
+          }
+        },
+        {
+          "t": 1792589363000,
+          "v": {
+            "pending": 0,
+            "running slots": 0
+          }
+        },
+        {
+          "t": 1792589364000,
+          "v": {
+            "pending": 0,
+            "running slots": 0
+          }
+        },
+        {
+          "t": 1792589365000,
+          "v": {
+            "pending": 0,
+            "running slots": 0
+          }
+        },
+        {
+          "t": 1792589366000,
+          "v": {
+            "pending": 0,
+            "running slots": 0
+          }
+        },
+        {
+          "t": 1792589367000,
+          "v": {
+            "pending": 0,
+            "running slots": 0
+          }
+        },
+        {
+          "t": 1792589368000,
+          "v": {
+            "pending": 0,
+            "running slots": 0
+          }
+        },
+        {
+          "t": 1792589369000,
+          "v": {
+            "pending": 0,
+            "running slots": 0
+          }
+        },
+        {
+          "t": 1792589370000,
+          "v": {
+            "pending": 0,
+            "running slots": 0
+          }
+        },
+        {
+          "t": 1792589371000,
+          "v": {
+            "pending": 0,
+            "running slots": 0
+          }
+        },
+        {
+          "t": 1792589372000,
+          "v": {
+            "pending": 0,
+            "running slots": 0
+          }
+        },
+        {
+          "t": 1792589373000,
+          "v": {
+            "pending": 0,
+            "running slots": 0
+          }
+        },
+        {
+          "t": 1792589374000,
+          "v": {
+            "pending": 0,
+            "running slots": 0
+          }
+        },
+        {
+          "t": 1792589375000,
+          "v": {
+            "pending": 0,
+            "running slots": 0
+          }
+        },
+        {
+          "t": 1792589376000,
+          "v": {
+            "pending": 0,
+            "running slots": 0
+          }
+        },
+        {
+          "t": 1792589377000,
+          "v": {
+            "pending": 0,
+            "running slots": 0
+          }
+        },
+        {
+          "t": 1792589378000,
+          "v": {
+            "pending": 0,
+            "running slots": 0
+          }
+        },
+        {
+          "t": 1792589379000,
+          "v": {
+            "pending": 0,
+            "running slots": 0
+          }
+        },
+        {
+          "t": 1792589380000,
+          "v": {
+            "pending": 0,
+            "running slots": 0
+          }
+        },
+        {
+          "t": 1792589381000,
+          "v": {
+            "pending": 0,
+            "running slots": 0
+          }
+        },
+        {
+          "t": 1792589382000,
+          "v": {
+            "pending": 0,
+            "running slots": 0
+          }
+        },
+        {
+          "t": 1792589383000,
+          "v": {
+            "pending": 0,
+            "running slots": 0
+          }
+        },
+        {
+          "t": 1792589384000,
+          "v": {
+            "pending": 0,
+            "running slots": 0
+          }
+        },
+        {
+          "t": 1792589385000,
+          "v": {
+            "pending": 0,
+            "running slots": 0
+          }
+        },
+        {
+          "t": 1792589386000,
+          "v": {
+            "pending": 0,
+            "running slots": 0
+          }
+        },
+        {
+          "t": 1792589387000,
+          "v": {
+            "pending": 0,
+            "running slots": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "memory",
+      "title": "Memory in use",
+      "series": [
+        "backend %",
+        "query %"
+      ],
+      "noteValue": 0,
+      "buckets": [
+        {
+          "t": 1792589288000,
+          "v": {}
+        },
+        {
+          "t": 1792589289000,
+          "v": {}
+        },
+        {
+          "t": 1792589290000,
+          "v": {}
+        },
+        {
+          "t": 1792589291000,
+          "v": {}
+        },
+        {
+          "t": 1792589292000,
+          "v": {}
+        },
+        {
+          "t": 1792589293000,
+          "v": {}
+        },
+        {
+          "t": 1792589294000,
+          "v": {}
+        },
+        {
+          "t": 1792589295000,
+          "v": {}
+        },
+        {
+          "t": 1792589296000,
+          "v": {}
+        },
+        {
+          "t": 1792589297000,
+          "v": {}
+        },
+        {
+          "t": 1792589298000,
+          "v": {}
+        },
+        {
+          "t": 1792589299000,
+          "v": {}
+        },
+        {
+          "t": 1792589300000,
+          "v": {}
+        },
+        {
+          "t": 1792589301000,
+          "v": {}
+        },
+        {
+          "t": 1792589302000,
+          "v": {}
+        },
+        {
+          "t": 1792589303000,
+          "v": {}
+        },
+        {
+          "t": 1792589304000,
+          "v": {}
+        },
+        {
+          "t": 1792589305000,
+          "v": {}
+        },
+        {
+          "t": 1792589306000,
+          "v": {}
+        },
+        {
+          "t": 1792589307000,
+          "v": {}
+        },
+        {
+          "t": 1792589308000,
+          "v": {}
+        },
+        {
+          "t": 1792589309000,
+          "v": {}
+        },
+        {
+          "t": 1792589310000,
+          "v": {}
+        },
+        {
+          "t": 1792589311000,
+          "v": {}
+        },
+        {
+          "t": 1792589312000,
+          "v": {}
+        },
+        {
+          "t": 1792589313000,
+          "v": {}
+        },
+        {
+          "t": 1792589314000,
+          "v": {}
+        },
+        {
+          "t": 1792589315000,
+          "v": {}
+        },
+        {
+          "t": 1792589316000,
+          "v": {}
+        },
+        {
+          "t": 1792589317000,
+          "v": {}
+        },
+        {
+          "t": 1792589318000,
+          "v": {}
+        },
+        {
+          "t": 1792589319000,
+          "v": {}
+        },
+        {
+          "t": 1792589320000,
+          "v": {}
+        },
+        {
+          "t": 1792589321000,
+          "v": {}
+        },
+        {
+          "t": 1792589322000,
+          "v": {}
+        },
+        {
+          "t": 1792589323000,
+          "v": {}
+        },
+        {
+          "t": 1792589324000,
+          "v": {}
+        },
+        {
+          "t": 1792589325000,
+          "v": {}
+        },
+        {
+          "t": 1792589326000,
+          "v": {}
+        },
+        {
+          "t": 1792589327000,
+          "v": {}
+        },
+        {
+          "t": 1792589328000,
+          "v": {}
+        },
+        {
+          "t": 1792589329000,
+          "v": {}
+        },
+        {
+          "t": 1792589330000,
+          "v": {}
+        },
+        {
+          "t": 1792589331000,
+          "v": {}
+        },
+        {
+          "t": 1792589332000,
+          "v": {}
+        },
+        {
+          "t": 1792589333000,
+          "v": {}
+        },
+        {
+          "t": 1792589334000,
+          "v": {}
+        },
+        {
+          "t": 1792589335000,
+          "v": {}
+        },
+        {
+          "t": 1792589336000,
+          "v": {}
+        },
+        {
+          "t": 1792589337000,
+          "v": {}
+        },
+        {
+          "t": 1792589338000,
+          "v": {}
+        },
+        {
+          "t": 1792589339000,
+          "v": {}
+        },
+        {
+          "t": 1792589340000,
+          "v": {}
+        },
+        {
+          "t": 1792589341000,
+          "v": {}
+        },
+        {
+          "t": 1792589342000,
+          "v": {}
+        },
+        {
+          "t": 1792589343000,
+          "v": {}
+        },
+        {
+          "t": 1792589344000,
+          "v": {
+            "backend %": 0,
+            "query %": 0
+          }
+        },
+        {
+          "t": 1792589345000,
+          "v": {
+            "backend %": 0,
+            "query %": 0
+          }
+        },
+        {
+          "t": 1792589346000,
+          "v": {
+            "backend %": 0,
+            "query %": 0
+          }
+        },
+        {
+          "t": 1792589347000,
+          "v": {
+            "backend %": 0,
+            "query %": 0
+          }
+        },
+        {
+          "t": 1792589348000,
+          "v": {
+            "backend %": 0,
+            "query %": 0
+          }
+        },
+        {
+          "t": 1792589349000,
+          "v": {
+            "backend %": 0,
+            "query %": 0
+          }
+        },
+        {
+          "t": 1792589350000,
+          "v": {
+            "backend %": 0,
+            "query %": 0
+          }
+        },
+        {
+          "t": 1792589351000,
+          "v": {
+            "backend %": 0,
+            "query %": 0
+          }
+        },
+        {
+          "t": 1792589352000,
+          "v": {
+            "backend %": 0,
+            "query %": 0
+          }
+        },
+        {
+          "t": 1792589353000,
+          "v": {
+            "backend %": 0,
+            "query %": 0
+          }
+        },
+        {
+          "t": 1792589354000,
+          "v": {
+            "backend %": 6.9,
+            "query %": 4.01
+          }
+        },
+        {
+          "t": 1792589355000,
+          "v": {
+            "backend %": 6.9,
+            "query %": 3.83
+          }
+        },
+        {
+          "t": 1792589356000,
+          "v": {
+            "backend %": 6.9,
+            "query %": 3.67
+          }
+        },
+        {
+          "t": 1792589357000,
+          "v": {
+            "backend %": 6.9,
+            "query %": 3.38
+          }
+        },
+        {
+          "t": 1792589358000,
+          "v": {
+            "backend %": 6.9,
+            "query %": 3.21
+          }
+        },
+        {
+          "t": 1792589359000,
+          "v": {
+            "backend %": 6.9,
+            "query %": 3.02
+          }
+        },
+        {
+          "t": 1792589360000,
+          "v": {
+            "backend %": 6.9,
+            "query %": 2.88
+          }
+        },
+        {
+          "t": 1792589361000,
+          "v": {
+            "backend %": 6.9,
+            "query %": 2.65
+          }
+        },
+        {
+          "t": 1792589362000,
+          "v": {
+            "backend %": 6.9,
+            "query %": 2.48
+          }
+        },
+        {
+          "t": 1792589363000,
+          "v": {
+            "backend %": 6.9,
+            "query %": 2.19
+          }
+        },
+        {
+          "t": 1792589364000,
+          "v": {
+            "backend %": 5.38,
+            "query %": 1.94
+          }
+        },
+        {
+          "t": 1792589365000,
+          "v": {
+            "backend %": 5.38,
+            "query %": 1.74
+          }
+        },
+        {
+          "t": 1792589366000,
+          "v": {
+            "backend %": 5.38,
+            "query %": 1.36
+          }
+        },
+        {
+          "t": 1792589367000,
+          "v": {
+            "backend %": 5.38,
+            "query %": 1.02
+          }
+        },
+        {
+          "t": 1792589368000,
+          "v": {
+            "backend %": 5.38,
+            "query %": 0.64
+          }
+        },
+        {
+          "t": 1792589369000,
+          "v": {
+            "backend %": 5.38,
+            "query %": 1.72
+          }
+        },
+        {
+          "t": 1792589370000,
+          "v": {
+            "backend %": 5.38,
+            "query %": 2.09
+          }
+        },
+        {
+          "t": 1792589371000,
+          "v": {
+            "backend %": 5.38,
+            "query %": 2.98
+          }
+        },
+        {
+          "t": 1792589372000,
+          "v": {
+            "backend %": 5.38,
+            "query %": 2.95
+          }
+        },
+        {
+          "t": 1792589373000,
+          "v": {
+            "backend %": 5.38,
+            "query %": 2.91
+          }
+        },
+        {
+          "t": 1792589374000,
+          "v": {
+            "backend %": 5.3,
+            "query %": 2.88
+          }
+        },
+        {
+          "t": 1792589375000,
+          "v": {
+            "backend %": 5.3,
+            "query %": 2.85
+          }
+        },
+        {
+          "t": 1792589376000,
+          "v": {
+            "backend %": 5.3,
+            "query %": 2.82
+          }
+        },
+        {
+          "t": 1792589377000,
+          "v": {
+            "backend %": 5.3,
+            "query %": 2.79
+          }
+        },
+        {
+          "t": 1792589378000,
+          "v": {
+            "backend %": 5.3,
+            "query %": 2.77
+          }
+        },
+        {
+          "t": 1792589379000,
+          "v": {
+            "backend %": 5.3,
+            "query %": 2.73
+          }
+        },
+        {
+          "t": 1792589380000,
+          "v": {
+            "backend %": 5.3,
+            "query %": 2.69
+          }
+        },
+        {
+          "t": 1792589381000,
+          "v": {
+            "backend %": 5.3,
+            "query %": 2.64
+          }
+        },
+        {
+          "t": 1792589382000,
+          "v": {
+            "backend %": 5.3,
+            "query %": 2.59
+          }
+        },
+        {
+          "t": 1792589383000,
+          "v": {
+            "backend %": 5.3,
+            "query %": 2.55
+          }
+        },
+        {
+          "t": 1792589384000,
+          "v": {
+            "backend %": 4.94,
+            "query %": 2.52
+          }
+        },
+        {
+          "t": 1792589385000,
+          "v": {
+            "backend %": 4.94,
+            "query %": 2.49
+          }
+        },
+        {
+          "t": 1792589386000,
+          "v": {
+            "backend %": 4.94,
+            "query %": 2.46
+          }
+        },
+        {
+          "t": 1792589387000,
+          "v": {
+            "backend %": 4.94,
+            "query %": 2.38
+          }
+        }
+      ]
+    },
+    {
+      "id": "io",
+      "title": "Bytes per second",
+      "series": [
+        "disk read/s",
+        "scanned/s"
+      ],
+      "noteValue": 0,
+      "buckets": [
+        {
+          "t": 1792589288000,
+          "v": {}
+        },
+        {
+          "t": 1792589289000,
+          "v": {}
+        },
+        {
+          "t": 1792589290000,
+          "v": {}
+        },
+        {
+          "t": 1792589291000,
+          "v": {}
+        },
+        {
+          "t": 1792589292000,
+          "v": {}
+        },
+        {
+          "t": 1792589293000,
+          "v": {}
+        },
+        {
+          "t": 1792589294000,
+          "v": {}
+        },
+        {
+          "t": 1792589295000,
+          "v": {}
+        },
+        {
+          "t": 1792589296000,
+          "v": {}
+        },
+        {
+          "t": 1792589297000,
+          "v": {}
+        },
+        {
+          "t": 1792589298000,
+          "v": {}
+        },
+        {
+          "t": 1792589299000,
+          "v": {}
+        },
+        {
+          "t": 1792589300000,
+          "v": {}
+        },
+        {
+          "t": 1792589301000,
+          "v": {}
+        },
+        {
+          "t": 1792589302000,
+          "v": {}
+        },
+        {
+          "t": 1792589303000,
+          "v": {}
+        },
+        {
+          "t": 1792589304000,
+          "v": {}
+        },
+        {
+          "t": 1792589305000,
+          "v": {}
+        },
+        {
+          "t": 1792589306000,
+          "v": {}
+        },
+        {
+          "t": 1792589307000,
+          "v": {}
+        },
+        {
+          "t": 1792589308000,
+          "v": {}
+        },
+        {
+          "t": 1792589309000,
+          "v": {}
+        },
+        {
+          "t": 1792589310000,
+          "v": {}
+        },
+        {
+          "t": 1792589311000,
+          "v": {}
+        },
+        {
+          "t": 1792589312000,
+          "v": {}
+        },
+        {
+          "t": 1792589313000,
+          "v": {}
+        },
+        {
+          "t": 1792589314000,
+          "v": {}
+        },
+        {
+          "t": 1792589315000,
+          "v": {}
+        },
+        {
+          "t": 1792589316000,
+          "v": {}
+        },
+        {
+          "t": 1792589317000,
+          "v": {}
+        },
+        {
+          "t": 1792589318000,
+          "v": {}
+        },
+        {
+          "t": 1792589319000,
+          "v": {}
+        },
+        {
+          "t": 1792589320000,
+          "v": {}
+        },
+        {
+          "t": 1792589321000,
+          "v": {}
+        },
+        {
+          "t": 1792589322000,
+          "v": {}
+        },
+        {
+          "t": 1792589323000,
+          "v": {}
+        },
+        {
+          "t": 1792589324000,
+          "v": {}
+        },
+        {
+          "t": 1792589325000,
+          "v": {}
+        },
+        {
+          "t": 1792589326000,
+          "v": {}
+        },
+        {
+          "t": 1792589327000,
+          "v": {}
+        },
+        {
+          "t": 1792589328000,
+          "v": {}
+        },
+        {
+          "t": 1792589329000,
+          "v": {}
+        },
+        {
+          "t": 1792589330000,
+          "v": {}
+        },
+        {
+          "t": 1792589331000,
+          "v": {}
+        },
+        {
+          "t": 1792589332000,
+          "v": {}
+        },
+        {
+          "t": 1792589333000,
+          "v": {}
+        },
+        {
+          "t": 1792589334000,
+          "v": {}
+        },
+        {
+          "t": 1792589335000,
+          "v": {}
+        },
+        {
+          "t": 1792589336000,
+          "v": {}
+        },
+        {
+          "t": 1792589337000,
+          "v": {}
+        },
+        {
+          "t": 1792589338000,
+          "v": {}
+        },
+        {
+          "t": 1792589339000,
+          "v": {}
+        },
+        {
+          "t": 1792589340000,
+          "v": {}
+        },
+        {
+          "t": 1792589341000,
+          "v": {}
+        },
+        {
+          "t": 1792589342000,
+          "v": {}
+        },
+        {
+          "t": 1792589343000,
+          "v": {}
+        },
+        {
+          "t": 1792589344000,
+          "v": {
+            "disk read/s": 0,
+            "scanned/s": 0
+          }
+        },
+        {
+          "t": 1792589345000,
+          "v": {
+            "disk read/s": 0,
+            "scanned/s": 1985098.48
+          }
+        },
+        {
+          "t": 1792589346000,
+          "v": {
+            "disk read/s": 0,
+            "scanned/s": 4707853.89
+          }
+        },
+        {
+          "t": 1792589347000,
+          "v": {
+            "disk read/s": 0,
+            "scanned/s": 1515788.03
+          }
+        },
+        {
+          "t": 1792589348000,
+          "v": {
+            "disk read/s": 0,
+            "scanned/s": 0
+          }
+        },
+        {
+          "t": 1792589349000,
+          "v": {
+            "disk read/s": 0,
+            "scanned/s": 239070.08
+          }
+        },
+        {
+          "t": 1792589350000,
+          "v": {
+            "disk read/s": 0,
+            "scanned/s": 119529.33
+          }
+        },
+        {
+          "t": 1792589351000,
+          "v": {
+            "disk read/s": 0,
+            "scanned/s": 0
+          }
+        },
+        {
+          "t": 1792589352000,
+          "v": {
+            "disk read/s": 0,
+            "scanned/s": 0
+          }
+        },
+        {
+          "t": 1792589353000,
+          "v": {
+            "disk read/s": 0,
+            "scanned/s": 1250437.38
+          }
+        },
+        {
+          "t": 1792589354000,
+          "v": {
+            "disk read/s": 0,
+            "scanned/s": 119476.06
+          }
+        },
+        {
+          "t": 1792589355000,
+          "v": {
+            "disk read/s": 0,
+            "scanned/s": -79615763.94
+          }
+        },
+        {
+          "t": 1792589356000,
+          "v": {
+            "disk read/s": 0,
+            "scanned/s": 119589.89
+          }
+        },
+        {
+          "t": 1792589357000,
+          "v": {
+            "disk read/s": 0,
+            "scanned/s": -119362599.57
+          }
+        },
+        {
+          "t": 1792589358000,
+          "v": {
+            "disk read/s": 0,
+            "scanned/s": -39505490.67
+          }
+        },
+        {
+          "t": 1792589359000,
+          "v": {
+            "disk read/s": 0,
+            "scanned/s": -39257643.66
+          }
+        },
+        {
+          "t": 1792589360000,
+          "v": {
+            "disk read/s": 0,
+            "scanned/s": -39726099.31
+          }
+        },
+        {
+          "t": 1792589361000,
+          "v": {
+            "disk read/s": 0,
+            "scanned/s": -39468834.93
+          }
+        },
+        {
+          "t": 1792589362000,
+          "v": {
+            "disk read/s": 0,
+            "scanned/s": 0
+          }
+        },
+        {
+          "t": 1792589363000,
+          "v": {
+            "disk read/s": 0,
+            "scanned/s": -39849197.68
+          }
+        },
+        {
+          "t": 1792589364000,
+          "v": {
+            "disk read/s": 0,
+            "scanned/s": -119587570.52
+          }
+        },
+        {
+          "t": 1792589365000,
+          "v": {
+            "disk read/s": 0,
+            "scanned/s": 0
+          }
+        },
+        {
+          "t": 1792589366000,
+          "v": {
+            "disk read/s": 0,
+            "scanned/s": -79692263.4
+          }
+        },
+        {
+          "t": 1792589367000,
+          "v": {
+            "disk read/s": 0,
+            "scanned/s": -79669349.72
+          }
+        },
+        {
+          "t": 1792589368000,
+          "v": {
+            "disk read/s": 0,
+            "scanned/s": -159398960.46
+          }
+        },
+        {
+          "t": 1792589369000,
+          "v": {
+            "disk read/s": 0,
+            "scanned/s": 0
+          }
+        },
+        {
+          "t": 1792589370000,
+          "v": {
+            "disk read/s": 0,
+            "scanned/s": 124399286.91
+          }
+        },
+        {
+          "t": 1792589371000,
+          "v": {
+            "disk read/s": 0,
+            "scanned/s": 272914654.07
+          }
+        },
+        {
+          "t": 1792589372000,
+          "v": {
+            "disk read/s": 0,
+            "scanned/s": 19763248.33
+          }
+        },
+        {
+          "t": 1792589373000,
+          "v": {
+            "disk read/s": 0,
+            "scanned/s": 0
+          }
+        },
+        {
+          "t": 1792589374000,
+          "v": {
+            "disk read/s": 0,
+            "scanned/s": 0
+          }
+        },
+        {
+          "t": 1792589375000,
+          "v": {
+            "disk read/s": 0,
+            "scanned/s": 0
+          }
+        },
+        {
+          "t": 1792589376000,
+          "v": {
+            "disk read/s": 0,
+            "scanned/s": 0
+          }
+        },
+        {
+          "t": 1792589377000,
+          "v": {
+            "disk read/s": 0,
+            "scanned/s": 239319.81
+          }
+        },
+        {
+          "t": 1792589378000,
+          "v": {
+            "disk read/s": 0,
+            "scanned/s": 239060.6
+          }
+        },
+        {
+          "t": 1792589379000,
+          "v": {
+            "disk read/s": 0,
+            "scanned/s": 119595.49
+          }
+        },
+        {
+          "t": 1792589380000,
+          "v": {
+            "disk read/s": 0,
+            "scanned/s": 597406.95
+          }
+        },
+        {
+          "t": 1792589381000,
+          "v": {
+            "disk read/s": 0,
+            "scanned/s": 358630.87
+          }
+        },
+        {
+          "t": 1792589382000,
+          "v": {
+            "disk read/s": 0,
+            "scanned/s": 239020.83
+          }
+        },
+        {
+          "t": 1792589383000,
+          "v": {
+            "disk read/s": 0,
+            "scanned/s": 358672.48
+          }
+        },
+        {
+          "t": 1792589384000,
+          "v": {
+            "disk read/s": 0,
+            "scanned/s": 0
+          }
+        },
+        {
+          "t": 1792589385000,
+          "v": {
+            "disk read/s": 0,
+            "scanned/s": 119535.86
+          }
+        },
+        {
+          "t": 1792589386000,
+          "v": {
+            "disk read/s": 0,
+            "scanned/s": 0
+          }
+        },
+        {
+          "t": 1792589387000,
+          "v": {
+            "disk read/s": 0,
+            "scanned/s": 119546.49
+          }
+        }
+      ]
+    },
+    {
+      "id": "compaction",
+      "title": "Compaction",
+      "series": [
+        "compacted/s"
+      ],
+      "noteValue": 0,
+      "buckets": [
+        {
+          "t": 1792589288000,
+          "v": {}
+        },
+        {
+          "t": 1792589289000,
+          "v": {}
+        },
+        {
+          "t": 1792589290000,
+          "v": {}
+        },
+        {
+          "t": 1792589291000,
+          "v": {}
+        },
+        {
+          "t": 1792589292000,
+          "v": {}
+        },
+        {
+          "t": 1792589293000,
+          "v": {}
+        },
+        {
+          "t": 1792589294000,
+          "v": {}
+        },
+        {
+          "t": 1792589295000,
+          "v": {}
+        },
+        {
+          "t": 1792589296000,
+          "v": {}
+        },
+        {
+          "t": 1792589297000,
+          "v": {}
+        },
+        {
+          "t": 1792589298000,
+          "v": {}
+        },
+        {
+          "t": 1792589299000,
+          "v": {}
+        },
+        {
+          "t": 1792589300000,
+          "v": {}
+        },
+        {
+          "t": 1792589301000,
+          "v": {}
+        },
+        {
+          "t": 1792589302000,
+          "v": {}
+        },
+        {
+          "t": 1792589303000,
+          "v": {}
+        },
+        {
+          "t": 1792589304000,
+          "v": {}
+        },
+        {
+          "t": 1792589305000,
+          "v": {}
+        },
+        {
+          "t": 1792589306000,
+          "v": {}
+        },
+        {
+          "t": 1792589307000,
+          "v": {}
+        },
+        {
+          "t": 1792589308000,
+          "v": {}
+        },
+        {
+          "t": 1792589309000,
+          "v": {}
+        },
+        {
+          "t": 1792589310000,
+          "v": {}
+        },
+        {
+          "t": 1792589311000,
+          "v": {}
+        },
+        {
+          "t": 1792589312000,
+          "v": {}
+        },
+        {
+          "t": 1792589313000,
+          "v": {}
+        },
+        {
+          "t": 1792589314000,
+          "v": {}
+        },
+        {
+          "t": 1792589315000,
+          "v": {}
+        },
+        {
+          "t": 1792589316000,
+          "v": {}
+        },
+        {
+          "t": 1792589317000,
+          "v": {}
+        },
+        {
+          "t": 1792589318000,
+          "v": {}
+        },
+        {
+          "t": 1792589319000,
+          "v": {}
+        },
+        {
+          "t": 1792589320000,
+          "v": {}
+        },
+        {
+          "t": 1792589321000,
+          "v": {}
+        },
+        {
+          "t": 1792589322000,
+          "v": {}
+        },
+        {
+          "t": 1792589323000,
+          "v": {}
+        },
+        {
+          "t": 1792589324000,
+          "v": {}
+        },
+        {
+          "t": 1792589325000,
+          "v": {}
+        },
+        {
+          "t": 1792589326000,
+          "v": {}
+        },
+        {
+          "t": 1792589327000,
+          "v": {}
+        },
+        {
+          "t": 1792589328000,
+          "v": {}
+        },
+        {
+          "t": 1792589329000,
+          "v": {}
+        },
+        {
+          "t": 1792589330000,
+          "v": {}
+        },
+        {
+          "t": 1792589331000,
+          "v": {}
+        },
+        {
+          "t": 1792589332000,
+          "v": {}
+        },
+        {
+          "t": 1792589333000,
+          "v": {}
+        },
+        {
+          "t": 1792589334000,
+          "v": {}
+        },
+        {
+          "t": 1792589335000,
+          "v": {}
+        },
+        {
+          "t": 1792589336000,
+          "v": {}
+        },
+        {
+          "t": 1792589337000,
+          "v": {}
+        },
+        {
+          "t": 1792589338000,
+          "v": {}
+        },
+        {
+          "t": 1792589339000,
+          "v": {}
+        },
+        {
+          "t": 1792589340000,
+          "v": {}
+        },
+        {
+          "t": 1792589341000,
+          "v": {}
+        },
+        {
+          "t": 1792589342000,
+          "v": {}
+        },
+        {
+          "t": 1792589343000,
+          "v": {}
+        },
+        {
+          "t": 1792589344000,
+          "v": {
+            "compacted/s": 0
+          }
+        },
+        {
+          "t": 1792589345000,
+          "v": {
+            "compacted/s": 0
+          }
+        },
+        {
+          "t": 1792589346000,
+          "v": {
+            "compacted/s": 0
+          }
+        },
+        {
+          "t": 1792589347000,
+          "v": {
+            "compacted/s": 0
+          }
+        },
+        {
+          "t": 1792589348000,
+          "v": {
+            "compacted/s": 0
+          }
+        },
+        {
+          "t": 1792589349000,
+          "v": {
+            "compacted/s": 0
+          }
+        },
+        {
+          "t": 1792589350000,
+          "v": {
+            "compacted/s": 0
+          }
+        },
+        {
+          "t": 1792589351000,
+          "v": {
+            "compacted/s": 0
+          }
+        },
+        {
+          "t": 1792589352000,
+          "v": {
+            "compacted/s": 0
+          }
+        },
+        {
+          "t": 1792589353000,
+          "v": {
+            "compacted/s": 0
+          }
+        },
+        {
+          "t": 1792589354000,
+          "v": {
+            "compacted/s": 0
+          }
+        },
+        {
+          "t": 1792589355000,
+          "v": {
+            "compacted/s": 0
+          }
+        },
+        {
+          "t": 1792589356000,
+          "v": {
+            "compacted/s": 0
+          }
+        },
+        {
+          "t": 1792589357000,
+          "v": {
+            "compacted/s": 0
+          }
+        },
+        {
+          "t": 1792589358000,
+          "v": {
+            "compacted/s": 0
+          }
+        },
+        {
+          "t": 1792589359000,
+          "v": {
+            "compacted/s": 0
+          }
+        },
+        {
+          "t": 1792589360000,
+          "v": {
+            "compacted/s": 0
+          }
+        },
+        {
+          "t": 1792589361000,
+          "v": {
+            "compacted/s": 0
+          }
+        },
+        {
+          "t": 1792589362000,
+          "v": {
+            "compacted/s": 0
+          }
+        },
+        {
+          "t": 1792589363000,
+          "v": {
+            "compacted/s": 0
+          }
+        },
+        {
+          "t": 1792589364000,
+          "v": {
+            "compacted/s": 0
+          }
+        },
+        {
+          "t": 1792589365000,
+          "v": {
+            "compacted/s": 0
+          }
+        },
+        {
+          "t": 1792589366000,
+          "v": {
+            "compacted/s": 0
+          }
+        },
+        {
+          "t": 1792589367000,
+          "v": {
+            "compacted/s": 0
+          }
+        },
+        {
+          "t": 1792589368000,
+          "v": {
+            "compacted/s": 0
+          }
+        },
+        {
+          "t": 1792589369000,
+          "v": {
+            "compacted/s": 0
+          }
+        },
+        {
+          "t": 1792589370000,
+          "v": {
+            "compacted/s": 0
+          }
+        },
+        {
+          "t": 1792589371000,
+          "v": {
+            "compacted/s": 0
+          }
+        },
+        {
+          "t": 1792589372000,
+          "v": {
+            "compacted/s": 0
+          }
+        },
+        {
+          "t": 1792589373000,
+          "v": {
+            "compacted/s": 0
+          }
+        },
+        {
+          "t": 1792589374000,
+          "v": {
+            "compacted/s": 0
+          }
+        },
+        {
+          "t": 1792589375000,
+          "v": {
+            "compacted/s": 0
+          }
+        },
+        {
+          "t": 1792589376000,
+          "v": {
+            "compacted/s": 0
+          }
+        },
+        {
+          "t": 1792589377000,
+          "v": {
+            "compacted/s": 0
+          }
+        },
+        {
+          "t": 1792589378000,
+          "v": {
+            "compacted/s": 0
+          }
+        },
+        {
+          "t": 1792589379000,
+          "v": {
+            "compacted/s": 0
+          }
+        },
+        {
+          "t": 1792589380000,
+          "v": {
+            "compacted/s": 0
+          }
+        },
+        {
+          "t": 1792589381000,
+          "v": {
+            "compacted/s": 0
+          }
+        },
+        {
+          "t": 1792589382000,
+          "v": {
+            "compacted/s": 0
+          }
+        },
+        {
+          "t": 1792589383000,
+          "v": {
+            "compacted/s": 0
+          }
+        },
+        {
+          "t": 1792589384000,
+          "v": {
+            "compacted/s": 0
+          }
+        },
+        {
+          "t": 1792589385000,
+          "v": {
+            "compacted/s": 0
+          }
+        },
+        {
+          "t": 1792589386000,
+          "v": {
+            "compacted/s": 0
+          }
+        },
+        {
+          "t": 1792589387000,
+          "v": {
+            "compacted/s": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "transactions",
+      "title": "Transactions",
+      "series": [
+        "running"
+      ],
+      "note": "finished/s",
+      "noteValue": 0,
+      "buckets": [
+        {
+          "t": 1792589288000,
+          "v": {}
+        },
+        {
+          "t": 1792589289000,
+          "v": {}
+        },
+        {
+          "t": 1792589290000,
+          "v": {}
+        },
+        {
+          "t": 1792589291000,
+          "v": {}
+        },
+        {
+          "t": 1792589292000,
+          "v": {}
+        },
+        {
+          "t": 1792589293000,
+          "v": {}
+        },
+        {
+          "t": 1792589294000,
+          "v": {}
+        },
+        {
+          "t": 1792589295000,
+          "v": {}
+        },
+        {
+          "t": 1792589296000,
+          "v": {}
+        },
+        {
+          "t": 1792589297000,
+          "v": {}
+        },
+        {
+          "t": 1792589298000,
+          "v": {}
+        },
+        {
+          "t": 1792589299000,
+          "v": {}
+        },
+        {
+          "t": 1792589300000,
+          "v": {}
+        },
+        {
+          "t": 1792589301000,
+          "v": {}
+        },
+        {
+          "t": 1792589302000,
+          "v": {}
+        },
+        {
+          "t": 1792589303000,
+          "v": {}
+        },
+        {
+          "t": 1792589304000,
+          "v": {}
+        },
+        {
+          "t": 1792589305000,
+          "v": {}
+        },
+        {
+          "t": 1792589306000,
+          "v": {}
+        },
+        {
+          "t": 1792589307000,
+          "v": {}
+        },
+        {
+          "t": 1792589308000,
+          "v": {}
+        },
+        {
+          "t": 1792589309000,
+          "v": {}
+        },
+        {
+          "t": 1792589310000,
+          "v": {}
+        },
+        {
+          "t": 1792589311000,
+          "v": {}
+        },
+        {
+          "t": 1792589312000,
+          "v": {}
+        },
+        {
+          "t": 1792589313000,
+          "v": {}
+        },
+        {
+          "t": 1792589314000,
+          "v": {}
+        },
+        {
+          "t": 1792589315000,
+          "v": {}
+        },
+        {
+          "t": 1792589316000,
+          "v": {}
+        },
+        {
+          "t": 1792589317000,
+          "v": {}
+        },
+        {
+          "t": 1792589318000,
+          "v": {}
+        },
+        {
+          "t": 1792589319000,
+          "v": {}
+        },
+        {
+          "t": 1792589320000,
+          "v": {}
+        },
+        {
+          "t": 1792589321000,
+          "v": {}
+        },
+        {
+          "t": 1792589322000,
+          "v": {}
+        },
+        {
+          "t": 1792589323000,
+          "v": {}
+        },
+        {
+          "t": 1792589324000,
+          "v": {}
+        },
+        {
+          "t": 1792589325000,
+          "v": {}
+        },
+        {
+          "t": 1792589326000,
+          "v": {}
+        },
+        {
+          "t": 1792589327000,
+          "v": {}
+        },
+        {
+          "t": 1792589328000,
+          "v": {}
+        },
+        {
+          "t": 1792589329000,
+          "v": {}
+        },
+        {
+          "t": 1792589330000,
+          "v": {}
+        },
+        {
+          "t": 1792589331000,
+          "v": {}
+        },
+        {
+          "t": 1792589332000,
+          "v": {}
+        },
+        {
+          "t": 1792589333000,
+          "v": {}
+        },
+        {
+          "t": 1792589334000,
+          "v": {}
+        },
+        {
+          "t": 1792589335000,
+          "v": {}
+        },
+        {
+          "t": 1792589336000,
+          "v": {}
+        },
+        {
+          "t": 1792589337000,
+          "v": {}
+        },
+        {
+          "t": 1792589338000,
+          "v": {}
+        },
+        {
+          "t": 1792589339000,
+          "v": {}
+        },
+        {
+          "t": 1792589340000,
+          "v": {}
+        },
+        {
+          "t": 1792589341000,
+          "v": {}
+        },
+        {
+          "t": 1792589342000,
+          "v": {}
+        },
+        {
+          "t": 1792589343000,
+          "v": {}
+        },
+        {
+          "t": 1792589344000,
+          "v": {
+            "running": 0
+          }
+        },
+        {
+          "t": 1792589345000,
+          "v": {
+            "running": 0
+          }
+        },
+        {
+          "t": 1792589346000,
+          "v": {
+            "running": 0
+          }
+        },
+        {
+          "t": 1792589347000,
+          "v": {
+            "running": 0
+          }
+        },
+        {
+          "t": 1792589348000,
+          "v": {
+            "running": 0
+          }
+        },
+        {
+          "t": 1792589349000,
+          "v": {
+            "running": 0
+          }
+        },
+        {
+          "t": 1792589350000,
+          "v": {
+            "running": 0
+          }
+        },
+        {
+          "t": 1792589351000,
+          "v": {
+            "running": 0
+          }
+        },
+        {
+          "t": 1792589352000,
+          "v": {
+            "running": 0
+          }
+        },
+        {
+          "t": 1792589353000,
+          "v": {
+            "running": 0
+          }
+        },
+        {
+          "t": 1792589354000,
+          "v": {
+            "running": 0
+          }
+        },
+        {
+          "t": 1792589355000,
+          "v": {
+            "running": 0
+          }
+        },
+        {
+          "t": 1792589356000,
+          "v": {
+            "running": 0
+          }
+        },
+        {
+          "t": 1792589357000,
+          "v": {
+            "running": 0
+          }
+        },
+        {
+          "t": 1792589358000,
+          "v": {
+            "running": 0
+          }
+        },
+        {
+          "t": 1792589359000,
+          "v": {
+            "running": 0
+          }
+        },
+        {
+          "t": 1792589360000,
+          "v": {
+            "running": 0
+          }
+        },
+        {
+          "t": 1792589361000,
+          "v": {
+            "running": 0
+          }
+        },
+        {
+          "t": 1792589362000,
+          "v": {
+            "running": 0
+          }
+        },
+        {
+          "t": 1792589363000,
+          "v": {
+            "running": 0
+          }
+        },
+        {
+          "t": 1792589364000,
+          "v": {
+            "running": 0
+          }
+        },
+        {
+          "t": 1792589365000,
+          "v": {
+            "running": 0
+          }
+        },
+        {
+          "t": 1792589366000,
+          "v": {
+            "running": 0
+          }
+        },
+        {
+          "t": 1792589367000,
+          "v": {
+            "running": 0
+          }
+        },
+        {
+          "t": 1792589368000,
+          "v": {
+            "running": 0
+          }
+        },
+        {
+          "t": 1792589369000,
+          "v": {
+            "running": 0
+          }
+        },
+        {
+          "t": 1792589370000,
+          "v": {
+            "running": 0
+          }
+        },
+        {
+          "t": 1792589371000,
+          "v": {
+            "running": 0
+          }
+        },
+        {
+          "t": 1792589372000,
+          "v": {
+            "running": 0
+          }
+        },
+        {
+          "t": 1792589373000,
+          "v": {
+            "running": 0
+          }
+        },
+        {
+          "t": 1792589374000,
+          "v": {
+            "running": 0
+          }
+        },
+        {
+          "t": 1792589375000,
+          "v": {
+            "running": 0
+          }
+        },
+        {
+          "t": 1792589376000,
+          "v": {
+            "running": 0
+          }
+        },
+        {
+          "t": 1792589377000,
+          "v": {
+            "running": 0
+          }
+        },
+        {
+          "t": 1792589378000,
+          "v": {
+            "running": 0
+          }
+        },
+        {
+          "t": 1792589379000,
+          "v": {
+            "running": 0
+          }
+        },
+        {
+          "t": 1792589380000,
+          "v": {
+            "running": 0
+          }
+        },
+        {
+          "t": 1792589381000,
+          "v": {
+            "running": 0
+          }
+        },
+        {
+          "t": 1792589382000,
+          "v": {
+            "running": 0
+          }
+        },
+        {
+          "t": 1792589383000,
+          "v": {
+            "running": 0
+          }
+        },
+        {
+          "t": 1792589384000,
+          "v": {
+            "running": 0
+          }
+        },
+        {
+          "t": 1792589385000,
+          "v": {
+            "running": 0
+          }
+        },
+        {
+          "t": 1792589386000,
+          "v": {
+            "running": 0
+          }
+        },
+        {
+          "t": 1792589387000,
+          "v": {
+            "running": 0
+          }
+        }
+      ]
     }
   ]
 }

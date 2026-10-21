@@ -313,12 +313,11 @@ func runGUI(cfg Config, configErr string) {
 				status = "not connected"
 			}
 			return dashOut{
-				Status:      status,
-				Classes:     []string{},
-				Buckets:     []bucketOut{},
-				TopSQL:      []topSQLOut{},
-				ConnClasses: []string{},
-				Conns:       []bucketOut{},
+				Status:        status,
+				Classes:       []string{},
+				Buckets:       []bucketOut{},
+				TopSQL:        []topSQLOut{},
+				CounterCharts: []counterChartOut{},
 			}, nil
 		}
 		out := sampler.Snapshot(time.Now(), windowSeconds, sliceBy, topBy)

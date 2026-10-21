@@ -493,19 +493,73 @@ function drawChart() {
   }
 }
 
-// Fixed colors for the counter charts.
-const CONN_COLORS = {
-  query: "#1e88e5",
-  idle: "#9e9e9e",
-  other: "#8e24aa",
+// Fixed colors for the counter charts. The series names are unique across
+// the panels, so one map covers them all.
+const COUNTER_COLORS = {
+  "query": "#1e88e5",
+  "idle": "#9e9e9e",
+  "other": "#8e24aa",
+  "queries/s": "#1e88e5",
+  "errors/s": "#e53935",
+  "pending": "#fb8c00",
+  "running slots": "#26a69a",
+  "backend %": "#8e24aa",
+  "query %": "#00acc1",
+  "disk read/s": "#1e88e5",
+  "scanned/s": "#26a69a",
+  "compacted/s": "#7cb342",
+  "running": "#5c6bc0",
 };
 
+function counterColor(name) {
+  return COUNTER_COLORS[name] || "#78909c";
+}
+
+// The panels are described by the Go side, so the list of them and their
+// series lives in one place rather than twice.
+function buildCounterPanels() {
+  const box = el("counters");
+  box.replaceChildren();
+  for (const chart of dash.counterCharts) {
+    const panel = document.createElement("div");
+    panel.className = "counter-panel";
+
+    const heading = document.createElement("h3");
+    heading.textContent = chart.title;
+    if (chart.note) {
+      const note = document.createElement("span");
+      note.className = "hint";
+      note.id = "counter-note-" + chart.id;
+      heading.append(note);
+    }
+
+    const canvas = document.createElement("canvas");
+    canvas.id = "counter-" + chart.id;
+
+    const legend = document.createElement("div");
+    legend.className = "mini-legend";
+    legend.id = "counter-legend-" + chart.id;
+
+    panel.append(heading, canvas, legend);
+    box.append(panel);
+  }
+}
+
 function drawCounters() {
-  drawStacked(el("conns-chart"), dash.connClasses, dash.conns, {
-    colorOf: (c) => CONN_COLORS[c] || "#78909c",
-  });
-  renderMiniLegend("conns-legend", dash.connClasses,
-    (c) => CONN_COLORS[c] || "#78909c");
+  const box = el("counters");
+  if (box.childElementCount !== dash.counterCharts.length) {
+    buildCounterPanels();
+  }
+  for (const chart of dash.counterCharts) {
+    drawStacked(el("counter-" + chart.id), chart.series, chart.buckets, {
+      colorOf: counterColor,
+    });
+    renderMiniLegend("counter-legend-" + chart.id, chart.series, counterColor);
+    const note = el("counter-note-" + chart.id);
+    if (note) {
+      note.textContent = " · " + chart.note + ": " + Number(chart.noteValue).toFixed(2);
+    }
+  }
 }
 
 function renderMiniLegend(id, classes, colorOf) {

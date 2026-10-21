@@ -99,6 +99,7 @@ func sliceKey(r queryRow, dim int) string {
 // dividing that by the elapsed time gives a rate.
 type querySeen struct {
 	cpu   float64
+	scan  float64
 	at    time.Time
 	start time.Time
 }
@@ -125,6 +126,10 @@ type sample struct {
 	running int
 	// conns counts the connections by state.
 	conns map[string]int
+	// counters are the values of the counter charts at this moment. They
+	// are refreshed on the slower metrics cadence and carried in between,
+	// because a gauge stays true until it is read again.
+	counters counters
 }
 
 // Sampler keeps a sliding in-memory window of samples for one database:
@@ -147,6 +152,21 @@ type Sampler struct {
 	// selfID is the server-side id of the sampler's own connection. The
 	// sampler's own queries are left out of the chart.
 	selfID int64
+	// dbID is the id of the connected database, for the transaction counts.
+	dbID int64
+	// counters holds the last known values, refreshed on the metrics
+	// cadence and carried in between.
+	counters counters
+	// the previous metric readings, for the rates.
+	prevFE        feSnapshot
+	prevBE        beSnapshot
+	prevTxnFinish float64
+	// beMemLimit is the cluster's total backend memory, for the share of
+	// it the running queries hold.
+	beMemLimit float64
+	// metricsValid says whether there is a previous reading to compute a
+	// rate against.
+	metricsValid bool
 }
 
 func newSampler(dsn string) *Sampler {
@@ -207,11 +227,21 @@ func (s *Sampler) sampleUntilError(ctx context.Context, dsn string) error {
 	}
 	s.selfID = self
 
+	// The transaction counts are addressed by database id, and the
+	// connection string names the database.
+	var dbName string
+	if err := db.QueryRow("SELECT DATABASE()").Scan(&dbName); err == nil {
+		if id, err := databaseID(db, dbName); err == nil {
+			s.dbID = id
+		}
+	}
+
 	s.setStatus("sampling")
 	debugf("event=sampler_connected self=%d", self)
 
 	ticker := time.NewTicker(sampleEvery)
 	defer ticker.Stop()
+	tick := 0
 	for {
 		select {
 		case <-ctx.Done():
@@ -224,7 +254,57 @@ func (s *Sampler) sampleUntilError(ctx context.Context, dsn string) error {
 			return err
 		}
 		s.push(smp)
+
+		// The metric views cost about 26ms each and are read far less
+		// often than the running queries.
+		tick++
+		if tick%metricsEvery == 0 {
+			if err := s.captureMetrics(db); err != nil {
+				return err
+			}
+		}
 	}
+}
+
+// captureMetrics reads the cluster's metric views and turns the cumulative
+// counters into rates. The gauges are simply read; the counters are
+// differenced against the previous reading.
+func (s *Sampler) captureMetrics(db *sql.DB) error {
+	fe, err := collectFEMetrics(db)
+	if err != nil {
+		return err
+	}
+	be, err := collectBEMetrics(db)
+	if err != nil {
+		return err
+	}
+	txnRunning, txnFinished, err := collectTransactions(db, s.dbID)
+	if err != nil {
+		return err
+	}
+
+	c := s.counters
+	if s.metricsValid {
+		c.queriesPS, c.errorsPS, c.timeoutsPS = feRates(s.prevFE, fe)
+		c.diskReadPS, c.compactionPS = beRates(s.prevBE, be)
+		if dt := fe.at.Sub(s.prevFE.at).Seconds(); dt > 0 {
+			c.txnFinishedPS = (txnFinished - s.prevTxnFinish) / dt
+		}
+	}
+	c.queuePending = fe.queuePending
+	c.queueRunning = fe.queueRunning
+	c.memBEPercent = be.beMemUsedPct
+	c.txnRunning = txnRunning
+
+	s.counters = c
+	s.prevFE = fe
+	s.prevBE = be
+	s.prevTxnFinish = txnFinished
+	s.beMemLimit = be.beMemLimit
+	s.metricsValid = true
+	debugf("event=metrics qps=%.2f err=%.2f queue=%.0f disk=%.0f compact=%.0f",
+		c.queriesPS, c.errorsPS, c.queuePending, c.diskReadPS, c.compactionPS)
+	return nil
 }
 
 // capture takes one sample: the running queries, their CPU consumption since
@@ -258,6 +338,8 @@ func (s *Sampler) capture(db *sql.DB) (sample, error) {
 	seen := s.seen
 	next := make(map[string]querySeen, len(rows))
 	smp.rows = make([]sampledQuery, 0, len(rows))
+	scanRate := 0.0
+	queryMemory := 0.0
 	for _, r := range rows {
 		// The sampler's own queries are not the cluster's load.
 		if s.selfID != 0 && r.connectionID == strconv.FormatInt(s.selfID, 10) {
@@ -270,6 +352,7 @@ func (s *Sampler) capture(db *sql.DB) (sample, error) {
 			// has consumed since then is known exactly.
 			if dt := now.Sub(prev.at).Seconds(); dt > 0 {
 				rate = (r.cpuSeconds - prev.cpu) / dt
+				scanRate += (r.scanBytes - prev.scan) / dt
 			}
 		case !s.lastSampleAt.IsZero() && r.start.After(s.lastSampleAt):
 			// The query started after the last sample, so all the CPU it
@@ -292,7 +375,8 @@ func (s *Sampler) capture(db *sql.DB) (sample, error) {
 		if rate < 0 {
 			rate = 0
 		}
-		next[r.queryID] = querySeen{cpu: r.cpuSeconds, at: now, start: r.start}
+		next[r.queryID] = querySeen{cpu: r.cpuSeconds, scan: r.scanBytes, at: now, start: r.start}
+		queryMemory += r.memoryBytes
 
 		sq := sampledQuery{rate: rate}
 		for dim := 0; dim < dimCount; dim++ {
@@ -302,6 +386,18 @@ func (s *Sampler) capture(db *sql.DB) (sample, error) {
 		smp.cpuTotal += rate
 	}
 	smp.running = len(smp.rows)
+
+	// The counters the one-second sample can answer for itself: the rate
+	// the running queries are scanning, and the share of the cluster's
+	// memory they hold. The rest are read on the metrics cadence and
+	// carried.
+	c := s.counters
+	c.scannedPS = scanRate
+	if s.beMemLimit > 0 {
+		c.memQueryPercent = 100 * queryMemory / s.beMemLimit
+	}
+	smp.counters = c
+
 	s.seen = next
 	s.lastSampleAt = now
 
@@ -357,9 +453,20 @@ type dashOut struct {
 	Buckets []bucketOut `json:"buckets"`
 	TopSQL  []topSQLOut `json:"topSQL"`
 
-	// Counter charts, same closed-bucket timeline as the load chart.
-	ConnClasses []string    `json:"connClasses"`
-	Conns       []bucketOut `json:"conns"`
+	// CounterCharts are the panels under the load chart, on the same
+	// closed-bucket timeline as the load chart itself.
+	CounterCharts []counterChartOut `json:"counterCharts"`
+}
+
+// counterChartOut is one panel of the counter row: a fixed set of series and
+// the values over the same bucket timeline as the load chart.
+type counterChartOut struct {
+	ID      string      `json:"id"`
+	Title   string      `json:"title"`
+	Series  []string    `json:"series"`
+	Note    string      `json:"note,omitempty"`
+	NoteVal float64     `json:"noteValue"`
+	Buckets []bucketOut `json:"buckets"`
 }
 
 // Snapshot aggregates the sliding window ending now into chart buckets and a
@@ -452,11 +559,13 @@ func aggregate(samples []sample, now time.Time, windowSeconds int, sliceBy, topB
 		cpu     map[string]float64
 		samples int
 		conns   map[string]int
+		counter map[string]float64
 	}
 	buckets := make([]agg, chartBuckets)
 	for i := range buckets {
 		buckets[i].cpu = map[string]float64{}
 		buckets[i].conns = map[string]int{}
+		buckets[i].counter = map[string]float64{}
 	}
 
 	classSeen := map[string]bool{}
@@ -481,6 +590,20 @@ func aggregate(samples []sample, now time.Time, windowSeconds int, sliceBy, topB
 		for _, name := range connClasses {
 			b.conns[name] += smp.conns[name]
 		}
+		for _, chart := range counterCharts {
+			for _, name := range chart.Series {
+				if name == "query" || name == "idle" || name == "other" {
+					// The connection counts are read every second,
+					// not on the metrics cadence.
+					b.counter[name] += float64(smp.conns[name])
+					continue
+				}
+				b.counter[name] += smp.counters.value(name)
+			}
+			if chart.Note != "" {
+				b.counter[chart.Note] += smp.counters.note(chart.Note)
+			}
+		}
 		for _, row := range smp.rows {
 			class := row.keys[sliceDim]
 			b.cpu[class] += row.rate
@@ -504,12 +627,10 @@ func aggregate(samples []sample, now time.Time, windowSeconds int, sliceBy, topB
 	}
 
 	outBuckets := make([]bucketOut, chartBuckets)
-	outConns := make([]bucketOut, chartBuckets)
 	for i, b := range buckets {
 		t := start.Add(time.Duration(i) * bs).UnixMilli()
 
 		v := map[string]float64{}
-		cv := map[string]float64{}
 		if b.samples > 0 {
 			merged := map[string]float64{}
 			for class, cv := range b.cpu {
@@ -518,14 +639,9 @@ func aggregate(samples []sample, now time.Time, windowSeconds int, sliceBy, topB
 			for class, cv := range merged {
 				v[class] = round2(cv / float64(b.samples))
 			}
-			for _, name := range connClasses {
-				if b.conns[name] > 0 {
-					cv[name] = round2(float64(b.conns[name]) / float64(b.samples))
-				}
-			}
+
 		}
 		outBuckets[i] = bucketOut{T: t, V: v}
-		outConns[i] = bucketOut{T: t, V: cv}
 	}
 
 	var top []topSQLOut
@@ -552,6 +668,33 @@ func aggregate(samples []sample, now time.Time, windowSeconds int, sliceBy, topB
 		top = []topSQLOut{}
 	}
 
+	outCharts := make([]counterChartOut, len(counterCharts))
+	for ci, chart := range counterCharts {
+		chartBucketsOut := make([]bucketOut, chartBuckets)
+		noteVal := 0.0
+		for i, b := range buckets {
+			t := start.Add(time.Duration(i) * bs).UnixMilli()
+			v := map[string]float64{}
+			if b.samples > 0 {
+				for _, name := range chart.Series {
+					v[name] = round2(b.counter[name] / float64(b.samples))
+				}
+			}
+			if chart.Note != "" && b.samples > 0 {
+				noteVal = round2(b.counter[chart.Note] / float64(b.samples))
+			}
+			chartBucketsOut[i] = bucketOut{T: t, V: v}
+		}
+		outCharts[ci] = counterChartOut{
+			ID:      chart.ID,
+			Title:   chart.Title,
+			Series:  chart.Series,
+			Note:    chart.Note,
+			NoteVal: noteVal,
+			Buckets: chartBucketsOut,
+		}
+	}
+
 	return dashOut{
 		WindowSeconds: windowSeconds,
 		BucketSeconds: bucketSeconds,
@@ -561,8 +704,7 @@ func aggregate(samples []sample, now time.Time, windowSeconds int, sliceBy, topB
 		Classes:       classes,
 		Buckets:       outBuckets,
 		TopSQL:        top,
-		ConnClasses:   connClasses,
-		Conns:         outConns,
+		CounterCharts: outCharts,
 	}
 }
 

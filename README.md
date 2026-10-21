@@ -16,7 +16,26 @@ catalog. Sampled once a second from `SHOW PROC '/current_queries'`.
 
 **Top queries**, ranked by the CPU they burned in the window.
 
-**Connections**, counted by state from `SHOW PROCESSLIST`.
+**Seven counter panels** under the load chart, each on its own axis so one
+scale means one thing:
+
+| Panel | What it shows | Source |
+| --- | --- | --- |
+| Connections | query / idle / other | `SHOW PROCESSLIST` |
+| Queries per second | accepted and failed | `fe_metrics` |
+| Query queue | pending queries, running slots | `fe_metrics` |
+| Memory in use | busiest backend, and the queries' share | `/backends`, `/current_queries` |
+| Bytes per second | disk reads, and what the queries scan | `be_metrics`, `/current_queries` |
+| Compaction | bytes compacted per second | `be_metrics` |
+| Transactions | in flight, and the completion rate | `/transactions/<db>` |
+
+**Sessions**, with the statement each one is running, and a `KILL` that shows
+the exact statement before it runs. StarRocks has one way to stop a session
+and not another: `KILL` ends the connection, and the query on it goes with
+it.
+
+The metric views cost about 26ms each, so they are read every ten seconds
+and the values are carried in between.
 
 ## What it does not show, and why
 
