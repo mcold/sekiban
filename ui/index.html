@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>sr-dash</title>
+  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav id="sidebar" aria-label="Screens">
+    <div id="nav-top">
+      <button type="button" id="nav-collapse" class="nav-item nav-toggle"
+        aria-label="Toggle sidebar" title="Toggle sidebar"
+        aria-expanded="true"></button>
+      <div id="brand">sr-dash</div>
+    </div>
+    <div id="attached" title="">
+      <span class="dot"></span><span id="attached-name"></span>
+    </div>
+    <button type="button" class="nav-item" data-screen="dashboard">Dashboard</button>
+    <button type="button" class="nav-item" data-screen="connections">Connections</button>
+  </nav>
+
+  <main id="content">
+  <section id="config-error-box" hidden>
+    <h2>Configuration error</h2>
+    <p>The config file could not be loaded. Fix it and reopen sr-dash.</p>
+    <p><code id="config-error"></code></p>
+  </section>
+
+  <section id="setup" hidden>
+    <h2 id="setup-heading">Add a StarRocks connection</h2>
+    <p id="first-run-note" hidden>
+      No connections configured yet. Add the first one to get started.
+    </p>
+    <form id="setup-form">
+      <label>Connection string
+        <input type="text" id="dsn" autocomplete="off" spellcheck="false"
+          placeholder="root:password@tcp(fe.internal:9030)/mydb">
+      </label>
+      <p class="hint">A MySQL connection string, the shape the Go driver
+        accepts. The frontend's HTTP port (8030) is derived from the host and
+        used for the audit log and query profiles.</p>
+      <label>Title (optional)
+        <input type="text" id="title" autocomplete="off"
+          placeholder="Production, Local dev, ...">
+      </label>
+      <div class="buttons">
+        <button type="button" id="delete" class="destructive" hidden>Delete</button>
+        <button type="button" id="test">Test connection</button>
+        <button type="submit" id="save">Save</button>
+        <button type="button" id="cancel" hidden>Cancel</button>
+      </div>
+    </form>
+    <div id="confirm" hidden>
+      <p id="confirm-text"></p>
+      <p class="hint">Only its (database ...) line is removed; the rest of the
+        file is untouched.</p>
+      <div class="buttons">
+        <button type="button" id="confirm-cancel">Cancel</button>
+        <button type="button" id="confirm-remove" class="destructive">Confirm deletion</button>
+      </div>
+    </div>
+    <p id="result" aria-live="polite"></p>
+    <p class="hint">Connections are saved to <code id="cfg-path"></code>.
+      The file is yours: sr-dash only appends to it, never rewrites it.</p>
+  </section>
+
+  <section id="dashboard" hidden>
+    <div class="dash-header">
+      <h2 id="dash-title"></h2>
+      <div class="buttons dash-actions">
+        <label class="slice-label">Sliced by
+          <select id="slice-by">
+            <option value="sql">Query</option>
+            <option value="users">User</option>
+            <option value="databases">Database</option>
+            <option value="resource_groups">Resource group</option>
+            <option value="warehouses">Warehouse</option>
+            <option value="exec_states">Exec state</option>
+            <option value="fe_hosts">FE host</option>
+            <option value="catalogs">Catalog</option>
+          </select>
+        </label>
+        <span class="windows" role="group" aria-label="Time window">
+          <button type="button" class="win" data-window="300">5m</button>
+          <button type="button" class="win" data-window="900">15m</button>
+          <button type="button" class="win" data-window="3600">1h</button>
+        </span>
+        <button type="button" id="pause" class="icon-only"
+          aria-label="Pause auto-refresh" title="Pause auto-refresh"></button>
+      </div>
+    </div>
+    <p id="dash-status" class="hint" aria-live="polite"></p>
+    <div id="chart-row">
+      <div id="chart-box">
+        <canvas id="chart"></canvas>
+        <div id="chart-tip" hidden></div>
+      </div>
+      <div id="legend"></div>
+    </div>
+    <div id="counters">
+      <div class="counter-panel">
+        <h3>Connections</h3>
+        <canvas id="conns-chart"></canvas>
+        <div class="mini-legend" id="conns-legend"></div>
+      </div>
+    </div>
+
+    <h2 id="top-heading">Top queries <span class="hint">by CPU time in this
+      window</span></h2>
+    <div class="tabs" role="group" aria-label="Top dimension">
+      <button type="button" class="tab" data-top="sql">Query</button>
+      <button type="button" class="tab" data-top="users">User</button>
+      <button type="button" class="tab" data-top="databases">Database</button>
+      <button type="button" class="tab" data-top="resource_groups">Resource group</button>
+      <button type="button" class="tab" data-top="warehouses">Warehouse</button>
+    </div>
+    <div id="topsql"></div>
+  </section>
+
+  <section id="list" hidden>
+    <h2>Connections</h2>
+    <div id="connections"></div>
+    <p id="list-result" aria-live="polite"></p>
+    <div class="buttons">
+      <button type="button" id="add">Add connection</button>
+    </div>
+    <p class="hint">The first connection is the default: sr-dash attaches to
+      it when it opens. Only one connection is open at a time, so connecting
+      to another closes the current one.</p>
+  </section>
+
+  </main>
+
+  <script src="icons.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
