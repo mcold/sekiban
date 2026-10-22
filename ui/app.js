@@ -13,7 +13,7 @@ window.addEventListener("unhandledrejection", (ev) => {
 
 // Keyboard zoom: Cmd+/Cmd-/Cmd0 (Ctrl elsewhere) scale the root font size,
 // and everything sized in rem follows. Persisted per app.
-const ZOOM_KEY = "sr-dash.zoom";
+const ZOOM_KEY = "sekiban.zoom";
 let zoom = Number(localStorage.getItem(ZOOM_KEY)) || 100;
 
 function applyZoom() {
@@ -71,7 +71,7 @@ const NAV_ICONS = {
   connections: "gear",
 };
 
-const NAV_COLLAPSED_KEY = "sr-dash.navCollapsed";
+const NAV_COLLAPSED_KEY = "sekiban.navCollapsed";
 let navCollapsed = localStorage.getItem(NAV_COLLAPSED_KEY) === "1";
 
 function goTo(name) {
@@ -87,11 +87,11 @@ function goTo(name) {
   if (name === "metrics") loadMetrics();
 }
 
-const WINDOW_KEY = "sr-dash.window";
+const WINDOW_KEY = "sekiban.window";
 let windowSeconds = Number(localStorage.getItem(WINDOW_KEY)) || 300;
-const SLICE_KEY = "sr-dash.sliceBy";
+const SLICE_KEY = "sekiban.sliceBy";
 let sliceBy = localStorage.getItem(SLICE_KEY) || "sql";
-const TOP_KEY = "sr-dash.topBy";
+const TOP_KEY = "sekiban.topBy";
 let topBy = localStorage.getItem(TOP_KEY) || "sql";
 
 // Heading per Top dimension; the tab labels are in the page.
@@ -170,7 +170,7 @@ function renderCell(conn, i) {
   const row = buttonRow(edit);
   if (i !== 0) {
     // "Default" is a position in the file, not a flag: promoting one moves its
-    // line to the top, which is where sr-dash looks when it opens.
+    // line to the top, which is where sekiban looks when it opens.
     row.append(button("Make default", () => makeDefaultIndex(i)));
   }
   if (i === state.active) {
@@ -195,7 +195,7 @@ async function makeDefaultIndex(index) {
   render();
 }
 
-// Closing the connection is a resting state, not a failure: sr-dash stays on
+// Closing the connection is a resting state, not a failure: sekiban stays on
 // this screen attached to nothing until you pick a database again.
 async function disconnectActive() {
   showListResult("");
@@ -234,7 +234,7 @@ function render() {
   el("cfg-path").textContent = state.path;
 
   // What decides the screen is the RESULT of running the config: no databases
-  // configured means sr-dash asks for one, whether the file is missing,
+  // configured means sekiban asks for one, whether the file is missing,
   // empty, or holds only comments.
   const unconfigured = state.connections.length === 0;
   if (unconfigured) {

@@ -1,10 +1,20 @@
-# sr-dash
+# sekiban
 
 A StarRocks dashboard that stays up when the cluster does not.
 
-`sr-dash` is a fork of [keikiban](https://github.com/crgimenes/keikiban), a
+`sekiban` is a fork of [keikiban](https://github.com/crgimenes/keikiban), a
 PostgreSQL dashboard, with the collector layer rewritten for StarRocks. Same
 shape: a native desktop window, no server, no port, no agent on the cluster.
+
+## The name
+
+`sekiban` (石板) is a flagstone: a flat slab of stone. It is keikiban's
+sibling. 板 is a board in both, and what is written on the board changed from
+a PostgreSQL notice board to a StarRocks one.
+
+The program was called `sr-dash` until the rename. Nothing else about it
+changed, and a config file written under the old name is still read, so the
+rename cost nobody a connection.
 
 ## What it shows
 
@@ -77,7 +87,7 @@ StarRocks analog at all, so they are not here:
   MVCC plus optimistic concurrency, and queries *queue* rather than block.
 - **Migrations** — no DDL versioning.
 - **Maintenance** — no XID wraparound, no VACUUM, no sequences. Compaction
-  and tablet health are the real equivalents, and are the next screens.
+  and tablet health are the real equivalents.
 
 ## Requirements
 
@@ -86,14 +96,25 @@ in 4.0; a 3.x server is refused with a message that says so.
 
 Nothing to install on the cluster.
 
+## Build
+
+```
+git clone https://github.com/crgimenes/sekiban
+cd sekiban
+go build -o sekiban .
+```
+
+One binary, no dependencies beyond the Go toolchain. It runs on Linux, macOS
+and Windows, on amd64 and arm64.
+
 ## Configure
 
 Connections live in a [Filo](https://github.com/crgimenes/filo) file at
-`~/.config/sr-dash/init.filo`, or `./sr_dash_init.filo` if you keep one per
+`~/.config/sekiban/init.filo`, or `./sekiban_init.filo` if you keep one per
 project.
 
 ```lisp
-; sr-dash configuration
+; sekiban configuration
 (database "root:password@tcp(fe.internal:9030)/analytics" "Production")
 ```
 
@@ -109,14 +130,18 @@ overrides it when the FE HTTP port is elsewhere:
 the attached database sits in the sidebar and in the window title, so a
 command cannot land on a server you were not looking at.
 
+A config file left under the old name — `~/.config/sr-dash/init.filo` or
+`./sr_dash_init.filo` — is still read when there is no `sekiban` one, and is
+still the file that gets appended to.
+
 ## Command line
 
 The GUI is the product. The flags exist so an AI agent can drive it:
 
 ```
-sr-dash -json connections
-sr-dash -json sessions
-sr-dash -json dashboard [seconds]
+sekiban -json connections
+sekiban -json sessions
+sekiban -json dashboard [seconds]
 ```
 
 `dashboard` samples for a while before answering, because the chart is built

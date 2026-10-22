@@ -3,7 +3,7 @@
 // Loaded before app.js by tools/uimock/serve.sh.
 //
 // The data comes from recorded/*.json, which are REAL captures taken with
-// `sr-dash -json dashboard` against a live StarRocks under load. Screenshots
+// `sekiban -json dashboard` against a live StarRocks under load. Screenshots
 // must not invent numbers: a chart drawn from a smooth synthetic curve looks
 // nothing like a cluster under load, and publishing it as if it were a
 // measurement would be a lie. Re-record with tools/record_demo.sh.
@@ -44,7 +44,7 @@ const MOCK = {
 };
 
 window.configState = async () => ({
-  path: "~/.config/sr-dash/init.filo",
+  path: "~/.config/sekiban/init.filo",
   exists: true,
   error: "",
   active: MOCK.active,

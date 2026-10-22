@@ -112,7 +112,7 @@ func openSR(dsn string) (*sql.DB, error) {
 	}
 	if version.major < 4 {
 		_ = db.Close()
-		return nil, fmt.Errorf("StarRocks %s is not supported: sr-dash needs 4.0 or newer, because the SHOW PROC paths it relies on changed in 4.0", version.string)
+		return nil, fmt.Errorf("StarRocks %s is not supported: sekiban needs 4.0 or newer, because the SHOW PROC paths it relies on changed in 4.0", version.string)
 	}
 	return db, nil
 }

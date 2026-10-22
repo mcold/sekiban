@@ -1,4 +1,4 @@
-module github.com/crgimenes/sr-dash
+module github.com/crgimenes/sekiban
 
 go 1.27.1
 

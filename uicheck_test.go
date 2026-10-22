@@ -28,9 +28,9 @@ import (
 )
 
 func TestInterface(t *testing.T) {
-	dsn := os.Getenv("SR_DASH_DSN")
+	dsn := os.Getenv("SR_SEKIBAN_DSN")
 	if dsn == "" {
-		t.Skip("SR_DASH_DSN is not set")
+		t.Skip("SR_SEKIBAN_DSN is not set")
 	}
 
 	debugMode = true
@@ -61,7 +61,7 @@ func TestInterface(t *testing.T) {
 	}
 	defer w.Destroy()
 
-	w.SetTitle("sr-dash uicheck")
+	w.SetTitle("sekiban uicheck")
 	w.SetSize(1200, 860, glaze.HintNone)
 
 	mustBind(w, "configState", func() (uiState, error) {
@@ -168,7 +168,7 @@ func TestInterface(t *testing.T) {
 		return testResult{OK: true, Version: "4.0.0"}, nil
 	})
 
-	w.Navigate("app://sr-dash/")
+	w.Navigate("app://sekiban/")
 
 	go func() {
 		time.Sleep(9 * time.Second)

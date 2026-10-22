@@ -5,7 +5,7 @@ package main
 // The live checks: the parts that only mean something against a real
 // server. They are behind the uicheck build tag because they need one.
 //
-//   SR_DASH_DSN="root:@tcp(127.0.0.1:9030)/sr_dash_dev" go test -tags uicheck -v .
+//   SR_SEKIBAN_DSN="root:@tcp(127.0.0.1:9030)/sr_dash_dev" go test -tags uicheck -v .
 
 import (
 	"context"
@@ -18,9 +18,9 @@ import (
 
 func liveDB(t *testing.T) *sql.DB {
 	t.Helper()
-	dsn := os.Getenv("SR_DASH_DSN")
+	dsn := os.Getenv("SR_SEKIBAN_DSN")
 	if dsn == "" {
-		t.Skip("SR_DASH_DSN is not set")
+		t.Skip("SR_SEKIBAN_DSN is not set")
 	}
 	db, err := openSR(dsn)
 	if err != nil {
@@ -203,11 +203,11 @@ func TestObjectDetail(t *testing.T) {
 // The audit log is the only complete record of the queries that have
 // finished. It is read over the frontend's HTTP API.
 func TestAuditLog(t *testing.T) {
-	dsn := os.Getenv("SR_DASH_DSN")
+	dsn := os.Getenv("SR_SEKIBAN_DSN")
 	if dsn == "" {
-		t.Skip("SR_DASH_DSN is not set")
+		t.Skip("SR_SEKIBAN_DSN is not set")
 	}
-	endpoint := os.Getenv("SR_DASH_FE_HTTP")
+	endpoint := os.Getenv("SR_SEKIBAN_FE_HTTP")
 	if endpoint == "" {
 		endpoint = "http://127.0.0.1:8030"
 	}

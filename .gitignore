@@ -1,4 +1,5 @@
 # Binaries
+/sekiban
 /sr-dash
 *.exe
 
@@ -23,6 +24,7 @@ go.work
 go.work.sum
 
 # Local configuration: it holds connection strings with passwords.
+sekiban_init.filo
 sr_dash_init.filo
 
 # Editor/IDE

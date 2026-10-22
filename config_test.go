@@ -7,7 +7,7 @@ import (
 )
 
 func TestParseConfig(t *testing.T) {
-	src := `; sr-dash configuration
+	src := `; sekiban configuration
 (database "root:pw@tcp(fe.internal:9030)/analytics" "Production")
 (database "root:@tcp(127.0.0.1:9030)/sr_dash_dev")
 `
@@ -57,7 +57,7 @@ func TestParseConfigHTTPOverride(t *testing.T) {
 // A config file holding only comments is what deleting the last connection
 // leaves behind, and it must not be an error.
 func TestParseConfigOnlyComments(t *testing.T) {
-	conns, err := parseConfig("; sr-dash configuration\n; nothing here\n")
+	conns, err := parseConfig("; sekiban configuration\n; nothing here\n")
 	if err != nil {
 		t.Fatalf("parseConfig: %v", err)
 	}
@@ -94,7 +94,7 @@ func TestDeriveFEHTTP(t *testing.T) {
 
 func TestAppendAndUpdateConnection(t *testing.T) {
 	dir := t.TempDir()
-	path := filepath.Join(dir, "sr_dash_init.filo")
+	path := filepath.Join(dir, "sekiban_init.filo")
 
 	if err := appendConnection(path, "root:pw@tcp(a:9030)/one", "One"); err != nil {
 		t.Fatalf("appendConnection: %v", err)
@@ -159,4 +159,80 @@ func loadConfigAt(path string) (Config, error) {
 		return Config{}, err
 	}
 	return Config{Path: path, Exists: true, Connections: conns}, nil
+}
+
+// The program was called sr-dash until the rename. A config file written
+// under the old name is still the user's, so it is read when no sekiban
+// config exists.
+func TestConfigPathFallsBackToTheOldName(t *testing.T) {
+	dir := t.TempDir()
+	t.Chdir(dir)
+	t.Setenv("XDG_CONFIG_HOME", filepath.Join(dir, "config"))
+
+	newPath := filepath.Join(dir, "config", "sekiban", "init.filo")
+	legacyPath := filepath.Join(dir, "config", "sr-dash", "init.filo")
+
+	// Nothing on disk yet: the new path is where a fresh config goes.
+	got, err := configPath()
+	if err != nil {
+		t.Fatalf("configPath: %v", err)
+	}
+	if got != newPath {
+		t.Errorf("configPath = %q, want %q", got, newPath)
+	}
+
+	// A leftover config from the old name is used rather than ignored.
+	writeConfig(t, legacyPath)
+	got, err = configPath()
+	if err != nil {
+		t.Fatalf("configPath: %v", err)
+	}
+	if got != legacyPath {
+		t.Errorf("configPath = %q, want the old config %q", got, legacyPath)
+	}
+
+	// Once the new config exists, it wins.
+	writeConfig(t, newPath)
+	got, err = configPath()
+	if err != nil {
+		t.Fatalf("configPath: %v", err)
+	}
+	if got != newPath {
+		t.Errorf("configPath = %q, want %q", got, newPath)
+	}
+}
+
+// A config file in the working directory wins over both, as it always did.
+func TestConfigPathPrefersTheLocalFile(t *testing.T) {
+	dir := t.TempDir()
+	t.Chdir(dir)
+	t.Setenv("XDG_CONFIG_HOME", filepath.Join(dir, "config"))
+
+	writeConfig(t, filepath.Join(dir, "sr_dash_init.filo"))
+	got, err := configPath()
+	if err != nil {
+		t.Fatalf("configPath: %v", err)
+	}
+	if got != "sr_dash_init.filo" {
+		t.Errorf("configPath = %q, want the local old config", got)
+	}
+
+	writeConfig(t, filepath.Join(dir, "sekiban_init.filo"))
+	got, err = configPath()
+	if err != nil {
+		t.Fatalf("configPath: %v", err)
+	}
+	if got != "sekiban_init.filo" {
+		t.Errorf("configPath = %q, want the local new config", got)
+	}
+}
+
+func writeConfig(t *testing.T, path string) {
+	t.Helper()
+	if err := os.MkdirAll(filepath.Dir(path), 0o700); err != nil {
+		t.Fatalf("create config directory: %v", err)
+	}
+	if err := os.WriteFile(path, []byte("; config\n"), 0o600); err != nil {
+		t.Fatalf("write config: %v", err)
+	}
 }

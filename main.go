@@ -35,7 +35,7 @@ func debugf(format string, args ...any) {
 	if !debugMode {
 		return
 	}
-	fmt.Fprintf(os.Stderr, "sr-dash: "+format+"\n", args...)
+	fmt.Fprintf(os.Stderr, "sekiban: "+format+"\n", args...)
 }
 
 func main() {
@@ -95,7 +95,7 @@ func runJSON(cfg Config, configErr string, args []string) {
 		if len(args) > 1 {
 			n, err := strconv.Atoi(args[1])
 			if err != nil || n < 1 {
-				fail("usage: sr-dash -json dashboard [seconds]")
+				fail("usage: sekiban -json dashboard [seconds]")
 			}
 			seconds = n
 		}
@@ -181,7 +181,7 @@ func runJSON(cfg Config, configErr string, args []string) {
 			fail("no connections configured")
 		}
 		if len(args) < 2 {
-			fail("usage: sr-dash -json describe <name>")
+			fail("usage: sekiban -json describe <name>")
 		}
 		out, err := collectObjectDetailJSON(context.Background(), cfg.Connections[0].DSN, args[1])
 		if err != nil {
@@ -241,7 +241,7 @@ func runGUI(cfg Config, configErr string) {
 	defer w.Destroy()
 
 	// Dashboard-sized; user-resizable with a sane floor.
-	w.SetTitle("sr-dash")
+	w.SetTitle("sekiban")
 	w.SetSize(1200, 860, glaze.HintNone)
 	w.SetSize(560, 480, glaze.HintMin)
 
@@ -250,7 +250,7 @@ func runGUI(cfg Config, configErr string) {
 	var mu sync.Mutex
 	var sampler *Sampler
 	samplerDSN := ""
-	// activeIndex is the one connection sr-dash is attached to. Exactly one
+	// activeIndex is the one connection sekiban is attached to. Exactly one
 	// at a time, on purpose: with several open at once it is too easy to run
 	// a command against production while believing you are on staging.
 	// A fresh start always attaches to the first (the default).
@@ -304,9 +304,9 @@ func runGUI(cfg Config, configErr string) {
 		}
 		// The window title names the attached database, so even the OS
 		// window switcher says which server a keystroke would reach.
-		title := "sr-dash"
+		title := "sekiban"
 		if ok && conn.Title != "" {
-			title = "sr-dash - " + conn.Title
+			title = "sekiban - " + conn.Title
 		}
 		w.Dispatch(func() { w.SetTitle(title) })
 	}
@@ -342,7 +342,7 @@ func runGUI(cfg Config, configErr string) {
 	})
 
 	// connectTo attaches to one connection and, by doing so, detaches from
-	// the previous one: sr-dash is never attached to two servers at once.
+	// the previous one: sekiban is never attached to two servers at once.
 	mustBind(w, "connectTo", func(index int) (uiState, error) {
 		mu.Lock()
 		defer mu.Unlock()
@@ -354,7 +354,7 @@ func runGUI(cfg Config, configErr string) {
 		return state(), nil
 	})
 
-	// disconnect closes the open connection and leaves sr-dash attached to
+	// disconnect closes the open connection and leaves sekiban attached to
 	// nothing: the sampler stops polling and the window title stops naming a
 	// server. Being attached to no database is a legitimate resting state, not
 	// an error to recover from.
@@ -716,8 +716,8 @@ func runGUI(cfg Config, configErr string) {
 	// Windows and Linux deliver those shortcuts to the focused control directly,
 	// so the menu (where supported at all) carries only Quit.
 	items := []menu.Item{
-		{Title: "sr-dash", Submenu: []menu.Item{
-			{Title: "Quit sr-dash", Shortcut: "cmd+q", OnClick: w.Terminate},
+		{Title: "sekiban", Submenu: []menu.Item{
+			{Title: "Quit sekiban", Shortcut: "cmd+q", OnClick: w.Terminate},
 		}},
 	}
 	if runtime.GOOS == "darwin" {
@@ -743,7 +743,7 @@ func runGUI(cfg Config, configErr string) {
 		debugf("event=menu_error err=%q", err)
 	}
 
-	w.Navigate("app://sr-dash/")
+	w.Navigate("app://sekiban/")
 	w.Run()
 }
 

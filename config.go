@@ -36,14 +36,41 @@ type Config struct {
 	Connections []Connection `json:"connections"`
 }
 
-// configPath resolves the config file location: an sr_dash_init.filo in the
-// current directory wins, otherwise $XDG_CONFIG_HOME/sr-dash/init.filo
+// configPath resolves the config file location: a sekiban_init.filo in the
+// current directory wins, otherwise $XDG_CONFIG_HOME/sekiban/init.filo
 // (defaulting XDG_CONFIG_HOME to ~/.config).
+//
+// The program used to be called sr-dash, and a config file written under
+// that name is still the user's: when no sekiban config exists but an old
+// one does, the old one is used and keeps being written to. A rename must
+// not cost anyone a connection.
 func configPath() (string, error) {
-	local := "sr_dash_init.filo"
-	_, err := os.Stat(local)
-	if err == nil {
-		return local, nil
+	path, err := configPathFor("sekiban", "sekiban")
+	if err != nil {
+		return "", err
+	}
+	if _, err := os.Stat(path); err == nil {
+		return path, nil
+	}
+
+	legacy, err := configPathFor("sr_dash", "sr-dash")
+	if err != nil {
+		return "", err
+	}
+	if _, err := os.Stat(legacy); err == nil {
+		return legacy, nil
+	}
+	return path, nil
+}
+
+// configPathFor returns where the config file of a program lives: a
+// <local>_init.filo in the current directory wins, otherwise
+// $XDG_CONFIG_HOME/<dir>/init.filo. The two names differ because the old
+// program used an underscore for the file and a dash for the directory.
+func configPathFor(local, dir string) (string, error) {
+	name := local + "_init.filo"
+	if _, err := os.Stat(name); err == nil {
+		return name, nil
 	}
 
 	configHome := os.Getenv("XDG_CONFIG_HOME")
@@ -54,7 +81,7 @@ func configPath() (string, error) {
 		}
 		configHome = filepath.Join(home, ".config")
 	}
-	return filepath.Join(configHome, "sr-dash", "init.filo"), nil
+	return filepath.Join(configHome, dir, "init.filo"), nil
 }
 
 // loadConfig reads and parses the config file. A missing file is not an
@@ -177,7 +204,7 @@ func appendConnection(path, dsn, title string) error {
 
 	var b strings.Builder
 	if isNew {
-		b.WriteString("; sr-dash configuration\n")
+		b.WriteString("; sekiban configuration\n")
 	}
 	b.WriteString("(database ")
 	b.WriteString(filoQuote(dsn))
@@ -284,7 +311,7 @@ func readConnectionLines(path string) (lines []string, dbLines []int, err error)
 		}
 	}
 	if len(dbLines) != len(conns) {
-		return nil, nil, fmt.Errorf("config %s declares connections in a shape sr-dash cannot edit safely (multi-line or computed forms); edit the file directly", path)
+		return nil, nil, fmt.Errorf("config %s declares connections in a shape sekiban cannot edit safely (multi-line or computed forms); edit the file directly", path)
 	}
 	return lines, dbLines, nil
 }

@@ -1,6 +1,6 @@
 "use strict";
 
-// Icons shared by every sr-dash window, so an action looks the same wherever
+// Icons shared by every sekiban window, so an action looks the same wherever
 // it appears.
 // Icons from Bootstrap Icons (https://icons.getbootstrap.com), MIT, © The
 // Bootstrap Authors. Only the handful we use, inlined; fill follows the text

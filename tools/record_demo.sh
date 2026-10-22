@@ -15,9 +15,9 @@ mkdir -p "$OUT"
 SECONDS_TO_SAMPLE="${1:-40}"
 
 echo "recording the dashboard over ${SECONDS_TO_SAMPLE}s..."
-sr-dash -json dashboard "$SECONDS_TO_SAMPLE" > "$OUT/dashboard.json"
+sekiban -json dashboard "$SECONDS_TO_SAMPLE" > "$OUT/dashboard.json"
 
 echo "recording the session list..."
-sr-dash -json sessions > "$OUT/sessions.json"
+sekiban -json sessions > "$OUT/sessions.json"
 
 echo "done: $OUT"

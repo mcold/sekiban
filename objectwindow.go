@@ -187,6 +187,6 @@ func openObjectWindow(name string, attachedDSN func() (string, error)) glaze.Web
 	}
 
 	debugf("event=object_window_open name=%s", name)
-	ow.Navigate("app://sr-dash/object.html")
+	ow.Navigate("app://sekiban/object.html")
 	return ow
 }
