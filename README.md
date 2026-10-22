@@ -96,16 +96,40 @@ in 4.0; a 3.x server is refused with a message that says so.
 
 Nothing to install on the cluster.
 
+## Install
+
+```
+git clone https://github.com/mcold/sekiban
+cd sekiban
+go install .
+```
+
+The binary lands in `$(go env GOPATH)/bin`, which is often not on `PATH`:
+
+```
+export PATH="$(go env GOPATH)/bin:$PATH"
+```
+
+Or name the directory yourself, and install into one that already is on it:
+
+```
+GOBIN=~/.local/bin go install .
+```
+
+On Linux the interface needs WebKitGTK at runtime: `libwebkit2gtk-4.1-0` on
+Debian/Ubuntu, `webkit2gtk4.1` on Fedora.
+
 ## Build
 
 ```
-git clone https://github.com/crgimenes/sekiban
-cd sekiban
 go build -o sekiban .
 ```
 
 One binary, no dependencies beyond the Go toolchain. It runs on Linux, macOS
 and Windows, on amd64 and arm64.
+
+[BUILD.md](BUILD.md) has the whole procedure: what to run after a merge into
+`main`, how to cross-compile, and how to tag a release.
 
 ## Configure
 
