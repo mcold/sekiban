@@ -45,6 +45,9 @@ type profileOut struct {
 	Profiles []profileEntry `json:"profiles"`
 	// Summary ranks the audit log by the CPU the queries cost.
 	Summary []auditSummary `json:"summary"`
+	// SummaryTotal is how many distinct statements the audit log holds.
+	// Summary itself is the heaviest auditSummaryLimit of them.
+	SummaryTotal int `json:"summaryTotal"`
 	// HistoryCount is how many queries the audit log holds.
 	HistoryCount int `json:"historyCount"`
 	// HistoryError says why the audit log could not be read, if it could
@@ -80,8 +83,18 @@ func collectProfiles(ctx context.Context, db *sql.DB, fe *feClient, withHistory 
 	records := parseAuditLog(fetched)
 	out.Summary = summariseAuditLog(records)
 	out.HistoryCount = len(records)
+	// A day of audit log holds thousands of distinct statements, and the
+	// screen can only use the heaviest of them: the list is a ranking, and
+	// the tail of it is not worth drawing.
+	out.SummaryTotal = len(out.Summary)
+	if len(out.Summary) > auditSummaryLimit {
+		out.Summary = out.Summary[:auditSummaryLimit]
+	}
 	return out
 }
+
+// auditSummaryLimit is how many statements the ranking keeps.
+const auditSummaryLimit = 500
 
 // auditAggregator accumulates the audit log into a ranking of statements.
 //
@@ -208,37 +221,6 @@ func (a *auditCache) summary() ([]auditSummary, int) {
 	return a.ranking.summary(), a.ranking.count
 }
 
-// explainAnalyze runs a statement and returns the profile the frontend
-// wrote of it.
-func explainAnalyze(ctx context.Context, db *sql.DB, statement string) (string, error) {
-	if strings.TrimSpace(statement) == "" {
-		return "", fmt.Errorf("there is no statement to explain")
-	}
-	rows, err := db.QueryContext(ctx, "EXPLAIN ANALYZE "+statement)
-	if err != nil {
-		return "", err
-	}
-	defer func() { _ = rows.Close() }()
-
-	var b strings.Builder
-	for rows.Next() {
-		cols, err := rows.Columns()
-		if err != nil {
-			return "", err
-		}
-		if len(cols) == 0 {
-			continue
-		}
-		var cell sql.NullString
-		if err := rows.Scan(&cell); err != nil {
-			return "", err
-		}
-		b.WriteString(cell.String)
-		b.WriteString("\n")
-	}
-	return b.String(), rows.Err()
-}
-
 // --- The frontend's HTTP API ---
 
 // feClient talks to the frontend's HTTP API over Basic auth.
@@ -328,6 +310,138 @@ func (c *feClient) queryProfile(ctx context.Context, queryID string) (string, er
 		return "", err
 	}
 	return string(body), nil
+}
+
+// profileDoc is the profile the frontend recorded of one query, read.
+//
+// It is the same text the frontend's own web page shows, under
+// /query_profile?query_id=..., taken apart so the interface can draw it.
+type profileDoc struct {
+	// Error carries a failure, so the page always gets something to show.
+	Error string `json:"error,omitempty"`
+	// QueryID is the query the profile is of.
+	QueryID string `json:"queryId"`
+	// Nodes are the sections of the profile.
+	Nodes []*treeNode `json:"nodes"`
+	// Raw is the profile as it came.
+	Raw string `json:"raw,omitempty"`
+}
+
+// rootSections are the sections the frontend writes under "Query:".
+//
+// They are recognised by name and not by their place in the tree, because
+// the frontend prints "Reason:" one step deeper than its siblings.
+var rootSections = map[string]bool{
+	"Summary":   true,
+	"Planner":   true,
+	"Reason":    true,
+	"Execution": true,
+}
+
+// parseQueryProfile reads the profile the frontend recorded of a query.
+//
+// The text is an indented tree: a line that ends in a colon names a thing,
+// and a line that starts with a dash is a measurement of the thing above it.
+// The indentation says how deep a thing is.
+func parseQueryProfile(queryID, text string) profileDoc {
+	doc := profileDoc{QueryID: queryID, Nodes: []*treeNode{}, Raw: text}
+	root := &treeNode{Name: "Query"}
+	doc.Nodes = append(doc.Nodes, root)
+
+	// The stack is the path of open things: the root, then every section
+	// and measurement that is still open.
+	type frame struct {
+		indent int
+		node   *treeNode
+	}
+	stack := []frame{{indent: -1, node: root}}
+	// The planner has a tree of its own, nested by the spaces that follow
+	// the dash rather than by the indentation.
+	var planner []planStep
+
+	for _, line := range strings.Split(text, "\n") {
+		trimmed := strings.TrimSpace(line)
+		if trimmed == "" {
+			continue
+		}
+		indent := len(line) - len(strings.TrimLeft(line, " "))
+
+		if strings.HasPrefix(trimmed, "- ") {
+			for len(stack) > 1 && stack[len(stack)-1].indent >= indent {
+				stack = stack[:len(stack)-1]
+			}
+			parent := stack[len(stack)-1].node
+			item := trimmed[2:]
+			if entry, ok := parsePlannerEntry(item); ok {
+				for len(planner) > 0 && planner[len(planner)-1].depth >= entry.depth {
+					planner = planner[:len(planner)-1]
+				}
+				if len(planner) == 0 {
+					parent.Children = append(parent.Children, entry.node)
+				} else {
+					holder := planner[len(planner)-1].node
+					holder.Children = append(holder.Children, entry.node)
+				}
+				planner = append(planner, planStep{depth: entry.depth, node: entry.node})
+				continue
+			}
+			for _, field := range splitMetrics(item) {
+				parent.Children = append(parent.Children, field)
+				stack = append(stack, frame{indent: indent, node: field})
+			}
+			continue
+		}
+
+		if strings.HasSuffix(trimmed, ":") {
+			name := strings.TrimSpace(strings.TrimSuffix(trimmed, ":"))
+			for len(stack) > 1 && stack[len(stack)-1].indent >= indent {
+				stack = stack[:len(stack)-1]
+			}
+			parent := stack[len(stack)-1].node
+			if rootSections[name] {
+				parent = root
+			}
+			// The profile opens with "Query:", which is the root itself
+			// and not a section under it.
+			if name == "Query" && len(root.Children) == 0 {
+				stack = append(stack, frame{indent: indent, node: root})
+				continue
+			}
+			node := &treeNode{Name: name}
+			parent.Children = append(parent.Children, node)
+			stack = append(stack, frame{indent: indent, node: node})
+			planner = nil
+			continue
+		}
+
+		// A line that is neither a section nor a measurement: keep it as
+		// a measurement of its own, so that nothing is lost.
+		for len(stack) > 1 && stack[len(stack)-1].indent >= indent {
+			stack = stack[:len(stack)-1]
+		}
+		parent := stack[len(stack)-1].node
+		parent.Children = append(parent.Children, splitMetrics(trimmed)...)
+	}
+	return doc
+}
+
+// parsePlannerEntry reads one step of the planner's own tree.
+//
+// The step is written as a dash, some dashes, a name and a time: "--
+// Parser[1] 6ms". How deep it sits is in the spaces between the first dash
+// and the second.
+func parsePlannerEntry(item string) (planStep, bool) {
+	trimmed := strings.TrimLeft(item, " ")
+	extra := len(item) - len(trimmed)
+	if !strings.HasPrefix(trimmed, "--") {
+		return planStep{}, false
+	}
+	rest := strings.TrimSpace(strings.TrimPrefix(trimmed, "--"))
+	name, value := rest, ""
+	if i := strings.LastIndex(rest, " "); i > 0 {
+		name, value = rest[:i], rest[i+1:]
+	}
+	return planStep{depth: extra / 4, node: &treeNode{Name: name, Value: value}}, true
 }
 
 // --- The audit log ---

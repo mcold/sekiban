@@ -1,0 +1,76 @@
+[0mSummary[0m
+    [0mQueryId: 01a163a6-c747-7d2a-b2a0-22f3ca0cb28d[0m
+    [0mVersion: 4.0.0-dccb665[0m
+    [0mState: Finished[0m
+    [0mTotalTime: 33ms[0m
+        [0mExecutionTime: 18.390ms [Scan: 321.170us (1.75%), Network: 1.982ms (10.78%), ResultDeliverTime: 0ns (0.00%), ScheduleTime: 16.404ms (89.20%)][0m
+        [0mCollectProfileTime: 3ms[0m
+        [0mFrontendProfileMergeTime: 6.191ms[0m
+    [0mQueryPeakMemoryUsage: ?, QueryAllocatedMemoryUsage: 2.263 MB[0m
+    [0mTop Most Time-consuming Nodes:[0m
+        [1m[31m1. OLAP_SCAN (id=0) : 2.309ms (47.41%)[0m
+        [1m[31m2. EXCHANGE (id=3) [GATHER]: 2.182ms (44.80%)[0m
+        [0m3. AGGREGATION (id=2) [serialize, update]: 229.473us (4.71%)[0m
+        [0m4. RESULT_SINK: 67.909us (1.39%)[0m
+        [0m5. AGGREGATION (id=4) [finalize, merge]: 56.519us (1.16%)[0m
+        [0m6. PROJECT (id=1) : 25.439us (0.52%)[0m
+    [0mTop Most Memory-consuming Nodes:[0m
+    [0mNonDefaultVariables:[0m
+        [0menable_adaptive_sink_dop: false -> true[0m
+        [0menable_async_profile: true -> false[0m
+        [0menable_profile: false -> true[0m
+[0mFragment 0[0m
+│   [0mBackendNum: 1[0m
+│   [0mInstancePeakMemoryUsage: 125.773 KB, InstanceAllocatedMemoryUsage: 158.195 KB[0m
+│   [0mPrepareTime: ?[0m
+└──[0mRESULT_SINK[0m
+   │   [0mTotalTime: 67.909us (1.39%) [CPUTime: 67.909us][0m
+   │   [0mOutputRows: 1[0m
+   │   [0mSinkType: MYSQL_PROTOCAL[0m
+   └──[0mAGGREGATION (id=4) [finalize, merge][0m
+      │   [0mEstimates: [row: 1, cpu: 8.00, memory: 8.00, network: 0.00, cost: 27537.60][0m
+      │   [0mTotalTime: 56.519us (1.16%) [CPUTime: 56.519us][0m
+      │   [0mOutputRows: 1[0m
+      │   [0mPeakMemory: ?, AllocatedMemory: ?[0m
+      │   [0mAggExprs: [count(6: count)][0m
+      │   [0mSubordinateOperators: [0m
+      │       [0mLOCAL_EXCHANGE [Passthrough][0m
+      └──[1m[31mEXCHANGE (id=3) [GATHER][0m
+             [1m[31mEstimates: [row: 1, cpu: 8.00, memory: 0.00, network: 8.00, cost: 27517.60][0m
+             [1m[31mTotalTime: 2.182ms (44.80%) [CPUTime: 200.091us, NetworkTime: 1.982ms][0m
+             [1m[31mOutputRows: 8[0m
+             [1m[31mPeakMemory: ?, AllocatedMemory: ?[0m
+             [1m[31mDetail Timers: [0m
+                 [1m[31mOverallTime: 1.054ms [min=543.806us, max=2.052ms][0m
+                 [1m[31mRpcAvgTime: 329.905us [min=154.215us, max=660.850us][0m
+                 [1m[31mWaitTime: 914.719us [min=526.866us, max=1.978ms][0m
+[0m
+[0mFragment 1[0m
+│   [0mBackendNum: 4[0m
+│   [0mInstancePeakMemoryUsage: 222.361 KB, InstanceAllocatedMemoryUsage: 2.108 MB[0m
+│   [0mPrepareTime: 10.937ms[0m
+└──[0mDATA_STREAM_SINK (id=3)[0m
+   │   [0mPartitionType: UNPARTITIONED[0m
+   └──[0mAGGREGATION (id=2) [serialize, update][0m
+      │   [0mEstimates: [row: 1, cpu: 5000.00, memory: 0.80, network: 0.00, cost: 27501.60][0m
+      │   [0mTotalTime: 229.473us (4.71%) [CPUTime: 229.473us][0m
+      │   [0mOutputRows: 8[0m
+      │   [0mPeakMemory: ?, AllocatedMemory: ?[0m
+      │   [0mAggExprs: [count(*)][0m
+      └──[0mPROJECT (id=1) [0m
+         │   [0mEstimates: [row: ?, cpu: ?, memory: ?, network: ?, cost: ?][0m
+         │   [0mTotalTime: 25.439us (0.52%) [CPUTime: 25.439us][0m
+         │   [0mOutputRows: 10.000K (10000)[0m
+         │   [0mExpression: [1][0m
+         └──[1m[31mOLAP_SCAN (id=0) [0m
+                [1m[31mEstimates: [row: 10000, cpu: 50000.00, memory: 0.00, network: 0.00, cost: 25000.00][0m
+                [1m[31mTotalTime: 2.309ms (47.41%) [CPUTime: 1.988ms, ScanTime: 321.170us][0m
+                [1m[31mOutputRows: 10.000K (10000)[0m
+                [1m[31mTable: : dup_events[0m
+                [1m[31mSubordinateOperators: [0m
+                    [1m[31mNOOP[0m
+                    [1m[31mOLAP_SCAN_PREPARE[0m
+                [1m[31mDetail Timers: [ScanTime = IOTaskExecTime + IOTaskWaitTime][0m
+                    [1m[31mIOTaskExecTime: 162.959us [min=106.019us, max=293.611us][0m
+                    [1m[31mIOTaskWaitTime: 64.962us [min=27.559us, max=149.080us][0m
+[0m

@@ -189,12 +189,61 @@ func runJSON(cfg Config, configErr string, args []string) {
 			os.Exit(1)
 		}
 		_ = enc.Encode(out)
+	case "explain":
+		if len(cfg.Connections) == 0 {
+			fail("no connections configured")
+		}
+		if len(args) < 2 {
+			fail("usage: sekiban -json explain <statement>")
+		}
+		db, err := openSR(cfg.Connections[0].DSN)
+		if err != nil {
+			fail(err.Error())
+		}
+		defer func() { _ = db.Close() }()
+		ctx, cancel := context.WithTimeout(context.Background(), queryTimeout)
+		defer cancel()
+		out, err := explainAnalyze(ctx, db, args[1])
+		if err != nil {
+			_ = enc.Encode(map[string]string{"error": err.Error()})
+			os.Exit(1)
+		}
+		_ = enc.Encode(out)
+	case "profile":
+		if len(cfg.Connections) == 0 {
+			fail("no connections configured")
+		}
+		if len(args) < 2 {
+			fail("usage: sekiban -json profile <query id>")
+		}
+		conn := cfg.Connections[0]
+		fe := newFEClient(conn.FEHTTP, conn.DSN)
+		text, err := fe.queryProfile(context.Background(), args[1])
+		if err != nil {
+			_ = enc.Encode(map[string]string{"error": err.Error()})
+			os.Exit(1)
+		}
+		_ = enc.Encode(parseQueryProfile(args[1], text))
+	case "profiles":
+		if len(cfg.Connections) == 0 {
+			fail("no connections configured")
+		}
+		db, err := openSR(cfg.Connections[0].DSN)
+		if err != nil {
+			fail(err.Error())
+		}
+		defer func() { _ = db.Close() }()
+		conn := cfg.Connections[0]
+		fe := newFEClient(conn.FEHTTP, conn.DSN)
+		out := collectProfiles(context.Background(), db, fe, true)
+		_ = enc.Encode(out)
 	default:
 		_ = enc.Encode(map[string]any{
 			"error": fmt.Sprintf("unknown command %q", command),
 			"commands": []string{
 				"browser", "cluster", "compactions", "connections", "dashboard",
-				"describe", "loads", "metrics", "resources", "sessions",
+				"describe", "explain", "loads", "metrics", "profile", "profiles",
+				"resources", "sessions",
 			},
 		})
 		os.Exit(1)
@@ -553,27 +602,31 @@ func runGUI(cfg Config, configErr string) {
 	})
 
 	// The full profile of one query, as the frontend wrote it.
-	mustBind(w, "queryProfile", func(queryID string) (string, error) {
+	mustBind(w, "queryProfile", func(queryID string) (profileDoc, error) {
 		mu.Lock()
 		conn, ok := activeConn()
 		mu.Unlock()
 		if !ok {
-			return "", errors.New("not connected")
+			return profileDoc{}, errors.New("not connected")
 		}
 		fe := newFEClient(conn.FEHTTP, conn.DSN)
-		return fe.queryProfile(context.Background(), queryID)
+		text, err := fe.queryProfile(context.Background(), queryID)
+		if err != nil {
+			return profileDoc{QueryID: queryID, Error: err.Error()}, nil
+		}
+		return parseQueryProfile(queryID, text), nil
 	})
 
-	mustBind(w, "explainAnalyze", func(statement string) (string, error) {
+	mustBind(w, "explainAnalyze", func(statement string) (explainOut, error) {
 		mu.Lock()
 		dsn, err := activeDSN()
 		mu.Unlock()
 		if err != nil {
-			return "", err
+			return explainOut{}, err
 		}
 		db, err := openSR(dsn)
 		if err != nil {
-			return "", err
+			return explainOut{}, err
 		}
 		defer func() { _ = db.Close() }()
 		ctx, cancel := context.WithTimeout(context.Background(), queryTimeout)
