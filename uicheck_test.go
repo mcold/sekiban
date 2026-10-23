@@ -280,12 +280,14 @@ func TestInterface(t *testing.T) {
 			time.Sleep(6 * time.Second)
 			if profileWindow != nil {
 				profileWindow.Dispatch(func() {
-					profileWindow.Eval(`window.logError("PROFCHK " + JSON.stringify({
-						title: document.getElementById("prof-title").textContent,
-						nodes: document.querySelectorAll("#prof-window-tree .tree-node").length,
-						fields: document.querySelectorAll("#prof-window-tree .tree-line").length,
-						status: document.getElementById("prof-window-status").textContent,
-					}));`)
+					profileWindow.Eval(`document.getElementById("prof-window-copy").click(); setTimeout(function () {
+						window.logError("PROFCHK " + JSON.stringify({
+							title: document.getElementById("prof-title").textContent,
+							nodes: document.querySelectorAll("#prof-window-tree .tree-node").length,
+							fields: document.querySelectorAll("#prof-window-tree .tree-line").length,
+							status: document.getElementById("prof-window-status").textContent,
+						}));
+					}, 500);`)
 				})
 			}
 		}

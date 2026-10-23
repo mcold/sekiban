@@ -16,9 +16,12 @@ window.addEventListener("unhandledrejection", (ev) => {
   window.logError?.(String(ev.reason));
 });
 
+// doc is the profile as the frontend wrote it, kept whole: it is what the
+// window draws and what its Copy button hands over.
+let doc = null;
+
 async function loadProfile() {
   el("prof-window-status").textContent = "Reading the recorded profile...";
-  let doc;
   try {
     doc = await window.profileDetail();
   } catch (err) {
@@ -32,6 +35,33 @@ async function loadProfile() {
   for (const node of doc.nodes || []) {
     box.append(nodeEl(node));
   }
+}
+
+// copyText puts text on the clipboard. The WebView has no permission API to
+// ask, so the clipboard API is tried and the hidden-textarea road is the
+// fallback; whoever calls this says so when both fail.
+async function copyText(text) {
+  try {
+    await navigator.clipboard.writeText(text);
+    return true;
+  } catch (err) {
+    // The custom scheme may count as insecure; fall through.
+  }
+  const area = document.createElement("textarea");
+  area.value = text;
+  area.setAttribute("readonly", "");
+  area.style.position = "fixed";
+  area.style.top = "-1000px";
+  document.body.append(area);
+  area.select();
+  let ok = false;
+  try {
+    ok = document.execCommand("copy");
+  } catch (err) {
+    ok = false;
+  }
+  area.remove();
+  return ok;
 }
 
 // nodeEl draws a section of the profile and everything under it.
@@ -83,6 +113,20 @@ function fieldEl(node) {
   }
   return line;
 }
+
+el("prof-window-copy").addEventListener("click", async () => {
+  const status = el("prof-window-status");
+  const text = doc && doc.raw;
+  if (!text) {
+    status.textContent = "There is no profile to copy.";
+    return;
+  }
+  if (await copyText(text)) {
+    status.textContent = "The profile is on the clipboard.";
+  } else {
+    status.textContent = "The clipboard refused the profile.";
+  }
+});
 
 el("prof-window-refresh").addEventListener("click", loadProfile);
 loadProfile();
