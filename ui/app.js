@@ -916,29 +916,52 @@ function renderCluster() {
 }
 
 // dataTable builds a table from a header and the rows.
-function dataTable(head, rows) {
+function dataTable(head, rows, onPick, keyOf, widths) {
   const table = document.createElement("table");
   table.className = "data-table";
+  if (widths) {
+    // A fixed layout keeps the numbers on the screen: the columns get the
+    // share they are given, and the long one wraps inside it.
+    table.style.tableLayout = "fixed";
+  }
   const thead = document.createElement("thead");
   const htr = document.createElement("tr");
-  for (const h of head) {
+  head.forEach((h, i) => {
     const th = document.createElement("th");
     th.textContent = h;
+    if (widths && widths[i]) th.style.width = widths[i];
     htr.append(th);
-  }
+  });
   thead.append(htr);
   table.append(thead);
 
   const tbody = document.createElement("tbody");
-  for (const row of rows) {
+  rows.forEach((row, index) => {
     const tr = document.createElement("tr");
+    if (onPick) {
+      // A row that can be chosen says so, and says which one is chosen.
+      tr.classList.add("row-pick");
+      const key = keyOf ? keyOf(row, index) : "";
+      if (chosen && key && key === chosen.key) {
+        tr.classList.add("row-selected");
+      }
+      tr.addEventListener("click", () => onPick(row, index));
+    }
     for (const cell of row) {
       const td = document.createElement("td");
-      td.textContent = cell === null || cell === undefined ? "" : String(cell);
+      // A cell is a value, or a value that says how it wants to be drawn:
+      // a statement is long and wraps, a count is a number and does not.
+      if (cell !== null && typeof cell === "object") {
+        td.textContent = cell.text === null || cell.text === undefined ? "" : String(cell.text);
+        if (cell.cls) td.className = cell.cls;
+        if (cell.title) td.title = cell.title;
+      } else {
+        td.textContent = cell === null || cell === undefined ? "" : String(cell);
+      }
       tr.append(td);
     }
     tbody.append(tr);
-  }
+  });
   table.append(tbody);
   if (rows.length === 0) {
     const tr = document.createElement("tr");
@@ -1054,6 +1077,14 @@ el("br-refresh").addEventListener("click", loadBrowser);
 el("comp-refresh").addEventListener("click", loadCompactions);
 el("prof-refresh").addEventListener("click", () => loadProfile(false));
 el("prof-audit").addEventListener("click", () => loadProfile(true));
+for (const [id, key] of [["prof-summary-statement", "summaryStatement"],
+  ["prof-list-queryid", "listQueryId"],
+  ["prof-list-statement", "listStatement"]]) {
+  el(id).addEventListener("input", () => {
+    profFilters[key] = el(id).value;
+    renderProfile();
+  });
+}
 el("load-refresh").addEventListener("click", loadLoads);
 el("res-refresh").addEventListener("click", loadResources);
 el("met-refresh").addEventListener("click", loadMetrics);
@@ -1066,19 +1097,11 @@ el("met-filter").addEventListener("input", () => {
 el("prof-explain").addEventListener("click", async () => {
   const sql = el("prof-sql").value.trim();
   if (!sql) {
-    el("prof-explain-status").textContent = "There is no statement to explain.";
+    el("prof-plan-status").textContent = "There is no statement to explain.";
     return;
   }
-  el("prof-explain-status").textContent = "Running...";
-  el("prof-explain-out").hidden = true;
-  try {
-    const out = await window.explainAnalyze(sql);
-    el("prof-explain-out").textContent = out;
-    el("prof-explain-out").hidden = false;
-    el("prof-explain-status").textContent = "Done.";
-  } catch (err) {
-    el("prof-explain-status").textContent = String(err);
-  }
+  el("prof-plan-of").textContent = "";
+  await runExplain(sql, false, "prof-plan", "prof-plan-status");
 });
 
 // --- Compactions and tablet health ---
@@ -1144,6 +1167,13 @@ function renderCompactions() {
 
 let profile = null;
 let auditLoaded = false;
+// The query the user chose, and the rows the lists are filtered by.
+let chosen = null;
+const profFilters = {
+  summaryStatement: "",
+  listQueryId: "",
+  listStatement: "",
+};
 
 async function loadProfile(withAudit) {
   el("prof-status").textContent = "Reading the profiles...";
@@ -1168,25 +1198,256 @@ function renderProfile() {
   if (profile.historyError) {
     bits.push("the audit log could not be read: " + profile.historyError);
   } else if (profile.historyCount) {
-    bits.push(profile.historyCount + " queries in the audit log");
+    let line = profile.historyCount + " queries in the audit log";
+    const kept = (profile.summary || []).length;
+    if (profile.summaryTotal > kept) {
+      line += " · the heaviest " + kept + " of " + profile.summaryTotal +
+        " statements";
+    }
+    bits.push(line);
   } else if (!auditLoaded) {
     bits.push("the audit log has not been read yet");
   }
   el("prof-status").textContent = bits.join(" · ");
 
+  // The filters are regular expressions: a query id is a run of hex
+  // digits, and a statement is searched for the shape of it, not for one
+  // word of it.
+  const summaryFilter = regexpFilter(profFilters.summaryStatement);
+  el("prof-summary-filter-status").textContent = summaryFilter.error || "";
+  const summary = (profile.summary || []).filter((s) =>
+    matches(summaryFilter, s.statement));
   el("prof-summary").replaceChildren(dataTable(
     ["Statement", "Calls", "CPU sec", "Total ms", "Max ms", "Errors", "User",
       "Database", "Last run"],
-    (profile.summary || []).map((s) => [
-      s.statement, s.calls, s.cpuSec.toFixed(2), s.totalMs, s.maxMs,
-      s.errors, s.user, s.db, s.last,
-    ])));
+    summary.map((s) => [
+      { text: s.statement, cls: "stmt", title: s.statement },
+      { text: s.calls, cls: "num" },
+      { text: s.cpuSec.toFixed(2), cls: "num" },
+      { text: s.totalMs, cls: "num" },
+      { text: s.maxMs, cls: "num" },
+      { text: s.errors, cls: "num" },
+      { text: s.user, cls: "plain" },
+      { text: s.db, cls: "plain" },
+      { text: s.last, cls: "plain" },
+    ]),
+    // The row is a list of cells; the statement it stands for is the
+    // summary entry at the same index, which is what the plan needs.
+    (_cells, i) => chooseQuery({
+      key: summaryKey(summary[i]),
+      statement: summary[i].statement,
+      queryId: "",
+    }),
+    (_cells, i) => summaryKey(summary[i]),
+    ["40%", "6%", "6%", "7%", "7%", "6%", "5%", "10%", "13%"]));
 
+  const idFilter = regexpFilter(profFilters.listQueryId);
+  const stmtFilter = regexpFilter(profFilters.listStatement);
+  const filterError = idFilter.error || stmtFilter.error;
+  el("prof-list-filter-status").textContent = filterError || "";
+  const list = (profile.profiles || []).filter((p) =>
+    matches(idFilter, p.queryId) && matches(stmtFilter, p.statement));
   el("prof-list").replaceChildren(dataTable(
     ["Query id", "Started", "Time", "State", "Statement"],
-    (profile.profiles || []).map((p) => [
-      p.queryId, p.startTime, p.time, p.state, p.statement,
-    ])));
+    list.map((p) => [
+      { text: p.queryId, cls: "plain mono" },
+      { text: p.startTime, cls: "plain" },
+      { text: p.time, cls: "num" },
+      { text: p.state, cls: "plain" },
+      { text: p.statement, cls: "stmt", title: p.statement },
+    ]),
+    (_cells, i) => chooseQuery({
+      key: "p:" + list[i].queryId,
+      statement: list[i].statement,
+      queryId: list[i].queryId,
+    }),
+    (_cells, i) => "p:" + list[i].queryId,
+    ["22%", "14%", "6%", "10%", "48%"]));
+}
+
+// summaryKey names one statement of the ranking: the digest is its
+// identity, and the text is the fallback when the frontend wrote no digest.
+function summaryKey(s) {
+  return "s:" + (s.digest || s.statement);
+}
+
+// regexpFilter compiles a search pattern. An empty pattern matches
+// everything; a pattern that does not compile is an error, and the screen
+// says so rather than hiding the rows.
+function regexpFilter(text) {
+  if (!text) return { re: null, error: "" };
+  try {
+    return { re: new RegExp(text, "i"), error: "" };
+  } catch (err) {
+    return { re: null, error: "the pattern is not a regular expression: " + String(err.message || err) };
+  }
+}
+
+// matches reports whether a value passes a filter.
+function matches(filter, value) {
+  if (!filter.re) return true;
+  return filter.re.test(value === null || value === undefined ? "" : String(value));
+}
+
+// chooseQuery takes the row the user picked: its statement is explained,
+// and the profile the frontend recorded of it is fetched when the row has
+// a query id.
+async function chooseQuery(pick) {
+  chosen = pick;
+  el("prof-sql").value = pick.statement || "";
+  el("prof-plan").replaceChildren();
+  el("prof-plan-of").textContent = pick.queryId ? "of query " + pick.queryId : "";
+  el("prof-plan-status").textContent = "";
+  el("prof-plan-status").textContent = "";
+  el("prof-recorded").replaceChildren();
+  el("prof-recorded-of").textContent = "";
+  el("prof-recorded-status").textContent = "";
+  renderProfile();
+  if (pick.queryId) {
+    loadRecordedProfile(pick.queryId);
+  }
+  runExplain(pick.statement, true, "prof-plan", "prof-plan-status");
+}
+
+// loadRecordedProfile fetches the profile the frontend wrote of a query.
+async function loadRecordedProfile(queryId) {
+  el("prof-recorded-of").textContent = queryId;
+  el("prof-recorded-status").textContent = "Reading the recorded profile...";
+  try {
+    const doc = await window.queryProfile(queryId);
+    if (doc.error) {
+      el("prof-recorded-status").textContent = doc.error;
+      return;
+    }
+    el("prof-recorded-status").textContent = "";
+    const box = el("prof-recorded");
+    box.replaceChildren();
+    for (const node of doc.nodes || []) {
+      box.append(nodeEl(node));
+    }
+  } catch (err) {
+    el("prof-recorded-status").textContent = String(err);
+  }
+}
+
+// runExplain explains a statement and draws the plan.
+//
+// The statement runs again: EXPLAIN ANALYZE is not a plan of a query that
+// never happened. So a statement that writes is not run without being asked
+// for, however it got here.
+async function runExplain(sql, automatic, outId, statusId) {
+  const out = el(outId);
+  const status = el(statusId);
+  if (!sql || !sql.trim()) return;
+  if (automatic && !isReadStatement(sql)) {
+    status.textContent = "This statement writes: explain analyze runs it again, " +
+      "and this time for real. Press Explain analyze when you mean it.";
+    return;
+  }
+  status.textContent = "Running...";
+  out.replaceChildren();
+  try {
+    const plan = await window.explainAnalyze(sql);
+    renderPlan(plan, out);
+    status.textContent = "Done.";
+  } catch (err) {
+    status.textContent = String(err);
+  }
+}
+
+// isReadStatement reports whether a statement only reads.
+function isReadStatement(sql) {
+  const word = (sql.trim().split(/[\s(]+/)[0] || "").toUpperCase();
+  return ["SELECT", "SHOW", "DESC", "DESCRIBE", "EXPLAIN", "WITH", "VALUES"]
+    .includes(word);
+}
+
+// renderPlan draws the plan of a query.
+function renderPlan(plan, out) {
+  out.replaceChildren();
+  if (!plan) return;
+  if (plan.error) {
+    const line = document.createElement("div");
+    line.className = "tree-error";
+    line.textContent = plan.error;
+    out.append(line);
+    return;
+  }
+  if ((plan.summary || []).length) {
+    const summary = document.createElement("div");
+    summary.className = "tree-summary";
+    for (const field of plan.summary) {
+      summary.append(fieldEl(field));
+    }
+    out.append(summary);
+  }
+  if ((plan.topTime || []).length) {
+    const head = document.createElement("div");
+    head.className = "tree-subhead";
+    head.textContent = "The nodes that cost the most";
+    out.append(head);
+    const list = document.createElement("ul");
+    list.className = "tree-list";
+    for (const line of plan.topTime) {
+      const item = document.createElement("li");
+      item.textContent = line;
+      list.append(item);
+    }
+    out.append(list);
+  }
+  for (const fragment of plan.fragments || []) {
+    out.append(nodeEl(fragment));
+  }
+}
+
+// nodeEl draws one node of a plan or of a profile, and what is under it.
+function nodeEl(node) {
+  const div = document.createElement("div");
+  div.className = "tree-node";
+  const head = document.createElement("div");
+  head.className = "tree-head";
+  const name = document.createElement("span");
+  name.className = "tree-name";
+  name.textContent = node.name;
+  head.append(name);
+  if (node.value) {
+    const value = document.createElement("span");
+    value.className = "tree-value";
+    value.textContent = node.value;
+    head.append(value);
+  }
+  div.append(head);
+  const children = node.children || [];
+  if (children.length) {
+    const body = document.createElement("div");
+    body.className = "tree-body";
+    for (const child of children) {
+      if ((child.children || []).length) {
+        body.append(nodeEl(child));
+      } else {
+        body.append(fieldEl(child));
+      }
+    }
+    div.append(body);
+  }
+  return div;
+}
+
+// fieldEl draws one measurement: a label and its value.
+function fieldEl(node) {
+  const line = document.createElement("div");
+  line.className = "tree-line";
+  const label = document.createElement("span");
+  label.className = "tree-label";
+  label.textContent = node.name;
+  line.append(label);
+  if (node.value) {
+    const value = document.createElement("span");
+    value.className = "tree-value";
+    value.textContent = node.value;
+    line.append(value);
+  }
+  return line;
 }
 
 // --- Loads ---
@@ -1339,4 +1600,7 @@ setInterval(refreshDashboard, 2000);
 (async () => {
   state = await window.configState();
   render();
+  // The ?screen= override opens a screen without a click; the app itself
+  // always lands on the dashboard, where the refresh timer does the loading.
+  if (screen !== "dashboard") goTo(screen);
 })();

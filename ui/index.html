@@ -205,21 +205,50 @@
       when you ask for it, and only then.</p>
 
     <h3>Top queries <span class="hint">by the CPU they cost, from the audit log</span></h3>
+    <p class="hint">Choose a row and the statement is explained: the plan runs
+      again, and the timings are the ones of this run.</p>
+    <div class="filters">
+      <label>Statement
+        <input type="search" id="prof-summary-statement" autocomplete="off"
+          spellcheck="false" placeholder="regexp"
+          aria-label="Filter the top queries by statement">
+      </label>
+    </div>
+    <p id="prof-summary-filter-status" class="hint" aria-live="polite"></p>
     <div id="prof-summary"></div>
 
     <h3>Profiles the frontend holds</h3>
     <p class="hint">Only the queries whose client asked to be profiled, or
       that ran longer than big_query_profile_threshold (30s).</p>
+    <div class="filters">
+      <label>Query id
+        <input type="search" id="prof-list-queryid" autocomplete="off"
+          spellcheck="false" placeholder="regexp"
+          aria-label="Filter the profiles by query id">
+      </label>
+      <label>Statement
+        <input type="search" id="prof-list-statement" autocomplete="off"
+          spellcheck="false" placeholder="regexp"
+          aria-label="Filter the profiles by statement">
+      </label>
+    </div>
+    <p id="prof-list-filter-status" class="hint" aria-live="polite"></p>
     <div id="prof-list"></div>
 
-    <h3>Explain analyze</h3>
+    <h3>Plan <span class="hint" id="prof-plan-of"></span></h3>
+    <p class="hint">Pick a row above, or write a statement and explain it:
+      the plan runs again, and the timings are the ones of this run.</p>
     <textarea id="prof-sql" spellcheck="false" rows="3"
       placeholder="SELECT ..."></textarea>
     <div class="buttons">
       <button type="button" id="prof-explain">Explain analyze</button>
     </div>
-    <p id="prof-explain-status" class="hint" aria-live="polite"></p>
-    <pre id="prof-explain-out" class="ddl" hidden></pre>
+    <p id="prof-plan-status" class="hint" aria-live="polite"></p>
+    <div id="prof-plan" class="tree"></div>
+
+    <h3>The profile the frontend recorded <span class="hint" id="prof-recorded-of"></span></h3>
+    <p id="prof-recorded-status" class="hint" aria-live="polite"></p>
+    <div id="prof-recorded" class="tree"></div>
   </section>
 
   <section id="loads" hidden>
