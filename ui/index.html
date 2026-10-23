@@ -199,27 +199,11 @@
       </div>
     </div>
     <p id="prof-status" class="hint" aria-live="polite"></p>
-    <p class="hint">The audit log is the only complete record of the queries
-      that have finished: the frontend writes the CPU of every one of them.
-      It lives on the frontend's own disk, so it is read over its HTTP API
-      when you ask for it, and only then.</p>
-
-    <h3>Top queries <span class="hint">by the CPU they cost, from the audit log</span></h3>
-    <p class="hint">Choose a row and the statement is explained: the plan runs
-      again, and the timings are the ones of this run.</p>
-    <div class="filters">
-      <label>Statement
-        <input type="search" id="prof-summary-statement" autocomplete="off"
-          spellcheck="false" placeholder="regexp"
-          aria-label="Filter the top queries by statement">
-      </label>
-    </div>
-    <p id="prof-summary-filter-status" class="hint" aria-live="polite"></p>
-    <div id="prof-summary"></div>
 
     <h3>Profiles the frontend holds</h3>
-    <p class="hint">Only the queries whose client asked to be profiled, or
-      that ran longer than big_query_profile_threshold (30s).</p>
+    <p class="hint">Pick one and the profile the frontend recorded of it is
+      shown below. Only the queries whose client asked to be profiled, or
+      that ran longer than big_query_profile_threshold (30s), are here.</p>
     <div class="filters">
       <label>Query id
         <input type="search" id="prof-list-queryid" autocomplete="off"
@@ -235,9 +219,13 @@
     <p id="prof-list-filter-status" class="hint" aria-live="polite"></p>
     <div id="prof-list"></div>
 
+    <h3>The profile the frontend recorded <span class="hint" id="prof-recorded-of"></span></h3>
+    <p id="prof-recorded-status" class="hint" aria-live="polite"></p>
+    <div id="prof-recorded" class="tree"></div>
+
     <h3>Plan <span class="hint" id="prof-plan-of"></span></h3>
-    <p class="hint">Pick a row above, or write a statement and explain it:
-      the plan runs again, and the timings are the ones of this run.</p>
+    <p class="hint">Write a statement and explain it, or pick a top query
+      below: the plan runs again, and the timings are the ones of this run.</p>
     <textarea id="prof-sql" spellcheck="false" rows="3"
       placeholder="SELECT ..."></textarea>
     <div class="buttons">
@@ -246,9 +234,22 @@
     <p id="prof-plan-status" class="hint" aria-live="polite"></p>
     <div id="prof-plan" class="tree"></div>
 
-    <h3>The profile the frontend recorded <span class="hint" id="prof-recorded-of"></span></h3>
-    <p id="prof-recorded-status" class="hint" aria-live="polite"></p>
-    <div id="prof-recorded" class="tree"></div>
+    <h3>Top queries <span class="hint">by the CPU they cost, from the audit log</span></h3>
+    <p class="hint">The audit log is the only complete record of the queries
+      that have finished: the frontend writes the CPU of every one of them.
+      It lives on the frontend's own disk, so it is read over its HTTP API
+      when you ask for it, and only then. Pick a row and the statement is
+      explained: the plan runs again, and the timings are the ones of this
+      run.</p>
+    <div class="filters">
+      <label>Statement
+        <input type="search" id="prof-summary-statement" autocomplete="off"
+          spellcheck="false" placeholder="regexp"
+          aria-label="Filter the top queries by statement">
+      </label>
+    </div>
+    <p id="prof-summary-filter-status" class="hint" aria-live="polite"></p>
+    <div id="prof-summary"></div>
   </section>
 
   <section id="loads" hidden>
