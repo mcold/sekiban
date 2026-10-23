@@ -225,8 +225,11 @@ async function connectToIndex(index) {
 }
 
 function render() {
-  const sections = ["setup", "list", "dashboard", "sessions", "cluster",
-    "browser", "compactions", "profile", "loads", "resources", "metrics"];
+  // Every screen is a section of its own, except connections, which has two
+  // faces: the list, and the add/edit form. Deriving the list from SCREENS
+  // keeps a new screen from being left out of it, and so from never hiding.
+  const sections = ["setup", "list",
+    ...SCREENS.filter((name) => name !== "connections")];
   const hideAll = () => sections.forEach((id) => { el(id).hidden = true; });
 
   el("config-error-box").hidden = !state.error;
