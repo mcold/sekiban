@@ -1,0 +1,5087 @@
+{
+  "rows": [
+    {
+      "key": "access_control",
+      "value": "native",
+      "type": "String",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "adaptive_choose_instances_threshold",
+      "value": "32",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "agent_task_resend_wait_time_ms",
+      "value": "5000",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "allow_system_reserved_names",
+      "value": "false",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "alter_max_worker_queue_size",
+      "value": "4096",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "alter_max_worker_threads",
+      "value": "4",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "alter_scheduler_interval_millisecond",
+      "value": "10000",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "alter_table_timeout_second",
+      "value": "86400",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "arrow_flight_port",
+      "value": "-1",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "arrow_max_service_task_threads_num",
+      "value": "4096",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "arrow_token_cache_expire_second",
+      "value": "259200",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "arrow_token_cache_size",
+      "value": "1024",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "audit_log_delete_age",
+      "value": "30d",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "audit_log_dir",
+      "value": "/opt/starrocks/fe/log",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "audit_log_enable_compress",
+      "value": "false",
+      "type": "boolean",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "audit_log_json_format",
+      "value": "false",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "audit_log_modules",
+      "value": "[slow_query, query]",
+      "type": "String[]",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "audit_log_roll_interval",
+      "value": "DAY",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "audit_log_roll_num",
+      "value": "90",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "auth_token",
+      "value": "",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "authentication_chain",
+      "value": "[native]",
+      "type": "String[]",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "authentication_ldap_simple_bind_base_dn",
+      "value": "",
+      "type": "String",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "authentication_ldap_simple_bind_root_dn",
+      "value": "",
+      "type": "String",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "authentication_ldap_simple_bind_root_pwd",
+      "value": "",
+      "type": "String",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "authentication_ldap_simple_server_host",
+      "value": "",
+      "type": "String",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "authentication_ldap_simple_server_port",
+      "value": "389",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "authentication_ldap_simple_ssl_conn_allow_insecure",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": "false to enable ssl connection"
+    },
+    {
+      "key": "authentication_ldap_simple_ssl_conn_trust_store_path",
+      "value": "",
+      "type": "String",
+      "mutable": true,
+      "comment": "ldap ssl trust store file path, supports perm and jks formats"
+    },
+    {
+      "key": "authentication_ldap_simple_ssl_conn_trust_store_pwd",
+      "value": "",
+      "type": "String",
+      "mutable": true,
+      "comment": "LDAP SSL trust store file password; no password is required for files in PEM format."
+    },
+    {
+      "key": "authentication_ldap_simple_user_search_attr",
+      "value": "uid",
+      "type": "String",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "authorization_enable_admin_user_protection",
+      "value": "false",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "authorization_enable_column_level_privilege",
+      "value": "false",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "authorization_enable_priv_collection_cache",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "auto_increment_cache_size",
+      "value": "100000",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "automated_cluster_snapshot_interval_seconds",
+      "value": "600",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "aws_s3_access_key",
+      "value": "",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "aws_s3_endpoint",
+      "value": "",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "aws_s3_external_id",
+      "value": "",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "aws_s3_iam_role_arn",
+      "value": "",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "aws_s3_path",
+      "value": "",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "aws_s3_region",
+      "value": "",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "aws_s3_secret_key",
+      "value": "",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "aws_s3_use_aws_sdk_default_behavior",
+      "value": "false",
+      "type": "boolean",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "aws_s3_use_instance_profile",
+      "value": "false",
+      "type": "boolean",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "azure_adls2_endpoint",
+      "value": "",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "azure_adls2_oauth2_client_id",
+      "value": "",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "azure_adls2_oauth2_client_secret",
+      "value": "",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "azure_adls2_oauth2_oauth2_client_endpoint",
+      "value": "",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "azure_adls2_oauth2_tenant_id",
+      "value": "",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "azure_adls2_oauth2_use_managed_identity",
+      "value": "false",
+      "type": "boolean",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "azure_adls2_path",
+      "value": "",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "azure_adls2_sas_token",
+      "value": "",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "azure_adls2_shared_key",
+      "value": "",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "azure_blob_endpoint",
+      "value": "",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "azure_blob_path",
+      "value": "",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "azure_blob_sas_token",
+      "value": "",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "azure_blob_shared_key",
+      "value": "",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "azure_use_native_sdk",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "background_refresh_file_metadata_concurrency",
+      "value": "4",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "background_refresh_metadata_interval_millis",
+      "value": "600000",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "background_refresh_metadata_time_secs_since_last_access_secs",
+      "value": "86400",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "backup_job_default_timeout_ms",
+      "value": "86400000",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "backup_plugin_path",
+      "value": "/tools/trans_file_tool/trans_files.sh",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "bdbje_cleaner_threads",
+      "value": "1",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "bdbje_heartbeat_timeout_second",
+      "value": "30",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "bdbje_lock_timeout_second",
+      "value": "1",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "bdbje_log_level",
+      "value": "INFO",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "bdbje_replay_cost_percent",
+      "value": "150",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "bdbje_replica_ack_timeout_second",
+      "value": "10",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "bdbje_reserved_disk_size",
+      "value": "536870912",
+      "type": "long",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "bdbje_reset_election_group",
+      "value": "false",
+      "type": "boolean",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "big_query_log_delete_age",
+      "value": "7d",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "big_query_log_dir",
+      "value": "/opt/starrocks/fe/log",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "big_query_log_modules",
+      "value": "[query]",
+      "type": "String[]",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "big_query_log_roll_interval",
+      "value": "DAY",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "big_query_log_roll_num",
+      "value": "10",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "binlog_max_size",
+      "value": "9223372036854775807",
+      "type": "long",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "binlog_ttl_second",
+      "value": "1800",
+      "type": "long",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "black_host_connect_failures_within_time",
+      "value": "5",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "black_host_history_sec",
+      "value": "120",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "black_host_penalty_min_ms",
+      "value": "500",
+      "type": "long",
+      "mutable": true,
+      "comment": "The minimal time in milliseconds for the node to stay in the blocklist"
+    },
+    {
+      "key": "broker_client_timeout_ms",
+      "value": "120000",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "broker_load_default_timeout_second",
+      "value": "14400",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "brpc_connection_pool_size",
+      "value": "16",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "brpc_idle_wait_max_time",
+      "value": "10000",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "brpc_inner_reuse_pool",
+      "value": "true",
+      "type": "boolean",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "brpc_min_evictable_idle_time_ms",
+      "value": "120000",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "brpc_reuse_addr",
+      "value": "true",
+      "type": "boolean",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "brpc_send_plan_fragment_timeout_ms",
+      "value": "60000",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "brpc_short_connection",
+      "value": "false",
+      "type": "boolean",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "capacity_used_percent_high_water",
+      "value": "0.75",
+      "type": "double",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "catalog_metadata_cache_size",
+      "value": "500",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "catalog_trash_expire_second",
+      "value": "86400",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "catalog_try_lock_timeout_ms",
+      "value": "5000",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "check_consistency_default_timeout_second",
+      "value": "600",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "checkpoint_only_on_leader",
+      "value": "false",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "checkpoint_timeout_seconds",
+      "value": "86400",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "clear_stale_stats_interval_sec",
+      "value": "43200",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "cloud_native_hdfs_url",
+      "value": "",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "cloud_native_meta_port",
+      "value": "6090",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "cloud_native_storage_type",
+      "value": "S3",
+      "type": "String",
+      "mutable": false,
+      "comment": "storage type for cloud native table. Available options: \"S3\", \"HDFS\", \"AZBLOB\", \"ADLS2\", \"GS\". case-insensitive"
+    },
+    {
+      "key": "cluster_name",
+      "value": "StarRocks Cluster",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "compound_predicate_flatten_threshold",
+      "value": "512",
+      "type": "int",
+      "mutable": true,
+      "comment": "The threshold to flatten compound predicate from deep tree to a balanced tree to avoid stack over flow"
+    },
+    {
+      "key": "connector_table_query_trigger_analyze_large_table_interval",
+      "value": "43200",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "connector_table_query_trigger_analyze_max_pending_task_num",
+      "value": "100",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "connector_table_query_trigger_analyze_max_running_task_num",
+      "value": "2",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "connector_table_query_trigger_analyze_small_table_interval",
+      "value": "7200",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "connector_table_query_trigger_analyze_small_table_rows",
+      "value": "10000000",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "connector_table_query_trigger_task_schedule_interval",
+      "value": "30",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "consistency_check_cooldown_time_second",
+      "value": "86400",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "consistency_check_end_time",
+      "value": "4",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "consistency_check_start_time",
+      "value": "23",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "consistency_tablet_meta_check_interval_ms",
+      "value": "7200000",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "create_table_max_serial_replicas",
+      "value": "128",
+      "type": "int",
+      "mutable": true,
+      "comment": "The maximum number of replicas to create serially.If actual replica count exceeds this, replicas will be created concurrently."
+    },
+    {
+      "key": "custom_config_dir",
+      "value": "/conf",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "db_used_data_quota_update_interval_secs",
+      "value": "300",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "default_automatic_bucket_size",
+      "value": "1073741824",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "default_big_load_profile_threshold_second",
+      "value": "300",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "default_master_key",
+      "value": "",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "default_mv_partition_refresh_number",
+      "value": "1",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "default_mv_partition_refresh_strategy",
+      "value": "strict",
+      "type": "String",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "default_mv_refresh_immediate",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": "The default behavior of whether REFRESH IMMEDIATE or not, which would refresh the materialized view after creating"
+    },
+    {
+      "key": "default_replication_num",
+      "value": "3",
+      "type": "short",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "default_statistics_output_row_count",
+      "value": "1000000000",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "deploy_serialization_queue_size",
+      "value": "-1",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "deploy_serialization_thread_pool_size",
+      "value": "-1",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "desired_max_waiting_jobs",
+      "value": "1024",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "dict_collect_thread_pool_for_lake_size",
+      "value": "4",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "dict_collect_thread_pool_size",
+      "value": "16",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "disable_hadoop_load",
+      "value": "false",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "disable_load_job",
+      "value": "false",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "drop_backend_after_decommission",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "dump_log_delete_age",
+      "value": "7d",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "dump_log_dir",
+      "value": "/opt/starrocks/fe/log",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "dump_log_modules",
+      "value": "[query]",
+      "type": "String[]",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "dump_log_roll_interval",
+      "value": "DAY",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "dump_log_roll_num",
+      "value": "10",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "dynamic_partition_check_interval_seconds",
+      "value": "600",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "dynamic_partition_enable",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "dynamic_tablet_history_job_keep_max_ms",
+      "value": "259200000",
+      "type": "long",
+      "mutable": true,
+      "comment": "The max keep time of dynamic tablet history jobs."
+    },
+    {
+      "key": "dynamic_tablet_job_scheduler_interval_ms",
+      "value": "10",
+      "type": "long",
+      "mutable": false,
+      "comment": "The default scheduler interval for dynamic tablet jobs."
+    },
+    {
+      "key": "dynamic_tablet_max_parallel_tablets",
+      "value": "10240",
+      "type": "long",
+      "mutable": true,
+      "comment": "The max number of tablets can do tablet splitting and merging in parallel."
+    },
+    {
+      "key": "dynamic_tablet_max_split_count",
+      "value": "8",
+      "type": "int",
+      "mutable": true,
+      "comment": "The max number of new tablets that an old tablet can be split into."
+    },
+    {
+      "key": "dynamic_tablet_split_size",
+      "value": "4294967296",
+      "type": "long",
+      "mutable": true,
+      "comment": "Tablets with size larger than this value will be considered to split."
+    },
+    {
+      "key": "edit_log_port",
+      "value": "9010",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "edit_log_roll_num",
+      "value": "50000",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "edit_log_type",
+      "value": "BDB",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "edit_log_write_slow_log_threshold_ms",
+      "value": "2000",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "eliminate_shuffle_load_by_replicated_storage",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "empty_load_as_error",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "enable_active_materialized_view_schema_strict_check",
+      "value": "false",
+      "type": "boolean",
+      "mutable": true,
+      "comment": "Check the schema of materialized view's base table strictly or not"
+    },
+    {
+      "key": "enable_alter_struct_column",
+      "value": "true",
+      "type": "boolean",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "enable_auth_check",
+      "value": "true",
+      "type": "boolean",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "enable_auto_collect_array_ndv",
+      "value": "false",
+      "type": "boolean",
+      "mutable": true,
+      "comment": "Whether to allow auto collection of the NDV of array columns"
+    },
+    {
+      "key": "enable_auto_collect_statistics",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": "enable auto collect internal statistics in the background"
+    },
+    {
+      "key": "enable_auto_tablet_distribution",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "enable_automatic_bucket",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "enable_background_refresh_connector_metadata",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "enable_background_refresh_resource_table_metadata",
+      "value": "false",
+      "type": "boolean",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "enable_backup_materialized_view",
+      "value": "false",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "enable_check_db_state",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "enable_cloud_native_persistent_index_by_default",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "enable_collect_full_statistic",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "enable_collect_query_detail_info",
+      "value": "false",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "enable_collect_warehouse_metrics",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": "whether to collect metrics for warehouse"
+    },
+    {
+      "key": "enable_colocate_mv_index",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "enable_colocate_restore",
+      "value": "false",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "enable_create_partial_partition_in_batch",
+      "value": "false",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "enable_decimal_v3",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "enable_dict_optimize_routine_load",
+      "value": "false",
+      "type": "boolean",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "enable_dict_optimize_stream_load",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "enable_display_shadow_partitions",
+      "value": "false",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "enable_dynamic_tablet",
+      "value": "false",
+      "type": "boolean",
+      "mutable": true,
+      "comment": "Whether enable dynamic tablet."
+    },
+    {
+      "key": "enable_execute_script_on_frontend",
+      "value": "true",
+      "type": "boolean",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "enable_experimental_gin",
+      "value": "false",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "enable_experimental_mv",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "enable_experimental_rowstore",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "enable_experimental_temporary_table",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "enable_experimental_vector",
+      "value": "false",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "enable_fast_schema_evolution",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "enable_fast_schema_evolution_in_share_data_mode",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "enable_file_bundling",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "enable_groovy_debug_server",
+      "value": "false",
+      "type": "boolean",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "enable_hms_events_incremental_sync",
+      "value": "false",
+      "type": "boolean",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "enable_hms_parallel_process_evens",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "enable_http_async_handler",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": "Whether to handle HTTP request asynchronously.If enabled, a HTTP request is received in netty workers, and then submitted to a separate thread pool to handle the business logic to avoid blocking the HTTP server. If disabled, the business logic is also handled in netty workers."
+    },
+    {
+      "key": "enable_http_detail_metrics",
+      "value": "false",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "enable_http_validate_headers",
+      "value": "false",
+      "type": "boolean",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "enable_https",
+      "value": "false",
+      "type": "boolean",
+      "mutable": false,
+      "comment": "enable https flag. false by default. If true then http and https are both enabled on different ports. Otherwise, only http is enabled."
+    },
+    {
+      "key": "enable_iceberg_custom_worker_thread",
+      "value": "false",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "enable_iceberg_metadata_disk_cache",
+      "value": "false",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "enable_legacy_compatibility_for_replication",
+      "value": "false",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "enable_load_volume_from_conf",
+      "value": "false",
+      "type": "boolean",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "enable_local_replica_selection",
+      "value": "false",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "enable_manual_collect_array_ndv",
+      "value": "false",
+      "type": "boolean",
+      "mutable": true,
+      "comment": "Whether to allow manual collection of the NDV of array columns"
+    },
+    {
+      "key": "enable_materialized_view",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "enable_materialized_view_concurrent_prepare",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "enable_materialized_view_external_table_precise_refresh",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": "An internal optimization for external table refresh, only refresh affected partitions of external table, instead of all of them "
+    },
+    {
+      "key": "enable_materialized_view_metrics_collect",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": "whether to collect metrics for materialized view by default"
+    },
+    {
+      "key": "enable_materialized_view_spill",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "enable_materialized_view_text_based_rewrite",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": "whether to enable text based rewrite by default, if true it will build ast tree in materialized view initialization"
+    },
+    {
+      "key": "enable_metric_calculator",
+      "value": "true",
+      "type": "boolean",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "enable_mv_automatic_active_check",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "enable_mv_automatic_inactive_by_base_table_changes",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": "Whether to enable the automatic related materialized views since of base table's schema changes"
+    },
+    {
+      "key": "enable_mv_automatic_repairing_for_broken_base_tables",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": "Whether to enable automatic repairing of materialized views that are broken due to base table schema changes"
+    },
+    {
+      "key": "enable_mv_list_partition_for_external_table",
+      "value": "false",
+      "type": "boolean",
+      "mutable": true,
+      "comment": "Whether enable to use list partition rather than range partition for all external table partition types"
+    },
+    {
+      "key": "enable_mv_post_image_reload_cache",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": "Whether do reload flag check after FE's image loaded. If one base mv has done reload, no need to do it again while other mv that related to it is reloading "
+    },
+    {
+      "key": "enable_mv_query_context_cache",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": "Whether enable to cache mv query context or not"
+    },
+    {
+      "key": "enable_mv_refresh_collect_profile",
+      "value": "false",
+      "type": "boolean",
+      "mutable": true,
+      "comment": "Whether enable profile in refreshing materialized view or not by default"
+    },
+    {
+      "key": "enable_mv_refresh_extra_prefix_logging",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": "Whether enable adding extra materialized view name logging for better debug"
+    },
+    {
+      "key": "enable_mv_refresh_query_rewrite",
+      "value": "false",
+      "type": "boolean",
+      "mutable": true,
+      "comment": "Whether enable to rewrite query in mv refresh or not so it can use query the rewritten mv directly rather than original base table to improve query performance."
+    },
+    {
+      "key": "enable_mv_refresh_sync_refresh_mergeable",
+      "value": "false",
+      "type": "boolean",
+      "mutable": true,
+      "comment": "Whether enable to refresh materialized view in sync mode mergeable or not"
+    },
+    {
+      "key": "enable_new_publish_mechanism",
+      "value": "false",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "enable_online_optimize_table",
+      "value": "false",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "enable_paimon_refresh_manifest_files",
+      "value": "false",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "enable_parser_context_cache",
+      "value": "true",
+      "type": "boolean",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "enable_persistent_index_by_default",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "enable_pipeline_load",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "enable_plan_feature_collection",
+      "value": "false",
+      "type": "boolean",
+      "mutable": true,
+      "comment": "Collect features of query plan into a log file"
+    },
+    {
+      "key": "enable_print_sql",
+      "value": "false",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "enable_profile_log",
+      "value": "true",
+      "type": "boolean",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "enable_profile_log_compress",
+      "value": "false",
+      "type": "boolean",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "enable_qe_slow_log",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "enable_query_cost_prediction",
+      "value": "false",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "enable_query_queue_v2",
+      "value": "false",
+      "type": "boolean",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "enable_refresh_hive_partitions_statistics",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "enable_replicated_storage_as_default_engine",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "enable_reuse_spark_column_statistics",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "enable_routine_load_lag_metrics",
+      "value": "false",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "enable_routine_load_lag_time_metrics",
+      "value": "false",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "enable_safe_mode",
+      "value": "false",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "enable_schedule_insert_query_by_row_count",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "enable_show_external_catalog_privilege",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "enable_show_materialized_views_include_all_task_runs",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "enable_shuffle_load",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "enable_sql_blacklist",
+      "value": "false",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "enable_sql_digest",
+      "value": "false",
+      "type": "boolean",
+      "mutable": true,
+      "comment": "Enable the sql digest feature, building a parameterized digest for each sql in the query detail"
+    },
+    {
+      "key": "enable_starrocks_external_table_auth_check",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "enable_statistic_cache_refresh_after_write",
+      "value": "false",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "enable_statistic_collect",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": "Whether to enable periodic analyze job, including auto analyze job and analyze jobs created by user"
+    },
+    {
+      "key": "enable_statistic_collect_on_first_load",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "enable_statistics_collect_profile",
+      "value": "false",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "enable_strict_storage_medium_check",
+      "value": "false",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "enable_sync_publish",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "enable_sync_statistics_load",
+      "value": "false",
+      "type": "boolean",
+      "mutable": true,
+      "comment": "Synchronously load statistics for testing purpose"
+    },
+    {
+      "key": "enable_sync_tablet_stats",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": "for testing statistics behavior"
+    },
+    {
+      "key": "enable_table_name_case_insensitive",
+      "value": "false",
+      "type": "boolean",
+      "mutable": false,
+      "comment": "Enable case-insensitive catalog/database/table names. Only configurable during cluster initialization, immutable once set."
+    },
+    {
+      "key": "enable_task_history_archive",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": "Whether enable the task history archive feature"
+    },
+    {
+      "key": "enable_task_info_mask_credential",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "enable_task_run_fe_evaluation",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "enable_temporary_table_statistic_collect",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "enable_token_check",
+      "value": "true",
+      "type": "boolean",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "enable_trace_historical_node",
+      "value": "false",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "enable_trigger_analyze_job_immediate",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": "trigger task immediately after creating analyze job"
+    },
+    {
+      "key": "enable_udf",
+      "value": "false",
+      "type": "boolean",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "enable_use_table_sample_collect_statistics",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": "Use table sample instead of row-level bernoulli sample to collect statistics"
+    },
+    {
+      "key": "enable_vectorized_file_load",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "es_state_sync_interval_second",
+      "value": "10",
+      "type": "long",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "export_checker_interval_second",
+      "value": "5",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "export_max_bytes_per_be_per_task",
+      "value": "268435456",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "export_running_job_num_limit",
+      "value": "5",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "export_task_default_timeout_second",
+      "value": "7200",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "export_task_pool_size",
+      "value": "5",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "expr_children_limit",
+      "value": "10000",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "external_table_commit_timeout_ms",
+      "value": "10000",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "feature_log_delete_age",
+      "value": "3d",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "feature_log_dir",
+      "value": "/opt/starrocks/fe/log",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "feature_log_roll_interval",
+      "value": "DAY",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "feature_log_roll_num",
+      "value": "5",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "feature_log_roll_size_mb",
+      "value": "1024",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "files_enable_insert_push_down_schema",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "flat_json_column_max",
+      "value": "100",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "flat_json_null_factor",
+      "value": "0.3",
+      "type": "double",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "flat_json_sparsity_factory",
+      "value": "0.9",
+      "type": "double",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "frontend_address",
+      "value": "0.0.0.0",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "gcp_gcs_endpoint",
+      "value": "",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "gcp_gcs_impersonation_service_account",
+      "value": "",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "gcp_gcs_path",
+      "value": "",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "gcp_gcs_service_account_email",
+      "value": "",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "gcp_gcs_service_account_private_key",
+      "value": "",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "gcp_gcs_service_account_private_key_id",
+      "value": "",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "gcp_gcs_use_compute_engine_service_account",
+      "value": "true",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "group_provider",
+      "value": "[]",
+      "type": "String[]",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "group_provider_refresh_thread_num",
+      "value": "4",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "hdfs_file_system_expire_seconds",
+      "value": "300",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "hdfs_read_buffer_size_kb",
+      "value": "8192",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "hdfs_write_buffer_size_kb",
+      "value": "1024",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "heartbeat_mgr_blocking_queue_size",
+      "value": "1024",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "heartbeat_mgr_threads_num",
+      "value": "8",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "heartbeat_retry_times",
+      "value": "3",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "heartbeat_timeout_second",
+      "value": "5",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "histogram_buckets_size",
+      "value": "64",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "histogram_max_sample_row_count",
+      "value": "10000000",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "histogram_mcv_size",
+      "value": "100",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "histogram_sample_ratio",
+      "value": "0.1",
+      "type": "double",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "history_job_keep_max_second",
+      "value": "604800",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "hive_meta_cache_refresh_interval_s",
+      "value": "60",
+      "type": "long",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "hive_meta_cache_refresh_min_threads",
+      "value": "50",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "hive_meta_cache_ttl_s",
+      "value": "86400",
+      "type": "long",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "hive_meta_load_concurrency",
+      "value": "4",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "hive_meta_store_timeout_s",
+      "value": "10",
+      "type": "long",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "hms_events_batch_size_per_rpc",
+      "value": "500",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "hms_events_polling_interval_ms",
+      "value": "5000",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "hms_process_events_parallel_num",
+      "value": "4",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "http_async_threads_num",
+      "value": "4096",
+      "type": "int",
+      "mutable": true,
+      "comment": "Size of the thread pool for asynchronously processing HTTP request."
+    },
+    {
+      "key": "http_backlog_num",
+      "value": "1024",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "http_max_chunk_size",
+      "value": "8192",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "http_max_header_size",
+      "value": "32768",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "http_max_initial_line_length",
+      "value": "4096",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "http_port",
+      "value": "8030",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "http_slow_request_threshold_ms",
+      "value": "5000",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "http_web_page_display_hardware",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "http_worker_threads_num",
+      "value": "0",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "https_port",
+      "value": "8443",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "iceberg_metadata_cache_disk_path",
+      "value": "/opt/starrocks/fe/caches/iceberg",
+      "type": "String",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "iceberg_metadata_cache_max_entry_size",
+      "value": "0",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "iceberg_metadata_disk_cache_capacity",
+      "value": "2147483648",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "iceberg_metadata_disk_cache_expiration_seconds",
+      "value": "604800",
+      "type": "long",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "iceberg_metadata_memory_cache_capacity",
+      "value": "0",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "iceberg_metadata_memory_cache_expiration_seconds",
+      "value": "86500",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "iceberg_table_refresh_expire_sec",
+      "value": "86400",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "iceberg_table_refresh_threads",
+      "value": "128",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "iceberg_worker_num_threads",
+      "value": "8",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "ignore_invalid_privilege_authentications",
+      "value": "false",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "ignore_materialized_view_error",
+      "value": "false",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "ignore_meta_check",
+      "value": "false",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "ignore_task_run_history_replay_error",
+      "value": "false",
+      "type": "boolean",
+      "mutable": true,
+      "comment": "Whether to ignore task run history replay error in querying information_schema.task_runs"
+    },
+    {
+      "key": "insert_load_default_timeout_second",
+      "value": "3600",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "internal_log_delete_age",
+      "value": "7d",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "internal_log_dir",
+      "value": "/opt/starrocks/fe/log",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "internal_log_modules",
+      "value": "[base, statistic]",
+      "type": "String[]",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "internal_log_roll_interval",
+      "value": "DAY",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "internal_log_roll_num",
+      "value": "90",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "jaeger_grpc_endpoint",
+      "value": "",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "jdbc_connection_idle_timeout_ms",
+      "value": "600000",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "jdbc_connection_pool_size",
+      "value": "8",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "jdbc_meta_default_cache_enable",
+      "value": "false",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "jdbc_meta_default_cache_expire_sec",
+      "value": "600",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "jdbc_minimum_idle_connections",
+      "value": "1",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "json_file_size_limit",
+      "value": "4294967296",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "jwt_jwks_url",
+      "value": "",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "jwt_principal_field",
+      "value": "sub",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "jwt_required_audience",
+      "value": "[]",
+      "type": "String[]",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "jwt_required_issuer",
+      "value": "[]",
+      "type": "String[]",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "key_rotation_days",
+      "value": "7",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "label_clean_interval_second",
+      "value": "14400",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "label_keep_max_num",
+      "value": "1000",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "label_keep_max_second",
+      "value": "259200",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "lake_autovacuum_detect_vaccumed_version",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": "Determine whether a vacuum operation needs to be initiated based on the vacuum version.\n"
+    },
+    {
+      "key": "lake_autovacuum_grace_period_minutes",
+      "value": "30",
+      "type": "long",
+      "mutable": true,
+      "comment": "History versions within this time range will not be deleted by auto vacuum.\nREMINDER: Set this to a value longer than the maximum possible execution time of queries, to avoid deletion of versions still being accessed.\nNOTE: Increasing this value may increase the space usage of the remote storage system."
+    },
+    {
+      "key": "lake_autovacuum_max_previous_versions",
+      "value": "0",
+      "type": "int",
+      "mutable": true,
+      "comment": "the max number of previous version files to keep"
+    },
+    {
+      "key": "lake_autovacuum_parallel_partitions",
+      "value": "8",
+      "type": "int",
+      "mutable": false,
+      "comment": "how many partitions can autovacuum be executed simultaneously at most"
+    },
+    {
+      "key": "lake_autovacuum_partition_naptime_seconds",
+      "value": "180",
+      "type": "long",
+      "mutable": true,
+      "comment": "the minimum delay between autovacuum runs on any given partition"
+    },
+    {
+      "key": "lake_autovacuum_stale_partition_threshold",
+      "value": "12",
+      "type": "long",
+      "mutable": true,
+      "comment": "time threshold in hours, if a partition has not been updated for longer than this threshold, auto vacuum operations will no longer be triggered for that partition.\nOnly takes effect for tables in clusters with run_mode=shared_data.\n"
+    },
+    {
+      "key": "lake_background_warehouse",
+      "value": "default_warehouse",
+      "type": "String",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "lake_balance_tablets_threshold",
+      "value": "0.15",
+      "type": "double",
+      "mutable": true,
+      "comment": "Threshold of considering the balancing between workers in shared-data mode, The imbalance factor is calculated as f = (MAX(tablets) - MIN(tablets)) / AVERAGE(tablets), if f \u003e lake_balance_tablets_threshold, balancing will be triggered. Default: 0.15"
+    },
+    {
+      "key": "lake_batch_publish_max_version_num",
+      "value": "10",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "lake_batch_publish_min_version_num",
+      "value": "1",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "lake_compaction_allow_partial_success",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "lake_compaction_default_timeout_second",
+      "value": "86400",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "lake_compaction_disable_ids",
+      "value": "",
+      "type": "String",
+      "mutable": true,
+      "comment": "disable table or partition compaction, format:'id1;id2'"
+    },
+    {
+      "key": "lake_compaction_history_size",
+      "value": "20",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "lake_compaction_interval_ms_on_failure",
+      "value": "60000",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "lake_compaction_interval_ms_on_success",
+      "value": "10000",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "lake_compaction_max_tasks",
+      "value": "-1",
+      "type": "int",
+      "mutable": true,
+      "comment": "-1 means calculate the value in an adaptive way. set this value to 0 will disable compaction."
+    },
+    {
+      "key": "lake_compaction_score_selector_min_score",
+      "value": "10.0",
+      "type": "double",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "lake_compaction_score_upper_bound",
+      "value": "2000",
+      "type": "long",
+      "mutable": true,
+      "comment": "The upper limit for compaction score, only takes effect when lake_enable_ingest_slowdown=true.\nWhen the compaction score exceeds this value, ingestion will be rejected.\nA value of 0 represents no limit."
+    },
+    {
+      "key": "lake_compaction_selector",
+      "value": "ScoreSelector",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "lake_compaction_simple_selector_min_versions",
+      "value": "3",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "lake_compaction_simple_selector_threshold_seconds",
+      "value": "300",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "lake_compaction_simple_selector_threshold_versions",
+      "value": "10",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "lake_compaction_sorter",
+      "value": "ScoreSorter",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "lake_compaction_warehouse",
+      "value": "default_warehouse",
+      "type": "String",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "lake_enable_balance_tablets_between_workers",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": "Consider balancing between workers during tablet migration in shared data mode. Default: true"
+    },
+    {
+      "key": "lake_enable_batch_publish_version",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "lake_enable_ingest_slowdown",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": "Whether enable throttling ingestion speed when compaction score exceeds the threshold.\nOnly takes effect for tables in clusters with run_mode=shared_data."
+    },
+    {
+      "key": "lake_enable_tablet_creation_optimization",
+      "value": "false",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "lake_fullvacuum_meta_expired_seconds",
+      "value": "172800",
+      "type": "long",
+      "mutable": true,
+      "comment": "metadata expired time from full vacuum begin running"
+    },
+    {
+      "key": "lake_fullvacuum_parallel_partitions",
+      "value": "16",
+      "type": "int",
+      "mutable": false,
+      "comment": "how many partitions can fullvacuum execute simultaneously at most"
+    },
+    {
+      "key": "lake_fullvacuum_partition_naptime_seconds",
+      "value": "86400",
+      "type": "long",
+      "mutable": true,
+      "comment": "the minimum delay between full vacuum runs on any given partition"
+    },
+    {
+      "key": "lake_ingest_slowdown_ratio",
+      "value": "0.1",
+      "type": "double",
+      "mutable": true,
+      "comment": "Ratio to reduce ingestion speed for each point of compaction score over the threshold.\nE.g. 0.05 ratio, 10min normal ingestion, exceed threshold by:\n - 1 point -\u003e Delay by 0.05 (30secs)\n - 5 points -\u003e Delay by 0.25 (2.5mins)"
+    },
+    {
+      "key": "lake_ingest_slowdown_threshold",
+      "value": "100",
+      "type": "long",
+      "mutable": true,
+      "comment": "Compaction score threshold above which ingestion speed slowdown is applied.\nNOTE: The actual effective value is the max of the configured value and 'lake_compaction_score_selector_min_score'."
+    },
+    {
+      "key": "lake_publish_delete_txnlog_max_threads",
+      "value": "16",
+      "type": "int",
+      "mutable": true,
+      "comment": "the max number of threads for lake table delete txnLog when enable batch publish"
+    },
+    {
+      "key": "lake_publish_version_max_threads",
+      "value": "512",
+      "type": "int",
+      "mutable": true,
+      "comment": "the max number of threads for lake table publishing version"
+    },
+    {
+      "key": "lake_remove_partition_thread_num",
+      "value": "8",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "lake_remove_table_thread_num",
+      "value": "4",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "lake_use_combined_txn_log",
+      "value": "false",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "lake_vacuum_immediately_partition_ids",
+      "value": "",
+      "type": "String",
+      "mutable": true,
+      "comment": "partitions which can be vacuumed immediately, test only, format:'id1;id2'"
+    },
+    {
+      "key": "lake_warehouse_max_compute_replica",
+      "value": "3",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "load_checker_interval_second",
+      "value": "5",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "load_parallel_instance_num",
+      "value": "1",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "load_profile_collect_interval_second",
+      "value": "0",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "load_profile_info_reserved_num",
+      "value": "500",
+      "type": "int",
+      "mutable": true,
+      "comment": "Deprecated"
+    },
+    {
+      "key": "load_straggler_wait_second",
+      "value": "300",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "loads_history_retained_days",
+      "value": "30",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "loads_history_sync_interval_second",
+      "value": "60",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "locale",
+      "value": "zh_CN.UTF-8",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "lock_checker_enable_deadlock_check",
+      "value": "false",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "lock_checker_interval_second",
+      "value": "30",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "lock_manager_enable_resolve_deadlock",
+      "value": "false",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "lock_manager_enabled",
+      "value": "true",
+      "type": "boolean",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "lock_manager_lock_table_num",
+      "value": "32",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "log_plan_cancelled_by_crash_be",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "log_register_and_unregister_query_id",
+      "value": "false",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "log_roll_size_mb",
+      "value": "1024",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "low_cardinality_threshold",
+      "value": "255",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "master_sync_policy",
+      "value": "SYNC",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "materialized_view_min_refresh_interval",
+      "value": "60",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "materialized_view_refresh_ascending",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "max_agent_task_threads_num",
+      "value": "4096",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "max_agent_tasks_send_per_be",
+      "value": "10000",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "max_allowed_in_element_num_of_delete",
+      "value": "10000",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "max_backend_down_time_second",
+      "value": "3600",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "max_bdbje_clock_delta_ms",
+      "value": "5000",
+      "type": "long",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "max_broker_load_job_concurrency",
+      "value": "5",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "max_bucket_number_per_partition",
+      "value": "1024",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "max_column_number_per_table",
+      "value": "10000",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "max_create_table_timeout_second",
+      "value": "600",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "max_distribution_pruner_recursion_depth",
+      "value": "100",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "max_download_task_per_be",
+      "value": "0",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "max_dynamic_partition_num",
+      "value": "500",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "max_get_partitions_meta_result_count",
+      "value": "100000",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "max_graceful_exit_time_second",
+      "value": "60",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "max_historical_automated_cluster_snapshot_jobs",
+      "value": "100",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "max_hive_partitions_per_rpc",
+      "value": "5000",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "max_load_initial_open_partition_number",
+      "value": "32",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "max_load_timeout_second",
+      "value": "259200",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "max_mv_check_base_table_change_retry_times",
+      "value": "10",
+      "type": "int",
+      "mutable": true,
+      "comment": "The max retry times for base table change when refreshing materialized view"
+    },
+    {
+      "key": "max_mv_refresh_failure_retry_times",
+      "value": "1",
+      "type": "int",
+      "mutable": true,
+      "comment": "The max retry times for materialized view refresh retry times when failed"
+    },
+    {
+      "key": "max_mv_refresh_try_lock_failure_retry_times",
+      "value": "3",
+      "type": "int",
+      "mutable": true,
+      "comment": "The max retry times when materialized view refresh try lock timeout failed"
+    },
+    {
+      "key": "max_mv_task_run_meta_message_values_length",
+      "value": "16",
+      "type": "int",
+      "mutable": true,
+      "comment": "The max length for mv task run extra message's values(set/map) to avoid occupying too much meta memory"
+    },
+    {
+      "key": "max_mysql_service_task_threads_num",
+      "value": "4096",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "max_partition_number_per_table",
+      "value": "100000",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "max_partitions_in_one_batch",
+      "value": "4096",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "max_per_node_grep_log_limit",
+      "value": "500000",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "max_planner_scalar_rewrite_num",
+      "value": "100000",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "max_query_queue_history_slots_number",
+      "value": "0",
+      "type": "int",
+      "mutable": true,
+      "comment": "The max number of history allocated slots for a query queue"
+    },
+    {
+      "key": "max_query_retry_time",
+      "value": "2",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "max_routine_load_batch_size",
+      "value": "4294967296",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "max_routine_load_task_concurrent_num",
+      "value": "5",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "max_routine_load_task_num_per_be",
+      "value": "16",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "max_running_rollup_job_num_per_table",
+      "value": "1",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "max_running_txn_num_per_db",
+      "value": "1000",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "max_scalar_operator_flat_children",
+      "value": "10000",
+      "type": "int",
+      "mutable": true,
+      "comment": "scalar operator maximum number of flat children."
+    },
+    {
+      "key": "max_scalar_operator_optimize_depth",
+      "value": "256",
+      "type": "int",
+      "mutable": true,
+      "comment": "The max depth that scalar operator optimization can be applied"
+    },
+    {
+      "key": "max_show_proc_transactions_entry",
+      "value": "2000",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "max_small_file_number",
+      "value": "100",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "max_small_file_size_bytes",
+      "value": "1048576",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "max_spm_cache_baseline_size",
+      "value": "1000",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "max_stream_load_batch_size_mb",
+      "value": "100",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "max_stream_load_timeout_second",
+      "value": "259200",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "max_task_runs_threads_num",
+      "value": "512",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "max_tolerable_backend_down_num",
+      "value": "0",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "max_upload_task_per_be",
+      "value": "0",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "max_varchar_length",
+      "value": "1048576",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "memory_tracker_enable",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "memory_tracker_interval_seconds",
+      "value": "60",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "merge_commit_be_assigner_balance_factor_threshold",
+      "value": "0.1",
+      "type": "double",
+      "mutable": true,
+      "comment": "Defines the maximum balance factor allowed between any two nodes before triggering a balance"
+    },
+    {
+      "key": "merge_commit_be_assigner_schedule_interval_ms",
+      "value": "5000",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "merge_commit_executor_threads_num",
+      "value": "4096",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "merge_commit_gc_check_interval_ms",
+      "value": "60000",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "merge_commit_idle_ms",
+      "value": "3600000",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "merge_commit_txn_state_dispatch_retry_interval_ms",
+      "value": "200",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "merge_commit_txn_state_dispatch_retry_times",
+      "value": "3",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "meta_delay_toleration_second",
+      "value": "300",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "meta_dir",
+      "value": "/opt/starrocks/fe/meta",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "meta_sync_force_delete_shard_meta",
+      "value": "false",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "metadata_enable_recovery_mode",
+      "value": "false",
+      "type": "boolean",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "metadata_ignore_unknown_operation_type",
+      "value": "false",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "metadata_ignore_unknown_subtype",
+      "value": "false",
+      "type": "boolean",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "metadata_journal_ignore_replay_failure",
+      "value": "true",
+      "type": "boolean",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "metadata_journal_max_batch_cnt",
+      "value": "100",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "metadata_journal_max_batch_size_mb",
+      "value": "10",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "metadata_journal_queue_size",
+      "value": "1000",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "metadata_journal_skip_bad_journal_ids",
+      "value": "",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "min_bytes_per_broker_scanner",
+      "value": "67108864",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "min_graceful_exit_time_second",
+      "value": "15",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "min_load_timeout_second",
+      "value": "1",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "min_routine_load_lag_for_metrics",
+      "value": "10000",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "mv_active_checker_interval_seconds",
+      "value": "60",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "mv_auto_analyze_async",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "mv_create_partition_batch_interval_ms",
+      "value": "1000",
+      "type": "long",
+      "mutable": true,
+      "comment": "The interval of create partition batch, to avoid too frequent"
+    },
+    {
+      "key": "mv_max_bytes_per_refresh",
+      "value": "21474836480",
+      "type": "long",
+      "mutable": true,
+      "comment": "materialized view can refresh at most 20GB of data at a time"
+    },
+    {
+      "key": "mv_max_partitions_num_per_refresh",
+      "value": "10",
+      "type": "int",
+      "mutable": true,
+      "comment": "materialized view can refresh at most 10 partition at a time"
+    },
+    {
+      "key": "mv_max_rows_per_refresh",
+      "value": "100000000",
+      "type": "long",
+      "mutable": true,
+      "comment": "materialized view can refresh at most 100_000_000 rows of data at a time"
+    },
+    {
+      "key": "mv_plan_cache_expire_interval_sec",
+      "value": "86400",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "mv_plan_cache_max_size",
+      "value": "1000",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "mv_plan_cache_thread_pool_size",
+      "value": "3",
+      "type": "int",
+      "mutable": true,
+      "comment": "The default thread pool size of mv plan cache"
+    },
+    {
+      "key": "mv_query_context_cache_max_size",
+      "value": "1000",
+      "type": "long",
+      "mutable": true,
+      "comment": "Max materialized view rewrite cache size during one query's lifecycle so can avoid repeating compute to reduce optimizer time in materialized view rewrite, but may occupy some extra FE's memory. It's well-done when there are many relative materialized views(\u003e10) or query is complex(multi table joins)."
+    },
+    {
+      "key": "mv_refresh_default_planner_optimize_timeout",
+      "value": "30000",
+      "type": "int",
+      "mutable": true,
+      "comment": "The default timeout for planner optimize when refresh materialized view, 30s by default"
+    },
+    {
+      "key": "mv_refresh_fail_on_filter_data",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": "Mv refresh fails if there is filtered data, true by default"
+    },
+    {
+      "key": "mv_refresh_try_lock_timeout_ms",
+      "value": "30000",
+      "type": "int",
+      "mutable": true,
+      "comment": "The default try lock timeout for mv refresh to try base table/mv dbs' lock"
+    },
+    {
+      "key": "mv_rewrite_consider_data_layout_mode",
+      "value": "enable",
+      "type": "String",
+      "mutable": true,
+      "comment": "Whether materialized view rewrite should consider underlying table data layout (e.g., colocation property, table sort keys) when deciding rewrite applicability: enable/disable/force"
+    },
+    {
+      "key": "mv_use_creator_based_authorization",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": "Whether to use the creator-based authorization or root for MV refresh"
+    },
+    {
+      "key": "mysql_nio_backlog_num",
+      "value": "1024",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "mysql_server_version",
+      "value": "8.0.33",
+      "type": "String",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "mysql_service_io_threads_num",
+      "value": "4",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "mysql_service_nio_enable_keep_alive",
+      "value": "true",
+      "type": "boolean",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "net_use_ipv6_when_priority_networks_empty",
+      "value": "false",
+      "type": "boolean",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "oauth2_auth_server_url",
+      "value": "",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "oauth2_client_id",
+      "value": "",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "oauth2_client_secret",
+      "value": "",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "oauth2_connect_wait_timeout",
+      "value": "300",
+      "type": "Long",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "oauth2_jwks_url",
+      "value": "",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "oauth2_principal_field",
+      "value": "sub",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "oauth2_redirect_url",
+      "value": "",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "oauth2_required_audience",
+      "value": "",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "oauth2_required_issuer",
+      "value": "",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "oauth2_token_server_url",
+      "value": "",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "otlp_exporter_grpc_endpoint",
+      "value": "",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "partition_hash_join_min_cardinality_rate",
+      "value": "0.3",
+      "type": "double",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "period_of_auto_resume_min",
+      "value": "5",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "pipe_default_poll_interval_s",
+      "value": "300",
+      "type": "int",
+      "mutable": true,
+      "comment": "default poll interval of pipe"
+    },
+    {
+      "key": "pipe_listener_interval_millis",
+      "value": "1000",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "pipe_scheduler_interval_millis",
+      "value": "1000",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "plugin_dir",
+      "value": "/opt/starrocks/fe/plugins",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "plugin_enable",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "port_connectivity_check_interval_sec",
+      "value": "60",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "port_connectivity_check_retry_times",
+      "value": "3",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "port_connectivity_check_timeout_ms",
+      "value": "10000",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "prepared_transaction_default_timeout_second",
+      "value": "86400",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "primary_key_disk_schedule_time",
+      "value": "3600",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "priority_networks",
+      "value": "",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "privilege_max_role_depth",
+      "value": "16",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "privilege_max_total_roles_per_user",
+      "value": "64",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "proc_profile_collect_time_s",
+      "value": "120",
+      "type": "long",
+      "mutable": true,
+      "comment": "The number of seconds it takes to collect single proc profile"
+    },
+    {
+      "key": "proc_profile_cpu_enable",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": "true to enable collect proc cpu profile"
+    },
+    {
+      "key": "proc_profile_file_retained_days",
+      "value": "1",
+      "type": "int",
+      "mutable": true,
+      "comment": "The number of days to retain profile files"
+    },
+    {
+      "key": "proc_profile_file_retained_size_bytes",
+      "value": "2147483648",
+      "type": "long",
+      "mutable": true,
+      "comment": "The number of bytes to retain profile files"
+    },
+    {
+      "key": "proc_profile_mem_enable",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": "true to enable collect proc memory alloc profile"
+    },
+    {
+      "key": "profile_info_format",
+      "value": "default",
+      "type": "String",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "profile_info_reserved_num",
+      "value": "500",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "profile_log_delete_age",
+      "value": "1d",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "profile_log_dir",
+      "value": "/opt/starrocks/fe/log",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "profile_log_roll_interval",
+      "value": "DAY",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "profile_log_roll_num",
+      "value": "5",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "profile_log_roll_size_mb",
+      "value": "1024",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "profile_process_blocking_queue_size",
+      "value": "256",
+      "type": "int",
+      "mutable": false,
+      "comment": "[DEPRECATED] Size of blocking queue to store profile process task"
+    },
+    {
+      "key": "profile_process_threads_num",
+      "value": "2",
+      "type": "int",
+      "mutable": false,
+      "comment": "[DEPRECATED] Number of thread to handle profile processing"
+    },
+    {
+      "key": "publish_version_interval_ms",
+      "value": "10",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "qe_max_connection",
+      "value": "4096",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "qe_slow_log_ms",
+      "value": "5000",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "query_cost_prediction_service_address",
+      "value": "http://localhost:5000",
+      "type": "String",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "query_cost_predictor_healthchk_interval",
+      "value": "30",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "query_deploy_threadpool_size",
+      "value": "80",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "query_detail_cache_time_nanosecond",
+      "value": "30000000000",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "query_detail_explain_level",
+      "value": "COSTS",
+      "type": "String",
+      "mutable": true,
+      "comment": "explain level of query plan in this detail"
+    },
+    {
+      "key": "query_port",
+      "value": "9030",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "query_queue_slots_estimator_strategy",
+      "value": "MAX",
+      "type": "String",
+      "mutable": true,
+      "comment": "Slot estimator strategy of queue based queries: MBE/PBE/MAX/MIN"
+    },
+    {
+      "key": "query_queue_v2_concurrency_level",
+      "value": "4",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "query_queue_v2_cpu_costs_per_slot",
+      "value": "1000000000",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "query_queue_v2_num_rows_per_slot",
+      "value": "4096",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "query_queue_v2_schedule_strategy",
+      "value": "SWRR",
+      "type": "String",
+      "mutable": true,
+      "comment": "Schedule strategy of pending queries: SWRR/SJF"
+    },
+    {
+      "key": "quorum_publish_wait_time_ms",
+      "value": "5000",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "ranger_user_ugi",
+      "value": "false",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "recover_with_empty_tablet",
+      "value": "false",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "refresh_dictionary_cache_thread_num",
+      "value": "2",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "remote_file_cache_refresh_interval_s",
+      "value": "60",
+      "type": "long",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "remote_file_cache_ttl_s",
+      "value": "86400",
+      "type": "long",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "remote_file_metadata_load_concurrency",
+      "value": "32",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "replica_ack_policy",
+      "value": "SIMPLE_MAJORITY",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "replica_sync_policy",
+      "value": "SYNC",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "replication_interval_ms",
+      "value": "100",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "replication_max_parallel_data_size_mb",
+      "value": "1048576",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "replication_max_parallel_replica_count",
+      "value": "10240",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "replication_max_parallel_table_count",
+      "value": "100",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "replication_transaction_timeout_sec",
+      "value": "86400",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "report_queue_size",
+      "value": "100",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "routine_load_kafka_timeout_second",
+      "value": "12",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "routine_load_pulsar_timeout_second",
+      "value": "12",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "routine_load_scheduler_interval_millisecond",
+      "value": "10000",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "routine_load_task_consume_second",
+      "value": "15",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "routine_load_task_timeout_second",
+      "value": "60",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "routine_load_unstable_threshold_second",
+      "value": "3600",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "rpc_port",
+      "value": "9020",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "run_mode",
+      "value": "shared_nothing",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "safe_mode_checker_interval_sec",
+      "value": "5",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "semi_sync_collect_statistic_await_seconds",
+      "value": "30",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "shard_group_clean_threshold_sec",
+      "value": "3600",
+      "type": "long",
+      "mutable": true,
+      "comment": "protection time for FE to clean unused tablet groups in shared-data mode, tablet groups created newer than this time period will not be cleaned."
+    },
+    {
+      "key": "show_execution_groups",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "skip_whole_phase_lock_mv_limit",
+      "value": "5",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "slot_manager_response_thread_pool_size",
+      "value": "16",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "slow_lock_log_every_ms",
+      "value": "3000",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "slow_lock_print_stack",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "slow_lock_stack_trace_reserve_levels",
+      "value": "15",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "slow_lock_threshold_ms",
+      "value": "3000",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "slow_query_analyze_threshold",
+      "value": "5000",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "small_file_dir",
+      "value": "/opt/starrocks/fe/small_files",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "spark_dpp_version",
+      "value": "1.0.0",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "spark_home_default_dir",
+      "value": "/opt/starrocks/fe/lib/spark2x",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "spark_launcher_log_dir",
+      "value": "/opt/starrocks/fe/log/spark_launcher_log",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "spark_load_default_timeout_second",
+      "value": "86400",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "spark_load_submit_timeout_second",
+      "value": "300",
+      "type": "long",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "spark_resource_path",
+      "value": "",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "ssl_force_secure_transport",
+      "value": "false",
+      "type": "boolean",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "ssl_key_password",
+      "value": "",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "ssl_keystore_location",
+      "value": "",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "ssl_keystore_password",
+      "value": "",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "ssl_truststore_location",
+      "value": "",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "ssl_truststore_password",
+      "value": "",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "star_client_list_timeout_seconds",
+      "value": "30",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "star_client_read_timeout_seconds",
+      "value": "15",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "star_client_write_timeout_seconds",
+      "value": "30",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "star_mgr_meta_sync_interval_sec",
+      "value": "600",
+      "type": "long",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "starmgr_grpc_timeout_seconds",
+      "value": "5",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "start_with_incomplete_meta",
+      "value": "false",
+      "type": "boolean",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "statistic_analyze_status_keep_second",
+      "value": "259200",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "statistic_analyze_task_pool_size",
+      "value": "3",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "statistic_auto_analyze_end_time",
+      "value": "23:59:59",
+      "type": "String",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "statistic_auto_analyze_start_time",
+      "value": "00:00:00",
+      "type": "String",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "statistic_auto_collect_histogram_interval",
+      "value": "3600",
+      "type": "long",
+      "mutable": true,
+      "comment": "The interval of auto collecting histogram statistics"
+    },
+    {
+      "key": "statistic_auto_collect_large_table_interval",
+      "value": "43200",
+      "type": "long",
+      "mutable": true,
+      "comment": "The interval of auto stats for large tables"
+    },
+    {
+      "key": "statistic_auto_collect_max_predicate_column_size_on_sample_strategy",
+      "value": "16",
+      "type": "int",
+      "mutable": true,
+      "comment": "max columns size of full analyze predicate columns instead of sample all columns"
+    },
+    {
+      "key": "statistic_auto_collect_predicate_columns_threshold",
+      "value": "32",
+      "type": "int",
+      "mutable": true,
+      "comment": "If the number of columns of table exceeds it, use predicate-columns strategy"
+    },
+    {
+      "key": "statistic_auto_collect_ratio",
+      "value": "0.8",
+      "type": "double",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "statistic_auto_collect_sample_threshold",
+      "value": "0.3",
+      "type": "double",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "statistic_auto_collect_small_table_interval",
+      "value": "0",
+      "type": "long",
+      "mutable": true,
+      "comment": "The interval of auto stats for small tables"
+    },
+    {
+      "key": "statistic_auto_collect_small_table_rows",
+      "value": "10000000",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "statistic_auto_collect_small_table_size",
+      "value": "5368709120",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "statistic_auto_collect_use_full_predicate_column_for_sample",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": "If full analyze predicate columns instead of sample all columns"
+    },
+    {
+      "key": "statistic_cache_columns",
+      "value": "100000",
+      "type": "long",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "statistic_cache_thread_pool_size",
+      "value": "5",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "statistic_check_expire_partition",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "statistic_collect_interval_sec",
+      "value": "600",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "statistic_collect_query_timeout",
+      "value": "3600",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "statistic_collect_too_many_version_sleep",
+      "value": "600000",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "statistic_dict_columns",
+      "value": "100000",
+      "type": "long",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "statistic_full_collect_buffer",
+      "value": "20971520",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "statistic_full_statistics_failure_tolerance_ratio",
+      "value": "0.05",
+      "type": "double",
+      "mutable": true,
+      "comment": "Tolerate some percent of failure for a large table, it will not affect the job status but improve the robustness"
+    },
+    {
+      "key": "statistic_manager_sleep_time_sec",
+      "value": "60",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "statistic_max_full_collect_data_size",
+      "value": "107374182400",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "statistic_partition_health__v2_threshold",
+      "value": "0.95",
+      "type": "double",
+      "mutable": true,
+      "comment": "Health threshold for partitions"
+    },
+    {
+      "key": "statistic_partition_healthy_v2",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": "Enable V2 health calculation based on changed rows"
+    },
+    {
+      "key": "statistic_predicate_columns_persist_interval_sec",
+      "value": "60",
+      "type": "long",
+      "mutable": true,
+      "comment": "The interval to persist predicate columns state"
+    },
+    {
+      "key": "statistic_predicate_columns_ttl_hours",
+      "value": "24",
+      "type": "long",
+      "mutable": true,
+      "comment": "The TTL of predicate columns, it would not be considered as predicate columns after this period"
+    },
+    {
+      "key": "statistic_sample_collect_partition_size",
+      "value": "1000",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "statistic_sample_collect_ratio_threshold_of_first_load",
+      "value": "0.1",
+      "type": "double",
+      "mutable": true,
+      "comment": "If changed ratio of a table/partition is larger than this threshold, we would use sample statistics instead of full statistics"
+    },
+    {
+      "key": "statistic_sample_collect_rows",
+      "value": "200000",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "statistic_update_interval_sec",
+      "value": "86400",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "statistic_use_meta_statistics",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "statistics_max_multi_column_combined_num",
+      "value": "10",
+      "type": "int",
+      "mutable": true,
+      "comment": "collect multi-column combined statistics max column nums"
+    },
+    {
+      "key": "statistics_min_sample_row_ratio",
+      "value": "0.01",
+      "type": "double",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "statistics_sample_ndv_estimator",
+      "value": "DUJ1",
+      "type": "String",
+      "mutable": true,
+      "comment": "The NDV estimator: DUJ1/GEE/LINEAR/POLYNOMIAL"
+    },
+    {
+      "key": "storage_usage_hard_limit_percent",
+      "value": "95",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "storage_usage_hard_limit_reserve_bytes",
+      "value": "107374182400",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "storage_usage_soft_limit_percent",
+      "value": "90",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "storage_usage_soft_limit_reserve_bytes",
+      "value": "214748364800",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "stream_load_default_timeout_second",
+      "value": "600",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "stream_load_max_txn_num_per_be",
+      "value": "-1",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "stream_load_profile_collect_threshold_second",
+      "value": "0",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "stream_load_task_keep_max_num",
+      "value": "1000",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "stream_load_task_keep_max_second",
+      "value": "259200",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "sys_log_delete_age",
+      "value": "7d",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "sys_log_dir",
+      "value": "/opt/starrocks/fe/log",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "sys_log_enable_compress",
+      "value": "false",
+      "type": "boolean",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "sys_log_format",
+      "value": "plaintext",
+      "type": "String",
+      "mutable": false,
+      "comment": "Log4j layout format. Valid choices: plaintext, json"
+    },
+    {
+      "key": "sys_log_json_max_string_length",
+      "value": "1048576",
+      "type": "int",
+      "mutable": false,
+      "comment": "Max length of a log line when using log4j json format, truncate string values longer than this specified limit. Default: 1MB"
+    },
+    {
+      "key": "sys_log_json_profile_max_string_length",
+      "value": "104857600",
+      "type": "int",
+      "mutable": false,
+      "comment": "Max length of a profile log line when using log4j json format, truncate string values longer than this specified limit. Default: 100MB"
+    },
+    {
+      "key": "sys_log_level",
+      "value": "INFO",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "sys_log_roll_interval",
+      "value": "DAY",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "sys_log_roll_mode",
+      "value": "SIZE-MB-1024",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "sys_log_roll_num",
+      "value": "10",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "sys_log_to_console",
+      "value": "false",
+      "type": "boolean",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "sys_log_verbose_modules",
+      "value": "[]",
+      "type": "String[]",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "sys_log_warn_modules",
+      "value": "[]",
+      "type": "String[]",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "table_keeper_interval_second",
+      "value": "30",
+      "type": "int",
+      "mutable": true,
+      "comment": "Interval of TableKeeper daemon"
+    },
+    {
+      "key": "tablet_checker_partition_batch_num",
+      "value": "500",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "tablet_collect_interval_seconds",
+      "value": "60",
+      "type": "long",
+      "mutable": true,
+      "comment": "time interval to collect tablet info from backend"
+    },
+    {
+      "key": "tablet_collect_timeout_seconds",
+      "value": "60",
+      "type": "int",
+      "mutable": true,
+      "comment": "Timeout for calling BE get_tablets_info rpc"
+    },
+    {
+      "key": "tablet_create_timeout_second",
+      "value": "10",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "tablet_delete_timeout_second",
+      "value": "2",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "tablet_report_drop_tablet_delay_sec",
+      "value": "120",
+      "type": "long",
+      "mutable": true,
+      "comment": "How much time we should wait before dropping the tablet from BE on tablet report"
+    },
+    {
+      "key": "tablet_sched_always_force_decommission_replica",
+      "value": "false",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "tablet_sched_balance_load_disk_safe_threshold",
+      "value": "0.5",
+      "type": "double",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "tablet_sched_balance_load_score_threshold",
+      "value": "0.1",
+      "type": "double",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "tablet_sched_be_down_tolerate_time_s",
+      "value": "900",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "tablet_sched_checker_interval_seconds",
+      "value": "20",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "tablet_sched_colocate_balance_high_prio_backends",
+      "value": "[]",
+      "type": "long[]",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "tablet_sched_colocate_balance_wait_system_stable_time_s",
+      "value": "900",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "tablet_sched_colocate_be_down_tolerate_time_s",
+      "value": "43200",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "tablet_sched_consecutive_full_clone_delay_sec",
+      "value": "180",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "tablet_sched_disable_balance",
+      "value": "false",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "tablet_sched_disable_colocate_balance",
+      "value": "false",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "tablet_sched_disable_colocate_overall_balance",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "tablet_sched_max_balancing_tablets",
+      "value": "500",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "tablet_sched_max_clone_task_timeout_sec",
+      "value": "7200",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "tablet_sched_max_migration_task_sent_once",
+      "value": "1000",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "tablet_sched_max_not_being_scheduled_interval_ms",
+      "value": "900000",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "tablet_sched_max_scheduling_tablets",
+      "value": "10000",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "tablet_sched_min_clone_task_timeout_sec",
+      "value": "180",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "tablet_sched_num_based_balance_threshold_ratio",
+      "value": "0.5",
+      "type": "double",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "tablet_sched_pk_index_rebuild_threshold_seconds",
+      "value": "172800",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "tablet_sched_repair_delay_factor_second",
+      "value": "60",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "tablet_sched_slot_num_per_path",
+      "value": "8",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "tablet_sched_storage_cooldown_second",
+      "value": "-1",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "tablet_stat_update_interval_second",
+      "value": "300",
+      "type": "long",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "task_check_interval_second",
+      "value": "60",
+      "type": "int",
+      "mutable": true,
+      "comment": "Interval of task background jobs"
+    },
+    {
+      "key": "task_min_schedule_interval_s",
+      "value": "10",
+      "type": "int",
+      "mutable": true,
+      "comment": "Minimum schedule interval of a task"
+    },
+    {
+      "key": "task_runs_concurrency",
+      "value": "4",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "task_runs_max_history_number",
+      "value": "10000",
+      "type": "int",
+      "mutable": true,
+      "comment": "max number of task run history. "
+    },
+    {
+      "key": "task_runs_queue_length",
+      "value": "500",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "task_runs_ttl_second",
+      "value": "604800",
+      "type": "int",
+      "mutable": true,
+      "comment": "task run ttl"
+    },
+    {
+      "key": "task_ttl_second",
+      "value": "86400",
+      "type": "int",
+      "mutable": true,
+      "comment": "task ttl"
+    },
+    {
+      "key": "thrift_backlog_num",
+      "value": "1024",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "thrift_client_timeout_ms",
+      "value": "5000",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "thrift_max_frame_size",
+      "value": "16384000",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "thrift_max_message_size",
+      "value": "1073741824",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "thrift_max_recursion_depth",
+      "value": "64",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "thrift_rpc_max_body_size",
+      "value": "-1",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "thrift_rpc_retry_times",
+      "value": "3",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "thrift_rpc_strict_mode",
+      "value": "true",
+      "type": "boolean",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "thrift_rpc_timeout_ms",
+      "value": "10000",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "thrift_server_max_worker_threads",
+      "value": "4096",
+      "type": "int",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "thrift_server_queue_size",
+      "value": "4096",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "tmp_dir",
+      "value": "/opt/starrocks/fe/temp_dir",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "transaction_clean_interval_second",
+      "value": "30",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "transaction_state_print_partition_info",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "transaction_stream_load_coordinator_cache_capacity",
+      "value": "4096",
+      "type": "int",
+      "mutable": true,
+      "comment": "The capacity of the cache that stores the mapping from transaction label to coordinator node."
+    },
+    {
+      "key": "transaction_stream_load_coordinator_cache_expire_seconds",
+      "value": "900",
+      "type": "int",
+      "mutable": true,
+      "comment": "The time to keep the coordinator mapping in the cache before it's evicted."
+    },
+    {
+      "key": "transform_type_prefer_string_for_varchar",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": "Whether to prefer string type for fixed length varchar column in materialized view creation/ctas"
+    },
+    {
+      "key": "txn_rollback_limit",
+      "value": "100",
+      "type": "int",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "vectorized_load_enable",
+      "value": "true",
+      "type": "boolean",
+      "mutable": true,
+      "comment": ""
+    },
+    {
+      "key": "warehouse_idle_check_enable",
+      "value": "false",
+      "type": "boolean",
+      "mutable": true,
+      "comment": "True to start warehouse idle checker"
+    },
+    {
+      "key": "warehouse_idle_check_interval_seconds",
+      "value": "60",
+      "type": "long",
+      "mutable": true,
+      "comment": "time interval to check whether warehouse is idle"
+    },
+    {
+      "key": "yarn_client_path",
+      "value": "/opt/starrocks/fe/lib/yarn-client/hadoop/bin/yarn",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    },
+    {
+      "key": "yarn_config_dir",
+      "value": "/opt/starrocks/fe/lib/yarn-config",
+      "type": "String",
+      "mutable": false,
+      "comment": ""
+    }
+  ],
+  "mutableCount": 477
+}

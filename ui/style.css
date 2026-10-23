@@ -542,6 +542,33 @@
       text-align: right;
       font-variant-numeric: tabular-nums;
     }
+    /* The filters of a list: one per column that is worth searching. */
+    .filters {
+      display: flex;
+      gap: 0.8rem;
+      margin-top: 0.5rem;
+    }
+    .filters label {
+      flex: 1;
+      margin-top: 0;
+      font-size: 0.85rem;
+      opacity: 0.85;
+    }
+    .filters input[type="search"] {
+      display: block;
+      width: 100%;
+      box-sizing: border-box;
+      margin-top: 0.25rem;
+      font-size: 0.9rem;
+      font-family: ui-monospace, monospace;
+    }
+
+    /* The comment of a frontend variable is prose: it wraps inside its
+       column, so the rest of the table stays where it is. */
+    #var-list .data-table td:nth-child(5) {
+      white-space: normal;
+      overflow-wrap: anywhere;
+    }
     .warn {
       color: light-dark(#b58900, #ffd54f);
     }

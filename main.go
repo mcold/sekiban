@@ -119,7 +119,7 @@ func runJSON(cfg Config, configErr string, args []string) {
 			os.Exit(1)
 		}
 		_ = enc.Encode(out)
-	case "cluster", "compactions", "loads", "resources", "metrics":
+	case "cluster", "compactions", "loads", "resources", "metrics", "variables":
 		if len(cfg.Connections) == 0 {
 			fail("no connections configured")
 		}
@@ -165,6 +165,13 @@ func runJSON(cfg Config, configErr string, args []string) {
 				os.Exit(1)
 			}
 			_ = enc.Encode(out)
+		case "variables":
+			out := collectVariables(db)
+			if out.Error != "" {
+				_ = enc.Encode(map[string]string{"error": out.Error})
+				os.Exit(1)
+			}
+			_ = enc.Encode(out)
 		}
 	case "browser":
 		if len(cfg.Connections) == 0 {
@@ -195,6 +202,7 @@ func runJSON(cfg Config, configErr string, args []string) {
 			"commands": []string{
 				"browser", "cluster", "compactions", "connections", "dashboard",
 				"describe", "loads", "metrics", "resources", "sessions",
+				"variables",
 			},
 		})
 		os.Exit(1)
@@ -496,6 +504,21 @@ func runGUI(cfg Config, configErr string) {
 		}
 		defer func() { _ = db.Close() }()
 		return collectLoads(db, browserDatabase(db)), nil
+	})
+
+	mustBind(w, "variablesState", func() (variablesOut, error) {
+		mu.Lock()
+		dsn, err := activeDSN()
+		mu.Unlock()
+		if err != nil {
+			return variablesOut{Error: err.Error()}, nil
+		}
+		db, err := openSR(dsn)
+		if err != nil {
+			return variablesOut{Error: err.Error()}, nil
+		}
+		defer func() { _ = db.Close() }()
+		return collectVariables(db), nil
 	})
 
 	mustBind(w, "metricsState", func(filter string) (metricsOut, error) {

@@ -54,7 +54,7 @@ let editingIndex = null;
 // ?screen= override exists for the screenshot harness, which needs to open a
 // given screen headlessly; the app itself navigates with no query string.
 const SCREENS = ["dashboard", "sessions", "cluster", "browser", "compactions",
-  "profile", "loads", "resources", "metrics", "connections"];
+  "profile", "loads", "resources", "metrics", "variables", "connections"];
 let screen = new URLSearchParams(location.search).get("screen") || "dashboard";
 if (!SCREENS.includes(screen)) screen = "dashboard";
 
@@ -68,6 +68,7 @@ const NAV_ICONS = {
   loads: "cloud-arrow-down",
   resources: "sliders2-vertical",
   metrics: "wrench",
+  variables: "list",
   connections: "gear",
 };
 
@@ -85,6 +86,10 @@ function goTo(name) {
   if (name === "loads") loadLoads();
   if (name === "resources") loadResources();
   if (name === "metrics") loadMetrics();
+  if (name === "variables") {
+    varUserTyped = false;
+    loadVariables();
+  }
 }
 
 const WINDOW_KEY = "sekiban.window";
@@ -1063,6 +1068,14 @@ el("met-filter").addEventListener("input", () => {
   loadMetrics();
 });
 
+el("var-refresh").addEventListener("click", loadVariables);
+for (const id of ["var-key", "var-value"]) {
+  el(id).addEventListener("input", () => {
+    varUserTyped = true;
+    renderVariables();
+  });
+}
+
 el("prof-explain").addEventListener("click", async () => {
   const sql = el("prof-sql").value.trim();
   if (!sql) {
@@ -1296,6 +1309,58 @@ function renderMetrics() {
     (metrics.rows || []).map((m) => [m.scope, m.owner, m.name, m.labels, m.value])));
 }
 
+// --- Frontend variables ---
+
+// The configuration the frontend runs with, read whole: 726 settings on a
+// stock 4.0 frontend, which is small enough to filter on the page and keep
+// the filters immediate.
+let variables = null;
+
+// A filter counts only when the user typed it. WebKit fills a search field on
+// its own now and then as the screen is shown, and a value nobody typed must
+// never hide rows. Entering the screen starts unfiltered; Refresh keeps what
+// the user has typed.
+let varUserTyped = false;
+
+async function loadVariables() {
+  el("var-status").textContent = "Reading the frontend's configuration...";
+  try {
+    variables = await window.variablesState();
+  } catch (err) {
+    el("var-status").textContent = String(err);
+    return;
+  }
+  renderVariables();
+}
+
+function renderVariables() {
+  if (!variables) return;
+  if (!varUserTyped) {
+    el("var-key").value = "";
+    el("var-value").value = "";
+  }
+  const key = el("var-key").value.trim().toLowerCase();
+  const value = el("var-value").value.trim().toLowerCase();
+  const all = variables.rows || [];
+  const rows = all.filter((v) =>
+    (!key || v.key.toLowerCase().includes(key)) &&
+    (!value || v.value.toLowerCase().includes(value)));
+
+  if (variables.error) {
+    el("var-status").textContent = variables.error;
+  } else if (rows.length === all.length) {
+    el("var-status").textContent = all.length + " variables · " +
+      variables.mutableCount + " can be changed at run time";
+  } else {
+    el("var-status").textContent = rows.length + " of " + all.length +
+      " variables";
+  }
+
+  el("var-list").replaceChildren(dataTable(
+    ["Key", "Value", "Type", "Mutable", "Comment"],
+    rows.map((v) => [v.key, v.value, v.type, v.mutable ? "yes" : "no", v.comment])));
+}
+
 // --- Sidebar ---
 
 for (const b of document.querySelectorAll(".nav-item[data-screen]")) {
@@ -1339,4 +1404,7 @@ setInterval(refreshDashboard, 2000);
 (async () => {
   state = await window.configState();
   render();
+  // The ?screen= override opens a screen without a click; the app itself
+  // always lands on the dashboard, where the refresh timer does the loading.
+  if (screen !== "dashboard") goTo(screen);
 })();
