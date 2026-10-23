@@ -16,6 +16,7 @@ package main
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"io"
 	"os"
@@ -147,6 +148,14 @@ func TestInterface(t *testing.T) {
 		defer func() { _ = db.Close() }()
 		return collectResources(db), nil
 	})
+	mustBind(w, "variablesState", func() (variablesOut, error) {
+		db, err := openSR(dsn)
+		if err != nil {
+			return variablesOut{Error: err.Error()}, nil
+		}
+		defer func() { _ = db.Close() }()
+		return collectVariables(db), nil
+	})
 	mustBind(w, "metricsState", func(filter string) (metricsOut, error) {
 		db, err := openSR(dsn)
 		if err != nil {
@@ -252,8 +261,8 @@ func TestInterface(t *testing.T) {
 			})
 		}
 		time.Sleep(2 * time.Second)
-		// The five new screens, read back the same way.
-		for _, screen := range []string{"compactions", "profile", "loads", "resources", "metrics"} {
+		// The six new screens, read back the same way.
+		for _, screen := range []string{"compactions", "profile", "loads", "resources", "metrics", "variables"} {
 			w.Dispatch(func() {
 				w.Eval(`goTo("` + screen + `");`)
 			})
@@ -263,6 +272,7 @@ func TestInterface(t *testing.T) {
 					screen: "` + screen + `",
 					rows: document.querySelectorAll("#` + screen + ` .data-table tbody tr").length,
 					tables: document.querySelectorAll("#` + screen + ` .data-table").length,
+					filters: Array.from(document.querySelectorAll("#` + screen + ` input[type='search']")).map(e => e.value),
 					status: (document.querySelector("#` + screen + ` [id$='-status']") || {}).textContent,
 				}));`)
 			})
@@ -344,11 +354,26 @@ func TestInterface(t *testing.T) {
 			auditDiag = m
 		}
 	}
-	if len(newDiags) != 5 {
-		t.Errorf("got %d diagnostics for the new screens, want 5: %v", len(newDiags), newDiags)
+	if len(newDiags) != 6 {
+		t.Errorf("got %d diagnostics for the new screens, want 6: %v", len(newDiags), newDiags)
 	}
 	for _, d := range newDiags {
 		fmt.Println(d)
+		var got struct {
+			Screen string `json:"screen"`
+			Rows   int    `json:"rows"`
+			Status string `json:"status"`
+		}
+		if err := json.Unmarshal([]byte(strings.TrimPrefix(d, "UICHECKNEW ")), &got); err != nil {
+			t.Errorf("bad diagnostic %q: %v", d, err)
+			continue
+		}
+		if got.Rows < 1 {
+			t.Errorf("%s: drew no rows", got.Screen)
+		}
+		if got.Screen == "variables" && !strings.HasSuffix(got.Status, "can be changed at run time") {
+			t.Errorf("variables: opens filtered, status %q", got.Status)
+		}
 	}
 	if auditDiag == "" {
 		t.Errorf("the audit log was never read; messages: %v", messages)

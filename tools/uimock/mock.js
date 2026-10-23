@@ -72,6 +72,7 @@ window.metricsState = async (filter) => {
   m.rows = m.rows.filter((r) => r.name.toLowerCase().includes(needle));
   return m;
 };
+window.variablesState = async () => recorded("variables");
 window.browserTree = async () => recorded("browser");
 window.profileState = async () => recorded("profiles");
 window.explainAnalyze = async () => recorded("explain");

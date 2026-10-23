@@ -202,6 +202,42 @@ func TestObjectDetail(t *testing.T) {
 
 // The audit log is the only complete record of the queries that have
 // finished. It is read over the frontend's HTTP API.
+// The frontend's configuration, read the way the Variables screen reads it:
+// every setting, with its type and whether it can be changed at run time.
+func TestFrontendVariables(t *testing.T) {
+	db := liveDB(t)
+	out := collectVariables(db)
+	if out.Error != "" {
+		t.Fatalf("collect: %s", out.Error)
+	}
+	if len(out.Rows) < 100 {
+		t.Fatalf("got %d variables, want the frontend's whole configuration", len(out.Rows))
+	}
+
+	var port *variableEntry
+	for i := range out.Rows {
+		if out.Rows[i].Key == "http_port" {
+			port = &out.Rows[i]
+			break
+		}
+	}
+	if port == nil {
+		t.Fatal("no http_port among the variables")
+	}
+	// The port the frontend listens on is not a setting to change while it
+	// runs.
+	if port.Mutable {
+		t.Error("http_port reads as mutable")
+	}
+	if port.Type == "" || port.Value == "" {
+		t.Errorf("http_port = %+v, want a type and a value", *port)
+	}
+	if out.MutableCount == 0 || out.MutableCount == len(out.Rows) {
+		t.Errorf("MutableCount = %d of %d: neither all nor none",
+			out.MutableCount, len(out.Rows))
+	}
+}
+
 func TestAuditLog(t *testing.T) {
 	dsn := os.Getenv("SR_SEKIBAN_DSN")
 	if dsn == "" {

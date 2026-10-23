@@ -27,6 +27,7 @@
     <button type="button" class="nav-item" data-screen="loads">Loads</button>
     <button type="button" class="nav-item" data-screen="resources">Resources</button>
     <button type="button" class="nav-item" data-screen="metrics">Metrics</button>
+    <button type="button" class="nav-item" data-screen="variables">Variables</button>
     <button type="button" class="nav-item" data-screen="connections">Connections</button>
   </nav>
 
@@ -300,6 +301,32 @@
     <p class="hint">Every metric the frontend and the backends publish about
       themselves, as the SQL projection of their Prometheus endpoints.</p>
     <div id="met-list"></div>
+  </section>
+
+  <section id="variables" hidden>
+    <div class="dash-header">
+      <h2>Frontend variables</h2>
+      <div class="buttons dash-actions">
+        <button type="button" id="var-refresh">Refresh</button>
+      </div>
+    </div>
+    <p id="var-status" class="hint" aria-live="polite"></p>
+    <p class="hint">The configuration the frontend runs with, as ADMIN SHOW
+      FRONTEND CONFIG answers it: the same list the frontend's own
+      /variable page prints.</p>
+    <div class="filters">
+      <label>Key
+        <input type="search" id="var-key" autocomplete="off"
+          spellcheck="false" placeholder="filter"
+          aria-label="Filter the variables by key">
+      </label>
+      <label>Value
+        <input type="search" id="var-value" autocomplete="off"
+          spellcheck="false" placeholder="filter"
+          aria-label="Filter the variables by value">
+      </label>
+    </div>
+    <div id="var-list"></div>
   </section>
 
   <section id="list" hidden>
