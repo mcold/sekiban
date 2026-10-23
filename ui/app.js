@@ -1094,6 +1094,20 @@ el("met-filter").addEventListener("input", () => {
   loadMetrics();
 });
 
+el("prof-plan-copy").addEventListener("click", async () => {
+  const status = el("prof-plan-status");
+  const text = lastPlan && lastPlan.raw;
+  if (!text) {
+    status.textContent = "There is no plan to copy: explain a statement first.";
+    return;
+  }
+  if (await copyText(text)) {
+    status.textContent = "The plan is on the clipboard.";
+  } else {
+    status.textContent = "The clipboard refused the plan.";
+  }
+});
+
 el("prof-explain").addEventListener("click", async () => {
   const sql = el("prof-sql").value.trim();
   if (!sql) {
@@ -1315,6 +1329,10 @@ async function chooseQuery(pick, explain) {
 
 // runExplain explains a statement and draws the plan.
 //
+// The plan the tree was drawn from, kept whole: what the frontend answered
+// is what "Copy plan" puts on the clipboard, tree or no tree.
+let lastPlan = null;
+
 // The statement runs again: EXPLAIN ANALYZE is not a plan of a query that
 // never happened. So a statement that writes is not run without being asked
 // for, however it got here.
@@ -1328,14 +1346,43 @@ async function runExplain(sql, automatic, outId, statusId) {
     return;
   }
   status.textContent = "Running...";
+  lastPlan = null;
   out.replaceChildren();
   try {
     const plan = await window.explainAnalyze(sql);
+    lastPlan = plan;
     renderPlan(plan, out);
     status.textContent = "Done.";
   } catch (err) {
     status.textContent = String(err);
   }
+}
+
+// copyText puts text on the clipboard. The WebView has no permission API to
+// ask, so the clipboard API is tried and the hidden-textarea road is the
+// fallback; whoever calls this says so when both fail.
+async function copyText(text) {
+  try {
+    await navigator.clipboard.writeText(text);
+    return true;
+  } catch (err) {
+    // The custom scheme may count as insecure; fall through.
+  }
+  const area = document.createElement("textarea");
+  area.value = text;
+  area.setAttribute("readonly", "");
+  area.style.position = "fixed";
+  area.style.top = "-1000px";
+  document.body.append(area);
+  area.select();
+  let ok = false;
+  try {
+    ok = document.execCommand("copy");
+  } catch (err) {
+    ok = false;
+  }
+  area.remove();
+  return ok;
 }
 
 // isReadStatement reports whether a statement only reads.
