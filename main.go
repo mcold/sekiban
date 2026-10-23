@@ -601,20 +601,22 @@ func runGUI(cfg Config, configErr string) {
 		return out, nil
 	})
 
-	// The full profile of one query, as the frontend wrote it.
-	mustBind(w, "queryProfile", func(queryID string) (profileDoc, error) {
-		mu.Lock()
-		conn, ok := activeConn()
-		mu.Unlock()
-		if !ok {
-			return profileDoc{}, errors.New("not connected")
+	// One query's recorded profile, in a window of its own.
+	mustBind(w, "openProfile", func(queryID string) error {
+		if queryID == "" {
+			return errors.New("no query id")
 		}
-		fe := newFEClient(conn.FEHTTP, conn.DSN)
-		text, err := fe.queryProfile(context.Background(), queryID)
-		if err != nil {
-			return profileDoc{QueryID: queryID, Error: err.Error()}, nil
-		}
-		return parseQueryProfile(queryID, text), nil
+		// The window is created on the UI thread, for the same reason the
+		// object window is: GTK is not thread-safe.
+		w.Dispatch(func() {
+			openProfileWindow(queryID, func() (Connection, bool) {
+				mu.Lock()
+				defer mu.Unlock()
+				return activeConn()
+			})
+		})
+		debugf("event=profile_window_open query=%s", queryID)
+		return nil
 	})
 
 	mustBind(w, "explainAnalyze", func(statement string) (explainOut, error) {

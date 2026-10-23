@@ -1289,49 +1289,27 @@ function matches(filter, value) {
   return filter.re.test(value === null || value === undefined ? "" : String(value));
 }
 
-// chooseQuery takes the row the user picked: the profile the frontend
-// recorded of it is fetched when the row has a query id, and its statement
-// is explained when the caller asks for it. The profile list does not ask:
-// the recorded profile is what that row is for, and explaining would run
-// the statement a second time for a plan nobody requested.
+// chooseQuery takes the row the user picked. A row of the profile list is a
+// query the frontend recorded a profile of, so it opens that profile in a
+// window of its own. A row of the ranking has only a statement: it is
+// explained here, and only when the caller asks for it.
 async function chooseQuery(pick, explain) {
   chosen = pick;
   el("prof-sql").value = pick.statement || "";
   el("prof-plan").replaceChildren();
   el("prof-plan-of").textContent = "";
   el("prof-plan-status").textContent = "";
-  el("prof-plan-status").textContent = "";
-  el("prof-recorded").replaceChildren();
-  el("prof-recorded-of").textContent = "";
-  el("prof-recorded-status").textContent = "";
   renderProfile();
   if (pick.queryId) {
-    loadRecordedProfile(pick.queryId);
+    try {
+      await window.openProfile(pick.queryId);
+    } catch (err) {
+      el("prof-status").textContent = String(err);
+    }
+    return;
   }
   if (explain) {
     runExplain(pick.statement, true, "prof-plan", "prof-plan-status");
-  }
-}
-
-// loadRecordedProfile fetches the profile the frontend wrote of a query.
-async function loadRecordedProfile(queryId) {
-  el("prof-recorded-of").textContent = queryId;
-  el("prof-recorded-status").textContent = "Reading the recorded profile...";
-  try {
-    const doc = await window.queryProfile(queryId);
-    if (doc.error) {
-      el("prof-recorded-status").textContent = doc.error;
-      return;
-    }
-    el("prof-recorded-status").textContent = "";
-    const box = el("prof-recorded");
-    box.replaceChildren();
-    for (const node of doc.nodes || []) {
-      box.append(nodeEl(node));
-    }
-    box.scrollIntoView({ block: "start" });
-  } catch (err) {
-    el("prof-recorded-status").textContent = String(err);
   }
 }
 

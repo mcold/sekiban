@@ -201,9 +201,10 @@
     <p id="prof-status" class="hint" aria-live="polite"></p>
 
     <h3>Profiles the frontend holds</h3>
-    <p class="hint">Pick one and the profile the frontend recorded of it is
-      shown below. Only the queries whose client asked to be profiled, or
-      that ran longer than big_query_profile_threshold (30s), are here.</p>
+    <p class="hint">Pick one and the profile the frontend recorded of it
+      opens in a window of its own. Only the queries whose client asked to
+      be profiled, or that ran longer than big_query_profile_threshold
+      (30s), are here.</p>
     <div class="filters">
       <label>Query id
         <input type="search" id="prof-list-queryid" autocomplete="off"
@@ -218,10 +219,6 @@
     </div>
     <p id="prof-list-filter-status" class="hint" aria-live="polite"></p>
     <div id="prof-list"></div>
-
-    <h3>The profile the frontend recorded <span class="hint" id="prof-recorded-of"></span></h3>
-    <p id="prof-recorded-status" class="hint" aria-live="polite"></p>
-    <div id="prof-recorded" class="tree"></div>
 
     <h3>Plan <span class="hint" id="prof-plan-of"></span></h3>
     <p class="hint">Write a statement and explain it, or pick a top query
