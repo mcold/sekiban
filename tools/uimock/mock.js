@@ -73,12 +73,9 @@ window.metricsState = async (filter) => {
   return m;
 };
 window.browserTree = async () => recorded("browser");
-window.profileState = async () => ({
-  profiles: [],
-  summary: [],
-  historyCount: 0,
-});
-window.explainAnalyze = async () => "not available in the mock";
+window.profileState = async () => recorded("profiles");
+window.explainAnalyze = async () => recorded("explain");
+window.openProfile = async () => ({});
 window.killSession = async (id) => {
   MOCK.killed = id;
   return {};

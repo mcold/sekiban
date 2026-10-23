@@ -47,6 +47,16 @@ func TestInterface(t *testing.T) {
 	os.Stderr = stderrW
 	defer func() { os.Stderr = oldStderr }()
 
+	// The first query the frontend holds a profile of, for the profile
+	// window. A frontend that holds none leaves the check out.
+	profileID := ""
+	if db, dbErr := openSR(dsn); dbErr == nil {
+		if res, qErr := queryRows(db, "SHOW PROFILELIST"); qErr == nil && len(res.rows) > 0 {
+			profileID = res.value(0, "QueryId")
+		}
+		_ = db.Close()
+	}
+
 	// One sampler for the whole test: the window polls it every couple of
 	// seconds, and a fresh one per call would never hold any history.
 	sampler := newSampler(dsn)
@@ -101,6 +111,15 @@ func TestInterface(t *testing.T) {
 		// runs on a goroutine of its own.
 		w.Dispatch(func() {
 			objectWindow = openObjectWindow(name, func() (string, error) { return dsn, nil })
+		})
+		return nil
+	})
+	var profileWindow glaze.WebView
+	mustBind(w, "openProfile", func(queryID string) error {
+		w.Dispatch(func() {
+			profileWindow = openProfileWindow(queryID, func() (Connection, bool) {
+				return Connection{DSN: dsn, FEHTTP: "http://127.0.0.1:8030"}, true
+			})
 		})
 		return nil
 	})
@@ -249,6 +268,30 @@ func TestInterface(t *testing.T) {
 			})
 			time.Sleep(1 * time.Second)
 		}
+		// One profile the frontend holds, in a window of its own.
+		w.Dispatch(func() {
+			w.Eval(`goTo("profile");`)
+		})
+		time.Sleep(2 * time.Second)
+		if profileID != "" {
+			w.Dispatch(func() {
+				w.Eval(`window.openProfile("` + profileID + `");`)
+			})
+			time.Sleep(6 * time.Second)
+			if profileWindow != nil {
+				profileWindow.Dispatch(func() {
+					profileWindow.Eval(`document.getElementById("prof-window-copy").click(); setTimeout(function () {
+						window.logError("PROFCHK " + JSON.stringify({
+							title: document.getElementById("prof-title").textContent,
+							nodes: document.querySelectorAll("#prof-window-tree .tree-node").length,
+							fields: document.querySelectorAll("#prof-window-tree .tree-line").length,
+							status: document.getElementById("prof-window-status").textContent,
+						}));
+					}, 500);`)
+				})
+			}
+		}
+		time.Sleep(2 * time.Second)
 		// The audit log, read on demand: the button, not a poll.
 		w.Dispatch(func() {
 			w.Eval(`goTo("profile");`)
@@ -341,6 +384,20 @@ func TestInterface(t *testing.T) {
 			tail(string(captured), 800))
 	}
 	fmt.Println("OBJCHK " + obj)
+
+	prof := ""
+	for _, line := range strings.Split(string(captured), "\n") {
+		if i := strings.Index(line, "PROFCHK "); i >= 0 {
+			prof = line[i+len("PROFCHK "):]
+		}
+	}
+	if profileID != "" && prof == "" {
+		t.Fatalf("the profile window sent no diagnostic; stderr tail: %s",
+			tail(string(captured), 800))
+	}
+	if prof != "" {
+		fmt.Println("PROFCHK " + prof)
+	}
 }
 
 // tail returns the last n characters of a string, for a failure message.

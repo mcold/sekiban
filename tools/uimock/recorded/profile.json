@@ -1,0 +1,1028 @@
+{
+  "queryId": "01a1638e-6fad-75eb-9438-9988600c7460",
+  "nodes": [
+    {
+      "name": "Query",
+      "children": [
+        {
+          "name": "Summary",
+          "children": [
+            {
+              "name": "Query ID",
+              "value": "01a1638e-6fad-75eb-9438-9988600c7460"
+            },
+            {
+              "name": "Start Time",
+              "value": "2026-10-22 12:20:41"
+            },
+            {
+              "name": "End Time",
+              "value": "2026-10-22 12:20:41"
+            },
+            {
+              "name": "Total",
+              "value": "98ms"
+            },
+            {
+              "name": "Query Type",
+              "value": "Query"
+            },
+            {
+              "name": "Query State",
+              "value": "Finished"
+            },
+            {
+              "name": "StarRocks Version",
+              "value": "4.0.0-dccb665"
+            },
+            {
+              "name": "User",
+              "value": "root"
+            },
+            {
+              "name": "Default Db",
+              "value": "_statistics_"
+            },
+            {
+              "name": "Sql Statement",
+              "value": "EXPLAIN ANALYZE SELECT count(*) FROM information_schema.columns LIMIT 100"
+            },
+            {
+              "name": "Warehouse"
+            },
+            {
+              "name": "Variables",
+              "value": "parallel_fragment_exec_instance_num=1,max_parallel_scan_instance_num=-1,pipeline_dop=0,enable_adaptive_sink_dop=true,enable_runtime_adaptive_dop=false,runtime_profile_report_interval=10,resource_group=default_wg"
+            },
+            {
+              "name": "NonDefaultSessionVariables",
+              "value": "{\"enable_adaptive_sink_dop\":{\"defaultValue\":false,\"actualValue\":true},\"enable_profile\":{\"defaultValue\":false,\"actualValue\":true},\"enable_async_profile\":{\"defaultValue\":true,\"actualValue\":false}}"
+            },
+            {
+              "name": "Collect Profile Time",
+              "value": "14ms"
+            },
+            {
+              "name": "IsProfileAsync",
+              "value": "false"
+            }
+          ]
+        },
+        {
+          "name": "Planner",
+          "children": [
+            {
+              "name": "Parser[1]",
+              "value": "6ms"
+            },
+            {
+              "name": "Total[1]",
+              "value": "7ms",
+              "children": [
+                {
+                  "name": "Analyzer[1]",
+                  "value": "0",
+                  "children": [
+                    {
+                      "name": "Lock[1]",
+                      "value": "0"
+                    },
+                    {
+                      "name": "AnalyzeDatabase[1]",
+                      "value": "0"
+                    },
+                    {
+                      "name": "AnalyzeTemporaryTable[1]",
+                      "value": "0"
+                    },
+                    {
+                      "name": "AnalyzeTable[1]",
+                      "value": "0"
+                    }
+                  ]
+                },
+                {
+                  "name": "Transformer[1]",
+                  "value": "0"
+                },
+                {
+                  "name": "Optimizer[1]",
+                  "value": "5ms",
+                  "children": [
+                    {
+                      "name": "MVPreprocess[1]",
+                      "value": "0"
+                    },
+                    {
+                      "name": "MVTextRewrite[1]",
+                      "value": "0"
+                    },
+                    {
+                      "name": "RuleBaseOptimize[1]",
+                      "value": "2ms"
+                    },
+                    {
+                      "name": "CostBaseOptimize[1]",
+                      "value": "1ms"
+                    },
+                    {
+                      "name": "PhysicalRewrite[1]",
+                      "value": "0"
+                    },
+                    {
+                      "name": "DynamicRewrite[1]",
+                      "value": "0"
+                    },
+                    {
+                      "name": "PlanValidate[1]",
+                      "value": "0",
+                      "children": [
+                        {
+                          "name": "InputDependenciesChecker[1]",
+                          "value": "0"
+                        },
+                        {
+                          "name": "TypeChecker[1]",
+                          "value": "0"
+                        },
+                        {
+                          "name": "CTEUniqueChecker[1]",
+                          "value": "0"
+                        },
+                        {
+                          "name": "ColumnReuseChecker[1]",
+                          "value": "0"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "ExecPlanBuild[1]",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "name": "Pending[1]",
+              "value": "0"
+            },
+            {
+              "name": "Prepare[1]",
+              "value": "0"
+            },
+            {
+              "name": "Deploy[1]",
+              "value": "14ms",
+              "children": [
+                {
+                  "name": "DeployLockInternalTime[1]",
+                  "value": "14ms",
+                  "children": [
+                    {
+                      "name": "DeploySerializeConcurrencyTime[1]",
+                      "value": "3ms"
+                    },
+                    {
+                      "name": "DeployStageByStageTime[3]",
+                      "value": "0"
+                    },
+                    {
+                      "name": "DeployWaitTime[3]",
+                      "value": "10ms",
+                      "children": [
+                        {
+                          "name": "DeployAsyncSendTime[1]",
+                          "value": "0"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "DeployScanRanges[1]",
+              "value": "0"
+            },
+            {
+              "name": "DeployDataSize",
+              "value": "2558"
+            }
+          ]
+        },
+        {
+          "name": "Reason"
+        },
+        {
+          "name": "Execution",
+          "children": [
+            {
+              "name": "Topology",
+              "value": "{\"rootId\":2,\"nodes\":[{\"id\":2,\"name\":\"AGGREGATION\",\"properties\":{\"sinkIds\":[],\"displayMem\":true},\"children\":[1]},{\"id\":1,\"name\":\"PROJECT\",\"properties\":{\"displayMem\":false},\"children\":[0]},{\"id\":0,\"name\":\"SCHEMA_SCAN\",\"properties\":{\"displayMem\":false},\"children\":[]}]}"
+            },
+            {
+              "name": "FrontendProfileMergeTime",
+              "value": "3.608ms"
+            },
+            {
+              "name": "QueryAllocatedMemoryUsage",
+              "value": "293.406 KB"
+            },
+            {
+              "name": "QueryCumulativeCpuTime",
+              "value": "302.403us"
+            },
+            {
+              "name": "QueryCumulativeNetworkTime",
+              "value": "0ns"
+            },
+            {
+              "name": "QueryCumulativeOperatorTime",
+              "value": "58.125ms"
+            },
+            {
+              "name": "QueryCumulativeScanTime",
+              "value": "57.199ms"
+            },
+            {
+              "name": "QueryDeallocatedMemoryUsage",
+              "value": "149.563 KB"
+            },
+            {
+              "name": "QueryExecutionWallTime",
+              "value": "59.912ms"
+            },
+            {
+              "name": "QueryPeakMemoryUsagePerNode",
+              "value": "148.422 KB"
+            },
+            {
+              "name": "QueryPeakScheduleTime",
+              "value": "0ns"
+            },
+            {
+              "name": "QuerySpillBytes",
+              "value": "0.000 B"
+            },
+            {
+              "name": "QuerySumMemoryUsage",
+              "value": "148.422 KB"
+            },
+            {
+              "name": "ResultDeliverTime",
+              "value": "0ns"
+            },
+            {
+              "name": "Fragment 0",
+              "children": [
+                {
+                  "name": "BackendAddresses",
+                  "value": "starrocks-be-3:9060"
+                },
+                {
+                  "name": "InstanceIds",
+                  "value": "01a1638e-6fad-75eb-9438-9988600c7461"
+                },
+                {
+                  "name": "BackendNum",
+                  "value": "1"
+                },
+                {
+                  "name": "BackendProfileMergeTime",
+                  "value": "770.271us"
+                },
+                {
+                  "name": "InitialProcessDriverCount",
+                  "value": "0"
+                },
+                {
+                  "name": "InitialProcessMem",
+                  "value": "217.434 MB"
+                },
+                {
+                  "name": "InstanceAllocatedMemoryUsage",
+                  "value": "293.406 KB"
+                },
+                {
+                  "name": "InstanceDeallocatedMemoryUsage",
+                  "value": "149.563 KB"
+                },
+                {
+                  "name": "InstanceNum",
+                  "value": "1"
+                },
+                {
+                  "name": "InstancePeakMemoryUsage",
+                  "value": "143.844 KB"
+                },
+                {
+                  "name": "QueryMemoryLimit",
+                  "value": "-1.000 B"
+                },
+                {
+                  "name": "Pipeline (id=1)",
+                  "children": [
+                    {
+                      "name": "IsGroupExecution",
+                      "value": "false"
+                    },
+                    {
+                      "name": "ActiveTime",
+                      "value": "122.007us"
+                    },
+                    {
+                      "name": "BlockByInputEmpty",
+                      "value": "0"
+                    },
+                    {
+                      "name": "BlockByOutputFull",
+                      "value": "0"
+                    },
+                    {
+                      "name": "BlockByPrecondition",
+                      "value": "0"
+                    },
+                    {
+                      "name": "DegreeOfParallelism",
+                      "value": "1"
+                    },
+                    {
+                      "name": "DriverTotalTime",
+                      "value": "57.643ms"
+                    },
+                    {
+                      "name": "PeakDriverQueueSize",
+                      "value": "0"
+                    },
+                    {
+                      "name": "PendingTime",
+                      "value": "57.442ms",
+                      "children": [
+                        {
+                          "name": "InputEmptyTime",
+                          "value": "57.444ms",
+                          "children": [
+                            {
+                              "name": "FirstInputEmptyTime",
+                              "value": "57.444ms"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "ScheduleCount",
+                      "value": "1"
+                    },
+                    {
+                      "name": "TotalDegreeOfParallelism",
+                      "value": "1"
+                    },
+                    {
+                      "name": "YieldByLocalWait",
+                      "value": "0"
+                    },
+                    {
+                      "name": "YieldByPreempt",
+                      "value": "0"
+                    },
+                    {
+                      "name": "YieldByTimeLimit",
+                      "value": "0"
+                    },
+                    {
+                      "name": "RESULT_SINK (plan_node_id=-1)",
+                      "children": [
+                        {
+                          "name": "CommonMetrics",
+                          "children": [
+                            {
+                              "name": "IsFinalSink"
+                            },
+                            {
+                              "name": "OperatorTotalTime",
+                              "value": "82.994us"
+                            },
+                            {
+                              "name": "OutputChunkBytes",
+                              "value": "0.000 B"
+                            },
+                            {
+                              "name": "PullChunkNum",
+                              "value": "0"
+                            },
+                            {
+                              "name": "PullRowNum",
+                              "value": "0"
+                            },
+                            {
+                              "name": "PullTotalTime",
+                              "value": "0ns"
+                            },
+                            {
+                              "name": "PushChunkNum",
+                              "value": "1"
+                            },
+                            {
+                              "name": "PushRowNum",
+                              "value": "1"
+                            },
+                            {
+                              "name": "PushTotalTime",
+                              "value": "75.765us"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "UniqueMetrics",
+                          "children": [
+                            {
+                              "name": "SinkType",
+                              "value": "MYSQL_PROTOCAL"
+                            },
+                            {
+                              "name": "AppendChunkTime",
+                              "value": "4.870us",
+                              "children": [
+                                {
+                                  "name": "ResultRendTime",
+                                  "value": "68.849us"
+                                },
+                                {
+                                  "name": "TupleConvertTime",
+                                  "value": "2.598us"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "NumSentRows",
+                              "value": "1"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "CHUNK_ACCUMULATE (plan_node_id=-1)",
+                      "children": [
+                        {
+                          "name": "CommonMetrics",
+                          "children": [
+                            {
+                              "name": "IsSubordinate"
+                            },
+                            {
+                              "name": "OperatorTotalTime",
+                              "value": "1.407us"
+                            },
+                            {
+                              "name": "OutputChunkBytes",
+                              "value": "8.000 B"
+                            },
+                            {
+                              "name": "PullChunkNum",
+                              "value": "1"
+                            },
+                            {
+                              "name": "PullRowNum",
+                              "value": "1"
+                            },
+                            {
+                              "name": "PullTotalTime",
+                              "value": "225ns"
+                            },
+                            {
+                              "name": "PushChunkNum",
+                              "value": "1"
+                            },
+                            {
+                              "name": "PushRowNum",
+                              "value": "1"
+                            },
+                            {
+                              "name": "PushTotalTime",
+                              "value": "493ns"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "UniqueMetrics"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "LIMIT (plan_node_id=2) (operator id=4)",
+                      "children": [
+                        {
+                          "name": "CommonMetrics",
+                          "children": [
+                            {
+                              "name": "OperatorTotalTime",
+                              "value": "1.599us"
+                            },
+                            {
+                              "name": "OutputChunkBytes",
+                              "value": "8.000 B"
+                            },
+                            {
+                              "name": "PullChunkNum",
+                              "value": "1"
+                            },
+                            {
+                              "name": "PullRowNum",
+                              "value": "1"
+                            },
+                            {
+                              "name": "PullTotalTime",
+                              "value": "242ns"
+                            },
+                            {
+                              "name": "PushChunkNum",
+                              "value": "1"
+                            },
+                            {
+                              "name": "PushRowNum",
+                              "value": "1"
+                            },
+                            {
+                              "name": "PushTotalTime",
+                              "value": "835ns"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "UniqueMetrics"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "AGGREGATE_BLOCKING_SOURCE (plan_node_id=2)",
+                      "children": [
+                        {
+                          "name": "CommonMetrics",
+                          "children": [
+                            {
+                              "name": "JoinRuntimeFilterEvaluate",
+                              "value": "0"
+                            },
+                            {
+                              "name": "JoinRuntimeFilterHashTime",
+                              "value": "0ns"
+                            },
+                            {
+                              "name": "JoinRuntimeFilterInputRows",
+                              "value": "0"
+                            },
+                            {
+                              "name": "JoinRuntimeFilterOutputRows",
+                              "value": "0"
+                            },
+                            {
+                              "name": "JoinRuntimeFilterTime",
+                              "value": "0ns"
+                            },
+                            {
+                              "name": "OperatorTotalTime",
+                              "value": "28.660us"
+                            },
+                            {
+                              "name": "OutputChunkBytes",
+                              "value": "8.000 B"
+                            },
+                            {
+                              "name": "PullChunkNum",
+                              "value": "1"
+                            },
+                            {
+                              "name": "PullRowNum",
+                              "value": "1"
+                            },
+                            {
+                              "name": "PullTotalTime",
+                              "value": "27.484us"
+                            },
+                            {
+                              "name": "PushChunkNum",
+                              "value": "0"
+                            },
+                            {
+                              "name": "PushRowNum",
+                              "value": "0"
+                            },
+                            {
+                              "name": "PushTotalTime",
+                              "value": "0ns"
+                            },
+                            {
+                              "name": "RuntimeFilterNum",
+                              "value": "0"
+                            },
+                            {
+                              "name": "RuntimeInFilterNum",
+                              "value": "0"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "UniqueMetrics"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Pipeline (id=0)",
+                  "children": [
+                    {
+                      "name": "IsGroupExecution",
+                      "value": "false"
+                    },
+                    {
+                      "name": "ActiveTime",
+                      "value": "202.254us"
+                    },
+                    {
+                      "name": "BlockByInputEmpty",
+                      "value": "1"
+                    },
+                    {
+                      "name": "BlockByOutputFull",
+                      "value": "0"
+                    },
+                    {
+                      "name": "BlockByPrecondition",
+                      "value": "0"
+                    },
+                    {
+                      "name": "DegreeOfParallelism",
+                      "value": "1"
+                    },
+                    {
+                      "name": "DriverTotalTime",
+                      "value": "57.474ms"
+                    },
+                    {
+                      "name": "PeakDriverQueueSize",
+                      "value": "0"
+                    },
+                    {
+                      "name": "PendingTime",
+                      "value": "57.122ms",
+                      "children": [
+                        {
+                          "name": "InputEmptyTime",
+                          "value": "57.128ms",
+                          "children": [
+                            {
+                              "name": "FirstInputEmptyTime",
+                              "value": "57.128ms"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "ScheduleCount",
+                      "value": "2"
+                    },
+                    {
+                      "name": "TotalDegreeOfParallelism",
+                      "value": "1"
+                    },
+                    {
+                      "name": "YieldByLocalWait",
+                      "value": "0"
+                    },
+                    {
+                      "name": "YieldByPreempt",
+                      "value": "0"
+                    },
+                    {
+                      "name": "YieldByTimeLimit",
+                      "value": "0"
+                    },
+                    {
+                      "name": "AGGREGATE_BLOCKING_SINK (plan_node_id=2)",
+                      "children": [
+                        {
+                          "name": "CommonMetrics",
+                          "children": [
+                            {
+                              "name": "OperatorTotalTime",
+                              "value": "25.315us"
+                            },
+                            {
+                              "name": "OutputChunkBytes",
+                              "value": "0.000 B"
+                            },
+                            {
+                              "name": "PullChunkNum",
+                              "value": "0"
+                            },
+                            {
+                              "name": "PullRowNum",
+                              "value": "0"
+                            },
+                            {
+                              "name": "PullTotalTime",
+                              "value": "0ns"
+                            },
+                            {
+                              "name": "PushChunkNum",
+                              "value": "1"
+                            },
+                            {
+                              "name": "PushRowNum",
+                              "value": "861"
+                            },
+                            {
+                              "name": "PushTotalTime",
+                              "value": "4.909us"
+                            },
+                            {
+                              "name": "RuntimeFilterNum",
+                              "value": "0"
+                            },
+                            {
+                              "name": "RuntimeInFilterNum",
+                              "value": "0"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "UniqueMetrics",
+                          "children": [
+                            {
+                              "name": "AggregateFunctions",
+                              "value": "count(*)"
+                            },
+                            {
+                              "name": "AggComputeTime",
+                              "value": "2.953us"
+                            },
+                            {
+                              "name": "AggFuncComputeTime",
+                              "value": "2.160us"
+                            },
+                            {
+                              "name": "ChunkBufferPeakMem",
+                              "value": "0.000 B"
+                            },
+                            {
+                              "name": "ChunkBufferPeakSize",
+                              "value": "0"
+                            },
+                            {
+                              "name": "ExprComputeTime",
+                              "value": "968ns"
+                            },
+                            {
+                              "name": "ExprReleaseTime",
+                              "value": "111ns"
+                            },
+                            {
+                              "name": "GetResultsTime",
+                              "value": "5.166us"
+                            },
+                            {
+                              "name": "HashTableMemoryUsage",
+                              "value": "4.023 KB"
+                            },
+                            {
+                              "name": "HashTableSize",
+                              "value": "0"
+                            },
+                            {
+                              "name": "InputRowCount",
+                              "value": "861"
+                            },
+                            {
+                              "name": "PassThroughRowCount",
+                              "value": "0"
+                            },
+                            {
+                              "name": "ResultAggAppendTime",
+                              "value": "0ns"
+                            },
+                            {
+                              "name": "ResultGroupByAppendTime",
+                              "value": "0ns"
+                            },
+                            {
+                              "name": "ResultIteratorTime",
+                              "value": "0ns"
+                            },
+                            {
+                              "name": "RowsReturned",
+                              "value": "0"
+                            },
+                            {
+                              "name": "StateAllocate",
+                              "value": "0ns"
+                            },
+                            {
+                              "name": "StateDestroy",
+                              "value": "0ns"
+                            },
+                            {
+                              "name": "StreamingTime",
+                              "value": "0ns"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "PROJECT (plan_node_id=1)",
+                      "children": [
+                        {
+                          "name": "CommonMetrics",
+                          "children": [
+                            {
+                              "name": "OperatorTotalTime",
+                              "value": "16.542us"
+                            },
+                            {
+                              "name": "OutputChunkBytes",
+                              "value": "861.000 B"
+                            },
+                            {
+                              "name": "PullChunkNum",
+                              "value": "1"
+                            },
+                            {
+                              "name": "PullRowNum",
+                              "value": "861"
+                            },
+                            {
+                              "name": "PullTotalTime",
+                              "value": "500ns"
+                            },
+                            {
+                              "name": "PushChunkNum",
+                              "value": "1"
+                            },
+                            {
+                              "name": "PushRowNum",
+                              "value": "861"
+                            },
+                            {
+                              "name": "PushTotalTime",
+                              "value": "10.355us"
+                            },
+                            {
+                              "name": "RuntimeFilterNum",
+                              "value": "0"
+                            },
+                            {
+                              "name": "RuntimeInFilterNum",
+                              "value": "0"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "UniqueMetrics",
+                          "children": [
+                            {
+                              "name": "CommonSubExprComputeTime",
+                              "value": "290ns"
+                            },
+                            {
+                              "name": "ExprComputeTime",
+                              "value": "7.476us"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "SCHEMA_SCAN (plan_node_id=0)",
+                      "children": [
+                        {
+                          "name": "CommonMetrics",
+                          "children": [
+                            {
+                              "name": "OperatorTotalTime",
+                              "value": "769.531us"
+                            },
+                            {
+                              "name": "OutputChunkBytes",
+                              "value": "7.567 KB"
+                            },
+                            {
+                              "name": "PullChunkNum",
+                              "value": "1"
+                            },
+                            {
+                              "name": "PullRowNum",
+                              "value": "861"
+                            },
+                            {
+                              "name": "PullTotalTime",
+                              "value": "141.109us"
+                            },
+                            {
+                              "name": "PushChunkNum",
+                              "value": "0"
+                            },
+                            {
+                              "name": "PushRowNum",
+                              "value": "0"
+                            },
+                            {
+                              "name": "PushTotalTime",
+                              "value": "0ns"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "UniqueMetrics",
+                          "children": [
+                            {
+                              "name": "MorselQueueType",
+                              "value": "fixed_morsel_queue"
+                            },
+                            {
+                              "name": "ChunkBufferCapacity",
+                              "value": "64"
+                            },
+                            {
+                              "name": "DefaultChunkBufferCapacity",
+                              "value": "64"
+                            },
+                            {
+                              "name": "FERPC",
+                              "value": "55.929ms"
+                            },
+                            {
+                              "name": "FillChunk",
+                              "value": "161.231us"
+                            },
+                            {
+                              "name": "FilterTime",
+                              "value": "446ns"
+                            },
+                            {
+                              "name": "IOTaskExecTime",
+                              "value": "56.480ms"
+                            },
+                            {
+                              "name": "IOTaskWaitTime",
+                              "value": "718.868us"
+                            },
+                            {
+                              "name": "MorselsCount",
+                              "value": "1"
+                            },
+                            {
+                              "name": "PeakChunkBufferMemoryUsage",
+                              "value": "36.001 KB"
+                            },
+                            {
+                              "name": "PeakChunkBufferSize",
+                              "value": "2"
+                            },
+                            {
+                              "name": "PeakIOTasks",
+                              "value": "1"
+                            },
+                            {
+                              "name": "PeakScanTaskQueueSize",
+                              "value": "0"
+                            },
+                            {
+                              "name": "PrepareChunkSourceTime",
+                              "value": "78.878us"
+                            },
+                            {
+                              "name": "ScanTime",
+                              "value": "57.199ms"
+                            },
+                            {
+                              "name": "SubmitTaskCount",
+                              "value": "1"
+                            },
+                            {
+                              "name": "SubmitTaskTime",
+                              "value": "44.071us"
+                            },
+                            {
+                              "name": "TabletCount",
+                              "value": "1"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "raw": "Query:\n  Summary:\n     - Query ID: 01a1638e-6fad-75eb-9438-9988600c7460\n     - Start Time: 2026-10-22 12:20:41\n     - End Time: 2026-10-22 12:20:41\n     - Total: 98ms\n     - Query Type: Query\n     - Query State: Finished\n     - StarRocks Version: 4.0.0-dccb665\n     - User: root\n     - Default Db: _statistics_\n     - Sql Statement: EXPLAIN ANALYZE SELECT count(*) FROM information_schema.columns LIMIT 100\n     - Warehouse\n     - Variables: parallel_fragment_exec_instance_num=1,max_parallel_scan_instance_num=-1,pipeline_dop=0,enable_adaptive_sink_dop=true,enable_runtime_adaptive_dop=false,runtime_profile_report_interval=10,resource_group=default_wg\n     - NonDefaultSessionVariables: {\"enable_adaptive_sink_dop\":{\"defaultValue\":false,\"actualValue\":true},\"enable_profile\":{\"defaultValue\":false,\"actualValue\":true},\"enable_async_profile\":{\"defaultValue\":true,\"actualValue\":false}}\n     - Collect Profile Time: 14ms\n     - IsProfileAsync: false\n  Planner:\n     - -- Parser[1] 6ms\n     - -- Total[1] 7ms\n     -     -- Analyzer[1] 0\n     -         -- Lock[1] 0\n     -         -- AnalyzeDatabase[1] 0\n     -         -- AnalyzeTemporaryTable[1] 0\n     -         -- AnalyzeTable[1] 0\n     -     -- Transformer[1] 0\n     -     -- Optimizer[1] 5ms\n     -         -- MVPreprocess[1] 0\n     -         -- MVTextRewrite[1] 0\n     -         -- RuleBaseOptimize[1] 2ms\n     -         -- CostBaseOptimize[1] 1ms\n     -         -- PhysicalRewrite[1] 0\n     -         -- DynamicRewrite[1] 0\n     -         -- PlanValidate[1] 0\n     -             -- InputDependenciesChecker[1] 0\n     -             -- TypeChecker[1] 0\n     -             -- CTEUniqueChecker[1] 0\n     -             -- ColumnReuseChecker[1] 0\n     -     -- ExecPlanBuild[1] 0\n     - -- Pending[1] 0\n     - -- Prepare[1] 0\n     - -- Deploy[1] 14ms\n     -     -- DeployLockInternalTime[1] 14ms\n     -         -- DeploySerializeConcurrencyTime[1] 3ms\n     -         -- DeployStageByStageTime[3] 0\n     -         -- DeployWaitTime[3] 10ms\n     -             -- DeployAsyncSendTime[1] 0\n     - -- DeployScanRanges[1] 0\n     - DeployDataSize: 2558\n    Reason:\n  Execution:\n     - Topology: {\"rootId\":2,\"nodes\":[{\"id\":2,\"name\":\"AGGREGATION\",\"properties\":{\"sinkIds\":[],\"displayMem\":true},\"children\":[1]},{\"id\":1,\"name\":\"PROJECT\",\"properties\":{\"displayMem\":false},\"children\":[0]},{\"id\":0,\"name\":\"SCHEMA_SCAN\",\"properties\":{\"displayMem\":false},\"children\":[]}]}\n     - FrontendProfileMergeTime: 3.608ms\n     - QueryAllocatedMemoryUsage: 293.406 KB\n     - QueryCumulativeCpuTime: 302.403us\n     - QueryCumulativeNetworkTime: 0ns\n     - QueryCumulativeOperatorTime: 58.125ms\n     - QueryCumulativeScanTime: 57.199ms\n     - QueryDeallocatedMemoryUsage: 149.563 KB\n     - QueryExecutionWallTime: 59.912ms\n     - QueryPeakMemoryUsagePerNode: 148.422 KB\n     - QueryPeakScheduleTime: 0ns\n     - QuerySpillBytes: 0.000 B\n     - QuerySumMemoryUsage: 148.422 KB\n     - ResultDeliverTime: 0ns\n    Fragment 0:\n       - BackendAddresses: starrocks-be-3:9060\n       - InstanceIds: 01a1638e-6fad-75eb-9438-9988600c7461\n       - BackendNum: 1\n       - BackendProfileMergeTime: 770.271us\n       - InitialProcessDriverCount: 0\n       - InitialProcessMem: 217.434 MB\n       - InstanceAllocatedMemoryUsage: 293.406 KB\n       - InstanceDeallocatedMemoryUsage: 149.563 KB\n       - InstanceNum: 1\n       - InstancePeakMemoryUsage: 143.844 KB\n       - QueryMemoryLimit: -1.000 B\n      Pipeline (id=1):\n         - IsGroupExecution: false\n         - ActiveTime: 122.007us\n         - BlockByInputEmpty: 0\n         - BlockByOutputFull: 0\n         - BlockByPrecondition: 0\n         - DegreeOfParallelism: 1\n         - DriverTotalTime: 57.643ms\n         - PeakDriverQueueSize: 0\n         - PendingTime: 57.442ms\n           - InputEmptyTime: 57.444ms\n             - FirstInputEmptyTime: 57.444ms\n         - ScheduleCount: 1\n         - TotalDegreeOfParallelism: 1\n         - YieldByLocalWait: 0\n         - YieldByPreempt: 0\n         - YieldByTimeLimit: 0\n        RESULT_SINK (plan_node_id=-1):\n          CommonMetrics:\n             - IsFinalSink\n             - OperatorTotalTime: 82.994us\n             - OutputChunkBytes: 0.000 B\n             - PullChunkNum: 0\n             - PullRowNum: 0\n             - PullTotalTime: 0ns\n             - PushChunkNum: 1\n             - PushRowNum: 1\n             - PushTotalTime: 75.765us\n          UniqueMetrics:\n             - SinkType: MYSQL_PROTOCAL\n             - AppendChunkTime: 4.870us\n               - ResultRendTime: 68.849us\n               - TupleConvertTime: 2.598us\n             - NumSentRows: 1\n        CHUNK_ACCUMULATE (plan_node_id=-1):\n          CommonMetrics:\n             - IsSubordinate\n             - OperatorTotalTime: 1.407us\n             - OutputChunkBytes: 8.000 B\n             - PullChunkNum: 1\n             - PullRowNum: 1\n             - PullTotalTime: 225ns\n             - PushChunkNum: 1\n             - PushRowNum: 1\n             - PushTotalTime: 493ns\n          UniqueMetrics:\n        LIMIT (plan_node_id=2) (operator id=4):\n          CommonMetrics:\n             - OperatorTotalTime: 1.599us\n             - OutputChunkBytes: 8.000 B\n             - PullChunkNum: 1\n             - PullRowNum: 1\n             - PullTotalTime: 242ns\n             - PushChunkNum: 1\n             - PushRowNum: 1\n             - PushTotalTime: 835ns\n          UniqueMetrics:\n        AGGREGATE_BLOCKING_SOURCE (plan_node_id=2):\n          CommonMetrics:\n             - JoinRuntimeFilterEvaluate: 0\n             - JoinRuntimeFilterHashTime: 0ns\n             - JoinRuntimeFilterInputRows: 0\n             - JoinRuntimeFilterOutputRows: 0\n             - JoinRuntimeFilterTime: 0ns\n             - OperatorTotalTime: 28.660us\n             - OutputChunkBytes: 8.000 B\n             - PullChunkNum: 1\n             - PullRowNum: 1\n             - PullTotalTime: 27.484us\n             - PushChunkNum: 0\n             - PushRowNum: 0\n             - PushTotalTime: 0ns\n             - RuntimeFilterNum: 0\n             - RuntimeInFilterNum: 0\n          UniqueMetrics:\n      Pipeline (id=0):\n         - IsGroupExecution: false\n         - ActiveTime: 202.254us\n         - BlockByInputEmpty: 1\n         - BlockByOutputFull: 0\n         - BlockByPrecondition: 0\n         - DegreeOfParallelism: 1\n         - DriverTotalTime: 57.474ms\n         - PeakDriverQueueSize: 0\n         - PendingTime: 57.122ms\n           - InputEmptyTime: 57.128ms\n             - FirstInputEmptyTime: 57.128ms\n         - ScheduleCount: 2\n         - TotalDegreeOfParallelism: 1\n         - YieldByLocalWait: 0\n         - YieldByPreempt: 0\n         - YieldByTimeLimit: 0\n        AGGREGATE_BLOCKING_SINK (plan_node_id=2):\n          CommonMetrics:\n             - OperatorTotalTime: 25.315us\n             - OutputChunkBytes: 0.000 B\n             - PullChunkNum: 0\n             - PullRowNum: 0\n             - PullTotalTime: 0ns\n             - PushChunkNum: 1\n             - PushRowNum: 861\n             - PushTotalTime: 4.909us\n             - RuntimeFilterNum: 0\n             - RuntimeInFilterNum: 0\n          UniqueMetrics:\n             - AggregateFunctions: count(*)\n             - AggComputeTime: 2.953us\n             - AggFuncComputeTime: 2.160us\n             - ChunkBufferPeakMem: 0.000 B\n             - ChunkBufferPeakSize: 0\n             - ExprComputeTime: 968ns\n             - ExprReleaseTime: 111ns\n             - GetResultsTime: 5.166us\n             - HashTableMemoryUsage: 4.023 KB\n             - HashTableSize: 0\n             - InputRowCount: 861\n             - PassThroughRowCount: 0\n             - ResultAggAppendTime: 0ns\n             - ResultGroupByAppendTime: 0ns\n             - ResultIteratorTime: 0ns\n             - RowsReturned: 0\n             - StateAllocate: 0ns\n             - StateDestroy: 0ns\n             - StreamingTime: 0ns\n        PROJECT (plan_node_id=1):\n          CommonMetrics:\n             - OperatorTotalTime: 16.542us\n             - OutputChunkBytes: 861.000 B\n             - PullChunkNum: 1\n             - PullRowNum: 861\n             - PullTotalTime: 500ns\n             - PushChunkNum: 1\n             - PushRowNum: 861\n             - PushTotalTime: 10.355us\n             - RuntimeFilterNum: 0\n             - RuntimeInFilterNum: 0\n          UniqueMetrics:\n             - CommonSubExprComputeTime: 290ns\n             - ExprComputeTime: 7.476us\n        SCHEMA_SCAN (plan_node_id=0):\n          CommonMetrics:\n             - OperatorTotalTime: 769.531us\n             - OutputChunkBytes: 7.567 KB\n             - PullChunkNum: 1\n             - PullRowNum: 861\n             - PullTotalTime: 141.109us\n             - PushChunkNum: 0\n             - PushRowNum: 0\n             - PushTotalTime: 0ns\n          UniqueMetrics:\n             - MorselQueueType: fixed_morsel_queue\n             - ChunkBufferCapacity: 64\n             - DefaultChunkBufferCapacity: 64\n             - FERPC: 55.929ms\n             - FillChunk: 161.231us\n             - FilterTime: 446ns\n             - IOTaskExecTime: 56.480ms\n             - IOTaskWaitTime: 718.868us\n             - MorselsCount: 1\n             - PeakChunkBufferMemoryUsage: 36.001 KB\n             - PeakChunkBufferSize: 2\n             - PeakIOTasks: 1\n             - PeakScanTaskQueueSize: 0\n             - PrepareChunkSourceTime: 78.878us\n             - ScanTime: 57.199ms\n             - SubmitTaskCount: 1\n             - SubmitTaskTime: 44.071us\n             - TabletCount: 1\n"
+}

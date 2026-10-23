@@ -1,0 +1,297 @@
+{
+  "summary": [
+    {
+      "name": "QueryId",
+      "value": "01a163a5-8422-7435-865b-9d40877dddb2"
+    },
+    {
+      "name": "Version",
+      "value": "4.0.0-dccb665"
+    },
+    {
+      "name": "State",
+      "value": "Finished"
+    },
+    {
+      "name": "TotalTime",
+      "value": "69ms"
+    },
+    {
+      "name": "ExecutionTime",
+      "value": "23.365ms [Scan: 1.846ms (7.90%), Network: 3.443ms (14.74%), ResultDeliverTime: 0ns (0.00%), ScheduleTime: 16.806ms (71.93%)]"
+    },
+    {
+      "name": "CollectProfileTime",
+      "value": "16ms"
+    },
+    {
+      "name": "FrontendProfileMergeTime",
+      "value": "18.385ms"
+    },
+    {
+      "name": "QueryPeakMemoryUsage",
+      "value": "?"
+    },
+    {
+      "name": "QueryAllocatedMemoryUsage",
+      "value": "2.273 MB"
+    }
+  ],
+  "topTime": [
+    "1. OLAP_SCAN (id=0) : 6.141ms (42.83%)",
+    "2. EXCHANGE (id=3) [GATHER]: 5.209ms (36.33%)",
+    "3. AGGREGATION (id=2) [serialize, update]: 2.306ms (16.09%)",
+    "4. RESULT_SINK: 387.075us (2.70%)",
+    "5. AGGREGATION (id=4) [finalize, merge]: 205.624us (1.43%)",
+    "6. PROJECT (id=1) : 87.462us (0.61%)"
+  ],
+  "topMemory": [],
+  "variables": [
+    {
+      "name": "enable_adaptive_sink_dop",
+      "value": "false -\u003e true"
+    },
+    {
+      "name": "enable_async_profile",
+      "value": "true -\u003e false"
+    },
+    {
+      "name": "enable_profile",
+      "value": "false -\u003e true"
+    }
+  ],
+  "fragments": [
+    {
+      "name": "Fragment 0",
+      "children": [
+        {
+          "name": "BackendNum",
+          "value": "1"
+        },
+        {
+          "name": "InstancePeakMemoryUsage",
+          "value": "123.617 KB"
+        },
+        {
+          "name": "InstanceAllocatedMemoryUsage",
+          "value": "155.516 KB"
+        },
+        {
+          "name": "PrepareTime",
+          "value": "?"
+        },
+        {
+          "name": "RESULT_SINK",
+          "children": [
+            {
+              "name": "TotalTime",
+              "value": "387.075us (2.70%) [CPUTime: 387.075us]"
+            },
+            {
+              "name": "OutputRows",
+              "value": "1"
+            },
+            {
+              "name": "SinkType",
+              "value": "MYSQL_PROTOCAL"
+            },
+            {
+              "name": "AGGREGATION (id=4) [finalize, merge]",
+              "children": [
+                {
+                  "name": "Estimates",
+                  "value": "[row: 1, cpu: 8.00, memory: 8.00, network: 0.00, cost: 27537.60]"
+                },
+                {
+                  "name": "TotalTime",
+                  "value": "205.624us (1.43%) [CPUTime: 205.624us]"
+                },
+                {
+                  "name": "OutputRows",
+                  "value": "1"
+                },
+                {
+                  "name": "PeakMemory",
+                  "value": "?"
+                },
+                {
+                  "name": "AllocatedMemory",
+                  "value": "?"
+                },
+                {
+                  "name": "AggExprs",
+                  "value": "[count(6: count)]"
+                },
+                {
+                  "name": "SubordinateOperators:"
+                },
+                {
+                  "name": "LOCAL_EXCHANGE [Passthrough]"
+                },
+                {
+                  "name": "EXCHANGE (id=3) [GATHER]",
+                  "children": [
+                    {
+                      "name": "Estimates",
+                      "value": "[row: 1, cpu: 8.00, memory: 0.00, network: 8.00, cost: 27517.60]"
+                    },
+                    {
+                      "name": "TotalTime",
+                      "value": "5.209ms (36.33%) [CPUTime: 1.765ms, NetworkTime: 3.443ms]"
+                    },
+                    {
+                      "name": "OutputRows",
+                      "value": "8"
+                    },
+                    {
+                      "name": "PeakMemory",
+                      "value": "?"
+                    },
+                    {
+                      "name": "AllocatedMemory",
+                      "value": "?"
+                    },
+                    {
+                      "name": "Detail Timers:"
+                    },
+                    {
+                      "name": "OverallTime",
+                      "value": "3.265ms [min=1.662ms, max=4.982ms]"
+                    },
+                    {
+                      "name": "WaitTime",
+                      "value": "2.125ms [min=1.508ms, max=3.022ms]"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Fragment 1",
+      "children": [
+        {
+          "name": "BackendNum",
+          "value": "4"
+        },
+        {
+          "name": "InstancePeakMemoryUsage",
+          "value": "229.693 KB"
+        },
+        {
+          "name": "InstanceAllocatedMemoryUsage",
+          "value": "2.121 MB"
+        },
+        {
+          "name": "PrepareTime",
+          "value": "?"
+        },
+        {
+          "name": "DATA_STREAM_SINK (id=3)",
+          "children": [
+            {
+              "name": "PartitionType",
+              "value": "UNPARTITIONED"
+            },
+            {
+              "name": "AGGREGATION (id=2) [serialize, update]",
+              "children": [
+                {
+                  "name": "Estimates",
+                  "value": "[row: 1, cpu: 5000.00, memory: 0.80, network: 0.00, cost: 27501.60]"
+                },
+                {
+                  "name": "TotalTime",
+                  "value": "2.306ms (16.09%) [CPUTime: 2.306ms]"
+                },
+                {
+                  "name": "OutputRows",
+                  "value": "8"
+                },
+                {
+                  "name": "PeakMemory",
+                  "value": "?"
+                },
+                {
+                  "name": "AllocatedMemory",
+                  "value": "?"
+                },
+                {
+                  "name": "AggExprs",
+                  "value": "[count(*)]"
+                },
+                {
+                  "name": "PROJECT (id=1)",
+                  "children": [
+                    {
+                      "name": "Estimates",
+                      "value": "[row: ?, cpu: ?, memory: ?, network: ?, cost: ?]"
+                    },
+                    {
+                      "name": "TotalTime",
+                      "value": "87.462us (0.61%) [CPUTime: 87.462us]"
+                    },
+                    {
+                      "name": "OutputRows",
+                      "value": "10.000K (10000)"
+                    },
+                    {
+                      "name": "Expression",
+                      "value": "[1]"
+                    },
+                    {
+                      "name": "OLAP_SCAN (id=0)",
+                      "children": [
+                        {
+                          "name": "Estimates",
+                          "value": "[row: 10000, cpu: 50000.00, memory: 0.00, network: 0.00, cost: 25000.00]"
+                        },
+                        {
+                          "name": "TotalTime",
+                          "value": "6.141ms (42.83%) [CPUTime: 4.294ms, ScanTime: 1.846ms]"
+                        },
+                        {
+                          "name": "OutputRows",
+                          "value": "10.000K (10000)"
+                        },
+                        {
+                          "name": "Table",
+                          "value": ": dup_events"
+                        },
+                        {
+                          "name": "SubordinateOperators:"
+                        },
+                        {
+                          "name": "NOOP"
+                        },
+                        {
+                          "name": "OLAP_SCAN_PREPARE"
+                        },
+                        {
+                          "name": "Detail Timers",
+                          "value": "[ScanTime = IOTaskExecTime + IOTaskWaitTime]"
+                        },
+                        {
+                          "name": "IOTaskExecTime",
+                          "value": "437.081us [min=287.405us, max=722.069us]"
+                        },
+                        {
+                          "name": "IOTaskWaitTime",
+                          "value": "589.005us [min=92.171us, max=1.525ms]"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "raw": "Summary\n    QueryId: 01a163a5-8422-7435-865b-9d40877dddb2\n    Version: 4.0.0-dccb665\n    State: Finished\n    TotalTime: 69ms\n        ExecutionTime: 23.365ms [Scan: 1.846ms (7.90%), Network: 3.443ms (14.74%), ResultDeliverTime: 0ns (0.00%), ScheduleTime: 16.806ms (71.93%)]\n        CollectProfileTime: 16ms\n        FrontendProfileMergeTime: 18.385ms\n    QueryPeakMemoryUsage: ?, QueryAllocatedMemoryUsage: 2.273 MB\n    Top Most Time-consuming Nodes:\n        1. OLAP_SCAN (id=0) : 6.141ms (42.83%)\n        2. EXCHANGE (id=3) [GATHER]: 5.209ms (36.33%)\n        3. AGGREGATION (id=2) [serialize, update]: 2.306ms (16.09%)\n        4. RESULT_SINK: 387.075us (2.70%)\n        5. AGGREGATION (id=4) [finalize, merge]: 205.624us (1.43%)\n        6. PROJECT (id=1) : 87.462us (0.61%)\n    Top Most Memory-consuming Nodes:\n    NonDefaultVariables:\n        enable_adaptive_sink_dop: false -\u003e true\n        enable_async_profile: true -\u003e false\n        enable_profile: false -\u003e true\nFragment 0\n│   BackendNum: 1\n│   InstancePeakMemoryUsage: 123.617 KB, InstanceAllocatedMemoryUsage: 155.516 KB\n│   PrepareTime: ?\n└──RESULT_SINK\n   │   TotalTime: 387.075us (2.70%) [CPUTime: 387.075us]\n   │   OutputRows: 1\n   │   SinkType: MYSQL_PROTOCAL\n   └──AGGREGATION (id=4) [finalize, merge]\n      │   Estimates: [row: 1, cpu: 8.00, memory: 8.00, network: 0.00, cost: 27537.60]\n      │   TotalTime: 205.624us (1.43%) [CPUTime: 205.624us]\n      │   OutputRows: 1\n      │   PeakMemory: ?, AllocatedMemory: ?\n      │   AggExprs: [count(6: count)]\n      │   SubordinateOperators: \n      │       LOCAL_EXCHANGE [Passthrough]\n      └──EXCHANGE (id=3) [GATHER]\n             Estimates: [row: 1, cpu: 8.00, memory: 0.00, network: 8.00, cost: 27517.60]\n             TotalTime: 5.209ms (36.33%) [CPUTime: 1.765ms, NetworkTime: 3.443ms]\n             OutputRows: 8\n             PeakMemory: ?, AllocatedMemory: ?\n             Detail Timers: \n                 OverallTime: 3.265ms [min=1.662ms, max=4.982ms]\n                 WaitTime: 2.125ms [min=1.508ms, max=3.022ms]\n\nFragment 1\n│   BackendNum: 4\n│   InstancePeakMemoryUsage: 229.693 KB, InstanceAllocatedMemoryUsage: 2.121 MB\n│   PrepareTime: ?\n└──DATA_STREAM_SINK (id=3)\n   │   PartitionType: UNPARTITIONED\n   └──AGGREGATION (id=2) [serialize, update]\n      │   Estimates: [row: 1, cpu: 5000.00, memory: 0.80, network: 0.00, cost: 27501.60]\n      │   TotalTime: 2.306ms (16.09%) [CPUTime: 2.306ms]\n      │   OutputRows: 8\n      │   PeakMemory: ?, AllocatedMemory: ?\n      │   AggExprs: [count(*)]\n      └──PROJECT (id=1) \n         │   Estimates: [row: ?, cpu: ?, memory: ?, network: ?, cost: ?]\n         │   TotalTime: 87.462us (0.61%) [CPUTime: 87.462us]\n         │   OutputRows: 10.000K (10000)\n         │   Expression: [1]\n         └──OLAP_SCAN (id=0) \n                Estimates: [row: 10000, cpu: 50000.00, memory: 0.00, network: 0.00, cost: 25000.00]\n                TotalTime: 6.141ms (42.83%) [CPUTime: 4.294ms, ScanTime: 1.846ms]\n                OutputRows: 10.000K (10000)\n                Table: : dup_events\n                SubordinateOperators: \n                    NOOP\n                    OLAP_SCAN_PREPARE\n                Detail Timers: [ScanTime = IOTaskExecTime + IOTaskWaitTime]\n                    IOTaskExecTime: 437.081us [min=287.405us, max=722.069us]\n                    IOTaskWaitTime: 589.005us [min=92.171us, max=1.525ms]\n\n"
+}
