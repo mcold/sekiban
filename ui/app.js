@@ -54,7 +54,8 @@ let editingIndex = null;
 // ?screen= override exists for the screenshot harness, which needs to open a
 // given screen headlessly; the app itself navigates with no query string.
 const SCREENS = ["dashboard", "sessions", "cluster", "browser", "compactions",
-  "profile", "loads", "resources", "metrics", "variables", "connections"];
+  "colocation", "profile", "loads", "resources", "metrics", "variables",
+  "connections"];
 let screen = new URLSearchParams(location.search).get("screen") || "dashboard";
 if (!SCREENS.includes(screen)) screen = "dashboard";
 
@@ -64,6 +65,7 @@ const NAV_ICONS = {
   cluster: "diagram",
   browser: "table",
   compactions: "stack",
+  colocation: "grid",
   profile: "clipboard-data",
   loads: "cloud-arrow-down",
   resources: "sliders2-vertical",
@@ -82,6 +84,7 @@ function goTo(name) {
   if (name === "cluster") loadCluster();
   if (name === "browser") loadBrowser();
   if (name === "compactions") loadCompactions();
+  if (name === "colocation") loadColocation();
   if (name === "profile") loadProfile();
   if (name === "loads") loadLoads();
   if (name === "resources") loadResources();
@@ -1093,6 +1096,7 @@ for (const [id, key] of [["prof-summary-statement", "summaryStatement"],
     renderProfile();
   });
 }
+el("coloc-refresh").addEventListener("click", loadColocation);
 el("load-refresh").addEventListener("click", loadLoads);
 el("res-refresh").addEventListener("click", loadResources);
 el("met-refresh").addEventListener("click", loadMetrics);
@@ -1176,6 +1180,80 @@ function renderCompactions() {
     (compactions.txns || []).map((t) => [
       t.beId, t.loadId, t.txnId, t.partitionId, t.tabletId, t.createTime,
       t.commitTime, t.numRow, bytes(t.dataSize),
+    ])));
+}
+
+// --- Colocation groups ---
+
+// A colocation group is a set of tables bucketed the same way, so a join
+// between them runs where the rows already are. The groups come whole from
+// SHOW PROC '/colocation_group'; one group's buckets come from the proc
+// path under it, and only when the group is picked.
+
+let colocation = null;
+// colocGroupID is the group whose buckets are on the screen, or "".
+let colocGroupID = "";
+
+async function loadColocation() {
+  el("coloc-status").textContent = "Reading the colocation groups...";
+  try {
+    colocation = await window.colocationState();
+  } catch (err) {
+    el("coloc-status").textContent = String(err);
+    return;
+  }
+  renderColocation();
+  if (colocGroupID) loadColocationDetail(colocGroupID);
+}
+
+function renderColocation() {
+  if (!colocation) return;
+  const groups = colocation.groups || [];
+  el("coloc-status").textContent = colocation.error ||
+    (groups.length + (groups.length === 1 ? " group" : " groups"));
+
+  el("coloc-list").replaceChildren(dataTable(
+    ["Group id", "Name", "Tables", "Buckets", "Replicas", "Dist cols",
+      "Stable"],
+    groups.map((g) => [
+      { text: g.groupId, cls: "plain mono" },
+      { text: g.groupName, cls: "plain" },
+      { text: g.tableNames, cls: "stmt", title: g.tableIds },
+      { text: g.buckets, cls: "num" },
+      { text: g.replicas, cls: "num" },
+      { text: g.distCols, cls: "plain mono" },
+      { text: g.stable ? "yes" : "no", cls: "plain" },
+    ]),
+    (_cells, i) => loadColocationDetail(groups[i].groupId),
+    (_cells, i) => groups[i].groupId,
+    ["15%", "19%", "26%", "8%", "9%", "12%", "11%"]));
+}
+
+// loadColocationDetail reads where one group's buckets live.
+async function loadColocationDetail(groupID) {
+  colocGroupID = groupID;
+  el("coloc-detail-of").textContent = groupID;
+  el("coloc-detail-status").textContent = "Reading the group's buckets...";
+  el("coloc-detail").replaceChildren();
+  let detail;
+  try {
+    detail = await window.colocationDetail(groupID);
+  } catch (err) {
+    el("coloc-detail-status").textContent = String(err);
+    return;
+  }
+  if (detail.error) {
+    el("coloc-detail-status").textContent = detail.error;
+    return;
+  }
+  const buckets = detail.buckets || [];
+  el("coloc-detail-status").textContent = buckets.length +
+    (buckets.length === 1 ? " bucket" : " buckets");
+  el("coloc-detail").replaceChildren(dataTable(
+    ["Bucket", "Backends"],
+    buckets.map((b) => [
+      { text: b.bucketIndex, cls: "num" },
+      { text: b.backendIds, cls: "plain mono" },
     ])));
 }
 

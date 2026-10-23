@@ -1,0 +1,24 @@
+{
+  "groups": [
+    {
+      "groupId": "14529.14533",
+      "groupName": "14529_cg_demo",
+      "tableIds": "14531*, 14568*",
+      "tableNames": "[deleted], [deleted]",
+      "buckets": "8",
+      "replicas": "3",
+      "distCols": "bigint(20)",
+      "stable": true
+    },
+    {
+      "groupId": "10001.14533",
+      "groupName": "10001_cg_demo",
+      "tableIds": "14719, 14755",
+      "tableNames": "cg_demo_customers, cg_demo_orders",
+      "buckets": "8",
+      "replicas": "3",
+      "distCols": "bigint(20)",
+      "stable": true
+    }
+  ]
+}

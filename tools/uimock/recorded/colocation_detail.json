@@ -1,0 +1,37 @@
+{
+  "groupId": "10001.14533",
+  "buckets": [
+    {
+      "bucketIndex": "0",
+      "backendIds": "10003, 10004, 10011"
+    },
+    {
+      "bucketIndex": "1",
+      "backendIds": "10012, 10003, 10004"
+    },
+    {
+      "bucketIndex": "2",
+      "backendIds": "10011, 10012, 10003"
+    },
+    {
+      "bucketIndex": "3",
+      "backendIds": "10004, 10011, 10012"
+    },
+    {
+      "bucketIndex": "4",
+      "backendIds": "10003, 10004, 10011"
+    },
+    {
+      "bucketIndex": "5",
+      "backendIds": "10012, 10003, 10004"
+    },
+    {
+      "bucketIndex": "6",
+      "backendIds": "10011, 10012, 10003"
+    },
+    {
+      "bucketIndex": "7",
+      "backendIds": "10004, 10011, 10012"
+    }
+  ]
+}

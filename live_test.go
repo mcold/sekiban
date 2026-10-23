@@ -294,3 +294,57 @@ func TestAuditLog(t *testing.T) {
 	}
 	t.Logf("top: %s — %d calls, %.2f CPU sec", summary[0].Statement, summary[0].Calls, summary[0].CPUSec)
 }
+
+func TestColocationGroups(t *testing.T) {
+	db := liveDB(t)
+	out := collectColocationGroups(db)
+	if out.Error != "" {
+		t.Fatalf("collect: %s", out.Error)
+	}
+	if len(out.Groups) == 0 {
+		t.Skip("no colocation group on this instance")
+	}
+	for _, g := range out.Groups {
+		if g.GroupID == "" || g.GroupName == "" {
+			t.Errorf("group %+v, want an id and a name", g)
+		}
+		if !validGroupID(g.GroupID) {
+			t.Errorf("group id %q does not pass validGroupID", g.GroupID)
+		}
+		if g.Buckets == "" || g.Replicas == "" {
+			t.Errorf("group %s: buckets %q, replicas %q, want both",
+				g.GroupID, g.Buckets, g.Replicas)
+		}
+		if g.DistCols == "" {
+			t.Errorf("group %s has no distribution key", g.GroupID)
+		}
+	}
+}
+
+func TestColocationDetail(t *testing.T) {
+	db := liveDB(t)
+	out := collectColocationGroups(db)
+	if out.Error != "" {
+		t.Fatalf("collect: %s", out.Error)
+	}
+	if len(out.Groups) == 0 {
+		t.Skip("no colocation group on this instance")
+	}
+	g := out.Groups[0]
+	detail := collectColocationDetail(db, g.GroupID)
+	if detail.Error != "" {
+		t.Fatalf("detail of %s: %s", g.GroupID, detail.Error)
+	}
+	// One row per bucket, and each names its backends.
+	if len(detail.Buckets) == 0 {
+		t.Fatalf("group %s has no buckets", g.GroupID)
+	}
+	for _, b := range detail.Buckets {
+		if b.BucketIndex == "" || b.BackendIDs == "" {
+			t.Errorf("bucket %+v, want an index and backends", b)
+		}
+	}
+	if bad := collectColocationDetail(db, "../backends"); bad.Error == "" {
+		t.Error("a path in the group id is not refused")
+	}
+}

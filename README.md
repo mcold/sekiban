@@ -56,6 +56,10 @@ own window, where its definition and a console to read and edit it live.
 waiting on each backend, the transactions in flight, and the tablets that
 are unhealthy, inconsistent, cloning or in error.
 
+**Colocation groups** — the groups of tables bucketed the same way, so a
+join between them runs where the rows already are. Pick a group and the
+backends that hold each of its buckets are listed below it.
+
 **Query profile** — the frontend's own profile list, an `EXPLAIN ANALYZE`
 box, and the **top queries by the CPU they cost**, taken from the frontend's
 audit log. The audit log is the only complete record of the queries that

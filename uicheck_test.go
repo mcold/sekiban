@@ -148,6 +148,22 @@ func TestInterface(t *testing.T) {
 		defer func() { _ = db.Close() }()
 		return collectResources(db), nil
 	})
+	mustBind(w, "colocationState", func() (colocationOut, error) {
+		db, err := openSR(dsn)
+		if err != nil {
+			return colocationOut{Error: err.Error()}, nil
+		}
+		defer func() { _ = db.Close() }()
+		return collectColocationGroups(db), nil
+	})
+	mustBind(w, "colocationDetail", func(groupID string) (colocationDetailOut, error) {
+		db, err := openSR(dsn)
+		if err != nil {
+			return colocationDetailOut{Error: err.Error()}, nil
+		}
+		defer func() { _ = db.Close() }()
+		return collectColocationDetail(db, groupID), nil
+	})
 	mustBind(w, "variablesState", func() (variablesOut, error) {
 		db, err := openSR(dsn)
 		if err != nil {
@@ -261,8 +277,8 @@ func TestInterface(t *testing.T) {
 			})
 		}
 		time.Sleep(2 * time.Second)
-		// The six new screens, read back the same way.
-		for _, screen := range []string{"compactions", "profile", "loads", "resources", "metrics", "variables"} {
+		// The screens beyond the first four, read back the same way.
+		for _, screen := range []string{"compactions", "colocation", "profile", "loads", "resources", "metrics", "variables"} {
 			w.Dispatch(func() {
 				w.Eval(`goTo("` + screen + `");`)
 			})
@@ -278,6 +294,25 @@ func TestInterface(t *testing.T) {
 			})
 			time.Sleep(1 * time.Second)
 		}
+		// The colocation list leads somewhere: picking a group reads where
+		// its buckets live.
+		w.Dispatch(func() {
+			w.Eval(`goTo("colocation");`)
+		})
+		time.Sleep(2 * time.Second)
+		w.Dispatch(func() {
+			w.Eval(`(document.querySelector("#coloc-list tr.row-pick") || {}).click();`)
+		})
+		time.Sleep(2 * time.Second)
+		w.Dispatch(func() {
+			w.Eval(`window.logError("COLOCCHK " + JSON.stringify({
+				groups: document.querySelectorAll("#coloc-list tbody tr").length,
+				buckets: document.querySelectorAll("#coloc-detail tbody tr").length,
+				group: document.getElementById("coloc-detail-of").textContent,
+				status: document.getElementById("coloc-detail-status").textContent,
+			}));`)
+		})
+		time.Sleep(1 * time.Second)
 		// One profile the frontend holds, in a window of its own.
 		w.Dispatch(func() {
 			w.Eval(`goTo("profile");`)
@@ -336,7 +371,7 @@ func TestInterface(t *testing.T) {
 
 	mu.Lock()
 	defer mu.Unlock()
-	var diag, sessDiag, cluDiag, brDiag, auditDiag string
+	var diag, sessDiag, cluDiag, brDiag, auditDiag, colocDiag string
 	newDiags := []string{}
 	for _, m := range messages {
 		switch {
@@ -352,10 +387,12 @@ func TestInterface(t *testing.T) {
 			newDiags = append(newDiags, m)
 		case strings.HasPrefix(m, "UICHECKAUDIT "):
 			auditDiag = m
+		case strings.HasPrefix(m, "COLOCCHK "):
+			colocDiag = m
 		}
 	}
-	if len(newDiags) != 6 {
-		t.Errorf("got %d diagnostics for the new screens, want 6: %v", len(newDiags), newDiags)
+	if len(newDiags) != 7 {
+		t.Errorf("got %d diagnostics for the new screens, want 7: %v", len(newDiags), newDiags)
 	}
 	for _, d := range newDiags {
 		fmt.Println(d)
@@ -373,6 +410,22 @@ func TestInterface(t *testing.T) {
 		}
 		if got.Screen == "variables" && !strings.HasSuffix(got.Status, "can be changed at run time") {
 			t.Errorf("variables: opens filtered, status %q", got.Status)
+		}
+	}
+	if colocDiag == "" {
+		t.Errorf("the colocation list was never picked; messages: %v", messages)
+	} else {
+		fmt.Println(colocDiag)
+		var got struct {
+			Groups  int    `json:"groups"`
+			Buckets int    `json:"buckets"`
+			Group   string `json:"group"`
+			Status  string `json:"status"`
+		}
+		if err := json.Unmarshal([]byte(strings.TrimPrefix(colocDiag, "COLOCCHK ")), &got); err != nil {
+			t.Errorf("bad colocation diagnostic %q: %v", colocDiag, err)
+		} else if got.Groups == 0 || got.Buckets == 0 || got.Group == "" {
+			t.Errorf("colocation: %+v, want a group and its buckets", got)
 		}
 	}
 	if auditDiag == "" {

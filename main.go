@@ -119,7 +119,7 @@ func runJSON(cfg Config, configErr string, args []string) {
 			os.Exit(1)
 		}
 		_ = enc.Encode(out)
-	case "cluster", "compactions", "loads", "resources", "metrics", "variables":
+	case "cluster", "colocation", "compactions", "loads", "resources", "metrics", "variables":
 		if len(cfg.Connections) == 0 {
 			fail("no connections configured")
 		}
@@ -135,6 +135,22 @@ func runJSON(cfg Config, configErr string, args []string) {
 			if err != nil {
 				_ = enc.Encode(map[string]string{"error": err.Error()})
 				os.Exit(1)
+			}
+			_ = enc.Encode(out)
+		case "colocation":
+			// With an id the answer is that group's buckets; without one,
+			// the groups themselves.
+			if len(args) >= 2 {
+				out := collectColocationDetail(db, args[1])
+				if out.Error != "" {
+					fail(out.Error)
+				}
+				_ = enc.Encode(out)
+				break
+			}
+			out := collectColocationGroups(db)
+			if out.Error != "" {
+				fail(out.Error)
 			}
 			_ = enc.Encode(out)
 		case "compactions":
@@ -249,8 +265,8 @@ func runJSON(cfg Config, configErr string, args []string) {
 			"error": fmt.Sprintf("unknown command %q", command),
 			"commands": []string{
 				"browser", "cluster", "compactions", "connections", "dashboard",
-				"describe", "explain", "loads", "metrics", "profile", "profiles",
-				"resources", "sessions", "variables",
+				"colocation", "describe", "explain", "loads", "metrics",
+				"profile", "profiles", "resources", "sessions", "variables",
 			},
 		})
 		os.Exit(1)
@@ -507,6 +523,36 @@ func runGUI(cfg Config, configErr string) {
 		})
 		debugf("event=object_window_open name=%s dsn=%s", name, dsn)
 		return nil
+	})
+
+	mustBind(w, "colocationState", func() (colocationOut, error) {
+		mu.Lock()
+		dsn, err := activeDSN()
+		mu.Unlock()
+		if err != nil {
+			return colocationOut{Error: err.Error()}, nil
+		}
+		db, err := openSR(dsn)
+		if err != nil {
+			return colocationOut{Error: err.Error()}, nil
+		}
+		defer func() { _ = db.Close() }()
+		return collectColocationGroups(db), nil
+	})
+
+	mustBind(w, "colocationDetail", func(groupID string) (colocationDetailOut, error) {
+		mu.Lock()
+		dsn, err := activeDSN()
+		mu.Unlock()
+		if err != nil {
+			return colocationDetailOut{Error: err.Error()}, nil
+		}
+		db, err := openSR(dsn)
+		if err != nil {
+			return colocationDetailOut{Error: err.Error()}, nil
+		}
+		defer func() { _ = db.Close() }()
+		return collectColocationDetail(db, groupID), nil
 	})
 
 	mustBind(w, "compactionsState", func() (compactionsOut, error) {

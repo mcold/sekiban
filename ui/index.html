@@ -23,6 +23,7 @@
     <button type="button" class="nav-item" data-screen="cluster">Cluster</button>
     <button type="button" class="nav-item" data-screen="browser">Browser</button>
     <button type="button" class="nav-item" data-screen="compactions">Compactions</button>
+    <button type="button" class="nav-item" data-screen="colocation">Colocation</button>
     <button type="button" class="nav-item" data-screen="profile">Query profile</button>
     <button type="button" class="nav-item" data-screen="loads">Loads</button>
     <button type="button" class="nav-item" data-screen="resources">Resources</button>
@@ -189,6 +190,26 @@
 
     <h3>Transactions in flight</h3>
     <div id="comp-txns"></div>
+  </section>
+
+  <section id="colocation" hidden>
+    <div class="dash-header">
+      <h2>Colocation groups</h2>
+      <div class="buttons dash-actions">
+        <button type="button" id="coloc-refresh">Refresh</button>
+      </div>
+    </div>
+    <p id="coloc-status" class="hint" aria-live="polite"></p>
+    <p class="hint">Tables in a colocation group are bucketed the same way,
+      so a join between them runs where the rows already are. Pick a group
+      and its buckets are shown below.</p>
+    <div id="coloc-list"></div>
+
+    <h3>Buckets <span class="hint" id="coloc-detail-of"></span></h3>
+    <p class="hint">Which backends hold each bucket of the chosen group.
+      The group's replication number is how many of them hold one bucket.</p>
+    <p id="coloc-detail-status" class="hint" aria-live="polite"></p>
+    <div id="coloc-detail"></div>
   </section>
 
   <section id="profile" hidden>
