@@ -1,0 +1,58 @@
+name: build
+
+# BUILD.md: a release is a tag on `main`, so that is where the binaries come
+# from. workflow_dispatch covers on-demand builds, whose binaries arrive as
+# workflow artifacts instead of a release.
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+
+permissions:
+  contents: write # gh release create, on tag builds
+
+jobs:
+  build:
+    name: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+      # One Linux runner builds every target: there is no cgo in the build
+      # (the webview is bound at runtime through purego), so no per-OS runner
+      # is needed. windows/386 is excluded on purpose: glaze's WebView2 layer
+      # has no 386 shim.
+      - name: build
+        env:
+          CGO_ENABLED: 0
+        run: |
+          mkdir -p dist
+          for target in linux/amd64 linux/arm64 windows/amd64 windows/arm64; do
+            GOOS=${target%/*}
+            GOARCH=${target#*/}
+            ext=''
+            if [ "$GOOS" = windows ]; then ext='.exe'; fi
+            echo "build $GOOS/$GOARCH"
+            GOOS=$GOOS GOARCH=$GOARCH go build -o "dist/sekiban-${GOOS}-${GOARCH}${ext}" .
+          done
+          cd dist && sha256sum sekiban-* > checksums.txt
+      - name: upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: sekiban-binaries
+          path: dist/
+      # On a tag, the same binaries become the release assets. A re-run of a
+      # tag build uploads over the existing release instead of failing on it.
+      - name: release
+        if: startsWith(github.ref, 'refs/tags/')
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1; then
+            gh release upload "$GITHUB_REF_NAME" dist/* --clobber
+          else
+            gh release create "$GITHUB_REF_NAME" dist/* --title "sekiban $GITHUB_REF_NAME" --generate-notes
+          fi
