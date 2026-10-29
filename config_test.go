@@ -3,6 +3,7 @@ package main
 import (
 	"os"
 	"path/filepath"
+	"runtime"
 	"testing"
 )
 
@@ -137,13 +138,17 @@ func TestAppendAndUpdateConnection(t *testing.T) {
 		t.Errorf("after delete: %+v", cfg.Connections)
 	}
 
-	// The file is 0600: it holds a password.
-	info, err := os.Stat(path)
-	if err != nil {
-		t.Fatal(err)
-	}
-	if perm := info.Mode().Perm(); perm != 0o600 {
-		t.Errorf("config file mode = %o, want 600", perm)
+	// The file is 0600: it holds a password. The check is Unix-only:
+	// Windows has no mode bits, and Go reads every writable file there
+	// back as 0666 whatever perm was asked for.
+	if runtime.GOOS != "windows" {
+		info, err := os.Stat(path)
+		if err != nil {
+			t.Fatal(err)
+		}
+		if perm := info.Mode().Perm(); perm != 0o600 {
+			t.Errorf("config file mode = %o, want 600", perm)
+		}
 	}
 }
 
